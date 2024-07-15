@@ -586,119 +586,6 @@ Description: "Documents the whether the patient is TB Active."
     "reason(s) why this should be supported."
 * derivedFrom only Reference(TBDiagnosticTestResultObservation)
 
-Profile: EligibleForTPTObservation
-Parent: GenericObservation
-Id: tpt-eligbility-observation
-Title: "Observation - TPT Eligibility"
-Description: "Documents whether the patient is eligibile for TB Prevention Therapy (TPT)."
-* obeys Observation-TB-Eligibility-1
-* category 1..1
-* category = $OBSERVATION_CATEGORY#exam
-* code = $TPTEligibilityStatusCodeSystem#Eligible-For-TPT
-* value[x] only CodeableConcept
-* valueCodeableConcept 1..1
-* valueCodeableConcept from YesNoValueSet (required)
-* derivedFrom 1..*
-* derivedFrom only Reference(ScreenedForTBObservation or TBScreeningResultObservation)
-* hasMember 0..1 MS
-* hasMember ^definition =
-    "reason(s) why this should be supported."
-* hasMember only Reference(ReasonNotEligibleForTPTObservation)
-* basedOn 0..1 MS
-* basedOn ^definition =
-    "reason(s) why this should be supported."
-* basedOn only Reference(TBPreventiveTherapyCareplan)
-
-Profile: ReasonNotEligibleForTPTObservation
-Parent: GenericObservation
-Id: reason-not-eligbile-for-tpt-observation
-Title: "Observation - Reason Not Eligibile For TPT"
-Description: "Documents the reason why the patient is not eligibile for TB Prevention Therapy (TPT)."
-* category 1..1
-* category = $OBSERVATION_CATEGORY#exam
-* code = $TPTEligibilityStatusCodeSystem#TPT-Reason-Not-Eligible
-* value[x] only CodeableConcept
-* valueCodeableConcept 1..1
-* valueCodeableConcept from TPTReasonNotEligibileValueSet (required)
-* valueCodeableConcept.text 1..1
-
-Profile: TBPreventiveTherapyCareplan
-Parent: CarePlan
-Id: tb-preventive-therapy-care-plan
-Title: "Care Plan - TB Preventive Therapy"
-Description: "Used to record the TB preventive therapy details for the patient."
-* obeys Careplan-TPT-1 and Careplan-TPT-2 and Careplan-TPT-3
-* status 1..1
-* intent 1..1
-* category 1..1
-* category = $SCT#1280002000
-* subject 1..1 
-* subject only Reference(EthPatient)
-* encounter 1..1 
-* encounter only Reference(TargetFacilityEncounter)
-
-* activity 1..*
-* activity.detail.code 1..1
-* activity.detail.code.coding only StrictCoding
-* activity.detail.scheduledPeriod 1..1
-* activity.detail.scheduledPeriod.start 1..1
-* activity.detail.status 1..1
-* activity.detail.statusReason 0..1 MS
-* activity.detail.statusReason ^definition = "reason(s) why this should be supported."
-* activity.detail.statusReason from TBTreatmentStatusValueSet (required)
-* activity.detail.statusReason.coding only StrictCoding
-
-* activity.detail.reasonCode.coding only StrictCoding
-
-* insert Slice(activity, reasons why this should be supported, value, detail.code, open, Slicing the TB Preventive Therapy activities based on the code value, false)
-
-* activity contains
-    TPTStarted 0..1 MS and
-    TPTCompleted 0..1 MS and
-    TPTDiscontinued 0..1 MS and
-    ProphylaxisType 0..1 MS and
-    AlternateProphylaxisType 0..1 MS and
-    TPTFollowUp 0..1 MS and
-    AlternateTPTFollowUp 0..1 MS
-
-* activity[TPTStarted] ^definition = "reason(s) why this should be supported."
-* activity[TPTStarted].detail.code 1..1
-* activity[TPTStarted].detail.code = $SCT#306807008
-* activity[TPTStarted].detail.reasonReference 1..1
-* activity[TPTStarted].detail.reasonReference only Reference(TBDiagnosticTestResultObservation or EligibleForTPTObservation)
-
-* activity[ProphylaxisType] ^definition = "reason(s) why this should be supported."
-* activity[ProphylaxisType].detail.code 1..1
-* activity[ProphylaxisType].detail.code = $SCT#422181004
-* activity[ProphylaxisType].detail.reasonCode 1..1
-* activity[ProphylaxisType].detail.reasonCode from TPTProphylaxisTypeValueSet (required)
-
-* activity[AlternateProphylaxisType] ^definition = "reason(s) why this should be supported."
-* activity[AlternateProphylaxisType].detail.code 1..1
-* activity[AlternateProphylaxisType].detail.code = $SCT#182838006
-* activity[AlternateProphylaxisType].detail.reasonCode 1..1
-* activity[AlternateProphylaxisType].detail.reasonCode from AlternateTPTProphylaxisTypeValueSet (required)
-
-* activity[TPTFollowUp] ^definition = "reason(s) why this should be supported."
-* activity[TPTFollowUp].detail.code 1..1
-* activity[TPTFollowUp].detail.code = $SCT#185389009
-* activity[TPTFollowUp].detail.reasonCode 1..1
-* activity[TPTFollowUp].detail.reasonCode from TPTFollowUpValueSet (required)
-
-* activity[AlternateTPTFollowUp] ^definition = "reason(s) why this should be supported."
-* activity[AlternateTPTFollowUp].detail.code 1..1
-* activity[AlternateTPTFollowUp].detail.code = $TPTAlternateFollowUpCodeSystem#TPT-Alternate-Follow-Up
-* activity[AlternateTPTFollowUp].detail.reasonCode 1..1
-* activity[AlternateTPTFollowUp].detail.reasonCode from AlternateTPTFollowUpValueSet (required)
-
-* activity[TPTCompleted] ^definition = "reason(s) why this should be supported."
-* activity[TPTCompleted].detail.code 1..1
-* activity[TPTCompleted].detail.code = $SCT#255594003
-
-* activity[TPTDiscontinued] ^definition = "reason(s) why this should be supported."
-* activity[TPTDiscontinued].detail.code 1..1
-* activity[TPTDiscontinued].detail.code = $SCT#410545000
-
 Profile: ARTTreatmentMedicationStatement
 Parent: GenericMedicationStatement
 Id: arv-treatment-medication-statement
@@ -710,28 +597,6 @@ Description: "Records the medication history for the HIV+ patient."
 * reasonReference only Reference(Observation)
 * basedOn 1..1
 * basedOn only Reference(ARTFollowUpCareplan)
-
-Profile: TBTreatmentMedicationStatement
-Parent: GenericMedicationStatement
-Id: tb-treatment-medication-statement
-Title: "Medication Statement - TB Treatment"
-Description: "Records the medication history for the TB infected patient."
-* medication[x] only Reference
-* medicationReference only Reference(TBMedication)
-* reasonCode 1..1
-* reasonCode = $LNC#LA6762-4
-
-Profile: TBPreventiveTherapyMedicationStatement
-Parent: GenericMedicationStatement
-Id: tb-preventive-therapy-medication-statement
-Title: "Medication Statement - TB Preventive Therapy"
-Description: "Records the medication history for the patient who has been exposed to the TB infection."
-* medication[x] only Reference
-* medicationReference only Reference(TBMedication)
-* reasonCode 1..1
-* reasonCode = $SCT#699618001
-* basedOn 1..1
-* basedOn only Reference(TBPreventiveTherapyCareplan)
 
 Profile: OIMedicationStatement
 Parent: GenericMedicationStatement
@@ -769,7 +634,7 @@ Description: "Represents the reasons why a patient is considered eligibile for H
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
 
-* insert Slice(valueCodeableConcept.coding, reasons why this should be supported, value, code, open, Slicing the eligibility reason based on the extension value, false)
+* insert Slice(valueCodeableConcept.coding, reasons why this should be supported, value, code, open, Slicing the eligibility reason, false)
 
 * valueCodeableConcept.coding contains
     WhyEligible 1..* MS
@@ -1471,7 +1336,7 @@ Description: "This is used to record the patient's cervical cancer screening res
 * code = $LNC#21864-4
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
-* insert Slice(valueCodeableConcept.coding, reasons why this should be supported, value, code, open, Slicing the screening result based on the extension value, false)
+* insert Slice(valueCodeableConcept.coding, reasons why this should be supported, value, code, open, Slicing the screening result based on the value, false)
 
 * valueCodeableConcept.coding contains
     VIA 0..1 MS and
@@ -1623,7 +1488,7 @@ Description: "This is used to record the type for the ARV regimen change categor
 * code = $SCT#182838006
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
-* insert Slice(valueCodeableConcept.coding, reasons why this should be supported, value, code, open, Slicing the screening result based on the extension value, false)
+* insert Slice(valueCodeableConcept.coding, reasons why this should be supported, value, code, open, Slicing the screening result based on the value, false)
 
 * valueCodeableConcept.coding contains
     SwitchType 0..1 MS and
@@ -1678,16 +1543,6 @@ Description: "Used to record the ARV regimen that will be prescribed to the pati
 * code 1..1
 * code.coding only StrictCoding
 * code from ARVTreatmentValueSet (required)
-* code.text 1..1
-
-Profile: TBMedication
-Parent: Medication
-Id: tb-medication
-Title: "Medication - Represents TB Medication"
-Description: "Used to record the TB medication that will be prescribed to the patient."
-* code 1..1
-* code.coding only StrictCoding
-* code from TBTreatmentValueSet (required)
 * code.text 1..1
 
 Profile: OIMedication
@@ -2608,30 +2463,206 @@ Description: "Documents the patient's TB treatment status."
 
 * hasMember[ActiveTBDiscontinued] ^definition =
     "reason(s) why this should be supported."
-* hasMember[ActiveTBDiscontinued] only Reference(ActiveTBDiscontinuedObservation)
+* hasMember[ActiveTBDiscontinued] only Reference(TreatmentDiscontinuedObservation)
 
 * hasMember[ActiveTBCompleted] ^definition =
     "reason(s) why this should be supported."
-* hasMember[ActiveTBCompleted] only Reference(ActiveTBCompletedObservation)
+* hasMember[ActiveTBCompleted] only Reference(TreatmentCompletedObservation)
 
-Profile: ActiveTBDiscontinuedObservation
+Profile: TreatmentDiscontinuedObservation
 Parent: GenericObservation
-Id: active-tb-discontinued-observation
-Title: "Observation - Active TB Discontinued"
-Description: "Documents the details for the patient who discontinued TB treatment."
+Id: treatment-discontinued-observation
+Title: "Observation - Treatment Discontinued"
+Description: "Documents the details for the patient who discontinued treatment."
 * category 1..1
 * category = $OBSERVATION_CATEGORY#therapy
 * code = $SCT#182840001
 * value[x] only dateTime
 * valueDateTime 1..1
 
-Profile: ActiveTBCompletedObservation
+Profile: TreatmentCompletedObservation
 Parent: GenericObservation
-Id: active-tb-completed-observation
-Title: "Observation - Active TB Completed"
-Description: "Documents the details for the patient who completed TB treatment."
+Id: treatment-completed-observation
+Title: "Observation - Treatment Completed"
+Description: "Documents the details for the patient who completed treatment."
 * category 1..1
 * category = $OBSERVATION_CATEGORY#therapy
 * code = $SCT#182992009
 * value[x] only dateTime
 * valueDateTime 1..1
+
+Profile: EligibleForTPTObservation
+Parent: GenericObservation
+Id: tpt-eligbility-observation
+Title: "Observation - TPT Eligibility"
+Description: "Documents whether the patient is eligibile for TB Prevention Therapy (TPT)."
+* obeys Observation-TB-Eligibility-1
+* category 1..1
+* category = $OBSERVATION_CATEGORY#exam
+* code = $TPTEligibilityStatusCodeSystem#Eligible-For-TPT
+* value[x] only CodeableConcept
+* valueCodeableConcept 1..1
+* valueCodeableConcept from YesNoValueSet (required)
+* derivedFrom 1..1
+* derivedFrom only Reference(TBScreeningResultObservation)
+* hasMember 0..1 MS
+* hasMember ^definition =
+    "reason(s) why this should be supported."
+* hasMember only Reference(ReasonNotEligibleForTPTObservation)
+
+Profile: ReasonNotEligibleForTPTObservation
+Parent: GenericObservation
+Id: reason-not-eligbile-for-tpt-observation
+Title: "Observation - Reason Not Eligibile For TPT"
+Description: "Documents the reason why the patient is not eligibile for TB Prevention Therapy (TPT)."
+* category 1..1
+* category = $OBSERVATION_CATEGORY#exam
+* code = $TPTEligibilityStatusCodeSystem#TPT-Reason-Not-Eligible
+* value[x] only CodeableConcept
+* valueCodeableConcept 1..1
+* valueCodeableConcept from TPTReasonNotEligibileValueSet (required)
+* valueCodeableConcept.text 1..1
+
+Profile: TPTStartedObservation
+Parent: GenericObservation
+Id: tpt-started-observation
+Title: "Observation - TPT Started"
+Description: "Documents the date when the patient started TB Prevention Therapy (TPT)."
+* category 1..1
+* category = $OBSERVATION_CATEGORY#therapy
+* value[x] only dateTime
+* valueDateTime 1..1
+* code = $SCT#422181004
+* derivedFrom 0..1 MS
+* derivedFrom ^definition =
+    "reason(s) why this should be supported."
+* derivedFrom only Reference(EligibleForTPTObservation)
+* hasMember 0..* MS
+* hasMember ^definition =
+    "reason(s) why this should be supported."
+* hasMember only Reference(TBProphylaxisTypeObservation)
+
+Profile: TBProphylaxisTypeObservation
+Parent: GenericObservation
+Id: tb-prophylaxis-type-observation
+Title: "Observation - TB Prophylaxis Type"
+Description: "Documents the type of prophylaxis the patient is currently receiving."
+* category 1..1
+* category = $OBSERVATION_CATEGORY#therapy
+* code = $LNC#LP149760-3
+* value[x] only CodeableConcept
+* valueCodeableConcept 1..1
+* valueCodeableConcept from TPTProphylaxisTypeValueSet (required)
+
+* hasMember 0..* MS
+* hasMember ^definition =
+    "reason(s) why this should be supported."
+
+* insert SliceForResolve(hasMember, reasons why this should be supported, open, Slicing hasMember based on the profile value, false)
+
+* hasMember contains
+    INHFollowUp 0..1 MS and
+    AltenateProphylaxisType 0..1 MS
+
+* hasMember[INHFollowUp] ^definition =
+    "reason(s) why this should be supported."
+* hasMember[INHFollowUp] only Reference(INHAtFollowupObservation)
+
+* hasMember[AltenateProphylaxisType] ^definition =
+    "reason(s) why this should be supported."
+* hasMember[AltenateProphylaxisType] only Reference(AlternateTBProphylaxisTypeObservation)
+
+Profile: INHAtFollowupObservation
+Parent: GenericObservation
+Id: inh-at-follow-up-observation
+Title: "Observation - INH At Follow-up"
+Description: "Indicates that the patient is receiving INH at follow-up."
+* obeys Observation-INH-Follow-Up-1 and Observation-INH-Follow-Up-2
+* category 1..1
+* category = $OBSERVATION_CATEGORY#therapy
+* code = $LNC#LA21590-7
+* value[x] only CodeableConcept
+* valueCodeableConcept 1..1
+* valueCodeableConcept from INHFollowUpValueSet (required)
+
+* hasMember 0..* MS
+* hasMember ^definition =
+    "reason(s) why this should be supported."
+
+* insert SliceForResolve(hasMember, reasons why this should be supported, open, Slicing hasMember based on the profile value, false)
+
+* hasMember contains
+    TPTDiscontinued 0..1 MS and
+    TPTCompleted 0..1 MS
+
+* hasMember[TPTDiscontinued] ^definition =
+    "reason(s) why this should be supported."
+* hasMember[TPTDiscontinued] only Reference(TreatmentDiscontinuedObservation)
+
+* hasMember[TPTCompleted] ^definition =
+    "reason(s) why this should be supported."
+* hasMember[TPTCompleted] only Reference(TreatmentCompletedObservation)
+
+Profile: AlternateTBProphylaxisTypeObservation
+Parent: GenericObservation
+Id: alternate-tb-prophylaxis-type-observation
+Title: "Observation - Alternate TB Prophylaxis Type"
+Description: "Documents the alternate type of prophylaxis the patient is currently receiving."
+* category 1..1
+* category = $OBSERVATION_CATEGORY#therapy
+* code = $LNC#LP149760-3
+* value[x] only CodeableConcept
+* valueCodeableConcept 1..1
+* valueCodeableConcept from AlternateTPTProphylaxisTypeValueSet (required)
+* hasMember 1..*
+
+* insert SliceForResolve(hasMember, reasons why this should be supported, open, Slicing hasMember based on the profile value, false)
+* hasMember ^slicing.discriminator[+].type = #value
+* hasMember ^slicing.discriminator[=].path = "resolve().value.ofType(CodeableConcept).coding"
+* hasMember ^slicing.discriminator[+].type = #value
+* hasMember ^slicing.discriminator[=].path = "display"
+
+* hasMember contains
+    3HP 0..1 MS and
+    3HR 0..1 MS
+
+* hasMember[3HP] ^definition =
+    "reason(s) why this should be supported."
+* hasMember[3HP] only Reference(AlternateTPTAtFollowupObservation)
+* hasMember[3HP].display = "3HP"
+
+* hasMember[3HR] ^definition =
+    "reason(s) why this should be supported."
+* hasMember[3HR] only Reference(AlternateTPTAtFollowupObservation)
+* hasMember[3HR].display = "3HR"
+
+Profile: AlternateTPTAtFollowupObservation
+Parent: GenericObservation
+Id: alternate-tpt-at-follow-up-observation
+Title: "Observation - Alternate TPT At Follow-up"
+Description: "Documents the alternate TPT at follow-up."
+* obeys Observation-alternate-tpt-Follow-Up-1 and Observation-alternate-tpt-Follow-Up-2 and Observation-alternate-tpt-Follow-Up-3 and Observation-alternate-tpt-Follow-Up-4
+* category 1..1
+* category = $OBSERVATION_CATEGORY#therapy
+* code = $LNC#LA21590-7
+* value[x] only CodeableConcept
+* valueCodeableConcept 1..1
+* valueCodeableConcept from AlternateTPTFollowUpValueSet (required)
+
+* hasMember 0..* MS
+* hasMember ^definition =
+    "reason(s) why this should be supported."
+
+* insert SliceForResolve(hasMember, reasons why this should be supported, open, Slicing hasMember based on the profile value, false)
+
+* hasMember contains
+    TPTDiscontinued 0..1 MS and
+    TPTCompleted 0..1 MS
+
+* hasMember[TPTDiscontinued] ^definition =
+    "reason(s) why this should be supported."
+* hasMember[TPTDiscontinued] only Reference(TreatmentDiscontinuedObservation)
+
+* hasMember[TPTCompleted] ^definition =
+    "reason(s) why this should be supported."
+* hasMember[TPTCompleted] only Reference(TreatmentCompletedObservation)
