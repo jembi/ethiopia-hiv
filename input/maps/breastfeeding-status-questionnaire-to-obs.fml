@@ -1,0 +1,39 @@
+map "http://moh.gov.et/fhir/hiv/StructureMap/BreastfeedingStatusToObservation" = "BreastfeedingStatusToObservation"
+/// status = 'active'
+/// date = '2024-06-07'
+
+uses "http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse" as source
+uses "http://moh.gov.et/fhir/hiv/StructureDefinition/breastfeeding-status-observation" as target
+
+group BreastfeedingStatusToObservation(source src : QuestionnaireResponse, target tgt : Observation) {
+	src -> tgt.id = uuid() "SetObservationId";
+    src -> tgt.status = 'final' "SetStatusCodeValue";
+
+    src -> tgt.code = cc('http://loinc.org', '63895-7') "SetCodeCodeableConcept";
+
+    src.authored as authored -> tgt.effective = create('dateTime') as observationDate then {
+        authored as authoredDate -> observationDate = authoredDate "SetObservationDate";
+    } "ProcessObservationDate";
+
+    src -> tgt.category = cc('http://hl7.org/fhir/observation-category', 'exam') "SetCategoryCodeableConcept";
+
+    src.subject as patient -> tgt.subject = create('Reference') as subject then {
+        patient as pat -> subject.reference = pat "SetPatientReference";
+    } "ProcessPatientReference";
+
+    src.author as author -> tgt.performer = create('Reference') as performer then {
+        author as auth -> performer.reference = auth "SetAuthorReference";
+    } "ProcessAuthorReference";
+
+    src.encounter as QREncounter -> tgt.encounter = create('Reference') as ObsEncounter then {
+        QREncounter as enc -> ObsEncounter.reference = enc "SetEncounterReference";
+    } "ProcessAuthorReference";
+
+    src.item as item where(linkId = 'is-breast-feeding') then {
+        item.answer first as ans then { 
+            ans.value : Coding as breastfeeding -> tgt.value = create('CodeableConcept') as breastfeedingValue then {
+                breastfeeding -> breastfeedingValue = translate(breastfeeding, 'http://moh.gov.et/fhir/hiv/ConceptMap/BreastfeedingStatusProprietaryToLOINC', 'code') "SeBbreastfeedingCoding";
+            };
+        };
+	};
+}

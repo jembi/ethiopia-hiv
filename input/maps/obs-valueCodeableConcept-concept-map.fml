@@ -1,0 +1,17 @@
+map "http://moh.gov.et/fhir/hiv/StructureMap/ObservationPropietaryValueToStandardCodingValue" = "ObservationPropietaryValueToStandardCodingValue"
+/// status = 'active'
+/// date = '2024-06-07'
+
+uses "http://hl7.org/fhir/StructureDefinition/ConceptMap" as source
+uses "http://hl7.org/fhir/StructureDefinition/Observation" as source
+uses "http://hl7.org/fhir/StructureDefinition/Observation" as target
+
+group ObservationPropietaryValueToStandardCodingValue(source obsSrc : Observation, source conceptMapSrc : ConceptMap, target obsTgt : Observation) {
+    obsSrc.value : CodeableConcept as vs -> obsTgt.value = create('CodeableConcept') as vt then {
+        vs.coding as coding then {
+            conceptMapSrc.url as url then {
+                coding -> vt = translate(coding, url, 'code') "SetObservationCode";
+            };
+        } "SetObservationCoding";
+    } "SetObservationValue";
+}

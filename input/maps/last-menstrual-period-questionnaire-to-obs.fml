@@ -1,0 +1,39 @@
+map "http://moh.gov.et/fhir/hiv/StructureMap/LastMenstrualPeriodToObservation" = "LastMenstrualPeriodToObservation"
+/// status = 'active'
+/// date = '2024-06-07'
+
+uses "http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse" as source
+uses "http://moh.gov.et/fhir/hiv/StructureDefinition/last-menstrual-period-observation" as target
+
+group LastMenstrualPeriodToObservation(source src : QuestionnaireResponse, target tgt : Observation) {
+	src -> tgt.id = uuid() "SetObservationId";
+    src -> tgt.status = 'final' "SetStatusCodeValue";
+
+    src -> tgt.code = cc('http://loinc.org', '8665-2') "SetCodeCodeableConcept";
+
+    src.authored as authored -> tgt.effective = create('dateTime') as observationDate then {
+        authored as authoredDate -> observationDate = authoredDate "SetObservationDate";
+    } "ProcessObservationDate";
+
+    src -> tgt.category = cc('http://hl7.org/fhir/observation-category', 'exam') "SetCategoryCodeableConcept";
+
+    src.subject as patient -> tgt.subject = create('Reference') as subject then {
+        patient as pat -> subject.reference = pat "SetPatientReference";
+    } "ProcessPatientReference";
+
+    src.author as author -> tgt.performer = create('Reference') as performer then {
+        author as auth -> performer.reference = auth "SetAuthorReference";
+    } "ProcessAuthorReference";
+
+    src.encounter as QREncounter -> tgt.encounter = create('Reference') as ObsEncounter then {
+        QREncounter as enc -> ObsEncounter.reference = enc "SetEncounterReference";
+    } "ProcessAuthorReference";
+
+    src.item as item where(linkId = 'lmp') then {
+        item.answer first as ans then { 
+            ans.value as lmp -> tgt.value = create('dateTime') as lmpValue then {
+                lmp as obsDate -> lmpValue = obsDate "SetObservationDate";
+            };
+        };
+	};
+}
