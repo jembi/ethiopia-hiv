@@ -144,21 +144,11 @@ Expression: "value.coding.where(system = 'http://moh.gov.et/fhir/hiv/CodeSystem/
 Severity: #error
 
 Invariant: Observation-alternate-tpt-Follow-Up-1
-Description: "If Observation.valueCodeableConcept.coding.code is \"TPT-3HP-discontinued\" then Observation.hasMember for slice \"TPTDiscontinued\" SHALL be present."
-Expression: "value.coding.where(system = 'http://moh.gov.et/fhir/hiv/CodeSystem/tpt-3hp-follow-up-code-system' and code = 'TPT-3HP-discontinued').exists() implies hasMember.slice('http://moh.gov.et/fhir/hiv/StructureDefinition/alternate-tpt-at-follow-up-observation', 'TPTDiscontinued').exists()"
+Description: "If Observation.valueCodeableConcept.coding.code is \"182840001\" then Observation.hasMember for slice \"TPTDiscontinued\" SHALL be present."
+Expression: "value.coding.where(system = 'http://snomed.info/sct' and code = '182840001').exists() implies hasMember.slice('http://moh.gov.et/fhir/hiv/StructureDefinition/alternate-tpt-at-follow-up-observation', 'TPTDiscontinued').exists()"
 Severity: #error
 
 Invariant: Observation-alternate-tpt-Follow-Up-2
-Description: "If Observation.valueCodeableConcept.coding.code is \"TPT-3HP-completed\" then Observation.hasMember for slice \"TPTCompleted\" SHALL be present."
-Expression: "value.coding.where(system = 'http://moh.gov.et/fhir/hiv/CodeSystem/tpt-3hp-follow-up-code-system' and code = 'TPT-3HP-completed').exists() implies hasMember.slice('http://moh.gov.et/fhir/hiv/StructureDefinition/alternate-tpt-at-follow-up-observation', 'TPTCompleted').exists()"
-Severity: #error
-
-Invariant: Observation-alternate-tpt-Follow-Up-3
-Description: "If Observation.valueCodeableConcept.coding.code is \"TPT-3HR-discontinued\" then Observation.hasMember for slice \"TPTDiscontinued\" SHALL be present."
-Expression: "value.coding.where(system = 'http://moh.gov.et/fhir/hiv/CodeSystem/tpt-3hr-follow-up-code-system' and code = 'TPT-3HR-discontinued').exists() implies hasMember.slice('http://moh.gov.et/fhir/hiv/StructureDefinition/alternate-tpt-at-follow-up-observation', 'TPTDiscontinued').exists()"
-Severity: #error
-
-Invariant: Observation-alternate-tpt-Follow-Up-4
-Description: "If Observation.valueCodeableConcept.coding.code is \"TPT-3HR-completed\" then Observation.hasMember for slice \"TPTCompleted\" SHALL be present."
-Expression: "value.coding.where(system = 'http://moh.gov.et/fhir/hiv/CodeSystem/tpt-3hr-follow-up-code-system' and code = 'TPT-3HR-completed').exists() implies hasMember.slice('http://moh.gov.et/fhir/hiv/StructureDefinition/alternate-tpt-at-follow-up-observation', 'TPTCompleted').exists()"
+Description: "If Observation.valueCodeableConcept.coding.code is \"182992009\" then Observation.hasMember for slice \"TPTCompleted\" SHALL be present."
+Expression: "value.coding.where(system = 'http://snomed.info/sct' and code = '182992009').exists() implies hasMember.slice('http://moh.gov.et/fhir/hiv/StructureDefinition/alternate-tpt-at-follow-up-observation', 'TPTCompleted').exists()"
 Severity: #error

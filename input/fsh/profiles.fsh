@@ -2583,7 +2583,14 @@ Description: "Indicates that the patient is receiving INH at follow-up."
 * code = $LNC#LA21590-7
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
-* valueCodeableConcept from INHFollowUpValueSet (required)
+* valueCodeableConcept from MonthOrdinalsValueSet (extensible)
+* valueCodeableConcept ^binding.extension[+].extension[+].url = "purpose"
+* valueCodeableConcept ^binding.extension[=].extension[=].valueCode = #required
+* valueCodeableConcept ^binding.extension[=].extension[+].url = "valueSet"
+* valueCodeableConcept ^binding.extension[=].extension[=].valueCanonical = "http://moh.gov.et/fhir/hiv/ValueSet/treatment-outcome-value-set"
+* valueCodeableConcept ^binding.extension[=].extension[+].url = "documentation"
+* valueCodeableConcept ^binding.extension[=].extension[=].valueMarkdown = "A list of codes indicating the status of the treatment."
+* valueCodeableConcept ^binding.extension[=].url = "http://hl7.org/fhir/tools/StructureDefinition/additional-binding"
 
 * hasMember 0..* MS
 * hasMember ^definition =
@@ -2641,13 +2648,20 @@ Parent: GenericObservation
 Id: alternate-tpt-at-follow-up-observation
 Title: "Observation - Alternate TPT At Follow-up"
 Description: "Documents the alternate TPT at follow-up."
-* obeys Observation-alternate-tpt-Follow-Up-1 and Observation-alternate-tpt-Follow-Up-2 and Observation-alternate-tpt-Follow-Up-3 and Observation-alternate-tpt-Follow-Up-4
+* obeys Observation-alternate-tpt-Follow-Up-1 and Observation-alternate-tpt-Follow-Up-2
 * category 1..1
 * category = $OBSERVATION_CATEGORY#therapy
 * code = $LNC#LA21590-7
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
-* valueCodeableConcept from AlternateTPTFollowUpValueSet (required)
+* valueCodeableConcept from MonthOrdinalsValueSet (extensible)
+* valueCodeableConcept ^binding.extension[+].extension[+].url = "purpose"
+* valueCodeableConcept ^binding.extension[=].extension[=].valueCode = #required
+* valueCodeableConcept ^binding.extension[=].extension[+].url = "valueSet"
+* valueCodeableConcept ^binding.extension[=].extension[=].valueCanonical = "http://moh.gov.et/fhir/hiv/ValueSet/treatment-outcome-value-set"
+* valueCodeableConcept ^binding.extension[=].extension[+].url = "documentation"
+* valueCodeableConcept ^binding.extension[=].extension[=].valueMarkdown = "A list of codes indicating the status of the treatment."
+* valueCodeableConcept ^binding.extension[=].url = "http://hl7.org/fhir/tools/StructureDefinition/additional-binding"
 
 * hasMember 0..* MS
 * hasMember ^definition =

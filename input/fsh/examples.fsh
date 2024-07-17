@@ -3562,7 +3562,7 @@ Description: "Indicates that the patient is receiving INH1 at follow-up."
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-12-11"
 * performer = Reference(CurrentServiceProviderExample)
-* valueCodeableConcept = $INHAtFollowUp#INH1
+* valueCodeableConcept = $SCT#255216001
 
 Instance: AlternateTBProphylaxisType3HPObservationExample
 InstanceOf: AlternateTBProphylaxisTypeObservation
@@ -3577,7 +3577,7 @@ Description: "Indicates that the patient is currently receiving 3HP."
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-12-11"
 * performer = Reference(CurrentServiceProviderExample)
-* valueCodeableConcept = $TPTAlternateProphylaxisType#3HP
+* valueCodeableConcept = $SCT#346670008
 * hasMember[3HP] = Reference(AlternateTPT3HPAtFollowupObservationExample)
 
 Instance: AlternateTPT3HPAtFollowupObservationExample
@@ -3593,7 +3593,7 @@ Description: "Documents the TPT as 3HP at follow-up."
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-12-11"
 * performer = Reference(CurrentServiceProviderExample)
-* valueCodeableConcept = $TPT3HPFollowUpCodeSystem#TPT-3HP-M1
+* valueCodeableConcept = $SCT#255216001
 
 Instance: ProphylaxisTypeisINHAtFollowUpAndCompletedObservationExample
 InstanceOf: TBProphylaxisTypeObservation
@@ -3624,7 +3624,7 @@ Description: "Indicates that the patient has completed INH at follow-up."
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-12-11"
 * performer = Reference(CurrentServiceProviderExample)
-* valueCodeableConcept = $INHAtFollowUp#INH-completed
+* valueCodeableConcept = $SCT#182992009
 * hasMember[TPTCompleted] = Reference(TPTCompletedObservationExample)
 
 Instance: TPTCompletedObservationExample
@@ -3670,7 +3670,7 @@ Description: "Indicates that the patient has completed 3HP at follow-up."
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-12-11"
 * performer = Reference(CurrentServiceProviderExample)
-* valueCodeableConcept = $TPT3HPFollowUpCodeSystem#TPT-3HP-completed
+* valueCodeableConcept = $SCT#255216001
 * hasMember[TPTCompleted] = Reference(TPTCompletedObservationExample)
 
 Instance: AlternateTBProphylaxisCompletedObservationExample
@@ -3686,7 +3686,7 @@ Description: "Indicates that the patient has completed 3HP."
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-12-11"
 * performer = Reference(CurrentServiceProviderExample)
-* valueCodeableConcept = $TPTAlternateProphylaxisType#3HP
+* valueCodeableConcept = $SCT#346670008
 * hasMember[3HP] = Reference(AlternateTPT3HPAtFollowupCompletedObservationExample)
 
 Instance: TBProphylaxisTypeAlternateAndFor3HRObservationExample
@@ -3718,7 +3718,7 @@ Description: "Indicates that the patient is currently receiving 3HR."
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-12-11"
 * performer = Reference(CurrentServiceProviderExample)
-* valueCodeableConcept = $TPTAlternateProphylaxisType#3HR
+* valueCodeableConcept = $SCT#410831004
 * hasMember[3HR] = Reference(AlternateTPT3HRAtFollowupObservationExample)
 
 Instance: AlternateTPT3HRAtFollowupObservationExample
@@ -3734,7 +3734,7 @@ Description: "Documents the TPT as 3HR at follow-up."
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-12-11"
 * performer = Reference(CurrentServiceProviderExample)
-* valueCodeableConcept = $TPT3HRFollowUpCodeSystem#TPT-3HR-M1
+* valueCodeableConcept = $SCT#255216001
 
 Instance: AlternateTPT3HRAtFollowupDiscontinuedObservationExample
 InstanceOf: AlternateTPTAtFollowupObservation
@@ -3749,7 +3749,7 @@ Description: "Indicates that the patient has discontinued 3HR at follow-up."
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-12-11"
 * performer = Reference(CurrentServiceProviderExample)
-* valueCodeableConcept = $TPT3HRFollowUpCodeSystem#TPT-3HR-discontinued
+* valueCodeableConcept = $SCT#182840001
 * hasMember[TPTDiscontinued] = Reference(TPTDiscontinuedObservationExample)
 
 Instance: AlternateTBProphylaxisDiscontinuedObservationExample
@@ -3765,5 +3765,5 @@ Description: "Indicates that the patient has discontinued 3HR."
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-12-11"
 * performer = Reference(CurrentServiceProviderExample)
-* valueCodeableConcept = $TPTAlternateProphylaxisType#3HR
+* valueCodeableConcept = $SCT#410831004
 * hasMember[3HR] = Reference(AlternateTPT3HRAtFollowupDiscontinuedObservationExample)

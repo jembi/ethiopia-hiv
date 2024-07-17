@@ -602,75 +602,33 @@ Description: "A list of codes describing the TPT prophylaxis type."
 * $LNC#18934-0 "Isoniazid [Susceptibility]"
 * include codes from system TPTProphylaxisTypeCodeSystem
 
-CodeSystem: INHTPTFollowUpCodeSystem
-Id: inh-follow-up-code-system
-Title: "TPT Follow-Up Codes"
-Description: "A list of codes indicating the TPT follow-up status."
+ValueSet: TreatmentOutcomeValueSet
+Id: treatment-outcome-value-set
+Title: "Treatment Outcome Codes"
+Description: "A list of codes indicating the status of the treatment."
 * ^experimental = false
-* ^caseSensitive = true
-* #INH1 "INH1"
-* #INH2 "INH2"
-* #INH3 "INH3"
-* #INH4 "INH4"
-* #INH5 "INH5"
-* #INH6 "INH6"
-* #INH-completed "INH completed"
-* #INH-discontinued "INH discontinued"
+* $SCT#182992009 "Treatment completed"
+* $SCT#182840001 "Drug treatment stopped - medical advice"
 
-ValueSet: INHFollowUpValueSet
-Id: inh-follow-up-value-set
-Title: "TPT Follow-Up Codes"
-Description: "A list of codes indicating the TPT follow-up status."
+ValueSet: MonthOrdinalsValueSet
+Id: month-ordinals-value-set
+Title: "Month Ordinal Codes"
+Description: "A list of codes indicating the month ordinals."
 * ^experimental = false
-* include codes from system INHTPTFollowUpCodeSystem
-
-CodeSystem: AlternateTPTProphylaxisTypeCodeSystem
-Id: tpt-alternate-prophylaxis-type-code-system
-Title: "Alternate TPT Prophylaxis Type Codes"
-Description: "A list of codes describing the alternate TPT prophylaxis types to INH."
-* ^experimental = false
-* ^caseSensitive = true
-* #3HP "Isoniazid (INH) and Rifapentine (RPT)"
-* #3HR "Isoniazid (INH) and Rifampin (RIF)"
+* $SCT#255216001 "First"
+* $SCT#81170007 "Second"
+* $SCT#70905002 "Third"
+* $SCT#29970001 "Fourth"
+* $SCT#32088001 "Fifth"
+* $SCT#53046009 "Sixth"
 
 ValueSet: AlternateTPTProphylaxisTypeValueSet
 Id: tpt-alternate-prophylaxis-type-value-set
 Title: "Alternate TPT Prophylaxis Type Codes"
 Description: "A list of codes describing the alternate TPT prophylaxis types to INH."
 * ^experimental = false
-* include codes from system AlternateTPTProphylaxisTypeCodeSystem
-
-CodeSystem: TPT3HPFollowUpCodeSystem
-Id: tpt-3hp-follow-up-code-system
-Title: "TPT 3HP Follow-Up Codes"
-Description: "A list of 3HP codes indicating the alternate TPT follow-up status."
-* ^experimental = false
-* ^caseSensitive = true
-* #TPT-3HP-M1 "TPT(3HP)M1"
-* #TPT-3HP-M2 "TPT(3HP)M2"
-* #TPT-3HP-M3 "TPT(3HP)M3"
-* #TPT-3HP-completed "TPT(3HP)completed"
-* #TPT-3HP-discontinued "TPT(3HP)discontinued"
-
-CodeSystem: TPT3HRFollowUpCodeSystem
-Id: tpt-3hr-follow-up-code-system
-Title: "TPT 3HR Follow-Up Codes"
-Description: "A list of 3HR codes indicating the alternate TPT follow-up status."
-* ^experimental = false
-* ^caseSensitive = true
-* #TPT-3HR-M1 "TPT(3HR)M1"
-* #TPT-3HR-M2 "TPT(3HR)M2"
-* #TPT-3HR-M3 "TPT(3HR)M3"
-* #TPT-3HR-completed "TPT(3HR)completed"
-* #TPT-3HR-discontinued "TPT(3HR)discontinued"
-
-ValueSet: AlternateTPTFollowUpValueSet
-Id: alternate-tpt-follow-up-value-set
-Title: "Alternate TPT Follow-Up Codes"
-Description: "A list of codes indicating the alternate TPT follow-up status."
-* ^experimental = false
-* include codes from system TPT3HPFollowUpCodeSystem
-* include codes from system TPT3HRFollowUpCodeSystem
+* $SCT#346670008 "Product containing isoniazid and rifampicin"
+* $SCT#410831004 "Product containing rifapentine"
 
 /*ValueSet: TPT3HRFollowUpValueSet
 Id: tpt-3hr-follow-up-value-set
