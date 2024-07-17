@@ -468,33 +468,6 @@ Description: "Records the ARV Treatment details for the patient during an ART fo
 * reasonReference = Reference(AliveOnArtARTFollowupStatusExample)
 * basedOn = Reference(ARTAliveOnARTFollowUpCareplanExample)
 
-Instance: TbTreatmentStartedMedicationStatementExample
-InstanceOf: TBTreatmentMedicationStatement
-Usage: #example
-Title: "Medication Statement - Started Tuberculosis Treatment"
-Description: "Records the Tuberculosis medication details for the patient who started treatment."
-* status = #active
-* reasonCode[+] = $LNC#LA6762-4
-* reasonCode[=].text = "Currently on TB treatment"
-* medicationReference = Reference(TBMedicationExample)
-* subject = Reference(GeneralPatientExample)
-* context = Reference(GeneralEncounterExample)
-* effectivePeriod.start = "2021-07-25"
-
-Instance: TbPreventiveTherapyStartedMedicationStatementExample
-InstanceOf: TBPreventiveTherapyMedicationStatement
-Usage: #example
-Title: "Medication Statement - Started Tuberculosis Preventive Therapy"
-Description: "Records the tuberculosis preventive therapy details for the patient who started treatment."
-* status = #active
-* reasonCode[+] = $SCT#699618001
-* reasonCode[=].text = "Administration of prophylactic antituberculosis agent"
-* medicationReference = Reference(TBMedicationExample)
-* subject = Reference(GeneralPatientExample)
-* context = Reference(GeneralEncounterExample)
-* effectivePeriod.start = "2021-07-25"
-* basedOn[+] = Reference(TPTStartedExample)
-
 Instance: CotrimoxazoleMedicationStatementExample
 InstanceOf: OIMedicationStatement
 Usage: #example
@@ -718,7 +691,6 @@ Description: "Documents whether the patient is eligibile for TB Prevention Thera
 * effectiveDateTime = "2023-12-11"
 * performer = Reference(CurrentServiceProviderExample)
 * valueCodeableConcept = $YesNoCodeSystem#true
-* derivedFrom[+] = Reference(ScreenedForTBExample)
 * derivedFrom[+] = Reference(TBScreeningExample)
 
 Instance: NotEligibleForTPTExample
@@ -735,27 +707,8 @@ Description: "Documents whether the patient is eligibile for TB Prevention Thera
 * effectiveDateTime = "2023-12-11"
 * performer = Reference(CurrentServiceProviderExample)
 * valueCodeableConcept = $YesNoCodeSystem#false
-* derivedFrom[+] = Reference(ScreenedForTBExample)
 * derivedFrom[+] = Reference(TBScreeningExample)
 * hasMember = Reference(ReasonNotEligibleForTPTExample)
-
-Instance: EligibleForTPTAndLinkedToTPTCareExample
-InstanceOf: EligibleForTPTObservation
-Usage: #example
-Title: "Observation - Eligible For TPT and Linked To TPT Care"
-Description: "Indicates that the patient is eligibile for TB Prevention Therapy (TPT) and is lined to TPT care."
-* status = #final
-* category = $OBSERVATION_CATEGORY#exam
-* code = $TPTEligibilityStatusCodeSystem#Eligible-For-TPT
-* code.text = "Is Eligible for TPT"
-* subject = Reference(GeneralPatientExample)
-* encounter = Reference(GeneralEncounterExample)
-* effectiveDateTime = "2023-12-11"
-* performer = Reference(CurrentServiceProviderExample)
-* valueCodeableConcept = $YesNoCodeSystem#true
-* derivedFrom[+] = Reference(ScreenedForTBExample)
-* derivedFrom[+] = Reference(TBScreeningExample)
-* basedOn[+] = Reference(TPTStartedExample)
 
 Instance: ReasonNotEligibleForTPTExample
 InstanceOf: ReasonNotEligibleForTPTObservation
@@ -774,125 +727,6 @@ Description: "Documents the reason why the patient is not eligibile for TB Preve
 * valueCodeableConcept.text = "History of tuberculosis drug therapy"
 * derivedFrom[+] = Reference(ScreenedForTBExample)
 * derivedFrom[+] = Reference(TBScreeningExample)
-
-Instance: TPTStartedExample
-InstanceOf: TBPreventiveTherapyCareplan
-Usage: #example
-Title: "TPT Care Plan - Treatment Started with INH"
-Description: "Used to record the TPT treatment started details for the patient."
-* status = #active
-* intent = #order
-* category[+] = $SCT#1280002000
-* category[=].text = "Currently on TPT"
-* subject = Reference(GeneralPatientExample)
-* encounter = Reference(GeneralEncounterExample)
-
-* activity[TPTStarted][+].detail.code = $SCT#306807008
-* activity[TPTStarted][=].detail.code.text = "Recommendation to start drug treatment"
-* activity[TPTStarted][=].detail.status = #completed
-* activity[TPTStarted][=].detail.reasonReference = Reference(EligibleForTPTExample)
-* activity[TPTStarted][=].detail.scheduledPeriod.start = "2023-11-27"
-
-* activity[ProphylaxisType][+].detail.code = $SCT#422181004
-* activity[ProphylaxisType][=].detail.code.text = "Administration of prophylactic antibiotic"
-* activity[ProphylaxisType][=].detail.status = #completed
-* activity[ProphylaxisType][=].detail.reasonCode = $LNC#LA6759-0
-* activity[ProphylaxisType][=].detail.scheduledPeriod.start = "2023-11-27"
-
-* activity[TPTFollowUp][+].detail.code = $SCT#185389009
-* activity[TPTFollowUp][=].detail.code.text = "Follow-up visit"
-* activity[TPTFollowUp][=].detail.status = #completed
-* activity[TPTFollowUp][=].detail.reasonCode = $TPTFollowUpFollowUpCodeSystem#INH1
-* activity[TPTFollowUp][=].detail.scheduledPeriod.start = "2023-11-27"
-
-Instance: TPTFollowUpExample
-InstanceOf: TBPreventiveTherapyCareplan
-Usage: #example
-Title: "TPT Care Plan - Follow-up with INH"
-Description: "Used to record the TPT treatment follow-up details for the patient."
-* status = #active
-* intent = #order
-* category[+] = $SCT#1280002000
-* category[=].text = "Currently on TPT"
-* subject = Reference(GeneralPatientExample)
-* encounter = Reference(GeneralEncounterExample)
-
-* activity[ProphylaxisType][+].detail.code = $SCT#422181004
-* activity[ProphylaxisType][=].detail.code.text = "Administration of prophylactic antibiotic"
-* activity[ProphylaxisType][=].detail.status = #completed
-* activity[ProphylaxisType][=].detail.reasonCode = $LNC#LA6759-0
-* activity[ProphylaxisType][=].detail.scheduledPeriod.start = "2023-11-27"
-
-* activity[TPTFollowUp][+].detail.code = $SCT#185389009
-* activity[TPTFollowUp][=].detail.code.text = "Follow-up visit"
-* activity[TPTFollowUp][=].detail.status = #completed
-* activity[TPTFollowUp][=].detail.reasonCode = $TPTFollowUpFollowUpCodeSystem#INH1
-* activity[TPTFollowUp][=].detail.scheduledPeriod.start = "2023-11-27"
-
-Instance: TPTAlternateExample
-InstanceOf: TBPreventiveTherapyCareplan
-Usage: #example
-Title: "TPT Care Plan - Alternate Prophylaxis Type"
-Description: "Used to record the alternate TPT treatment details for the patient."
-* status = #active
-* intent = #order
-* category[+] = $SCT#1280002000
-* category[=].text = "Currently on TPT"
-* subject = Reference(GeneralPatientExample)
-* encounter = Reference(GeneralEncounterExample)
-
-* activity[ProphylaxisType][+].detail.code = $SCT#422181004
-* activity[ProphylaxisType][=].detail.code.text = "Administration of prophylactic antibiotic"
-* activity[ProphylaxisType][=].detail.status = #completed
-* activity[ProphylaxisType][=].detail.reasonCode = $TPTProphylaxisTypeCodeSystem#Alternate
-* activity[ProphylaxisType][=].detail.scheduledPeriod.start = "2023-11-27"
-
-* activity[AlternateProphylaxisType][+].detail.code = $SCT#182838006
-* activity[AlternateProphylaxisType][=].detail.code.text = "Change of medication"
-* activity[AlternateProphylaxisType][=].detail.status = #completed
-* activity[AlternateProphylaxisType][=].detail.reasonCode = $TPTAlternateProphylaxisTypeCodeSystem#3HP
-* activity[AlternateProphylaxisType][=].detail.scheduledPeriod.start = "2023-11-27"
-
-* activity[AlternateTPTFollowUp][+].detail.code = $TPTAlternateFollowUpCodeSystem#TPT-Alternate-Follow-Up
-* activity[AlternateTPTFollowUp][=].detail.code.text = "TPT Alternate Follow Up"
-* activity[AlternateTPTFollowUp][=].detail.status = #completed
-* activity[AlternateTPTFollowUp][=].detail.reasonCode = $TPT3HPFollowUpCodeSystem#TPT-3HP-M1
-* activity[AlternateTPTFollowUp][=].detail.scheduledPeriod.start = "2023-11-27"
-
-Instance: TPTCompletedExample
-InstanceOf: TBPreventiveTherapyCareplan
-Usage: #example
-Title: "TPT Care Plan - Completed"
-Description: "Used to record the TPT treatment ccompleted details for the patient."
-* status = #active
-* intent = #order
-* category[+] = $SCT#1280002000
-* category[=].text = "Currently on TPT"
-* subject = Reference(GeneralPatientExample)
-* encounter = Reference(GeneralEncounterExample)
-
-* activity[TPTCompleted][+].detail.code = $SCT#255594003
-* activity[TPTCompleted][=].detail.code.text = "Complete"
-* activity[TPTCompleted][=].detail.status = #completed
-* activity[TPTCompleted][=].detail.scheduledPeriod.start = "2023-11-27"
-
-Instance: TPTContinuousExample
-InstanceOf: TBPreventiveTherapyCareplan
-Usage: #example
-Title: "TPT Care Plan - Continuous Prophylaxis Type"
-Description: "Used to record the continuous TPT treatment details for the patient."
-* status = #active
-* intent = #order
-* category[+] = $SCT#1280002000
-* category[=].text = "Currently on TPT"
-* subject = Reference(GeneralPatientExample)
-* encounter = Reference(GeneralEncounterExample)
-
-* activity[ProphylaxisType][+].detail.code = $SCT#422181004
-* activity[ProphylaxisType][=].detail.code.text = "Administration of prophylactic antibiotic"
-* activity[ProphylaxisType][=].detail.status = #completed
-* activity[ProphylaxisType][=].detail.reasonCode = $TPTProphylaxisTypeCodeSystem#Continuous
-* activity[ProphylaxisType][=].detail.scheduledPeriod.start = "2023-11-27"
 
 Instance: ARTAliveOnARTFollowUpCareplanExample
 InstanceOf: ARTFollowUpCareplan
@@ -2117,14 +1951,6 @@ Title: "Medication - Represents an ARV Regimen"
 Description: "Used to record the ARV regimen that will be prescribed to the patient."
 * code = $ARVTreatmentCodeSystem#1j
 * code.text = "1j (TDF + 3TC + DTG)"
-
-Instance: TBMedicationExample
-InstanceOf: TBMedication
-Usage: #example
-Title: "Medication - Represents TB Medication"
-Description: "Used to record the TB medication that will be prescribed to the patient."
-* code = $LNC#18934-0
-* code.text = "Isoniazid"
 
 Instance: CotrimoxazoleMedicationExample
 InstanceOf: OIMedication
@@ -3564,7 +3390,7 @@ Description: "Indicates that the patient did start TB treatment after being test
 * hasMember[+] = Reference(TBDiagnosticTestResultExample)
 
 Instance: ActiveTBDiscontinuedObservationExample
-InstanceOf: ActiveTBDiscontinuedObservation
+InstanceOf: TreatmentDiscontinuedObservation
 Usage: #example
 Title: "Observation - Active TB Discontinued"
 Description: "Documents the details for the patient who discontinued TB treatment."
@@ -3579,7 +3405,7 @@ Description: "Documents the details for the patient who discontinued TB treatmen
 * valueDateTime = "2023-12-11"
 
 Instance: ActiveTBCompletedObservationExample
-InstanceOf: ActiveTBCompletedObservation
+InstanceOf: TreatmentCompletedObservation
 Usage: #example
 Title: "Observation - Active TB Completed"
 Description: "Documents the details for the patient who completed TB treatment."
@@ -3642,3 +3468,302 @@ Description: "Indicates that the patient's current TB treatment status is TBRx-c
 * valueCodeableConcept = $TBTreatmentStatusCodeSystem#TBRx-completed
 * hasMember[ActiveTBCompleted] = Reference(ActiveTBCompletedObservationExample)
 * derivedFrom = Reference(TBTreatmentStartedAfterDiagnosticTestObservationExample)
+
+Instance: TPTStartedObservationExample
+InstanceOf: TPTStartedObservation
+Usage: #example
+Title: "Observation - TPT Started"
+Description: "Documents the date when the patient started TB Prevention Therapy (TPT)."
+* status = #final
+* category = $OBSERVATION_CATEGORY#therapy
+* code = $SCT#422181004
+* code.text = "TPT start date"
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* valueDateTime = "2023-12-11"
+* derivedFrom = Reference(EligibleForTPTExample)
+
+Instance: TPTStartedWithINHObservationExample
+InstanceOf: TPTStartedObservation
+Usage: #example
+Title: "Observation - TPT Started with INH"
+Description: "Documents the date when the patient started TB Prevention Therapy (TPT) and in this case, with INH."
+* status = #final
+* category = $OBSERVATION_CATEGORY#therapy
+* code = $SCT#422181004
+* code.text = "TPT start date"
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* valueDateTime = "2023-12-11"
+* derivedFrom = Reference(EligibleForTPTExample)
+* hasMember = Reference(TBProphylaxisTypeINHObservationExample)
+
+Instance: TBProphylaxisTypeINHObservationExample
+InstanceOf: TBProphylaxisTypeObservation
+Usage: #example
+Title: "Observation - TB Prophylaxis Type is \"Isoniazid (INH)\""
+Description: "Indicates that the patient is currently receiving INH."
+* status = #final
+* category = $OBSERVATION_CATEGORY#therapy
+* code = $LNC#LP149760-3
+* code.text = "Administered prophylaxis"
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* valueCodeableConcept = $LNC#18934-0
+
+Instance: TBProphylaxisTypeisINHAtFollowUpObservationExample
+InstanceOf: TBProphylaxisTypeObservation
+Usage: #example
+Title: "Observation - TB Prophylaxis Type is \"Isoniazid (INH)\" at Follow-up"
+Description: "Indicates that the patient is receiving another dose of INH at follow-up."
+* status = #final
+* category = $OBSERVATION_CATEGORY#therapy
+* code = $LNC#LP149760-3
+* code.text = "Administered prophylaxis"
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* valueCodeableConcept = $LNC#18934-0
+* hasMember[INHFollowUp] = Reference(INHAtFollowupObservationExample)
+
+Instance: TBProphylaxisTypeAlternateAndFor3HPObservationExample
+InstanceOf: TBProphylaxisTypeObservation
+Usage: #example
+Title: "Observation - TB Prophylaxis Type is \"Alternate\" (3HP)"
+Description: "Indicates that the patient will be receiving an alternate TPT as 3HP."
+* status = #final
+* category = $OBSERVATION_CATEGORY#therapy
+* code = $LNC#LP149760-3
+* code.text = "Administered prophylaxis"
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* valueCodeableConcept = $TPTProphylaxisTypeCodeSystem#Alternate
+* hasMember[AltenateProphylaxisType] = Reference(AlternateTBProphylaxisType3HPObservationExample)
+
+Instance: INHAtFollowupObservationExample
+InstanceOf: INHAtFollowupObservation
+Usage: #example
+Title: "Observation - INH1 At Follow-up"
+Description: "Indicates that the patient is receiving INH1 at follow-up."
+* status = #final
+* category = $OBSERVATION_CATEGORY#therapy
+* code = $LNC#LA21590-7
+* code.text = "TPT follow-up isit"
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* valueCodeableConcept = $SCT#255216001
+
+Instance: AlternateTBProphylaxisType3HPObservationExample
+InstanceOf: AlternateTBProphylaxisTypeObservation
+Usage: #example
+Title: "Observation - Alternate TB Prophylaxis Type is \"3HP\""
+Description: "Indicates that the patient is currently receiving 3HP."
+* status = #final
+* category = $OBSERVATION_CATEGORY#therapy
+* code = $LNC#LP149760-3
+* code.text = "Administered prophylaxis"
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* valueCodeableConcept = $SCT#346670008
+* hasMember[3HP] = Reference(AlternateTPT3HPAtFollowupObservationExample)
+
+Instance: AlternateTPT3HPAtFollowupObservationExample
+InstanceOf: AlternateTPTAtFollowupObservation
+Usage: #example
+Title: "Observation - 3HP At Follow-up"
+Description: "Documents the TPT as 3HP at follow-up."
+* status = #final
+* category = $OBSERVATION_CATEGORY#therapy
+* code = $LNC#LA21590-7
+* code.text = "TPT follow-up isit"
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* valueCodeableConcept = $SCT#255216001
+
+Instance: ProphylaxisTypeisINHAtFollowUpAndCompletedObservationExample
+InstanceOf: TBProphylaxisTypeObservation
+Usage: #example
+Title: "Observation - TB Prophylaxis Type is \"Isoniazid (INH)\" at Follow-up and TPT was completed"
+Description: "Indicates that the patient has completed INH at follow-up."
+* status = #final
+* category = $OBSERVATION_CATEGORY#therapy
+* code = $LNC#LP149760-3
+* code.text = "Administered prophylaxis"
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* valueCodeableConcept = $LNC#18934-0
+* hasMember[INHFollowUp] = Reference(INHAtFollowupCompletedObservationExample)
+
+Instance: INHAtFollowupCompletedObservationExample
+InstanceOf: INHAtFollowupObservation
+Usage: #example
+Title: "Observation - INH Completed At Follow-up"
+Description: "Indicates that the patient has completed INH at follow-up."
+* status = #final
+* category = $OBSERVATION_CATEGORY#therapy
+* code = $LNC#LA21590-7
+* code.text = "TPT follow-up isit"
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* valueCodeableConcept = $SCT#182992009
+* hasMember[TPTCompleted] = Reference(TPTCompletedObservationExample)
+
+Instance: TPTCompletedObservationExample
+InstanceOf: TreatmentCompletedObservation
+Usage: #example
+Title: "Observation - TPT Completed"
+Description: "Documents the details for the patient who completed TPT."
+* status = #final
+* category = $OBSERVATION_CATEGORY#therapy
+* code = $SCT#182992009
+* code.text = "Tuberculosis treatment completed"
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* valueDateTime = "2023-12-11"
+
+Instance: TPTDiscontinuedObservationExample
+InstanceOf: TreatmentDiscontinuedObservation
+Usage: #example
+Title: "Observation - TPT Discontinued"
+Description: "Documents the details for the patient who discontinued TPT."
+* status = #final
+* category = $OBSERVATION_CATEGORY#therapy
+* code = $SCT#182840001
+* code.text = "Tuberculosis treatment discontinued"
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* valueDateTime = "2023-12-11"
+
+Instance: AlternateTPT3HPAtFollowupCompletedObservationExample
+InstanceOf: AlternateTPTAtFollowupObservation
+Usage: #example
+Title: "Observation - 3HP Completed At Follow-up"
+Description: "Indicates that the patient has completed 3HP at follow-up."
+* status = #final
+* category = $OBSERVATION_CATEGORY#therapy
+* code = $LNC#LA21590-7
+* code.text = "TPT follow-up isit"
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* valueCodeableConcept = $SCT#255216001
+* hasMember[TPTCompleted] = Reference(TPTCompletedObservationExample)
+
+Instance: AlternateTBProphylaxisCompletedObservationExample
+InstanceOf: AlternateTBProphylaxisTypeObservation
+Usage: #example
+Title: "Observation - Alternate TB Prophylaxis Type is \"3HP\" and TPT was Completed"
+Description: "Indicates that the patient has completed 3HP."
+* status = #final
+* category = $OBSERVATION_CATEGORY#therapy
+* code = $LNC#LP149760-3
+* code.text = "Administered prophylaxis"
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* valueCodeableConcept = $SCT#346670008
+* hasMember[3HP] = Reference(AlternateTPT3HPAtFollowupCompletedObservationExample)
+
+Instance: TBProphylaxisTypeAlternateAndFor3HRObservationExample
+InstanceOf: TBProphylaxisTypeObservation
+Usage: #example
+Title: "Observation - TB Prophylaxis Type is \"Alternate\" (3HR)"
+Description: "Indicates that the patient will be receiving an alternate TPT as 3HR."
+* status = #final
+* category = $OBSERVATION_CATEGORY#therapy
+* code = $LNC#LP149760-3
+* code.text = "Administered prophylaxis"
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* valueCodeableConcept = $TPTProphylaxisTypeCodeSystem#Alternate
+* hasMember[AltenateProphylaxisType] = Reference(AlternateTBProphylaxisType3HRObservationExample)
+
+Instance: AlternateTBProphylaxisType3HRObservationExample
+InstanceOf: AlternateTBProphylaxisTypeObservation
+Usage: #example
+Title: "Observation - Alternate TB Prophylaxis Type is \"3HR\""
+Description: "Indicates that the patient is currently receiving 3HR."
+* status = #final
+* category = $OBSERVATION_CATEGORY#therapy
+* code = $LNC#LP149760-3
+* code.text = "Administered prophylaxis"
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* valueCodeableConcept = $SCT#410831004
+* hasMember[3HR] = Reference(AlternateTPT3HRAtFollowupObservationExample)
+
+Instance: AlternateTPT3HRAtFollowupObservationExample
+InstanceOf: AlternateTPTAtFollowupObservation
+Usage: #example
+Title: "Observation - 3HR At Follow-up"
+Description: "Documents the TPT as 3HR at follow-up."
+* status = #final
+* category = $OBSERVATION_CATEGORY#therapy
+* code = $LNC#LA21590-7
+* code.text = "TPT follow-up isit"
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* valueCodeableConcept = $SCT#255216001
+
+Instance: AlternateTPT3HRAtFollowupDiscontinuedObservationExample
+InstanceOf: AlternateTPTAtFollowupObservation
+Usage: #example
+Title: "Observation - 3HR Discontinued At Follow-up"
+Description: "Indicates that the patient has discontinued 3HR at follow-up."
+* status = #final
+* category = $OBSERVATION_CATEGORY#therapy
+* code = $LNC#LA21590-7
+* code.text = "TPT follow-up isit"
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* valueCodeableConcept = $SCT#182840001
+* hasMember[TPTDiscontinued] = Reference(TPTDiscontinuedObservationExample)
+
+Instance: AlternateTBProphylaxisDiscontinuedObservationExample
+InstanceOf: AlternateTBProphylaxisTypeObservation
+Usage: #example
+Title: "Observation - Alternate TB Prophylaxis Type is \"3HR\" and TPT was Discontinued"
+Description: "Indicates that the patient has discontinued 3HR."
+* status = #final
+* category = $OBSERVATION_CATEGORY#therapy
+* code = $LNC#LP149760-3
+* code.text = "Administered prophylaxis"
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* valueCodeableConcept = $SCT#410831004
+* hasMember[3HR] = Reference(AlternateTPT3HRAtFollowupDiscontinuedObservationExample)

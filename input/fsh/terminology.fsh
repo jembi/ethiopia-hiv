@@ -456,7 +456,7 @@ Description: "A list of codes describing the medication for opportunistic infect
 * $LNC#18998-5 "Trimethoprim+Sulfamethoxazole [Susceptibility]"
 * $LNC#18924-1 "Fluconazole [Susceptibility]"
 
-ValueSet: TBTreatmentValueSet
+/*ValueSet: TBTreatmentValueSet
 Id: tb-treatment-value-set
 Title: "Tuberculosis Medication Codes"
 Description: "A list of codes describing Tuberculosis medication."
@@ -472,7 +472,7 @@ Description: "A list of codes describing Tuberculosis medication."
 * $LNC#31039-1 "Moxifloxacin [Susceptibility]"
 * $LNC#18982-9 "Streptomycin [Susceptibility]"
 * $LNC#100059-5 "Rifapentine [Susceptibility]"
-* include codes from system AlternateTPTProphylaxisTypeCodeSystem
+* include codes from system AlternateTPTProphylaxisTypeCodeSystem*/
 
 ValueSet: TBScreeningTypeValueSet
 Id: tb-screening-type-value-set
@@ -599,78 +599,43 @@ Id: tpt-prophylaxis-type-value-set
 Title: "TPT Prophylaxis Type Codes"
 Description: "A list of codes describing the TPT prophylaxis type."
 * ^experimental = false
-* $LNC#LA6759-0 "Currently on INH prophylaxis dose, adherence"
+* $LNC#18934-0 "Isoniazid [Susceptibility]"
 * include codes from system TPTProphylaxisTypeCodeSystem
 
-CodeSystem: TPTFollowUpCodeSystem
-Id: tpt-follow-up-code-system
-Title: "TPT Follow-Up Codes"
-Description: "A list of codes indicating the TPT follow-up status."
+ValueSet: TreatmentOutcomeValueSet
+Id: treatment-outcome-value-set
+Title: "Treatment Outcome Codes"
+Description: "A list of codes indicating the status of the treatment."
 * ^experimental = false
-* ^caseSensitive = true
-* #INH1 "INH1"
-* #INH2 "INH2"
-* #INH3 "INH3"
-* #INH4 "INH4"
-* #INH5 "INH5"
-* #INH6 "INH6"
-* #INH-completed "INH completed"
-* #INH-discontinued "INH discontinued"
+* $SCT#182992009 "Treatment completed"
+* $SCT#182840001 "Drug treatment stopped - medical advice"
 
-ValueSet: TPTFollowUpValueSet
-Id: tpt-follow-up-value-set
-Title: "TPT Follow-Up Codes"
-Description: "A list of codes indicating the TPT follow-up status."
+ValueSet: MonthOrdinalsValueSet
+Id: month-ordinals-value-set
+Title: "Month Ordinal Codes"
+Description: "A list of codes indicating the month ordinals."
 * ^experimental = false
-* include codes from system TPTFollowUpCodeSystem
-
-CodeSystem: AlternateTPTProphylaxisTypeCodeSystem
-Id: tpt-alternate-prophylaxis-type-code-system
-Title: "Alternate TPT Prophylaxis Type Codes"
-Description: "A list of codes describing the alternate TPT prophylaxis types to INH."
-* ^experimental = false
-* ^caseSensitive = true
-* #3HP "Isoniazid (INH) and Rifapentine (RPT)"
-* #3HR "Isoniazid (INH) and Rifampin (RIF)"
+* $SCT#255216001 "First"
+* $SCT#81170007 "Second"
+* $SCT#70905002 "Third"
+* $SCT#29970001 "Fourth"
+* $SCT#32088001 "Fifth"
+* $SCT#53046009 "Sixth"
 
 ValueSet: AlternateTPTProphylaxisTypeValueSet
 Id: tpt-alternate-prophylaxis-type-value-set
 Title: "Alternate TPT Prophylaxis Type Codes"
 Description: "A list of codes describing the alternate TPT prophylaxis types to INH."
 * ^experimental = false
-* include codes from system AlternateTPTProphylaxisTypeCodeSystem
+* $SCT#346670008 "Product containing isoniazid and rifampicin"
+* $SCT#410831004 "Product containing rifapentine"
 
-CodeSystem: TPT3HPFollowUpCodeSystem
-Id: tpt-3hp-follow-up-code-system
-Title: "TPT 3HP Follow-Up Codes"
-Description: "A list of 3HP codes indicating the alternate TPT follow-up status."
-* ^experimental = false
-* ^caseSensitive = true
-* #TPT-3HP-M1 "TPT(3HP)M1"
-* #TPT-3HP-M2 "TPT(3HP)M2"
-* #TPT-3HP-M3 "TPT(3HP)M3"
-* #TPT-3HP-completed "TPT(3HP)completed"
-* #TPT-3HP-discontinued "TPT(3HP)discontinued"
-
-CodeSystem: TPT3HRFollowUpCodeSystem
-Id: tpt-3hr-follow-up-code-system
+/*ValueSet: TPT3HRFollowUpValueSet
+Id: tpt-3hr-follow-up-value-set
 Title: "TPT 3HR Follow-Up Codes"
 Description: "A list of 3HR codes indicating the alternate TPT follow-up status."
 * ^experimental = false
-* ^caseSensitive = true
-* #TPT-3HR-M1 "TPT(3HR)M1"
-* #TPT-3HR-M2 "TPT(3HR)M2"
-* #TPT-3HR-M3 "TPT(3HR)M3"
-* #TPT-3HR-completed "TPT(3HR)completed"
-* #TPT-3HR-discontinued "TPT(3HR)discontinued"
-
-ValueSet: AlternateTPTFollowUpValueSet
-Id: tpt-alternate-follow-up-value-set
-Title: "Alternate TPT Follow-Up Codes"
-Description: "A list of codes indicating the alternate TPT follow-up status."
-* ^experimental = false
-* include codes from system TPT3HPFollowUpCodeSystem
-* include codes from system TPT3HRFollowUpCodeSystem
+* include codes from system TPT3HRFollowUpCodeSystem*/
 
 CodeSystem: TPTAlternateFollowUpCodeSystem
 Id: tpt-alternate-follow-up-code-system

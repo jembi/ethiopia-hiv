@@ -13,21 +13,6 @@ Description: "If Observation.valueBoolean is false then Observation.hasMember SH
 Expression: "value = false implies Observation.hasMember.exists()"
 Severity: #error
 
-Invariant: Careplan-TPT-1
-Description: "If CarePlan.activity.detail.reasonCode for slice \"ProphylaxisType\" is https://loinc.org/LA6759-0 then CarePlan.activity for slice \"TPTFollowUp\" SHALL be present."
-Expression: "activity.slice('http://moh.gov.et/fhir/hiv/StructureDefinition/tb-preventive-therapy-care-plan', 'ProphylaxisType').detail.reasonCode.coding.where(system = 'http://loinc.org' and code = 'LA6759-0').exists() implies activity.slice('http://moh.gov.et/fhir/hiv/StructureDefinition/tb-preventive-therapy-care-plan', 'TPTFollowUp').exists()"
-Severity: #error
-
-Invariant: Careplan-TPT-2
-Description: "If CarePlan.activity.detail.reasonCode for slice \"ProphylaxisType\" is \"Alternate\" then CarePlan.activity for slice \"AlternateProphylaxisType\" SHALL be present."
-Expression: "activity.slice('http://moh.gov.et/fhir/hiv/StructureDefinition/tb-preventive-therapy-care-plan', 'ProphylaxisType').detail.reasonCode.coding.where(system = 'http://moh.gov.et/fhir/hiv/CodeSystem/tpt-prophylaxis-type-code-system' and code = 'Alternate').exists() implies activity.slice('http://moh.gov.et/fhir/hiv/StructureDefinition/tb-preventive-therapy-care-plan', 'AlternateProphylaxisType').exists()"
-Severity: #error
-
-Invariant: Careplan-TPT-3
-Description: "If CarePlan.activity for slice \"AlternateProphylaxisType\" exists then CarePlan.activity for slice \"AlternateTPTFollowUp\" SHALL be present."
-Expression: "activity.slice('http://moh.gov.et/fhir/hiv/StructureDefinition/tb-preventive-therapy-care-plan', 'AlternateProphylaxisType').exists() implies activity.slice('http://moh.gov.et/fhir/hiv/StructureDefinition/tb-preventive-therapy-care-plan', 'AlternateTPTFollowUp').exists()"
-Severity: #error
-
 Invariant: Observation-HIV-confirmed-1
 Description: "If Observation.code is \"89365-1\" then Observation.category SHALL be \"exam\"."
 Expression: "code.coding.where(system = 'http://loinc.org' and code = '89365-1').exists() implies Observation.category.coding.where(system = 'http://terminology.hl7.org/CodeSystem/observation-category' and code = 'exam').exists()"
@@ -146,4 +131,24 @@ Severity: #error
 Invariant: Observation-TB-Treatment-Started-1
 Description: "If Observation.valueCodeableConcept.coding.code is \"true\" then extension for \"ObservedDate\" SHALL be present."
 Expression: "coding.where(system = 'http://moh.gov.et/fhir/hiv/CodeSystem/yes-no-code-system' and code = 'true').exists() implies extension.exists(url = 'http://moh.gov.et/fhir/hiv/StructureDefinition/observed-date')"
+Severity: #error
+
+Invariant: Observation-INH-Follow-Up-1
+Description: "If Observation.valueCodeableConcept.coding.code is \"INH-discontinued\" then Observation.hasMember for slice \"TPTDiscontinued\" SHALL be present."
+Expression: "value.coding.where(system = 'http://moh.gov.et/fhir/hiv/CodeSystem/inh-follow-up-code-system' and code = 'INH-discontinued').exists() implies hasMember.slice('http://moh.gov.et/fhir/hiv/StructureDefinition/inh-at-follow-up-observation', 'TPTDiscontinued').exists()"
+Severity: #error
+
+Invariant: Observation-INH-Follow-Up-2
+Description: "If Observation.valueCodeableConcept.coding.code is \"INH-completed\" then Observation.hasMember for slice \"TPTCompleted\" SHALL be present."
+Expression: "value.coding.where(system = 'http://moh.gov.et/fhir/hiv/CodeSystem/inh-follow-up-code-system' and code = 'INH-completed').exists() implies hasMember.slice('http://moh.gov.et/fhir/hiv/StructureDefinition/inh-at-follow-up-observation', 'TPTCompleted').exists()"
+Severity: #error
+
+Invariant: Observation-alternate-tpt-Follow-Up-1
+Description: "If Observation.valueCodeableConcept.coding.code is \"182840001\" then Observation.hasMember for slice \"TPTDiscontinued\" SHALL be present."
+Expression: "value.coding.where(system = 'http://snomed.info/sct' and code = '182840001').exists() implies hasMember.slice('http://moh.gov.et/fhir/hiv/StructureDefinition/alternate-tpt-at-follow-up-observation', 'TPTDiscontinued').exists()"
+Severity: #error
+
+Invariant: Observation-alternate-tpt-Follow-Up-2
+Description: "If Observation.valueCodeableConcept.coding.code is \"182992009\" then Observation.hasMember for slice \"TPTCompleted\" SHALL be present."
+Expression: "value.coding.where(system = 'http://snomed.info/sct' and code = '182992009').exists() implies hasMember.slice('http://moh.gov.et/fhir/hiv/StructureDefinition/alternate-tpt-at-follow-up-observation', 'TPTCompleted').exists()"
 Severity: #error
