@@ -339,6 +339,50 @@ Description: "Is used to record the personal information of the person that is r
 * address.state ^definition =
     "reason(s) why this should be supported."
 
+Profile: CervicalCancerScreeningServiceRequest
+Parent: GenericServiceRequest
+Id: cervical-cancer-screening-method-service-request
+Title: "Service Request - Cervical Cancer Screening Method"
+Description: "Represents the service request for the method of cervical cancer screening."
+* code from CervicalCancerScreeningMethodValueSet (required)
+* category 1..1
+* category = $LNC#LP114948-5
+* authoredOn 1..1
+
+Profile: CervicalCancerDiagnosticReport
+Parent: GenericDiagnosticReport
+Id: cervical-cancer-diagnostic-report
+Title: "Diagnostic Report - Cervical Cancer"
+Description: "Represents the results for the cervical cancer screening."
+* code = $LNC#72135-7
+* result 1..1
+* result only Reference(CervicalCancerScreeningResult)
+* basedOn only Reference(CervicalCancerScreeningServiceRequest)
+
+Profile: CervicalCancerTreatmentServiceRequest
+Parent: GenericServiceRequest
+Id: cervical-cancer-treatment-service-request
+Title: "Service Request - Cervical Cancer Treatment"
+Description: "Represents the service request for the cervical cancer treatment."
+* code from CervicalCancerTreatmentReceivedValueSet (required)
+* category 1..1
+* category = $LNC#LP114959-2
+* authoredOn 1..1
+* reasonReference 1..1
+* reasonReference only Reference(CervicalCancerDiagnosticReport)
+
+Profile: CervicalCancerTreatmentReceived
+Parent: GenericObservation
+Id: cervical-cancer-treatment-received-observation
+Title: "Observation - Cervical Cancer Treatment Received"
+Description: "This is used to record the date the patient received cervical cancer treatment."
+* category 1..1
+* category = $OBSERVATION_CATEGORY#exam
+* code = $LNC#LA13405-8
+* value[x] only dateTime
+* valueDateTime 1..1
+* basedOn 1..1
+* basedOn only Reference(CervicalCancerScreeningServiceRequest)
 
 Profile: CervicalCancerCarePlan
 Parent: CarePlan
@@ -347,79 +391,24 @@ Title: "Care Plan - Cervical Cancer"
 Description: "Used to record the cervical cancer details for the patient."
 * status 1..1
 * intent 1..1
-
-* category 1..*
-
-* insert Slice(category, reasons why this should be supported, value, coding, open, Slicing the Careplan category based on the system value, false)
-
-* category contains
-    CervicalCancer 1..1
-
-* category[CervicalCancer] 1..1
-* category[CervicalCancer].coding 1..1
-* category[CervicalCancer].coding = $CARE_PLAN_CC#cervical-cancer-care-plan
-
+* category 1..1
+* category = $LNC#LP173209-0
 * subject 1..1 
 * subject only Reference(EthPatient)
-
 * encounter 1..1
 * encounter only Reference(TargetFacilityEncounter)
 
-* activity 0..* MS
-* activity ^definition = "reason(s) why this should be supported."
+* activity 1..* MS
+* activity.reference 1..1
+* activity.reference only Reference(CervicalCancerScreeningServiceRequest or CervicalCancerTreatmentServiceRequest)
 
-* insert Slice(activity, reasons why this should be supported, value, detail.code, open, Slicing the Cervical cancer activities based on the code value, false)
+* activity.outcomeReference 0..1 MS
+* activity.outcomeReference ^definition =
+    "reason(s) why this should be supported."
+* activity.outcomeReference only Reference(CervicalCancerTreatmentReceived)
 
-* activity contains
-    PRECANCEROUS 0..1 MS and
-    SUSPICIOUS_CC_TREATMENT 0..1 MS
-
-* activity.detail.code 0..1 MS
-* activity.detail.code ^definition = "reason(s) why this should be supported."
-* activity.detail.code 1..1
-* activity.detail.code.coding only StrictCoding
-* activity.detail.status 1..1
-* activity.detail.scheduledPeriod 1..1
-* activity.detail.scheduledPeriod.start 1..1
-* activity.detail.reasonReference 1..*
-* activity.detail.reasonReference only Reference(CervicalCancerScreeningResult)
-
-* activity[PRECANCEROUS] ^definition = "reason(s) why this should be supported."
-
-* insert Slice(activity[PRECANCEROUS].detail.reasonCode, reasons why this should be supported, value, coding, open, Slicing the reasonCode based on the system value, false)
-
-* activity[PRECANCEROUS].detail.reasonCode contains
-    DIAGNOSIS_CODE 1..1
-
-* activity[PRECANCEROUS].detail.reasonCode 1..1
-* activity[PRECANCEROUS].detail.reasonCode[DIAGNOSIS_CODE].coding 1..1
-* activity[PRECANCEROUS].detail.reasonCode[DIAGNOSIS_CODE].coding = $SCT#285636001
-
-* activity[PRECANCEROUS].detail.code 1..1
-* activity[PRECANCEROUS].detail.code from PrecancerousLesionTreatmentReceivedValueSet (required)
-
-* activity[PRECANCEROUS].extension contains NextVisitDateExtension named NextVisitDate 0..1 MS
-* activity[PRECANCEROUS].extension[NextVisitDate] ^definition = "reason(s) why this should be supported."
-
-* activity[SUSPICIOUS_CC_TREATMENT] ^definition = "reason(s) why this should be supported."
-
-* insert Slice(activity[SUSPICIOUS_CC_TREATMENT].detail.reasonCode, reasons why this should be supported, value, coding, open, Slicing the reasonCode based on the system value, false)
-* activity[SUSPICIOUS_CC_TREATMENT].detail.reasonCode
-  * ^slicing.discriminator[+].type = #exists
-  * ^slicing.discriminator[=].path = "coding"
-
-* activity[SUSPICIOUS_CC_TREATMENT].detail.reasonCode contains
-    DIAGNOSIS_CODE 1..1
-
-* activity[SUSPICIOUS_CC_TREATMENT].detail.reasonCode 1..1
-* activity[SUSPICIOUS_CC_TREATMENT].detail.reasonCode[DIAGNOSIS_CODE].coding 1..1
-* activity[SUSPICIOUS_CC_TREATMENT].detail.reasonCode[DIAGNOSIS_CODE].coding = $SCT#315266007
-
-* activity[SUSPICIOUS_CC_TREATMENT].detail.code 1..1
-* activity[SUSPICIOUS_CC_TREATMENT].detail.code from SuspiciousCancerousTreatmentValueSet (required)
-
-* activity[SUSPICIOUS_CC_TREATMENT].extension contains NextVisitDateExtension named NextVisitDate 0..1 MS
-* activity[SUSPICIOUS_CC_TREATMENT].extension[NextVisitDate] ^definition = "reason(s) why this should be supported."
+* activity.extension contains NextVisitDateExtension named NextVisitDate 0..1 MS
+* activity.extension[NextVisitDate] ^definition = "reason(s) why this should be supported."
 
 Profile: ViralLoadResultObservation
 Parent: GenericObservation
@@ -1324,6 +1313,8 @@ Description: "This is used to record the patient's cervical cancer screening met
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
 * valueCodeableConcept from CervicalCancerScreeningMethodValueSet (required)
+* basedOn 1..1
+* basedOn only Reference(CervicalCancerScreeningServiceRequest)
 
 Profile: CervicalCancerScreeningResult
 Parent: GenericObservation
@@ -1761,7 +1752,7 @@ Description: "Records the health related activities for patients associated with
 * type.coding[HIV-Tracking] ^definition =
     "reason(s) why this should be supported."
 * type.coding[HIV-Tracking].code 1..1
-* type.coding[HIV-Tracking].code = $LNC#LP102363-1
+* type.coding[HIV-Tracking].code = $LNC#LA28577-7
 
 * type.coding[ART] ^definition =
     "reason(s) why this should be supported."
@@ -1771,17 +1762,17 @@ Description: "Records the health related activities for patients associated with
 * type.coding[TB] ^definition =
     "reason(s) why this should be supported."
 * type.coding[TB].code 1..1
-* type.coding[TB].code = $LNC#LA6762-4
+* type.coding[TB].code = $SCT#171126009
 
 * type.coding[TPT] ^definition =
     "reason(s) why this should be supported."
 * type.coding[TPT].code 1..1
-* type.coding[TPT].code = $SCT#1280002000
+* type.coding[TPT].code = $SCT#699618001
 
 * type.coding[Cervical-Cancer] ^definition =
     "reason(s) why this should be supported."
 * type.coding[Cervical-Cancer].code 1..1
-* type.coding[Cervical-Cancer].code = $CARE_PLAN_CC#cervical-cancer-care-plan
+* type.coding[Cervical-Cancer].code = $SCT#702455009
 
 * patient only Reference(EthPatient)
 * managingOrganization 1..1
@@ -2190,7 +2181,7 @@ Description: "Used to record the cotrimoxazole preventive therapy details for th
 * status 1..1
 * intent 1..1
 * category 1..1
-* category = $LNC#18998-5
+* category = $LNC#LP173209-0
 * category.text 1..1
 * category.text = "Cotrimoxazole Preventive Therapy"
 * subject 1..1 
@@ -2694,7 +2685,7 @@ Description: "Used to record the TB treatment details for the patient."
 * status 1..1
 * intent 1..1
 * category 1..1
-* category = $LNC#LA6762-4
+* category = $LNC#LP173209-0
 * category.text 1..1
 * category.text = "TB treatment"
 * subject 1..1 
@@ -2747,7 +2738,7 @@ Description: "Used to record the TPT details for the patient."
 * status 1..1
 * intent 1..1
 * category 1..1
-* category = $LNC#LA6762-4
+* category = $LNC#LP173209-0
 * category.text 1..1
 * category.text = "TB treatment"
 * subject 1..1 
@@ -2767,7 +2758,7 @@ Description: "Used to record the TPT details for the patient."
 * activity.outcomeReference contains
     TreatmentStatus 1..1
 
-* activity.outcomeReference[TreatmentStatus] only Reference(INHAtFollowupObservation or AlternateTPTAtFollowupObservation)
+* activity.outcomeReference[TreatmentStatus] only Reference(TBProphylaxisTypeObservation)
 
 * activity.reference 1..1
 * activity.reference only Reference(TPTMedicationRequest)

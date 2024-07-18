@@ -263,92 +263,6 @@ Description: "Service request used to make a request for a referral."
 * reasonReference = Reference(HIVProgramFinalOutcomeKnownAsConfirmedReferralExample)
 * locationReference[+] = Reference(EncounterLocationHIVTestingExample)
 
-Instance: CervicalCancerCarePlanPrecancerousLesionExample
-InstanceOf: CervicalCancerCarePlan
-Usage: #example
-Title: "Cervical Cancer Care Plan - Treatment for Precancerous Lesion After a Positive HPV Screening"
-Description: "Used to record the cervical cancer screening details for the patient receiving treatment for precancerous lesion."
-* status = #completed
-* intent = #order
-
-* category[CervicalCancer] = $CARE_PLAN_CC#cervical-cancer-care-plan
-* category[CervicalCancer].text = "Cervical cancer care plan"
-
-* subject = Reference(GeneralPatientExample)
-* encounter = Reference(GeneralEncounterExample)
-
-* activity[PRECANCEROUS].detail.reasonCode[DIAGNOSIS_CODE] = $SCT#285636001
-* activity[PRECANCEROUS].detail.reasonCode[DIAGNOSIS_CODE].text = "precancerous lesion"
-
-* activity[PRECANCEROUS].detail.code = $PRECANCEROUS_TREAT#thermo-coagulation
-* activity[PRECANCEROUS].detail.code.text = "Thermo-Coagulation"
-* activity[PRECANCEROUS].detail.status = #completed
-* activity[PRECANCEROUS].detail.scheduledPeriod.start = "2022-03-21"
-* activity[PRECANCEROUS].extension[NextVisitDate].valueDateTime = "2024-11-28"
-
-* activity[PRECANCEROUS].detail.reasonReference[+] = Reference(CervicalCancerHPVPositiveScreeningResultExample)
-
-Instance: CervicalCancerCarePlanSuspiciousLesionExample
-InstanceOf: CervicalCancerCarePlan
-Usage: #example
-Title: "Cervical Cancer Care Plan - Treatement for Suspicious Cancerous Lesion After a Positive HPV Screening"
-Description: "Used to record the cervical cancer screening details for the patient receiving treatment for suspicious cancerous lesion."
-* status = #completed
-* intent = #order
-
-* category[CervicalCancer] = $CARE_PLAN_CC#cervical-cancer-care-plan
-* category[CervicalCancer].text = "Cervical cancer care plan"
-
-* subject = Reference(GeneralPatientExample)
-* encounter = Reference(GeneralEncounterExample)
-
-* activity[SUSPICIOUS_CC_TREATMENT].detail.reasonCode[DIAGNOSIS_CODE] = $SCT#315266007
-* activity[SUSPICIOUS_CC_TREATMENT].detail.reasonCode[DIAGNOSIS_CODE].text = "Suspected cervical cancer"
-
-* activity[SUSPICIOUS_CC_TREATMENT].detail.code = $SUSPICIOUS_CANCEROUS_TREAT#treated-at-facility
-* activity[SUSPICIOUS_CC_TREATMENT].detail.code.text = "Treated at the facility"
-* activity[SUSPICIOUS_CC_TREATMENT].detail.status = #completed
-* activity[SUSPICIOUS_CC_TREATMENT].detail.scheduledPeriod.start = "2022-03-21"
-* activity[SUSPICIOUS_CC_TREATMENT].extension[NextVisitDate].valueDateTime = "2024-11-28"
-
-* activity[SUSPICIOUS_CC_TREATMENT].detail.reasonReference[+] = Reference(CervicalCancerHPVPositiveScreeningResultExample)
-
-Instance: CervicalCancerCarePlanFullExample
-InstanceOf: CervicalCancerCarePlan
-Usage: #example
-Title: "Cervical Cancer Care Plan - Full Care Plan After Positive Screening For HPV and VIA"
-Description: "Used to record the cervical cancer screening details for the patient."
-* status = #completed
-* intent = #order
-
-* category[CervicalCancer] = $CARE_PLAN_CC#cervical-cancer-care-plan
-* category[CervicalCancer].text = "Cervical cancer care plan"
-
-* subject = Reference(GeneralPatientExample)
-* encounter = Reference(GeneralEncounterExample)
-
-* activity[PRECANCEROUS].detail.reasonCode[DIAGNOSIS_CODE] = $SCT#285636001
-* activity[PRECANCEROUS].detail.reasonCode[DIAGNOSIS_CODE].text = "precancerous lesion"
-
-* activity[PRECANCEROUS].detail.code = $PRECANCEROUS_TREAT#thermo-coagulation
-* activity[PRECANCEROUS].detail.code.text = "Thermo-Coagulation"
-* activity[PRECANCEROUS].detail.status = #completed
-* activity[PRECANCEROUS].detail.scheduledPeriod.start = "2022-03-21"
-* activity[PRECANCEROUS].extension[NextVisitDate].valueDateTime = "2024-11-28"
-
-* activity[PRECANCEROUS].detail.reasonReference[+] = Reference(CervicalCancerHPVPositiveScreeningResultExample)
-* activity[PRECANCEROUS].detail.reasonReference[+] = Reference(CervicalCancerVIAPositiveScreeningResultExample)
-
-* activity[SUSPICIOUS_CC_TREATMENT].detail.reasonCode[DIAGNOSIS_CODE] = $SCT#315266007
-* activity[SUSPICIOUS_CC_TREATMENT].detail.reasonCode[DIAGNOSIS_CODE].text = "Suspected cervical cancer"
-
-* activity[SUSPICIOUS_CC_TREATMENT].detail.code = $SUSPICIOUS_CANCEROUS_TREAT#treated-at-facility
-* activity[SUSPICIOUS_CC_TREATMENT].detail.code.text = "Treated at the facility"
-* activity[SUSPICIOUS_CC_TREATMENT].detail.status = #completed
-* activity[SUSPICIOUS_CC_TREATMENT].detail.scheduledPeriod.start = "2022-03-21"
-* activity[SUSPICIOUS_CC_TREATMENT].extension[NextVisitDate].valueDateTime = "2025-01-28"
-* activity[SUSPICIOUS_CC_TREATMENT].detail.reasonReference[+] = Reference(CervicalCancerHPVPositiveScreeningResultExample)
-
 Instance: SuppressedViralLoadResultExample
 InstanceOf: ViralLoadResultObservation
 Usage: #example
@@ -2347,7 +2261,7 @@ Description: "Records the health related activities for patients associated with
 * identifier[EpisodeOfCareID][=].system = $EpisodeOfCareID
 * status = #active
 * type.coding[ART] = $LNC#LP66375-4
-* type.coding[TB] = $LNC#LA6762-4
+* type.coding[TB] = $SCT#171126009
 * patient = Reference(GeneralPatientExample)
 * managingOrganization = Reference(CurrentServiceProviderExample)
 
@@ -2953,7 +2867,7 @@ Description: "Used to record the cotrimoxazole preventive therapy details for th
 * status = #active
 * intent = #order
 * created = "2024-03-20"
-* category[+] = $LNC#18998-5
+* category[+] = $LNC#LP173209-0
 * category[=].text = "Cotrimoxazole Preventive Therapy"
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
@@ -2967,7 +2881,7 @@ Description: "Used to record the cotrimoxazole preventive therapy details for th
 * status = #active
 * intent = #order
 * created = "2024-03-20"
-* category[+] = $LNC#18998-5
+* category[+] = $LNC#LP173209-0
 * category[=].text = "Cotrimoxazole Preventive Therapy"
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
@@ -3790,7 +3704,7 @@ Description: "Used to record the TB treatment details for the patient."
 * status = #active
 * intent = #order
 * created = "2024-03-20"
-* category[+] = $LNC#LA6762-4
+* category[+] = $LNC#LP173209-0
 * category[=].text = "TB treatment"
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
@@ -3830,12 +3744,12 @@ Description: "Used to add the details regarding the request for INH medication t
 * status = #active
 * intent = #order
 * created = "2024-03-20"
-* category[+] = $LNC#LA6762-4
+* category[+] = $LNC#LP173209-0
 * category[=].text = "TB treatment"
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * activity[+].reference = Reference(TPTMedicationRequestExample)
-* activity[=].outcomeReference = Reference(INHAtFollowupCompletedObservationExample)
+* activity[=].outcomeReference = Reference(TBProphylaxisTypeINHObservationExample)
 
 Instance: TPTMedicationStatementExample
 InstanceOf: TPTMedicationStatement
