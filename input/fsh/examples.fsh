@@ -3796,3 +3796,55 @@ Description: "Used to record the TB treatment details for the patient."
 * encounter = Reference(GeneralEncounterExample)
 * activity[+].reference = Reference(TBScreeningServiceRequestExample)
 * activity[=].outcomeReference = Reference(TBTreatmentStatusRx1ObservationExample)
+
+Instance: TPTMedicationExample
+InstanceOf: TPTMedication
+Usage: #example
+Title: "Medication - Represents a medication for TB Preventive Therapy (TPT)"
+Description: "Used to record the TPT medication that will be prescribed to the patient."
+* code = $LNC#18934-0
+* code.text = "INH"
+
+Instance: TPTMedicationRequestExample
+InstanceOf: TPTMedicationRequest
+Usage: #example
+Title: "Medication Request - INH For TB Preventive Therapy (TPT)"
+Description: "Used to indicate a request for INH medication to be prescribed to a patient."
+* identifier[RequestID].value = "prescription-12345"
+* identifier[RequestID].system = $PrescriptionID
+* identifier[RequestID].type = $IdentifierTypeCodeSystem#FILL
+* identifier[RequestID].type.text = "Prescription identifier"
+* authoredOn = "2023-10-11T17:21:33-08:00"
+* status = #completed
+* intent = #order
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* medicationReference = Reference(TPTMedicationExample)
+* basedOn = Reference(TPTCareplanExample)
+
+Instance: TPTCareplanExample
+InstanceOf: TPTCareplan
+Usage: #example
+Title: "Care Plan - INH For TB Preventive Therapy (TPT)"
+Description: "Used to add the details regarding the request for INH medication to the TPT care plan for the patient."
+* status = #active
+* intent = #order
+* created = "2024-03-20"
+* category[+] = $LNC#LA6762-4
+* category[=].text = "TB treatment"
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* activity[+].reference = Reference(TPTMedicationRequestExample)
+* activity[=].outcomeReference = Reference(INHAtFollowupCompletedObservationExample)
+
+Instance: TPTMedicationStatementExample
+InstanceOf: TPTMedicationStatement
+Usage: #example
+Title: "Medication Statement - INH For TB Preventive Therapy (TPT)"
+Description: "Adds the prescribed medication of INH to the medication history for the patient."
+* status = #active
+* medicationReference = Reference(TPTMedicationExample)
+* subject = Reference(GeneralPatientExample)
+* context = Reference(GeneralEncounterExample)
+* effectivePeriod.start = "2009-11-24"
+* reasonReference = Reference(TBProphylaxisTypeINHObservationExample)
