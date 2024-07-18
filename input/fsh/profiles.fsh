@@ -1566,10 +1566,10 @@ Description: "Used to capture a patient's referral information."
 * reasonCode contains
     HIVReferral 0..1 MS
 
-* valueCodeableConcept[HIVReferral] ^definition =
+* reasonCode[HIVReferral] ^definition =
     "reason(s) why this should be supported."
-* valueCodeableConcept[HIVReferral] 1..1
-* valueCodeableConcept[HIVReferral] from ReferralReasonValueSet (required)
+* reasonCode[HIVReferral] 1..1
+* reasonCode[HIVReferral] from ReferralReasonValueSet (required)
 
 * locationReference 1..1
 
