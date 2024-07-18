@@ -945,11 +945,11 @@ Title: "Service Request - Patient Referral to PMTCT"
 Description: "Represents a service request for the patient's referral to PMTCT."
 * code = $LNC#LP173238-9
 * authoredOn 1..1
+* orderDetail 1..*
 * insert Slice(orderDetail, reasons why this should be supported, value, coding, open, Slicing the items based on the linkId value, false)
 * orderDetail contains
     PMTCT 1..1
 
-* orderDetail[PMTCT] 1..1
 * orderDetail[PMTCT].coding 1..1
 * orderDetail[PMTCT].coding = $LNC#LA6505-7
 
@@ -1568,8 +1568,8 @@ Description: "Used to capture a patient's referral information."
 
 * reasonCode[HIVReferral] ^definition =
     "reason(s) why this should be supported."
-* reasonCode[HIVReferral] 1..1
-* reasonCode[HIVReferral] from ReferralReasonValueSet (required)
+* reasonCode[HIVReferral].coding 1..1
+* reasonCode[HIVReferral].coding from ReferralReasonValueSet (required)
 
 * locationReference 1..1
 
