@@ -223,7 +223,7 @@ Description: "A list of codes describing the precancerous lesion treatment recei
 * #leep "LEEP"
 * #referred-for-leep "Referred for LEEP"
 * #referred-for-suspicious-cancer-evaluation "Referred for Suspicious cancer evaluation"
-//* #other "Other"
+* #other "Other"
 
 ValueSet: CervicalCancerTreatmentReceivedValueSet
 Id: cervical-cancer-treatment-received-value-set

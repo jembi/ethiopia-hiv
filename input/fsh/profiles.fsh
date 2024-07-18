@@ -346,7 +346,7 @@ Title: "Service Request - Cervical Cancer Screening Method"
 Description: "Represents the service request for the method of cervical cancer screening."
 * code from CervicalCancerScreeningMethodValueSet (required)
 * category 1..1
-* category = $LNC#LP114948-5
+* category = $LNC#LP94892-4
 * authoredOn 1..1
 
 Profile: CervicalCancerDiagnosticReport
@@ -366,7 +366,7 @@ Title: "Service Request - Cervical Cancer Treatment"
 Description: "Represents the service request for the cervical cancer treatment."
 * code from CervicalCancerTreatmentReceivedValueSet (required)
 * category 1..1
-* category = $LNC#LP114959-2
+* category = $LNC#89429-5
 * authoredOn 1..1
 * reasonReference 1..1
 * reasonReference only Reference(CervicalCancerDiagnosticReport)
@@ -377,7 +377,7 @@ Id: cervical-cancer-treatment-received-observation
 Title: "Observation - Cervical Cancer Treatment Received"
 Description: "This is used to record the date the patient received cervical cancer treatment."
 * category 1..1
-* category = $OBSERVATION_CATEGORY#exam
+* category = $OBSERVATION_CATEGORY#therapy
 * code = $LNC#LA13405-8
 * value[x] only dateTime
 * valueDateTime 1..1
@@ -535,6 +535,8 @@ Parent: GenericServiceRequest
 Id: tb-screening-service-request
 Title: "Service Request - TB Screening"
 Description: "Service request used to examine the specimen taken during TB screening."
+* category 1..1
+* category = $LNC#LP94892-4
 * code from TBScreeningDiagnosticTestTypeValueSet (required)
 * reasonReference 1..1
 * reasonReference only Reference(TBScreeningResultObservation)
@@ -640,6 +642,8 @@ Title: "Service Request - PCR HIV Test"
 Description: "Represents the service request for PCR HIV testing."
 * code = $LNC#9836-8
 * authoredOn 1..1
+* category 1..1
+* category = $LNC#LP94892-4
 
 Profile: ConfirmedHIVPositive
 Parent: GenericObservation
@@ -939,7 +943,7 @@ Parent: GenericServiceRequest
 Id: referred-for-pmtct-service-request
 Title: "Service Request - Patient Referral to PMTCT"
 Description: "Represents a service request for the patient's referral to PMTCT."
-* code = $SCT#3457005
+* code = $LNC#LP173238-9
 * authoredOn 1..1
 * insert Slice(orderDetail, reasons why this should be supported, value, coding, open, Slicing the items based on the linkId value, false)
 * orderDetail contains
@@ -1497,13 +1501,14 @@ Description: "This is used to record the type for the ARV regimen change categor
 
 Profile: ReferralOutServiceRequest
 Parent: GenericServiceRequest
-Id: refferal-out-service-request
+Id: referral-out-service-request
 Title: "Service Request - Request for Referral"
 Description: "Service request used to make a request for a referral."
 * intent = #order
 * code = $LNC#LP173238-9
 * locationReference 1..*
 * authoredOn 1..1
+* reasonReference 1..*
 
 Profile: ARVMedicationAdministration
 Parent: MedicationAdministration
@@ -1546,7 +1551,7 @@ Description: "Used to record the OI medication that will be prescribed to the pa
 * code from OpportunisticInfectionsTreatmentValueSet (required)
 * code.text 1..1
 
-Profile: ReferralInServiceRequest
+Profile: HIVReferralInServiceRequest
 Parent: GenericServiceRequest
 Id: referral-in-service-request
 Title: "Service Request - Incoming Referral Information"
@@ -1790,7 +1795,7 @@ Description: "Records the health related activities for patients associated with
 
 * referralRequest[Incoming] ^definition =
     "reason(s) why this should be supported."
-* referralRequest[Incoming] only Reference(ReferralInServiceRequest)
+* referralRequest[Incoming] only Reference(HIVReferralInServiceRequest)
 
 * referralRequest[Outgoing] ^definition =
     "reason(s) why this should be supported."

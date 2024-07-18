@@ -1025,7 +1025,7 @@ Title: "Service Request - Referred to PMTCT"
 Description: "Represents a service request for the patient's referral to PMTCT."
 * status = #completed
 * intent = #order
-* code = $SCT#3457005
+* code = $LNC#LP173238-9
 * code.text = "Patient referral"
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
@@ -1464,8 +1464,8 @@ Description: "This is used to record the patient's cervical cancer screening typ
 Instance: CervicalCancerScreeningMethodExample
 InstanceOf: CervicalCancerScreeningMethod
 Usage: #example
-Title: "Observation - Cervical Cancer Screening Method"
-Description: "This is used to record the patient's cervical cancer screening method."
+Title: "Observation - Cervical Cancer Screening HPV Method"
+Description: "This is used to record the patient's cervical cancer screening method as HPV."
 * status = #final
 * category = $OBSERVATION_CATEGORY#exam
 * code = $SCT#171149006
@@ -1475,6 +1475,7 @@ Description: "This is used to record the patient's cervical cancer screening met
 * encounter = Reference(GeneralEncounterExample)
 * performer = Reference(CurrentServiceProviderExample)
 * effectiveDateTime = "2024-01-25"
+* basedOn = Reference(CervicalCancerScreeningServiceRequestForHPVExample)
 
 Instance: CervicalCancerHPVPositiveScreeningResultExample
 InstanceOf: CervicalCancerScreeningResult
@@ -1491,7 +1492,7 @@ Description: "Indicates that the patient has a positive screening for HPV."
 * performer = Reference(CurrentServiceProviderExample)
 * effectiveDateTime = "2024-01-25"
 * derivedFrom = Reference(CervicalCancerScreeningDoneExample)
-* basedOn = Reference(CervicalCancerCarePlanFullExample)
+* basedOn = Reference(CervicalCancerCarePlanHPVWithTreatmentRequestExample)
 
 Instance: CervicalCancerVIAPositiveScreeningResultExample
 InstanceOf: CervicalCancerScreeningResult
@@ -1508,7 +1509,7 @@ Description: "Indicates that the patient has a positive screening for VIA."
 * performer = Reference(CurrentServiceProviderExample)
 * effectiveDateTime = "2024-01-25"
 * derivedFrom = Reference(CervicalCancerScreeningDoneExample)
-* basedOn = Reference(CervicalCancerCarePlanFullExample)
+* basedOn = Reference(CervicalCancerCarePlanVIAWithTreatmentRequestExample)
 
 Instance: CervicalCancerHPVNegtiveScreeningResultExample
 InstanceOf: CervicalCancerScreeningResult
@@ -1896,8 +1897,8 @@ Description: "Used to record the OI medication (Fluconazole) that will be prescr
 * code = $LNC#18924-1
 * code.text = "Fluconazole"
 
-Instance: ReferralWithinFacilitytExample
-InstanceOf: ReferralInServiceRequest
+Instance: ReferralWithinFacilityExample
+InstanceOf: HIVReferralInServiceRequest
 Usage: #example
 Title: "Service Request - Incoming Referral From Within Facility - (Existing ART Client)"
 Description: "Used to capture a pateint's referral information."
@@ -1914,7 +1915,7 @@ Description: "Used to capture a pateint's referral information."
 * reasonCode = $LNC#LA6517-2
 
 Instance: ReferralFromOutsideFacilitytExample
-InstanceOf: ReferralInServiceRequest
+InstanceOf: HIVReferralInServiceRequest
 Usage: #example
 Title: "Service Request - Incoming Referral From Outside Facility - (New ART Client)"
 Description: "Used to capture a pateint's referral information."
@@ -2216,7 +2217,7 @@ Description: "Records the health related activities for patients associated with
 * type.coding[ART] = $LNC#LP66375-4
 * patient = Reference(GeneralPatientExample)
 * managingOrganization = Reference(CurrentServiceProviderExample)
-* referralRequest[Incoming] = Reference(ReferralWithinFacilitytExample)
+* referralRequest[Incoming] = Reference(ReferralWithinFacilityExample)
 
 Instance: HIVEpisodeOfCareReferralFromOutsideFacilityExample
 InstanceOf: EthEpisodeOfCare
@@ -3762,3 +3763,175 @@ Description: "Adds the prescribed medication of INH to the medication history fo
 * context = Reference(GeneralEncounterExample)
 * effectivePeriod.start = "2009-11-24"
 * reasonReference = Reference(TBProphylaxisTypeINHObservationExample)
+
+Instance: CervicalCancerScreeningServiceRequestForHPVExample
+InstanceOf: CervicalCancerScreeningServiceRequest
+Usage: #example
+Title: "Service Request - Cervical Cancer Screening HPV Method"
+Description: "Represents the service request for the HPV method of cervical cancer screening."
+* status = #active
+* intent = #order
+* code = $CERVICAL_CANCER_SCREENING_METHOD#hpv-dna-test
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* authoredOn = "2024-01-25"
+
+Instance: CervicalCancerDiagnosticReportForHPVExample
+InstanceOf: CervicalCancerDiagnosticReport
+Usage: #example
+Title: "Diagnostic Report - Tested Positive for Cervical Cancer (HPV)"
+Description: "Indicates that the patient tested HPV positive for cervical cancer."
+* status = #final
+* category = $LNC#11502-2
+* code = $LNC#72135-7
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* result = Reference(CervicalCancerHPVPositiveScreeningResultExample)
+* issued = "2024-01-25T11:45:33+11:00"
+* basedOn = Reference(CervicalCancerScreeningServiceRequestForHPVExample)
+* performer = Reference(CurrentServiceProviderExample)
+
+Instance: CervicalCancerTreatmentServiceRequestForHPVExample
+InstanceOf: CervicalCancerTreatmentServiceRequest
+Usage: #example
+Title: "Service Request - Request for Cryotherapy as Treatment for Cervical Cancer (HPV Positive)"
+Description: "Indicates that a request was made for cryotherapy as the targeted treatment for the HPV positive patient"
+* status = #active
+* intent = #order
+* code =  $PRECANCEROUS_TREAT#cryotherapy
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* authoredOn = "2024-01-25"
+* reasonReference = Reference(CervicalCancerDiagnosticReportForHPVExample)
+
+Instance: CervicalCancerTreatmentReceivedForHPVExample
+InstanceOf: CervicalCancerTreatmentReceived
+Usage: #example
+Title: "Observation - Received Cryotherapy Treatment For the HPV+ Diagnosis"
+Description: "Indicates that the patient received cryotherapy as treatment after being diagnosed psoitive for cervical cancer (using HPV as the method)."
+* status = #final
+* category = $OBSERVATION_CATEGORY#therapy
+* code = $LNC#LA13405-8
+* code.text = "Treatment received"
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* valueDateTime = "2023-12-11"
+* basedOn = Reference(CervicalCancerScreeningServiceRequestForHPVExample)
+
+Instance: CervicalCancerCarePlanHPVExample
+InstanceOf: CervicalCancerCarePlan
+Usage: #example
+Title: "Care Plan - Request for Cervical Cancer Screening (HPV Method)"
+Description: "Indicates the activity associated with the request for cervical cancer screening using HPV as the method of screening."
+* status = #active
+* intent = #order
+* created = "2024-03-20"
+* category[+] = $LNC#LP173209-0
+* category[=].text = "Cervical cancer"
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* activity[+].reference = Reference(CervicalCancerScreeningServiceRequestForHPVExample)
+
+Instance: CervicalCancerCarePlanHPVWithTreatmentRequestExample
+InstanceOf: CervicalCancerCarePlan
+Usage: #example
+Title: "Care Plan - Request for Cervical Cancer Screening (HPV Method) - Incl. the Service Request For Cryotherapy Treatment"
+Description: "Indicates the activities associated with the requests for cervical cancer screening (using HPV as the method) and cryotherapy as the received treatment."
+* status = #active
+* intent = #order
+* created = "2024-03-20"
+* category[+] = $LNC#LP173209-0
+* category[=].text = "Cervical cancer"
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* activity[+].reference = Reference(CervicalCancerScreeningServiceRequestForHPVExample)
+* activity[=].reference = Reference(CervicalCancerTreatmentServiceRequestForHPVExample)
+* activity[=].outcomeReference = Reference(CervicalCancerTreatmentReceivedForHPVExample)
+
+Instance: CervicalCancerScreeningServiceRequestForVIAExample
+InstanceOf: CervicalCancerScreeningServiceRequest
+Usage: #example
+Title: "Service Request - Cervical Cancer Screening VIA Method"
+Description: "Represents the service request for the VIA method of cervical cancer screening."
+* status = #active
+* intent = #order
+* code = $CERVICAL_CANCER_SCREENING_METHOD#via-test
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* authoredOn = "2024-01-25"
+
+Instance: CervicalCancerDiagnosticReportForVIAExample
+InstanceOf: CervicalCancerDiagnosticReport
+Usage: #example
+Title: "Diagnostic Report - Tested Positive for Cervical Cancer (VIA)"
+Description: "Indicates that the patient tested VIA positive for cervical cancer."
+* status = #final
+* category = $LNC#11502-2
+* code = $LNC#72135-7
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* result = Reference(CervicalCancerVIAPositiveScreeningResultExample)
+* issued = "2024-01-25T11:45:33+11:00"
+* basedOn = Reference(CervicalCancerScreeningServiceRequestForVIAExample)
+* performer = Reference(CurrentServiceProviderExample)
+
+Instance: CervicalCancerTreatmentServiceRequestForVIAExample
+InstanceOf: CervicalCancerTreatmentServiceRequest
+Usage: #example
+Title: "Service Request - Request for Cryotherapy as Treatment for Cervical Cancer (VIA Positive)"
+Description: "Indicates that a request was made for cryotherapy as the targeted treatment for the VIA positive patient"
+* status = #active
+* intent = #order
+* code =  $PRECANCEROUS_TREAT#cryotherapy
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* authoredOn = "2024-01-25"
+* reasonReference = Reference(CervicalCancerDiagnosticReportForVIAExample)
+
+Instance: CervicalCancerTreatmentReceivedForVIAExample
+InstanceOf: CervicalCancerTreatmentReceived
+Usage: #example
+Title: "Observation - Received Cryotherapy Treatment For the VIA+ Diagnosis"
+Description: "Indicates that the patient received cryotherapy as treatment after being diagnosed psoitive for cervical cancer (using VIA as the method)."
+* status = #final
+* category = $OBSERVATION_CATEGORY#therapy
+* code = $LNC#LA13405-8
+* code.text = "Treatment received"
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* valueDateTime = "2023-12-11"
+* basedOn = Reference(CervicalCancerScreeningServiceRequestForVIAExample)
+
+Instance: CervicalCancerCarePlanVIAExample
+InstanceOf: CervicalCancerCarePlan
+Usage: #example
+Title: "Care Plan - Request for Cervical Cancer Screening (VIA Method)"
+Description: "Indicates the activity associated with the request for cervical cancer screening using VIA as the method of screening."
+* status = #active
+* intent = #order
+* created = "2024-03-20"
+* category[+] = $LNC#LP173209-0
+* category[=].text = "Cervical cancer"
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* activity[+].reference = Reference(CervicalCancerScreeningServiceRequestForVIAExample)
+
+Instance: CervicalCancerCarePlanVIAWithTreatmentRequestExample
+InstanceOf: CervicalCancerCarePlan
+Usage: #example
+Title: "Care Plan - Request for Cervical Cancer Screening (VIA Method) - Incl. the Service Request For Cryotherapy Treatment"
+Description: "Indicates the activities associated with the requests for cervical cancer screening (using VIA as the method) and cryotherapy as the received treatment."
+* status = #active
+* intent = #order
+* created = "2024-03-20"
+* category[+] = $LNC#LP173209-0
+* category[=].text = "Cervical cancer"
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* activity[+].reference = Reference(CervicalCancerScreeningServiceRequestForVIAExample)
+* activity[=].reference = Reference(CervicalCancerTreatmentServiceRequestForVIAExample)
+* activity[=].outcomeReference = Reference(CervicalCancerTreatmentReceivedForVIAExample)
