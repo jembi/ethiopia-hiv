@@ -484,7 +484,7 @@ Description: "Documents whether the patient was screened for TB."
 * valueCodeableConcept.extension contains ObservedDateExtension named ObservedDate 0..1 MS
 * valueCodeableConcept.extension[ObservedDate] ^definition =
     "reason(s) why this should be supported."
-* hasMember 0..* MS
+* hasMember 0..1 MS
 * hasMember ^definition =
     "reason(s) why this should be supported."
 * hasMember only Reference(TBScreeningResultObservation)
@@ -547,6 +547,8 @@ Id: tb-screening-service-request
 Title: "Service Request - TB Screening"
 Description: "Service request used to examine the specimen taken during TB screening."
 * code from TBScreeningDiagnosticTestTypeValueSet (required)
+* reasonReference 1..1
+* reasonReference only Reference(TBScreeningResultObservation)
 
 Profile: TBDiagnosticTestResultObservation
 Parent: GenericObservation
@@ -594,9 +596,7 @@ Description: "Records the medication history for the HIV+ patient."
 * medication[x] only Reference
 * medicationReference only Reference(ARVMedication)
 * reasonReference 1..1
-* reasonReference only Reference(Observation)
-* basedOn 1..1
-* basedOn only Reference(ARTFollowUpCareplan)
+* reasonReference only Reference(ARVRegimenChange or ARTFollowupStatusObservation)
 
 Profile: OIMedicationStatement
 Parent: GenericMedicationStatement
@@ -2435,6 +2435,11 @@ Description: "Documents whether the patient has started TB treatment."
     "reason(s) why this should be supported."
 * derivedFrom only Reference(TBDiagnosticTestResultObservation)
 
+* basedOn 0..1 MS
+* basedOn ^definition =
+    "reason(s) why this should be supported."
+* basedOn only Reference(TBTreatmentCareplan)
+
 Profile: TBTreatmentStatusObservation
 Parent: GenericObservation
 Id: tb-treatment-status-observation
@@ -2680,3 +2685,99 @@ Description: "Documents the alternate TPT at follow-up."
 * hasMember[TPTCompleted] ^definition =
     "reason(s) why this should be supported."
 * hasMember[TPTCompleted] only Reference(TreatmentCompletedObservation)
+
+Profile: TBTreatmentCareplan
+Parent: CarePlan
+Id: tb-treatment-careplan
+Title: "Care Plan - TB Treatment"
+Description: "Used to record the TB treatment details for the patient."
+* status 1..1
+* intent 1..1
+* category 1..1
+* category = $LNC#LA6762-4
+* category.text 1..1
+* category.text = "TB treatment"
+* subject 1..1 
+* subject only Reference(EthPatient)
+* encounter 1..1 
+* encounter only Reference(TargetFacilityEncounter)
+
+* created 0..1 MS
+* created ^definition = "reason(s) why this should be supported."
+
+* activity 1..*
+
+* activity.outcomeReference 1..*
+
+* insert SliceForResolve(activity.outcomeReference, reasons why this should be supported, open, Slicing outcomeReference based on the profile value, false)
+
+* activity.outcomeReference contains
+    TreatmentStatus 1..1
+
+* activity.outcomeReference[TreatmentStatus] only Reference(TBTreatmentStatusObservation)
+
+* activity.reference 1..1
+* activity.reference only Reference(TBScreeningServiceRequest)
+
+Profile: TPTMedicationRequest
+Parent: GenericMedicationRequest
+Id: tpt-medication-request
+Title: "Medication Request - TB Preventive Therapy (TPT)"
+Description: "Used to record requests for TPT medication that are prescribed to a patient."
+* medication[x] only Reference
+* medicationReference only Reference(TPTMedication)
+* basedOn 1..1
+* basedOn only Reference(TPTCareplan)
+
+Profile: TPTMedication
+Parent: Medication
+Id: tpt-medication
+Title: "Medication - Represents a medication for TB Preventive Therapy (TPT)"
+Description: "Used to record the TPT medication that will be prescribed to the patient."
+* code 1..1
+* code.coding only StrictCoding
+* code from TPTProphylaxisValueSet (required)
+* code.text 1..1
+
+Profile: TPTCareplan
+Parent: CarePlan
+Id: tpt-careplan
+Title: "Care Plan - TB Preventive Therapy (TPT)"
+Description: "Used to record the TPT details for the patient."
+* status 1..1
+* intent 1..1
+* category 1..1
+* category = $LNC#LA6762-4
+* category.text 1..1
+* category.text = "TB treatment"
+* subject 1..1 
+* subject only Reference(EthPatient)
+* encounter 1..1 
+* encounter only Reference(TargetFacilityEncounter)
+
+* created 0..1 MS
+* created ^definition = "reason(s) why this should be supported."
+
+* activity 1..*
+
+* activity.outcomeReference 1..*
+
+* insert SliceForResolve(activity.outcomeReference, reasons why this should be supported, open, Slicing outcomeReference based on the profile value, false)
+
+* activity.outcomeReference contains
+    TreatmentStatus 1..1
+
+* activity.outcomeReference[TreatmentStatus] only Reference(INHAtFollowupObservation or AlternateTPTAtFollowupObservation)
+
+* activity.reference 1..1
+* activity.reference only Reference(TPTMedicationRequest)
+
+Profile: TPTMedicationStatement
+Parent: GenericMedicationStatement
+Id: tpt-medication-statement
+Title: "Medication Statement - TB Preventive Therapy (TPT)"
+Description: "Records the medication history for the patient receiving TPT medication."
+* medication[x] only Reference
+* medicationReference only Reference(TPTMedication)
+* reasonReference 1..1
+* reasonReference only Reference(TBProphylaxisTypeObservation)

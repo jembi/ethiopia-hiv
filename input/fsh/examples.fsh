@@ -453,7 +453,6 @@ Description: "Records the ARV Treatment details for the patient initiated on ART
 * context = Reference(GeneralEncounterExample)
 * effectivePeriod.start = "2009-11-24"
 * reasonReference = Reference(InitiatedArtARTFollowupStatusExample)
-* basedOn = Reference(ARTInitiatedARTFollowUpCareplanExample)
 
 Instance: FollowUpArvTreatmentMedicationStatementExample
 InstanceOf: ARTTreatmentMedicationStatement
@@ -466,7 +465,6 @@ Description: "Records the ARV Treatment details for the patient during an ART fo
 * context = Reference(GeneralEncounterExample)
 * effectivePeriod.start = "2009-11-24"
 * reasonReference = Reference(AliveOnArtARTFollowupStatusExample)
-* basedOn = Reference(ARTAliveOnARTFollowUpCareplanExample)
 
 Instance: CotrimoxazoleMedicationStatementExample
 InstanceOf: OIMedicationStatement
@@ -574,11 +572,27 @@ Description: "This is to record requests for medication that are prescribed to a
 * reasonReference = Reference(InitiatedArtARTFollowupStatusExample)
 * basedOn = Reference(ARTInitiatedARTFollowUpCareplanExample)
 
-Instance: TBScreeningExample
+Instance: TBPositiveScreeningExample
 InstanceOf: TBScreeningResultObservation
 Usage: #example
-Title: "Observation - TB Screening"
-Description: "Documents the patient's TB screening result."
+Title: "Observation - TB Positive Screening"
+Description: "Indicates that the patient has a positive TB screening result."
+* status = #final
+* code = $SCT#429599001
+* code.text = "Tuberculosis screening status"
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* category = $OBSERVATION_CATEGORY#exam
+* valueCodeableConcept = $LNC#LA6576-8
+* valueCodeableConcept.text = "Positive"
+
+Instance: TBNegativeScreeningExample
+InstanceOf: TBScreeningResultObservation
+Usage: #example
+Title: "Observation - TB Negative Screening"
+Description: "Indicates that the patient has a negative TB screening result."
 * status = #final
 * code = $SCT#429599001
 * code.text = "Tuberculosis screening status"
@@ -610,8 +624,8 @@ Description: "Documents the patient's diagnostic test result."
 Instance: ScreenedForTBExample
 InstanceOf: ScreenedForTBObservation
 Usage: #example
-Title: "Observation - Screened For TB"
-Description: "Indicates that the patient was screened for TB."
+Title: "Observation - Screened For TB (TB Positive)"
+Description: "Indicates that the patient was screened for TB and the screening result is positive."
 * status = #final
 * code = $SCT#171126009
 * code.text = "Tuberculosis screening status"
@@ -621,7 +635,7 @@ Description: "Indicates that the patient was screened for TB."
 * performer = Reference(CurrentServiceProviderExample)
 * valueCodeableConcept = $YesNoCodeSystem#true
 * valueCodeableConcept.extension[ObservedDate].valueDateTime = "2023-10-21"
-* hasMember[+] = Reference(TBScreeningExample)
+* hasMember[+] = Reference(TBPositiveScreeningExample)
 
 Instance: NotScreenedForTBExample
 InstanceOf: ScreenedForTBObservation
@@ -636,7 +650,6 @@ Description: "Indicates that the patient was not screened for TB."
 * effectiveDateTime = "2023-12-11"
 * performer = Reference(CurrentServiceProviderExample)
 * valueCodeableConcept = $YesNoCodeSystem#false
-* hasMember[+] = Reference(TBScreeningExample)
 
 Instance: TBScreeningSpecimenExample
 InstanceOf: TBScreeningSpecimen
@@ -658,6 +671,7 @@ Description: "Service request used to examine the specimen taken during TB scree
 * code = $TBScreeningDiagnosticTest#Gene-xpert-MTB/RIF-assay-with-other-testing
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
+* reasonReference = Reference(TBPositiveScreeningExample)
 
 Instance: ActiveTBExample
 InstanceOf: ActiveTBObservation
@@ -691,7 +705,7 @@ Description: "Documents whether the patient is eligibile for TB Prevention Thera
 * effectiveDateTime = "2023-12-11"
 * performer = Reference(CurrentServiceProviderExample)
 * valueCodeableConcept = $YesNoCodeSystem#true
-* derivedFrom[+] = Reference(TBScreeningExample)
+* derivedFrom[+] = Reference(TBNegativeScreeningExample)
 
 Instance: NotEligibleForTPTExample
 InstanceOf: EligibleForTPTObservation
@@ -707,7 +721,7 @@ Description: "Documents whether the patient is eligibile for TB Prevention Thera
 * effectiveDateTime = "2023-12-11"
 * performer = Reference(CurrentServiceProviderExample)
 * valueCodeableConcept = $YesNoCodeSystem#false
-* derivedFrom[+] = Reference(TBScreeningExample)
+* derivedFrom[+] = Reference(TBNegativeScreeningExample)
 * hasMember = Reference(ReasonNotEligibleForTPTExample)
 
 Instance: ReasonNotEligibleForTPTExample
@@ -726,7 +740,7 @@ Description: "Documents the reason why the patient is not eligibile for TB Preve
 * valueCodeableConcept = $SCT#473151000
 * valueCodeableConcept.text = "History of tuberculosis drug therapy"
 * derivedFrom[+] = Reference(ScreenedForTBExample)
-* derivedFrom[+] = Reference(TBScreeningExample)
+* derivedFrom[+] = Reference(TBPositiveScreeningExample)
 
 Instance: ARTAliveOnARTFollowUpCareplanExample
 InstanceOf: ARTFollowUpCareplan
@@ -3767,3 +3781,18 @@ Description: "Indicates that the patient has discontinued 3HR."
 * performer = Reference(CurrentServiceProviderExample)
 * valueCodeableConcept = $SCT#410831004
 * hasMember[3HR] = Reference(AlternateTPT3HRAtFollowupDiscontinuedObservationExample)
+
+Instance: TBTreatmentCareplanExample
+InstanceOf: TBTreatmentCareplan
+Usage: #example
+Title: "Care Plan - TB Treatment"
+Description: "Used to record the TB treatment details for the patient."
+* status = #active
+* intent = #order
+* created = "2024-03-20"
+* category[+] = $LNC#LA6762-4
+* category[=].text = "TB treatment"
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* activity[+].reference = Reference(TBScreeningServiceRequestExample)
+* activity[=].outcomeReference = Reference(TBTreatmentStatusRx1ObservationExample)

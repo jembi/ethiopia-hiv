@@ -630,6 +630,15 @@ Description: "A list of codes describing the alternate TPT prophylaxis types to 
 * $SCT#346670008 "Product containing isoniazid and rifampicin"
 * $SCT#410831004 "Product containing rifapentine"
 
+ValueSet: TPTProphylaxisValueSet
+Id: tpt-prophylaxis-value-set
+Title: "TPT Prophylaxis Codes For Medication Requests"
+Description: "A list of codes describing the different codes used during a request for TPT medication."
+* ^experimental = false
+* $LNC#18934-0 "Isoniazid [Susceptibility]"
+* $SCT#346670008 "Product containing isoniazid and rifampicin"
+* $SCT#410831004 "Product containing rifapentine"
+
 /*ValueSet: TPT3HRFollowUpValueSet
 Id: tpt-3hr-follow-up-value-set
 Title: "TPT 3HR Follow-Up Codes"
