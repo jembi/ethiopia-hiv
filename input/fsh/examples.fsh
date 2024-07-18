@@ -1898,7 +1898,7 @@ Description: "Used to record the OI medication (Fluconazole) that will be prescr
 * code.text = "Fluconazole"
 
 Instance: ReferralWithinFacilityExample
-InstanceOf: HIVReferralInServiceRequest
+InstanceOf: ReferralInServiceRequest
 Usage: #example
 Title: "Service Request - Incoming Referral From Within Facility - (Existing ART Client)"
 Description: "Used to capture a pateint's referral information."
@@ -1912,10 +1912,10 @@ Description: "Used to capture a pateint's referral information."
 * requester = Reference(GeneralPractitionerExample)
 * performer = Reference(CurrentServiceProviderExample)
 * locationReference = Reference(EncounterLocationANCExample)
-* reasonCode = $LNC#LA6517-2
+* reasonCode[HIVReferral] = $LNC#LA6517-2
 
 Instance: ReferralFromOutsideFacilitytExample
-InstanceOf: HIVReferralInServiceRequest
+InstanceOf: ReferralInServiceRequest
 Usage: #example
 Title: "Service Request - Incoming Referral From Outside Facility - (New ART Client)"
 Description: "Used to capture a pateint's referral information."
@@ -1929,7 +1929,7 @@ Description: "Used to capture a pateint's referral information."
 * requester = Reference(GeneralPractitionerExample)
 * performer = Reference(CurrentServiceProviderExample)
 * locationReference = Reference(EncounterLocationHIVTestingExample)
-* reasonCode = $LNC#LA6517-2
+* reasonCode[HIVReferral] = $LNC#LA6517-2
 
 Instance: HIVStatusDisclosureAtEnrollmentExample
 InstanceOf: HIVStatusDisclosureAtEnrollment

@@ -1551,7 +1551,7 @@ Description: "Used to record the OI medication that will be prescribed to the pa
 * code from OpportunisticInfectionsTreatmentValueSet (required)
 * code.text 1..1
 
-Profile: HIVReferralInServiceRequest
+Profile: ReferralInServiceRequest
 Parent: GenericServiceRequest
 Id: referral-in-service-request
 Title: "Service Request - Incoming Referral Information"
@@ -1559,8 +1559,18 @@ Description: "Used to capture a patient's referral information."
 * code = $LNC#39267-0
 * authoredOn 1..1
 * requester 1..1
-* reasonCode 1..1
-* reasonCode from ReferralReasonValueSet (required)
+* reasonCode 1..*
+
+* insert Slice(reasonCode, reasons why this should be supported, value, coding, open, Slicing the reason code based on the coding value, false)
+
+* reasonCode contains
+    HIVReferral 0..1 MS
+
+* valueCodeableConcept[HIVReferral] ^definition =
+    "reason(s) why this should be supported."
+* valueCodeableConcept[HIVReferral] 1..1
+* valueCodeableConcept[HIVReferral] from ReferralReasonValueSet (required)
+
 * locationReference 1..1
 
 Profile: HIVStatusDisclosureAtEnrollment
@@ -1795,7 +1805,7 @@ Description: "Records the health related activities for patients associated with
 
 * referralRequest[Incoming] ^definition =
     "reason(s) why this should be supported."
-* referralRequest[Incoming] only Reference(HIVReferralInServiceRequest)
+* referralRequest[Incoming] only Reference(ReferralInServiceRequest)
 
 * referralRequest[Outgoing] ^definition =
     "reason(s) why this should be supported."
