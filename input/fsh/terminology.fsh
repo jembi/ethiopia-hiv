@@ -141,13 +141,13 @@ Description: "HIV CarePlan Activities"
 * $LNC#67723-7 "Date of health-related event"
 //* include codes from system HIVCarePlanActivitiesCodeSystem*/
 
-CodeSystem: CervicalCancerCarePlanCodeSystem
+/*CodeSystem: CervicalCancerCarePlanCodeSystem
 Id: cervical-cancer-care-plan-code-system
 Title: "Cervical Cancer CarePlan"
 Description: "A list of codes describing the cervical cancer care plan category code"
 * ^experimental = false
 * ^caseSensitive = true
-* #cervical-cancer-care-plan "Cervical cancer care plan"
+* #cervical-cancer-care-plan "Cervical cancer care plan"*/
 
 /*ValueSet: CervicalCancerCarePlanValueSet
 Id: cervical-cancer-care-plan-value-set
@@ -223,14 +223,15 @@ Description: "A list of codes describing the precancerous lesion treatment recei
 * #leep "LEEP"
 * #referred-for-leep "Referred for LEEP"
 * #referred-for-suspicious-cancer-evaluation "Referred for Suspicious cancer evaluation"
-//* #other "Other"
+* #other "Other"
 
-ValueSet: PrecancerousLesionTreatmentReceivedValueSet
-Id: precancerous-lesion-treatment-received-value-set
-Title: "Precancerous Lesion Treatment Received ValueSet"
-Description: "Precancerous Lesion Treatment Received ValueSet"
+ValueSet: CervicalCancerTreatmentReceivedValueSet
+Id: cervical-cancer-treatment-received-value-set
+Title: "Cervical Cancer Treatment Received"
+Description: "Cervical Cancer Treatment Received"
 * ^experimental = false
 * include codes from system PrecancerousLesionTreatmentReceivedCodeSystem
+* include codes from system SuspiciousCancerousTreatmentCodeSystem
 
 CodeSystem: SuspiciousCancerousTreatmentCodeSystem
 Id: suspicious-cancerous-treatment-code-system
@@ -243,13 +244,6 @@ Description: "A list of codes describing the suspicious Cancerous treatment"
 * #arrival-in-receiving-facility-confirmed "Arrival in receiving facility confirmed"
 * #feedback-received-by-referring-hf "Feedback received by referring HF"
 
-ValueSet: SuspiciousCancerousTreatmentValueSet
-Id: suspicious-cancerous-treatment-value-set
-Title: "Suspicious Cancerous Treatment ValueSet"
-Description: "Suspicious Cancerous Treatment ValueSet"
-* ^experimental = false
-* include codes from system SuspiciousCancerousTreatmentCodeSystem
-
 /*ValueSet: EntryPointValueSet
 Id: entry-point-value-set
 Title: "Entry Point"
@@ -260,8 +254,8 @@ Description: "Entry Point"
 
 /*ValueSet: NutritionalStatusValueSet
 Id: nutritional-status-value-set
-Title: "Nutritional Status ValueSet"
-Description: "Nutritional Status ValueSet"
+Title: "Nutritional Status"
+Description: "Nutritional Status"
 * ^experimental = false
 * $SCT#17621005 "Normal"
 * $SCT#238131007 "Overweight"
@@ -274,8 +268,8 @@ Description: "Nutritional Status ValueSet"
 
 ValueSet: ARVAdherenceValueSet
 Id: arv-adherence-value-set
-Title: "ARV Adherence ValueSet"
-Description: "ARV Adherence ValueSet"
+Title: "ARV Adherence"
+Description: "ARV Adherence"
 * ^experimental = false
 * $LNC#LA8969-3 "Poor"
 * $LNC#LA8968-5 "Fair"
@@ -294,7 +288,7 @@ Description: "A list of codes describing the Cervical Cancer Screening Method"
 
 ValueSet: CervicalCancerScreeningMethodValueSet
 Id: cervical-cancer-screening-method-value-set
-Title: "Cervical Cancer Screening Method ValueSet"
+Title: "Cervical Cancer Screening Method"
 Description: "Cervical Cancer Screening Method."
 * ^experimental = false
 * include codes from system CervicalCancerScreeningMethodCodeSystem
@@ -340,8 +334,8 @@ Description: "A list of codes describing the Cervical Cancer Screening Results"
 
 /*ValueSet: HPVDNATestResultValueSet
 Id: hpv-dna-test-result-value-set
-Title: "HPV DNA Test Result ValueSet"
-Description: "HPV DNA Test Result ValueSet"
+Title: "HPV DNA Test Result"
+Description: "HPV DNA Test Result"
 * ^experimental = false
 * $SCT#720005005
 * $SCT#787724008
@@ -627,6 +621,15 @@ Id: tpt-alternate-prophylaxis-type-value-set
 Title: "Alternate TPT Prophylaxis Type Codes"
 Description: "A list of codes describing the alternate TPT prophylaxis types to INH."
 * ^experimental = false
+* $SCT#346670008 "Product containing isoniazid and rifampicin"
+* $SCT#410831004 "Product containing rifapentine"
+
+ValueSet: TPTProphylaxisValueSet
+Id: tpt-prophylaxis-value-set
+Title: "TPT Prophylaxis Codes For Medication Requests"
+Description: "A list of codes describing the different codes used during a request for TPT medication."
+* ^experimental = false
+* $LNC#18934-0 "Isoniazid [Susceptibility]"
 * $SCT#346670008 "Product containing isoniazid and rifampicin"
 * $SCT#410831004 "Product containing rifapentine"
 

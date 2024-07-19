@@ -7,7 +7,6 @@ Alias: $ENCOUNTER = http://moh.gov.et/fhir/hiv/identifier/encounter
 Alias: $SCT = http://snomed.info/sct
 Alias: $UCUM_UNIT = http://unitsofmeasure.org
 Alias: $OrderableDrugForm_UNIT = http://terminology.hl7.org/CodeSystem/v3-orderableDrugForm
-Alias: $CARE_PLAN_CC = http://moh.gov.et/fhir/hiv/CodeSystem/cervical-cancer-care-plan-code-system
 Alias: $PRECANCEROUS_TREAT = http://moh.gov.et/fhir/hiv/CodeSystem/precancerous-lesion-treatment-received-code-system
 Alias: $SUSPICIOUS_CANCEROUS_TREAT = http://moh.gov.et/fhir/hiv/CodeSystem/suspicious-cancerous-treatment-code-system
 Alias: $LNC = http://loinc.org
