@@ -2012,3 +2012,27 @@ Title: "EAC Given"
 Description: "Codes used for representing the EAC given."
 * ^experimental = false
 * include codes from system EACGivenCodeSystem
+
+ValueSet: OpportunisticInfectionsValueSet
+Id: oi-value-set
+Title: "Opportunistic Infections"
+Description: "Codes used for representing opportunistic infections."
+* ^experimental = false
+* $SCT#4740000 "Herpes zoster"
+* $SCT#423997002 "Tuberculosis, extrapulmonary"
+* $SCT#154283005 "Pulmonary tuberculosis"
+* $SCT#72934000 "Candidiasis of vagina"
+* $SCT#236071009 "Chronic diarrhea"
+* $SCT#192701001 "Toxoplasma encephalitis"
+* $SCT#109385007 "Kaposi's sarcoma"
+* $SCT#415125002 "Pneumocystosis jirovecii pneumonia"
+* $SCT#95589007 "Ulcers of male genital organs"
+* $SCT#95595008 "Ulcers of female genital organs"
+* $SCT#53084003 "Bacterial pneumonia"
+* $SCT#20639004 "Candidiasis of the esophagus"
+* $SCT#26284000 "Ulcer of mouth"
+* $SCT#409966000 "Acute diarrhea"
+* $SCT#14232007 "Cryptococcal meningitis"
+* $SCT#363354003 "Malignant tumor of cervix"
+* $SCT#79740000 "Candidiasis of mouth"
+* $SCT#118601006 "Non-Hodgkin's lymphoma"

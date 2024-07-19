@@ -2787,3 +2787,41 @@ Description: "Records the medication history for the patient receiving TPT medic
 * medicationReference only Reference(TPTMedication)
 * reasonReference 1..1
 * reasonReference only Reference(TBProphylaxisTypeObservation)
+
+Profile: OpportunisicInfections
+Parent: Condition
+Id: opportunisic-infection
+Title: "Condition - Opportunisic Infection"
+Description: "Captures the opportunisic infections that the patient suffering from."
+* code 1..1
+* code from OpportunisticInfectionsValueSet (required)
+* category 1..1
+* category = $ConditionCategoryCodeSystem#problem-list-item
+* subject 1..1
+* subject only Reference(EthPatient)
+* encounter 1..1
+* encounter only Reference(TargetFacilityEncounter)
+* recordedDate 1..1
+* clinicalStatus 1..1
+
+Profile: OIMedicalHistory
+Parent: List
+Id: oi-medical-history
+Title: "List - Medical History"
+Description: "Documents the medical history for the patient"
+* status = #current
+* mode = #working
+* title 1..1
+* title = "Medical History"
+* code 1..1
+* code = $ListCodeCodeSystem#problems
+* subject 1..1
+* subject only Reference(EthPatient)
+* encounter 1..1
+* encounter only Reference(TargetFacilityEncounter)
+* date 1..1
+* source 1..1
+* source only Reference(GeneralPractitioner)
+* entry 1..*
+* entry.item only Reference(OpportunisicInfections)
+

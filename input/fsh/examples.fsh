@@ -3935,3 +3935,40 @@ Description: "Indicates the activities associated with the requests for cervical
 * activity[+].reference = Reference(CervicalCancerScreeningServiceRequestForVIAExample)
 * activity[=].reference = Reference(CervicalCancerTreatmentServiceRequestForVIAExample)
 * activity[=].outcomeReference = Reference(CervicalCancerTreatmentReceivedForVIAExample)
+
+Instance: OpportunisicInfectionsPulmonaryTBExample
+InstanceOf: OpportunisicInfections
+Usage: #example
+Title: "Condition - Pulmonary Tuberculosis"
+Description: "Indicates that the patient suffering from pulmonary tuberculosis."
+* code = $SCT#154283005
+* category = $ConditionCategoryCodeSystem#problem-list-item
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* recordedDate = "2024-03-20"
+* clinicalStatus = $ConditionClinicalStatusCodeSystem#active
+
+Instance: OpportunisicInfectionsChronicDiarrheaExample
+InstanceOf: OpportunisicInfections
+Usage: #example
+Title: "Condition - Chronic Diarrhea"
+Description: "Indicates that the patient suffering from chronic diarrhea."
+* code = $SCT#236071009
+* category = $ConditionCategoryCodeSystem#problem-list-item
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* recordedDate = "2024-03-20"
+* clinicalStatus = $ConditionClinicalStatusCodeSystem#active
+
+Instance: OIMedicalHistoryExample
+InstanceOf: OIMedicalHistory
+Usage: #example
+Title: "List - Medical History"
+Description: "Documents the medical history for the patient"
+* code = $ListCodeCodeSystem#problems
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* date = "2024-03-20"
+* source = Reference(GeneralPractitionerExample)
+* entry[+].item = Reference(OpportunisicInfectionsPulmonaryTBExample)
+* entry[+].item = Reference(OpportunisicInfectionsChronicDiarrheaExample)
