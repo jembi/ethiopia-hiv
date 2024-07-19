@@ -3961,7 +3961,7 @@ Description: "Indicates that the patient suffering from chronic diarrhea."
 * clinicalStatus = $ConditionClinicalStatusCodeSystem#active
 
 Instance: OIMedicalHistoryExample
-InstanceOf: OIMedicalHistory
+InstanceOf: MedicalHistory
 Usage: #example
 Title: "List - Medical History"
 Description: "Documents the medical history for the patient"
