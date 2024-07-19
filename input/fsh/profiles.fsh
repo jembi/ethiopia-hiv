@@ -2790,7 +2790,7 @@ Description: "Records the medication history for the patient receiving TPT medic
 
 Profile: OpportunisicInfections
 Parent: Condition
-Id: opportunisic-infection
+Id: opportunisic-infections
 Title: "Condition - Opportunisic Infection"
 Description: "Captures the opportunisic infections that the patient suffering from."
 * code 1..1
@@ -2804,9 +2804,9 @@ Description: "Captures the opportunisic infections that the patient suffering fr
 * recordedDate 1..1
 * clinicalStatus 1..1
 
-Profile: OIMedicalHistory
+Profile: MedicalHistory
 Parent: List
-Id: oi-medical-history
+Id: medical-history
 Title: "List - Medical History"
 Description: "Documents the medical history for the patient"
 * status = #current
