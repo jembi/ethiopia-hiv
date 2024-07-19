@@ -152,3 +152,8 @@ Invariant: Observation-alternate-tpt-Follow-Up-2
 Description: "If Observation.valueCodeableConcept.coding.code is \"182992009\" then Observation.hasMember for slice \"TPTCompleted\" SHALL be present."
 Expression: "value.coding.where(system = 'http://snomed.info/sct' and code = '182992009').exists() implies hasMember.slice('http://moh.gov.et/fhir/hiv/StructureDefinition/alternate-tpt-at-follow-up-observation', 'TPTCompleted').exists()"
 Severity: #error
+
+Invariant: Observation-Assessed-For-Pain-1
+Description: "If Observation.valueCodeableConcept.coding.code is \"true\" then hasMember SHALL be present."
+Expression: "value.coding.where(system = 'http://moh.gov.et/fhir/hiv/CodeSystem/yes-no-code-system' and code = 'true').exists() implies hasMember.exists()"
+Severity: #error

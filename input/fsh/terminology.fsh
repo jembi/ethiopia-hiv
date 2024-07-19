@@ -2036,3 +2036,13 @@ Description: "Codes used for representing opportunistic infections."
 * $SCT#363354003 "Malignant tumor of cervix"
 * $SCT#79740000 "Candidiasis of mouth"
 * $SCT#118601006 "Non-Hodgkin's lymphoma"
+
+ValueSet: PainScaleValueSet
+Id: pain-scale-value-set
+Title: "Pain Scale"
+Description: "Codes used for representing level of pain (pain scale)."
+* ^experimental = false
+* $LNC#LA131-5 "No pain"
+* $LNC#LA15111-0 "Mild pain"
+* $LNC#LA135-6 "Moderate pain"
+* $LNC#LA15109-4 "Severe pain"

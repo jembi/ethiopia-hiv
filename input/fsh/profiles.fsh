@@ -2825,3 +2825,31 @@ Description: "Documents the medical history for the patient"
 * entry 1..*
 * entry.item only Reference(OpportunisicInfections)
 
+Profile: AssessedForPainObservation
+Parent: GenericObservation
+Id: assessed-for-pain-observation
+Title: "Observation - Assessed for Pain"
+Description: "Documents whether the patient has been assessed for pain."
+* obeys Observation-Assessed-For-Pain-1
+* category 1..1
+* category = $OBSERVATION_CATEGORY#exam
+* code = $LNC#LP428833-0
+* value[x] only CodeableConcept
+* valueCodeableConcept 1..1
+* valueCodeableConcept from YesNoValueSet (required)
+* hasMember 0..1 MS
+* hasMember ^definition =
+    "reason(s) why this should be supported."
+* hasMember only Reference(LevelOfPainObservation)
+
+Profile: LevelOfPainObservation
+Parent: GenericObservation
+Id: level-of-pain-observation
+Title: "Observation - Level of Pain"
+Description: "Indicates the level of pain the patient is experiencing."
+* category 1..1
+* category = $OBSERVATION_CATEGORY#exam
+* code = $LNC#LL5953-6
+* value[x] only CodeableConcept
+* valueCodeableConcept 1..1
+* valueCodeableConcept from YesNoValueSet (required)
