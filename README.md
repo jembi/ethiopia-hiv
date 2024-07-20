@@ -6,7 +6,7 @@ This is an HIV IG for Ethiopia inspired by Smartcare's data model.
 ### Publication
 This ImplementationGuide is published in the following locations:
 
-Canonical / permanent URL: __https://jembi.github.io/ethiopia-hiv__
+Canonical / permanent URL: __https://build.fhir.org/ig/jembi/ethiopia-hiv/branches/master__
 <br> </br>
 
 ### Issues
