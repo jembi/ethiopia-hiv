@@ -2787,3 +2787,69 @@ Description: "Records the medication history for the patient receiving TPT medic
 * medicationReference only Reference(TPTMedication)
 * reasonReference 1..1
 * reasonReference only Reference(TBProphylaxisTypeObservation)
+
+Profile: OpportunisicInfections
+Parent: Condition
+Id: opportunisic-infections
+Title: "Condition - Opportunisic Infection"
+Description: "Captures the opportunisic infections that the patient suffering from."
+* code 1..1
+* code from OpportunisticInfectionsValueSet (required)
+* category 1..1
+* category = $ConditionCategoryCodeSystem#problem-list-item
+* subject 1..1
+* subject only Reference(EthPatient)
+* encounter 1..1
+* encounter only Reference(TargetFacilityEncounter)
+* recordedDate 1..1
+* clinicalStatus 1..1
+
+Profile: MedicalHistory
+Parent: List
+Id: medical-history
+Title: "List - Medical History"
+Description: "Documents the medical history for the patient"
+* status = #current
+* mode = #working
+* title 1..1
+* title = "Medical History"
+* code 1..1
+* code = $ListCodeCodeSystem#problems
+* subject 1..1
+* subject only Reference(EthPatient)
+* encounter 1..1
+* encounter only Reference(TargetFacilityEncounter)
+* date 1..1
+* source 1..1
+* source only Reference(GeneralPractitioner)
+* entry 1..*
+* entry.item only Reference(OpportunisicInfections)
+
+Profile: AssessedForPainObservation
+Parent: GenericObservation
+Id: assessed-for-pain-observation
+Title: "Observation - Assessed for Pain"
+Description: "Documents whether the patient has been assessed for pain."
+* obeys Observation-Assessed-For-Pain-1
+* category 1..1
+* category = $OBSERVATION_CATEGORY#exam
+* code = $LNC#LP428833-0
+* value[x] only CodeableConcept
+* valueCodeableConcept 1..1
+* valueCodeableConcept from YesNoValueSet (required)
+* hasMember 0..1 MS
+* hasMember ^definition =
+    "reason(s) why this should be supported."
+* hasMember only Reference(LevelOfPainObservation)
+
+Profile: LevelOfPainObservation
+Parent: GenericObservation
+Id: level-of-pain-observation
+Title: "Observation - Level of Pain"
+Description: "Indicates the level of pain the patient is experiencing."
+* category 1..1
+* category = $OBSERVATION_CATEGORY#exam
+* code = $LNC#LL5953-6
+* value[x] only CodeableConcept
+* valueCodeableConcept 1..1
+* valueCodeableConcept from YesNoValueSet (required)

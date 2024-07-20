@@ -3935,3 +3935,86 @@ Description: "Indicates the activities associated with the requests for cervical
 * activity[+].reference = Reference(CervicalCancerScreeningServiceRequestForVIAExample)
 * activity[=].reference = Reference(CervicalCancerTreatmentServiceRequestForVIAExample)
 * activity[=].outcomeReference = Reference(CervicalCancerTreatmentReceivedForVIAExample)
+
+Instance: OpportunisicInfectionsPulmonaryTBExample
+InstanceOf: OpportunisicInfections
+Usage: #example
+Title: "Condition - Pulmonary Tuberculosis"
+Description: "Indicates that the patient suffering from pulmonary tuberculosis."
+* code = $SCT#154283005
+* category = $ConditionCategoryCodeSystem#problem-list-item
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* recordedDate = "2024-03-20"
+* clinicalStatus = $ConditionClinicalStatusCodeSystem#active
+
+Instance: OpportunisicInfectionsChronicDiarrheaExample
+InstanceOf: OpportunisicInfections
+Usage: #example
+Title: "Condition - Chronic Diarrhea"
+Description: "Indicates that the patient suffering from chronic diarrhea."
+* code = $SCT#236071009
+* category = $ConditionCategoryCodeSystem#problem-list-item
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* recordedDate = "2024-03-20"
+* clinicalStatus = $ConditionClinicalStatusCodeSystem#active
+
+Instance: OIMedicalHistoryExample
+InstanceOf: MedicalHistory
+Usage: #example
+Title: "List - Medical History"
+Description: "Documents the medical history for the patient"
+* code = $ListCodeCodeSystem#problems
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* date = "2024-03-20"
+* source = Reference(GeneralPractitionerExample)
+* entry[+].item = Reference(OpportunisicInfectionsPulmonaryTBExample)
+* entry[+].item = Reference(OpportunisicInfectionsChronicDiarrheaExample)
+
+Instance: NotAssessedForPainObservationExample
+InstanceOf: AssessedForPainObservation
+Usage: #example
+Title: "Observation - Not Assessed for Pain"
+Description: "Indicates that the patient has not been assessed for pain."
+* status = #final
+* category = $OBSERVATION_CATEGORY#exam
+* code = $LNC#LP428833-0
+* code.text = "Assessed for pain"
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* valueCodeableConcept = $YesNoCodeSystem#false
+
+Instance: AssessedForPainObservationExample
+InstanceOf: AssessedForPainObservation
+Usage: #example
+Title: "Observation - Assessed for Pain"
+Description: "Indicates that the patient has been assessed for pain."
+* status = #final
+* category = $OBSERVATION_CATEGORY#exam
+* code = $LNC#LP428833-0
+* code.text = "Assessed for pain"
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* valueCodeableConcept = $YesNoCodeSystem#true
+* hasMember = Reference(LevelOfPainObservationExample)
+
+Instance: LevelOfPainObservationExample
+InstanceOf: LevelOfPainObservation
+Usage: #example
+Title: "Observation - Level of Pain"
+Description: "Indicates the level of pain the patient is experiencing."
+* status = #final
+* category = $OBSERVATION_CATEGORY#exam
+* code = $LNC#LL5953-6
+* code.text = "Pain interpretation"
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* valueCodeableConcept = $YesNoCodeSystem#true
