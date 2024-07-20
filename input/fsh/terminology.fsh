@@ -2046,3 +2046,15 @@ Description: "Codes used for representing level of pain (pain scale)."
 * $LNC#LA15111-0 "Mild pain"
 * $LNC#LA135-6 "Moderate pain"
 * $LNC#LA15109-4 "Severe pain"
+
+ValueSet: HIVPreventionPlanValueSet
+Id: hiv-prevention-plan-value-set
+Title: "HIV Prevention Plan"
+Description: "Codes used for representing the patient's plan for the prevention of HIV being transmitted to others."
+* ^experimental = false
+* $SCT#266753000 "Referral for laboratory tests"
+* $LNC#LP157024-3 "HIV results shared with partner"
+* $SCT#386467004 "Safe sex education"
+* $SCT#25681007 "Sexually transmitted disease clinic"
+* $SCT#445563009 "Counseling for sexually transmitted disease"
+* $LNC#28355-6 "Substance Use Status"

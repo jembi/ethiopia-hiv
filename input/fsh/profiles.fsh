@@ -2853,3 +2853,30 @@ Description: "Indicates the level of pain the patient is experiencing."
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
 * valueCodeableConcept from YesNoValueSet (required)
+
+Profile: HIVPreventionPlan
+Parent: GenericObservation
+Id: hiv-prevention-plan-observation
+Title: "Observation - HIV Prevention Plan"
+Description: "Indicates the HIV prevention plan agreed between the clinician and the patient."
+* category 1..1
+* category = $OBSERVATION_CATEGORY#social-history
+* code = $SCT#439057000
+* value[x] only CodeableConcept
+* valueCodeableConcept 1..1
+* valueCodeableConcept.extension contains HIVPreventionPlanVExtension named HIVPreventionPlan 1..*
+
+Profile: OperationTrippleZero
+Parent: GenericObservation
+Id: otz-observation
+Title: "Observation - Operation Tripple Zero"
+Description: "Indicates whether the patient was enrolled into the specialised program, OTZ."
+* category 1..1
+* category = $OBSERVATION_CATEGORY#therapy
+* code = $LNC#LP7652-3
+* value[x] only CodeableConcept
+* valueCodeableConcept 1..1
+* valueCodeableConcept from YesNoValueSet (required)
+* valueCodeableConcept.extension contains ObservedDateExtension named ObservedDate 0..1 MS
+* valueCodeableConcept.extension[ObservedDate] ^definition =
+    "reason(s) why this should be supported."
