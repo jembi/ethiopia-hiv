@@ -2853,3 +2853,4 @@ Description: "Indicates the level of pain the patient is experiencing."
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
 * valueCodeableConcept from YesNoValueSet (required)
+
