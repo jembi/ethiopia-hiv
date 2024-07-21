@@ -2788,21 +2788,36 @@ Description: "Records the medication history for the patient receiving TPT medic
 * reasonReference 1..1
 * reasonReference only Reference(TBProphylaxisTypeObservation)
 
-Profile: OpportunisicInfections
+Profile: GenericCondition
 Parent: Condition
-Id: opportunisic-infections
-Title: "Condition - Opportunisic Infection"
-Description: "Captures the opportunisic infections that the patient suffering from."
+Id: generic-condition
+Title: "Condition - Generic"
+Description: "Base Condition elements that are inherited by other Condition profiles."
 * code 1..1
-* code from OpportunisticInfectionsValueSet (required)
 * category 1..1
-* category = $ConditionCategoryCodeSystem#problem-list-item
 * subject 1..1
 * subject only Reference(EthPatient)
 * encounter 1..1
 * encounter only Reference(TargetFacilityEncounter)
 * recordedDate 1..1
 * clinicalStatus 1..1
+
+Profile: OpportunisticInfections
+Parent: GenericCondition
+Id: current-opportunistic-infections
+Title: "Condition - Current Opportunistic Infection"
+Description: "Captures the opportunistic infections that the patient is currently suffering from."
+* code from OpportunisticInfectionsValueSet (extensible)
+* category = $ConditionCategoryCodeSystem#problem-list-item
+
+Profile: PastOpportunisticInfections
+Parent: GenericCondition
+Id: past-opportunistic-infections
+Title: "Condition - Past Opportunistic Infection"
+Description: "Captures the opportunistic infections that the patient did currently suffering from in the past."
+* code from OpportunisticInfectionsValueSet (extensible)
+* code.text 1..1
+* category = $ConditionCategoryCodeSystem#problem-list-item
 
 Profile: MedicalHistory
 Parent: List
@@ -2814,7 +2829,7 @@ Description: "Documents the medical history for the patient"
 * title 1..1
 * title = "Medical History"
 * code 1..1
-* code = $ListCodeCodeSystem#problems
+* code = $LNC#LP73189-0
 * subject 1..1
 * subject only Reference(EthPatient)
 * encounter 1..1
@@ -2823,7 +2838,27 @@ Description: "Documents the medical history for the patient"
 * source 1..1
 * source only Reference(GeneralPractitioner)
 * entry 1..*
-* entry.item only Reference(OpportunisicInfections)
+* entry obeys List-Medical-History-1
+
+* insert Slice(entry, reasons why this should be supported, value, flag.coding, open, Slicing the entry based on the flag value, false)
+
+* entry contains
+    PastMedicalHistory 0..1 MS and
+    CurrentMedicalInformation 0..1 MS
+
+* entry[PastMedicalHistory] ^definition =
+    "reason(s) why this should be supported."
+* entry[PastMedicalHistory].flag 1..1
+* entry[PastMedicalHistory].flag.coding 1..1
+* entry[PastMedicalHistory].flag.coding = $LNC#LP74217-8
+* entry[PastMedicalHistory].item only Reference(PastOpportunisticInfections)
+
+* entry[CurrentMedicalInformation] ^definition =
+    "reason(s) why this should be supported."
+* entry[CurrentMedicalInformation].flag 1..1
+* entry[CurrentMedicalInformation].flag.coding 1..1
+* entry[CurrentMedicalInformation].flag.coding = $LNC#LP74664-1
+* entry[CurrentMedicalInformation].item only Reference(OpportunisticInfections)
 
 Profile: AssessedForPainObservation
 Parent: GenericObservation

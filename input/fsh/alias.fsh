@@ -55,6 +55,5 @@ Alias: $EACGiven = http://moh.gov.et/fhir/hiv/CodeSystem/eac-given-code-system
 Alias: $TBScreeningDiagnosticTest = http://moh.gov.et/fhir/hiv/CodeSystem/tb-screening-diagnostic-test-type-code-system
 Alias: $ReferenceRangeMeaning = http://terminology.hl7.org/CodeSystem/referencerange-meaning
 Alias: $TPTAlternateProphylaxisType = http://moh.gov.et/fhir/hiv/CodeSystem/tpt-alternate-prophylaxis-type-code-system
-Alias: $ListCodeCodeSystem = http://terminology.hl7.org/CodeSystem/list-example-use-codes
 Alias: $ConditionCategoryCodeSystem = http://terminology.hl7.org/CodeSystem/condition-category
 Alias: $ConditionClinicalStatusCodeSystem = http://terminology.hl7.org/CodeSystem/condition-clinical

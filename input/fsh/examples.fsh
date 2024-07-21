@@ -3936,11 +3936,11 @@ Description: "Indicates the activities associated with the requests for cervical
 * activity[=].reference = Reference(CervicalCancerTreatmentServiceRequestForVIAExample)
 * activity[=].outcomeReference = Reference(CervicalCancerTreatmentReceivedForVIAExample)
 
-Instance: OpportunisicInfectionsPulmonaryTBExample
-InstanceOf: OpportunisicInfections
+Instance: OpportunisticInfectionsPulmonaryTBExample
+InstanceOf: OpportunisticInfections
 Usage: #example
 Title: "Condition - Pulmonary Tuberculosis"
-Description: "Indicates that the patient suffering from pulmonary tuberculosis."
+Description: "Indicates that the patient is currently suffering from pulmonary tuberculosis."
 * code = $SCT#154283005
 * category = $ConditionCategoryCodeSystem#problem-list-item
 * subject = Reference(GeneralPatientExample)
@@ -3948,11 +3948,11 @@ Description: "Indicates that the patient suffering from pulmonary tuberculosis."
 * recordedDate = "2024-03-20"
 * clinicalStatus = $ConditionClinicalStatusCodeSystem#active
 
-Instance: OpportunisicInfectionsChronicDiarrheaExample
-InstanceOf: OpportunisicInfections
+Instance: OpportunisticInfectionsChronicDiarrheaExample
+InstanceOf: OpportunisticInfections
 Usage: #example
 Title: "Condition - Chronic Diarrhea"
-Description: "Indicates that the patient suffering from chronic diarrhea."
+Description: "Indicates that the patient is currently suffering from chronic diarrhea."
 * code = $SCT#236071009
 * category = $ConditionCategoryCodeSystem#problem-list-item
 * subject = Reference(GeneralPatientExample)
@@ -3965,13 +3965,13 @@ InstanceOf: MedicalHistory
 Usage: #example
 Title: "List - Medical History"
 Description: "Documents the medical history for the patient"
-* code = $ListCodeCodeSystem#problems
+* code = $LNC#LP73189-0
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * date = "2024-03-20"
 * source = Reference(GeneralPractitionerExample)
-* entry[+].item = Reference(OpportunisicInfectionsPulmonaryTBExample)
-* entry[+].item = Reference(OpportunisicInfectionsChronicDiarrheaExample)
+* entry[CurrentMedicalInformation].item = Reference(OpportunisticInfectionsPulmonaryTBExample)
+* entry[CurrentMedicalInformation].item = Reference(OpportunisticInfectionsChronicDiarrheaExample)
 
 Instance: NotAssessedForPainObservationExample
 InstanceOf: AssessedForPainObservation
