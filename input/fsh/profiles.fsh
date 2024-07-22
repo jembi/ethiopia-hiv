@@ -252,6 +252,9 @@ Description: "Represents the patient's current ART follow-up status."
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
 * valueCodeableConcept from ARTFollowUpStatusValueSet (required)
+* valueCodeableConcept.extension contains ObservedDateExtension named ObservedDate 0..1 MS
+* valueCodeableConcept.extension[ObservedDate] ^definition =
+    "reason(s) why this should be supported."
 * hasMember 0..1 MS
 * hasMember ^definition =
     "reason(s) why this should be supported."
@@ -2267,10 +2270,11 @@ Id: cotrimoxazole-preventive-therapy-medication-administration
 Title: "Medication Administration - For Prescribed Cotrimoxazole Preventive Therapy Medication"
 Description: "Used to record the medication administration period for prescribed cotrimoxazole preventive therapy medication."
 * status 1..1
-* request 1..1
 * medication[x] only Reference
 * medicationReference only Reference(OIMedication)
-
+* request 0..1 MS
+  * ^definition = "Indicates a point in time prescription."
+  * ^short = "Used for point in time prescriptions in the context of an encounter."
 * request only Reference(CotrimoxazolePreventiveTherapyMedicationRequest)
 * subject 1..1
 * subject only Reference(EthPatient)
@@ -2279,7 +2283,9 @@ Description: "Used to record the medication administration period for prescribed
 * effective[x] only Period
 * effectivePeriod 1..1
   * start 1..1
-  * end 1..1
+  * end 0..1 MS
+    * ^definition = "Indicates the medication end date for the request."
+    * ^short = "Used to represent the medication end date for the request (point in time prescription)."
 
 Profile: FluconazolePreventiveTherapy
 Parent: GenericObservation
@@ -2311,7 +2317,9 @@ Description: "Used to record the medication administration period for prescribed
 * effective[x] only Period
 * effectivePeriod 1..1
   * start 1..1
-  * end 1..1
+  * end 0..1 MS
+    * ^definition = "Indicates the medication end date for the request."
+    * ^short = "Used to represent the medication end date for the request (point in time prescription)."
 
 Profile: HIVProgramStatusObservation
 Parent: GenericObservation
@@ -2906,3 +2914,76 @@ Description: "Indicates whether the patient was enrolled into the specialised pr
 * valueCodeableConcept.extension contains ObservedDateExtension named ObservedDate 0..1 MS
 * valueCodeableConcept.extension[ObservedDate] ^definition =
     "reason(s) why this should be supported."
+
+Profile: MedicationHistory
+Parent: List
+Id: medication-history
+Title: "List - History of Past Medication"
+Description: "Documents the medication history of previsouly prescribed (cotrimoxazole, isoniazid and ARV) treatment for the patient."
+* status = #current
+* title 1..1
+* title = "Medication History"
+* code 1..1
+* code = $LNC#8677-7
+* subject 1..1
+* subject only Reference(EthPatient)
+* encounter 1..1
+* encounter only Reference(TargetFacilityEncounter)
+* date 1..1
+* source 1..1
+* source only Reference(GeneralPractitioner)
+* entry 1..*
+* entry obeys List-Medical-History-2
+
+* insert Slice(entry, reasons why this should be supported, value, flag.coding, open, Slicing the entry based on the flag value, false)
+
+* entry contains
+    Cotrimoxazole 0..* MS and
+    Isoniazid 0..* MS and
+    ARV 0..* MS
+
+* entry[Cotrimoxazole] ^definition =
+    "Cotrimoxazole status"
+* entry[Cotrimoxazole].flag 1..1
+* entry[Cotrimoxazole].flag.coding 1..1
+* entry[Cotrimoxazole].flag.coding = $LNC#18998-5
+* entry[Cotrimoxazole].item only Reference(OIMedicationStatement)
+
+* entry[Isoniazid] ^definition =
+    "Isoniazid (INH) status"
+* entry[Isoniazid].flag 1..1
+* entry[Isoniazid].flag.coding 1..1
+* entry[Isoniazid].flag.coding = $LNC#18934-0
+* entry[Isoniazid].item only Reference(TPTMedicationStatement)
+
+* entry[ARV] ^definition =
+    "Antiretroviral therapy status"
+* entry[ARV].flag 1..1
+* entry[ARV].flag.coding 1..1
+* entry[ARV].flag.coding = $LNC#47248-0
+* entry[ARV].item only Reference(HIVTreatmentPriorToEnrollment or ARTTreatmentMedicationStatement or CurrentHIVTreatmentTherapyDuration)
+
+Profile: HIVTreatmentPriorToEnrollment
+Parent: GenericObservation
+Id: hiv-treatment-prior-enrollment-observation
+Title: "Observation - HIV Treatment Prior to Enrollment"
+Description: "Indicates whether the patient has ever received ART prior to enrollment in the current facility."
+* category 1..1
+* category = $OBSERVATION_CATEGORY#therapy
+* code = $LNC#45231-8
+* value[x] only CodeableConcept
+* valueCodeableConcept 1..1
+* valueCodeableConcept from YesNoValueSet (required)
+
+Profile: CurrentHIVTreatmentTherapyDuration
+Parent: GenericObservation
+Id: current-art-duration-observation
+Title: "Observation - Current HIV Treatment Therapy Duration"
+Description: "Indicates the duration the patient has been on the current ART."
+* category 1..1
+* category = $OBSERVATION_CATEGORY#therapy
+* code = $LNC#45239-1
+* value[x] only Quantity
+* valueQuantity 1..1
+* valueQuantity = $UCUM_UNIT#mo
+* valueQuantity.unit = "mo"

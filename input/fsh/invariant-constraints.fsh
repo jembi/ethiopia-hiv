@@ -162,3 +162,8 @@ Invariant: List-Medical-History-1
 Description: "The List SHALL have at least one of entry for slice \"PastMedicalHistory\" or \"CurrentMedicalInformation\"."
 Expression: "slice('http://moh.gov.et/fhir/hiv/StructureDefinition/medical-history', 'PastMedicalHistory').count() + slice('http://moh.gov.et/fhir/hiv/StructureDefinition/medical-history', 'CurrentMedicalInformation').count() > 0"
 Severity: #error
+
+Invariant: List-Medical-History-2
+Description: "The List SHALL have at least one of entry for slice \"Cotrimoxazole\", \"Isoniazid\" or \"ARV\"."
+Expression: "slice('http://moh.gov.et/fhir/hiv/StructureDefinition/medication-history', 'Cotrimoxazole').count() + slice('http://moh.gov.et/fhir/hiv/StructureDefinition/medication-history', 'Isoniazid').count() + slice('http://moh.gov.et/fhir/hiv/StructureDefinition/medication-history', 'ARV').count() > 0"
+Severity: #error
