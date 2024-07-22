@@ -4239,3 +4239,73 @@ Description: "Documents the medication history of previsouly prescribed (cotrimo
 * entry[ARV][+].item = Reference(HIVTreatmentPriorToEnrollmentExample)
 * entry[ARV][+].item = Reference(PastInitiatedArvTreatmentAndStillActiveExample)
 * entry[ARV][+].item = Reference(CurrentHIVTreatmentTherapyDurationExample)
+
+Instance: TemperatureExample
+InstanceOf: Temperature
+Usage: #example
+Title: "Observation - Temperature"
+Description: "Indicates the patient's current temperature."
+* status = #final
+* category = $OBSERVATION_CATEGORY#vital-signs
+* code = $LNC#8310-5
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* valueQuantity = $UCUM_UNIT#Cel
+* valueQuantity.unit = "degrees C"
+* valueQuantity.value = 38
+
+Instance: HeartRateExample
+InstanceOf: HeartRate
+Usage: #example
+Title: "Observation - Heart Rate"
+Description: "Indicates the patient's current heart rate."
+* status = #final
+* category = $OBSERVATION_CATEGORY#vital-signs
+* code = $LNC#8867-4
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* valueQuantity = $UCUM_UNIT#/min
+* valueQuantity.unit = "beats/min"
+* valueQuantity.value = 44
+
+Instance: BloodPressureExample
+InstanceOf: BloodPressure
+Usage: #example
+Title: "Observation - Blood Pressure"
+Description: "Represents the Systolic and Diastolic blood pressure for the patient."
+* status = #final
+* category = $OBSERVATION_CATEGORY#vital-signs
+* code = $LNC#85354-9
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2022-11-30"
+* performer[+] = Reference(CurrentServiceProviderExample)
+* performer[+] = Reference(GeneralPractitionerExample)
+
+* component[Systolic].valueQuantity.value = 106
+* component[Systolic].valueQuantity.unit = "mmHg"
+* component[Systolic].valueQuantity = $UCUM_UNIT#mm[Hg]
+
+* component[Diastolic].valueQuantity.value = 60
+* component[Diastolic].valueQuantity.unit = "mmHg"
+* component[Diastolic].valueQuantity = $UCUM_UNIT#mm[Hg]
+
+Instance: RespiratoryRatexample
+InstanceOf: RespiratoryRate
+Usage: #example
+Title: "Observation - Respiratory Rate"
+Description: "Indicates the patient's current respiratory rate."
+* status = #final
+* category = $OBSERVATION_CATEGORY#vital-signs
+* code = $LNC#9279-1
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* valueQuantity = $UCUM_UNIT#/min
+* valueQuantity.unit = "breaths/min"
+* valueQuantity.value = 26

@@ -234,7 +234,7 @@ Description: "Base Observation elements that are inherited by other Observation 
 * encounter only Reference(TargetFacilityEncounter)
 * effectiveDateTime 1..1
 * performer 1..*
-* performer only Reference(ServiceProvider)
+* performer only Reference(ServiceProvider or GeneralPractitioner)
 * category 0..*
 * category ^definition =
     "reason(s) why this should be supported."
@@ -2993,3 +2993,76 @@ Description: "Indicates the duration the patient has been on the current ART."
 * valueQuantity 1..1
 * valueQuantity = $UCUM_UNIT#mo
 * valueQuantity.unit = "mo"
+
+Profile: Temperature
+Parent: GenericObservation
+Id: temperature-observation
+Title: "Observation - Temperature"
+Description: "Indicates the patient's current temperature."
+* category 1..1
+* category = $OBSERVATION_CATEGORY#vital-signs
+* code = $LNC#8310-5
+* value[x] only Quantity
+* valueQuantity 1..1
+* valueQuantity = $UCUM_UNIT#Cel
+* valueQuantity.unit = "degrees C"
+
+Profile: HeartRate
+Parent: GenericObservation
+Id: heart-rate-observation
+Title: "Observation - Heart Rate"
+Description: "Indicates the patient's current heart rate."
+* category 1..1
+* category = $OBSERVATION_CATEGORY#vital-signs
+* code = $LNC#8867-4
+* value[x] only Quantity
+* valueQuantity 1..1
+* valueQuantity = $UCUM_UNIT#/min
+* valueQuantity.unit = "beats/min"
+
+Profile: BloodPressure
+Parent: GenericObservation
+Id: blood-pressure
+Title: "Blood Pressure Observation"
+Description: "Represents the patient's blood pressure."
+* subject only Reference(EthPatient)
+* encounter only Reference(TargetFacilityEncounter)
+* code = $LNC#85354-9
+* category 1..1
+* category = $OBSERVATION_CATEGORY#vital-signs
+* component 1..*
+
+* insert Slice(component, reasons why this should be supported, value, code, open, Slicing the component based on the code value, false)
+
+* component contains
+    Systolic 0..1 MS and
+    Diastolic 0..1 MS
+
+* component[Systolic] ^definition =
+    "reason(s) why this should be supported."
+* component[Systolic].code 1..1
+* component[Systolic].code = $LNC#8480-6
+* component[Systolic].valueQuantity.value 1..1
+* component[Systolic].valueQuantity.unit = "mmHg"
+* component[Systolic].valueQuantity = $UCUM_UNIT#mm[Hg]
+
+* component[Diastolic] ^definition =
+    "reason(s) why this should be supported."
+* component[Diastolic].code 1..1
+* component[Diastolic].code = $LNC#8462-4
+* component[Diastolic].valueQuantity.value 1..1
+* component[Diastolic].valueQuantity.unit = "mmHg"
+* component[Diastolic].valueQuantity = $UCUM_UNIT#mm[Hg]
+
+Profile: RespiratoryRate
+Parent: GenericObservation
+Id: respiratory-rate-observation
+Title: "Observation - Respiratory Rate"
+Description: "Indicates the patient's current respiratory rate."
+* category 1..1
+* category = $OBSERVATION_CATEGORY#vital-signs
+* code = $LNC#9279-1
+* value[x] only Quantity
+* valueQuantity 1..1
+* valueQuantity = $UCUM_UNIT#/min
+* valueQuantity.unit = "breaths/min"
