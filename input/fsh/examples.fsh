@@ -4109,3 +4109,133 @@ Description: "Indicates that the patient is enrolled into the specialised progra
 * performer = Reference(CurrentServiceProviderExample)
 * valueCodeableConcept = $YesNoCodeSystem#true
 * valueCodeableConcept.extension[ObservedDate].valueDateTime = "2023-10-21"
+
+Instance: CurrentHIVTreatmentTherapyDurationExample
+InstanceOf: CurrentHIVTreatmentTherapyDuration
+Usage: #example
+Title: "Observation - Current HIV Treatment Therapy Duration"
+Description: "Indicates the duration the patient has been on the current ART."
+* status = #final
+* category = $OBSERVATION_CATEGORY#therapy
+* code = $LNC#45239-1
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* valueQuantity = $UCUM_UNIT#mo
+* valueQuantity.unit = "mo"
+* valueQuantity.value = 198
+
+Instance: HIVTreatmentPriorToEnrollmentExample
+InstanceOf: HIVTreatmentPriorToEnrollment
+Usage: #example
+Title: "Observation - HIV Treatment Prior to Enrollment"
+Description: "Indicates whether the patient has ever received ART prior to enrollment in the current facility."
+* status = #final
+* category = $OBSERVATION_CATEGORY#therapy
+* code = $LNC#45231-8
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* valueCodeableConcept = $YesNoCodeSystem#true
+
+Instance: PastCompletedCotrimoxazoleMedicationStatementExample
+InstanceOf: OIMedicationStatement
+Usage: #example
+Title: "Medication Statement - Past Cotrimoxazole (Completed)"
+Description: "Records the Cotrimoxazole details for the patient that was prescribed in the past and completed."
+* status = #completed
+* medicationReference = Reference(CotrimoxazoleMedicationExample)
+* subject = Reference(GeneralPatientExample)
+* context = Reference(GeneralEncounterExample)
+* effectivePeriod.start = "2018-05-12"
+* effectivePeriod.end = "2018-08-13"
+
+Instance: PastStoppedCotrimoxazoleMedicationStatementExample
+InstanceOf: OIMedicationStatement
+Usage: #example
+Title: "Medication Statement - Past Cotrimoxazole (Stopped)"
+Description: "Records the Cotrimoxazole details for the patient that was prescribed in the past and stopped."
+* status = #stopped
+* medicationReference = Reference(CotrimoxazoleMedicationExample)
+* subject = Reference(GeneralPatientExample)
+* context = Reference(GeneralEncounterExample)
+* effectivePeriod.start = "2018-05-12"
+* effectivePeriod.end = "2018-08-13"
+
+Instance: PastAndStillActiveCotrimoxazoleMedicationStatementExample
+InstanceOf: OIMedicationStatement
+Usage: #example
+Title: "Medication Statement - Past Cotrimoxazole (Still active)"
+Description: "Records the Cotrimoxazole details for the patient that was prescribed in the past and still active."
+* status = #active
+* medicationReference = Reference(CotrimoxazoleMedicationExample)
+* subject = Reference(GeneralPatientExample)
+* context = Reference(GeneralEncounterExample)
+* effectivePeriod.start = "2018-05-12"
+
+Instance: PastActiveTPTMedicationStatementExample
+InstanceOf: TPTMedicationStatement
+Usage: #example
+Title: "Medication Statement - Past INH (Still active)"
+Description: "Records the INH details for the patient that was prescribed in the past and still active."
+* status = #active
+* medicationReference = Reference(TPTMedicationExample)
+* subject = Reference(GeneralPatientExample)
+* context = Reference(GeneralEncounterExample)
+* effectivePeriod.start = "2009-11-24"
+
+Instance: PastCompletedTPTMedicationStatementExample
+InstanceOf: TPTMedicationStatement
+Usage: #example
+Title: "Medication Statement - Past INH (Completed)"
+Description: "Records the INH details for the patient that was prescribed in the past and completed."
+* status = #completed
+* medicationReference = Reference(TPTMedicationExample)
+* subject = Reference(GeneralPatientExample)
+* context = Reference(GeneralEncounterExample)
+* effectivePeriod.start = "2018-05-12"
+* effectivePeriod.end = "2018-08-13"
+
+Instance: PastInitiatedArvTreatmentAndStillActiveExample
+InstanceOf: ARTTreatmentMedicationStatement
+Usage: #example
+Title: "Medication Statement - Past ARV Treatment Initiated On (Still active)"
+Description: "Records the ARV Treatment details for the patient who was initiated on ART in the past and still active."
+* status = #active
+* medicationReference = Reference(ARVMedicationExample)
+* subject = Reference(GeneralPatientExample)
+* context = Reference(GeneralEncounterExample)
+* effectivePeriod.start = "2009-11-24"
+* effectivePeriod.end = "2018-08-13"
+
+Instance: PastInitiatedArvTreatmentAndStoppedMedicationStatementExample
+InstanceOf: ARTTreatmentMedicationStatement
+Usage: #example
+Title: "Medication Statement - Past ARV Treatment Initiated On (Stopped)"
+Description: "Records the ARV Treatment details for the patient who was initiated on ART in the past but stopped treatment"
+* status = #stopped
+* medicationReference = Reference(ARVMedicationExample)
+* subject = Reference(GeneralPatientExample)
+* context = Reference(GeneralEncounterExample)
+* effectivePeriod.start = "2009-11-24"
+* effectivePeriod.end = "2018-08-13"
+
+Instance: MedicationHistoryExample
+InstanceOf: MedicationHistory
+Usage: #example
+Title: "List - History of Past Medication"
+Description: "Documents the medication history of previsouly prescribed (cotrimoxazole, isoniazid and ARV) treatment for the patient."
+* code = $LNC#8677-7
+* mode = #working
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* date = "2024-03-20"
+* source = Reference(GeneralPractitionerExample)
+
+* entry[Cotrimoxazole][+].item = Reference(PastStoppedCotrimoxazoleMedicationStatementExample)
+* entry[Isoniazid][+].item = Reference(PastCompletedTPTMedicationStatementExample)
+* entry[ARV][+].item = Reference(HIVTreatmentPriorToEnrollmentExample)
+* entry[ARV][+].item = Reference(PastInitiatedArvTreatmentAndStillActiveExample)
+* entry[ARV][+].item = Reference(CurrentHIVTreatmentTherapyDurationExample)

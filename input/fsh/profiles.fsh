@@ -589,7 +589,9 @@ Title: "Medication Statement - ART"
 Description: "Records the medication history for the HIV+ patient."
 * medication[x] only Reference
 * medicationReference only Reference(ARVMedication)
-* reasonReference 1..1
+* reasonReference 0..1 MS
+  * ^definition = "Indicates a reason for the point in time prescription."
+  * ^short = "Used for indicating the reason for point in time prescriptions in the context of an encounter."
 * reasonReference only Reference(ARVRegimenChange or ARTFollowupStatusObservation)
 
 Profile: OIMedicationStatement
@@ -599,7 +601,9 @@ Title: "Medication Statement - Opportunisic Infections (OI)"
 Description: "Records the medication history for a patient suffering from OI's."
 * medication[x] only Reference
 * medicationReference only Reference(OIMedication)
-* reasonReference 1..1
+* reasonReference 0..1 MS
+  * ^definition = "Indicates a reason for the point in time prescription."
+  * ^short = "Used for indicating the reason for point in time prescriptions in the context of an encounter."
 * reasonReference only Reference(CotrimoxazolePreventiveTherapy or FluconazolePreventiveTherapy)
 
 Profile: HIVTestEligibilityStatus
@@ -2793,7 +2797,9 @@ Title: "Medication Statement - TB Preventive Therapy (TPT)"
 Description: "Records the medication history for the patient receiving TPT medication."
 * medication[x] only Reference
 * medicationReference only Reference(TPTMedication)
-* reasonReference 1..1
+* reasonReference 0..1 MS
+  * ^definition = "Indicates a reason for the point in time prescription."
+  * ^short = "Used for indicating the reason for point in time prescriptions in the context of an encounter."
 * reasonReference only Reference(TBProphylaxisTypeObservation)
 
 Profile: GenericCondition
@@ -2938,8 +2944,8 @@ Description: "Documents the medication history of previsouly prescribed (cotrimo
 * insert Slice(entry, reasons why this should be supported, value, flag.coding, open, Slicing the entry based on the flag value, false)
 
 * entry contains
-    Cotrimoxazole 0..* MS and
-    Isoniazid 0..* MS and
+    Cotrimoxazole 0..1 MS and
+    Isoniazid 0..1 MS and
     ARV 0..* MS
 
 * entry[Cotrimoxazole] ^definition =
