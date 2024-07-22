@@ -2073,3 +2073,28 @@ Description: "Codes used for representing the patient's plan for the prevention 
 * $SCT#25681007 "Sexually transmitted disease clinic"
 * $SCT#445563009 "Counseling for sexually transmitted disease"
 * $LNC#28355-6 "Substance Use Status"
+
+ValueSet: PresentingSymptomsValueSet
+Id: presenting-symptoms-value-set
+Title: "Presenting Symptoms"
+Description: "Codes used for representing the symptoms currently being experienced by the patient."
+* ^experimental = false
+* $SCT#68154008 "Chronic cough"
+* $SCT#267036007 "Dyspnea"
+* $SCT#66857006 "Hemoptysis"
+* $SCT#52702003 "Chronic fatigue syndrome"
+* $SCT#89362005 "Weight loss"
+* $SCT#95891005 "Influenza-like illness"
+* $SCT#42984000 "Night sweats"
+* $SCT#386661006 "Fever"
+* $SCT#40739000 "Dysphagia"
+* $SCT#30233002 "Swallowing painful"
+* $SCT#422587007 "Nausea"
+* $SCT#422400008 "Vomiting"
+* $SCT#21522001 "Abdominal pain"
+* $SCT#101000119102 "Numbness and tingling sensation of skin"
+* $SCT#121021000119105 "New daily persistent headache"
+* $SCT#712831003 "Frequent headache"
+* $SCT#2776000 "Delirium"
+* $SCT#236071009 "Chronic diarrhea"
+* $SCT#8098009 "Sexually transmitted infectious disease"
