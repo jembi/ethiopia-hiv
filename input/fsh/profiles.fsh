@@ -2804,20 +2804,12 @@ Description: "Base Condition elements that are inherited by other Condition prof
 
 Profile: OpportunisticInfections
 Parent: GenericCondition
-Id: current-opportunistic-infections
-Title: "Condition - Current Opportunistic Infection"
-Description: "Captures the opportunistic infections that the patient is currently suffering from."
+Id: opportunistic-infections
+Title: "Condition - Opportunistic Infection"
+Description: "Captures the opportunistic infections that the patient is currently/was previsouly suffering from."
 * code from OpportunisticInfectionsValueSet (extensible)
 * category = $ConditionCategoryCodeSystem#problem-list-item
-
-Profile: PastOpportunisticInfections
-Parent: GenericCondition
-Id: past-opportunistic-infections
-Title: "Condition - Past Opportunistic Infection"
-Description: "Captures the opportunistic infections that the patient did currently suffering from in the past."
-* code from OpportunisticInfectionsValueSet (extensible)
 * code.text 1..1
-* category = $ConditionCategoryCodeSystem#problem-list-item
 
 Profile: MedicalHistory
 Parent: List
@@ -2825,7 +2817,6 @@ Id: medical-history
 Title: "List - Medical History"
 Description: "Documents the medical history for the patient"
 * status = #current
-* mode = #working
 * title 1..1
 * title = "Medical History"
 * code 1..1
@@ -2843,18 +2834,18 @@ Description: "Documents the medical history for the patient"
 * insert Slice(entry, reasons why this should be supported, value, flag.coding, open, Slicing the entry based on the flag value, false)
 
 * entry contains
-    PastMedicalHistory 0..1 MS and
-    CurrentMedicalInformation 0..1 MS
+    PastMedicalHistory 0..* MS and
+    CurrentMedicalInformation 0..* MS
 
 * entry[PastMedicalHistory] ^definition =
-    "reason(s) why this should be supported."
+    "Past medical history representing inactive problems."
 * entry[PastMedicalHistory].flag 1..1
 * entry[PastMedicalHistory].flag.coding 1..1
 * entry[PastMedicalHistory].flag.coding = $LNC#LP74217-8
-* entry[PastMedicalHistory].item only Reference(PastOpportunisticInfections)
+* entry[PastMedicalHistory].item only Reference(OpportunisticInfections)
 
 * entry[CurrentMedicalInformation] ^definition =
-    "reason(s) why this should be supported."
+    "Current medical information representing active problems."
 * entry[CurrentMedicalInformation].flag 1..1
 * entry[CurrentMedicalInformation].flag.coding 1..1
 * entry[CurrentMedicalInformation].flag.coding = $LNC#LP74664-1
