@@ -10,9 +10,7 @@ WARNING: StructureDefinition.where(url = 'http://moh.gov.et/fhir/hiv/StructureDe
 WARNING: StructureDefinition.where(url = 'http://moh.gov.et/fhir/hiv/StructureDefinition/generic-medication-statement'): The Implementation Guide contains no examples for this profile
 WARNING: StructureDefinition.where(url = 'http://moh.gov.et/fhir/hiv/StructureDefinition/generic-service-request'): The Implementation Guide contains no examples for this profile
 WARNING: StructureDefinition.where(url = 'http://moh.gov.et/fhir/hiv/StructureDefinition/generic-diagnostic-report'): The Implementation Guide contains no examples for this profile
-
-# These CodeSystems and/or ValueSets are in FHIR Core
-%Reference to draft CodeSystem http://terminology.hl7.org/CodeSystem/observation-category%
+WARNING: StructureDefinition.where(url = 'http://moh.gov.et/fhir/hiv/StructureDefinition/generic-condition'): The Implementation Guide contains no examples for this profile
 
 # There is no requirement yet to have this IG registered with a package OID. For more info: https://www.hl7.org/oid/index.cfm
 INFORMATION: Resource: This resource could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)

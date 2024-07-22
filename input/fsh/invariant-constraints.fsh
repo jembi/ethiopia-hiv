@@ -157,3 +157,8 @@ Invariant: Observation-Assessed-For-Pain-1
 Description: "If Observation.valueCodeableConcept.coding.code is \"true\" then hasMember SHALL be present."
 Expression: "value.coding.where(system = 'http://moh.gov.et/fhir/hiv/CodeSystem/yes-no-code-system' and code = 'true').exists() implies hasMember.exists()"
 Severity: #error
+
+Invariant: List-Medical-History-1
+Description: "The List SHALL have at least one of entry for slice \"PastMedicalHistory\" or \"CurrentMedicalInformation\"."
+Expression: "slice('http://moh.gov.et/fhir/hiv/StructureDefinition/medical-history', 'PastMedicalHistory').count() + slice('http://moh.gov.et/fhir/hiv/StructureDefinition/medical-history', 'CurrentMedicalInformation').count() > 0"
+Severity: #error
