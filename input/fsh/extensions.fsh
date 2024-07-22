@@ -188,3 +188,14 @@ Description: "Represents the date and time to be documented together with the as
 * valueDateTime 1..1
 * ^context[+].type = #element
 * ^context[=].expression = "Observation.value.ofType(CodeableConcept)"
+
+Extension: HIVPreventionPlanVExtension
+Id: hiv-prevention-plan
+Title: "HIV Prevention Plan"
+Description: "This is an extension to capture the patient's plan for the prevention of HIV being transmitted to others."
+* value[x] only CodeableConcept
+* valueCodeableConcept 1..1
+* valueCodeableConcept from HIVPreventionPlanValueSet (required)
+* valueCodeableConcept.coding only StrictCoding
+* ^context[+].type = #element
+* ^context[=].expression = "Observation.value.ofType(CodeableConcept)"

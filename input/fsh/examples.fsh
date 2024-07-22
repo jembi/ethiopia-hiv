@@ -4018,3 +4018,47 @@ Description: "Indicates the level of pain the patient is experiencing."
 * effectiveDateTime = "2023-12-11"
 * performer = Reference(CurrentServiceProviderExample)
 * valueCodeableConcept = $YesNoCodeSystem#true
+
+Instance: HIVPreventionPlanExample
+InstanceOf: HIVPreventionPlan
+Usage: #example
+Title: "Observation - HIV Prevention Plan"
+Description: "Indicates the HIV prevention plan agreed between the clinician and the patient."
+* status = #final
+* category = $OBSERVATION_CATEGORY#social-history
+* code = $SCT#439057000
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* valueCodeableConcept.extension[HIVPreventionPlan][+].valueCodeableConcept = $SCT#266753000
+* valueCodeableConcept.extension[HIVPreventionPlan][+].valueCodeableConcept = $LNC#LP157024-3
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+
+Instance: NotEnrolledIntoOperationTrippleZeroExample
+InstanceOf: OperationTrippleZero
+Usage: #example
+Title: "Observation - Not Enrolled to Operation Tripple Zero"
+Description: "Indicates that the patient was not enrolled into the specialised program, OTZ."
+* status = #final
+* category = $OBSERVATION_CATEGORY#therapy
+* code = $LNC#LP7652-3
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* valueCodeableConcept = $YesNoCodeSystem#false
+
+Instance: EnrolledIntoOperationTrippleZeroExample
+InstanceOf: OperationTrippleZero
+Usage: #example
+Title: "Observation - Enrolled to Operation Tripple Zero"
+Description: "Indicates that the patient is enrolled into the specialised program, OTZ."
+* status = #final
+* category = $OBSERVATION_CATEGORY#therapy
+* code = $LNC#LP7652-3
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* valueCodeableConcept = $YesNoCodeSystem#true
+* valueCodeableConcept.extension[ObservedDate].valueDateTime = "2023-10-21"
