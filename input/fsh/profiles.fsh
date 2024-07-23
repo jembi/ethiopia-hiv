@@ -1049,6 +1049,9 @@ Description: "Represents the patient's HIV WHO stage."
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
 * valueCodeableConcept from WHOStageValueSet (required)
+* note 0..* MS
+  * ^definition = "Reason for the WHO HIV clinical stage."
+  * ^short = "Used for indicating the WHO HIV clinical stage at enrollment into the HIV program."
 
 Profile: PregnancyStatus
 Parent: GenericObservation
@@ -1646,7 +1649,9 @@ Description: "This is used to record the family member's HIV status."
     "reason(s) why this should be supported."
 * hasMember[HealthStatus] only Reference(HealthStatus)
 
-* note 0..*
+* note 0..* MS
+* note ^definition =
+    "reason(s) why this should be supported."
 
 Profile: TestedForHIV
 Parent: GenericObservation
