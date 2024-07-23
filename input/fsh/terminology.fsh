@@ -2098,3 +2098,26 @@ Description: "Codes used for representing the symptoms currently being experienc
 * $SCT#2776000 "Delirium"
 * $SCT#236071009 "Chronic diarrhea"
 * $SCT#8098009 "Sexually transmitted infectious disease"
+
+ValueSet: PhysicalExamValueSet
+Id: physical-examination-value-set
+Title: "Physical Examinations"
+Description: "Codes used for representing a physical examination."
+* ^experimental = false
+* $LNC#11424-9 "Physical findings of Ears and Nose and Mouth and Throat"
+* $LNC#32450-9 "Physical findings of Lymph node"
+* $LNC#11391-0 "Physical findings of Chest Narrative"
+* $LNC#10200-4 "Physical findings of Heart Narrative"
+* $LNC#10191-5 "Physical findings of Abdomen Narrative"
+* $LNC#10198-0 "Physical findings of Genitourinary tract Narrative"
+* $LNC#11410-8 "Physical findings of Musculoskeletal system Narrative"
+* $LNC#10206-1 "Physical findings of Skin Narrative"
+* $LNC#10202-0 "Physical findings of Nervous system Narrative"
+
+ValueSet: PhysicalExamInterpretationValueSet
+Id: physical-examination-interpretation-value-set
+Title: "Physical Examinations Interpretation"
+Description: "Codes used for interpreting the finding associated with the physical examination."
+* ^experimental = false
+* $ObservationInterpretation#A "Abnormal"
+* $ObservationInterpretation#N "Normal"

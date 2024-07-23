@@ -3066,3 +3066,51 @@ Description: "Indicates the patient's current respiratory rate."
 * valueQuantity 1..1
 * valueQuantity = $UCUM_UNIT#/min
 * valueQuantity.unit = "breaths/min"
+
+Profile: PresentingSymptomObservation
+Parent: GenericObservation
+Id: presenting-symptom-observation
+Title: "Observation - Presenting Symptoms"
+Description: "Indicates any symptoms presented by the patient in the context of the encounter."
+* category 1..1
+* category = $OBSERVATION_CATEGORY#exam
+* code = $LNC#56817-0
+* value[x] only CodeableConcept
+* valueCodeableConcept 1..1
+* valueCodeableConcept.text 1..1
+* valueCodeableConcept from PresentingSymptomsValueSet (extensible)
+
+Profile: PresentingSymptomsHistory
+Parent: List
+Id: presenting-symptoms-history
+Title: "List - History of Presenting Symptoms"
+Description: "Documents the point in time symptoms presented by the patient in the context of the encounter."
+* status = #current
+* title 1..1
+* title = "History of Presenting Symptoms"
+* code 1..1
+* code = $LNC#29547-7
+* subject 1..1
+* subject only Reference(EthPatient)
+* encounter 1..1
+* encounter only Reference(TargetFacilityEncounter)
+* date 1..1
+* source 1..1
+* source only Reference(GeneralPractitioner)
+* entry 1..*
+* entry.item only Reference(PresentingSymptomObservation)
+
+Profile: PhysicalExamsObservation
+Parent: GenericObservation
+Id: physical-examinations-observation
+Title: "Observation - Physical Examinations"
+Description: "Documents the outcome of findings associated with physical observations asserted during the context of the encounter."
+* category 1..1
+* category = $OBSERVATION_CATEGORY#exam
+* code = $LNC#29544-4
+* value[x] only CodeableConcept
+* valueCodeableConcept 1..1
+* valueCodeableConcept.text 1..1
+* valueCodeableConcept from PhysicalExamValueSet (extensible)
+* interpretation 1..1
+* interpretation from PhysicalExamInterpretationValueSet (required)

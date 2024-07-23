@@ -4294,7 +4294,7 @@ Description: "Represents the Systolic and Diastolic blood pressure for the patie
 * component[Diastolic].valueQuantity.unit = "mmHg"
 * component[Diastolic].valueQuantity = $UCUM_UNIT#mm[Hg]
 
-Instance: RespiratoryRatexample
+Instance: RespiratoryRateExample
 InstanceOf: RespiratoryRate
 Usage: #example
 Title: "Observation - Respiratory Rate"
@@ -4309,3 +4309,64 @@ Description: "Indicates the patient's current respiratory rate."
 * valueQuantity = $UCUM_UNIT#/min
 * valueQuantity.unit = "breaths/min"
 * valueQuantity.value = 26
+
+Instance: PresentingFeverSymptomExample
+InstanceOf: PresentingSymptomObservation
+Usage: #example
+Title: "Observation - Presenting Symptoms (Fever)"
+Description: "Indicates fever as a symptom presented by the patient in the context of the encounter."
+* status = #final
+* category = $OBSERVATION_CATEGORY#exam
+* code = $LNC#56817-0
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* valueCodeableConcept = $SCT#386661006
+* valueCodeableConcept.text = "Fever"
+
+Instance: PresentingNauseaSymptomExample
+InstanceOf: PresentingSymptomObservation
+Usage: #example
+Title: "Observation - Presenting Symptoms (Nausea)"
+Description: "Indicates nausea as a symptom presented by the patient in the context of the encounter."
+* status = #final
+* category = $OBSERVATION_CATEGORY#exam
+* code = $LNC#56817-0
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* valueCodeableConcept = $SCT#422587007
+* valueCodeableConcept.text = "Fever"
+
+Instance: PresentingSymptomsListExample
+InstanceOf: PresentingSymptomsHistory
+Usage: #example
+Title: "List - History of Presenting Symptoms"
+Description: "Documents the point in time symptoms presented by the patient in the context of the encounter."
+* code = $LNC#29547-7
+* mode = #working
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* date = "2024-03-20"
+* source = Reference(GeneralPractitionerExample)
+
+* entry[+].item = Reference(PresentingFeverSymptomExample)
+* entry[+].item = Reference(PresentingNauseaSymptomExample)
+
+Instance: PhysicalExamsObservationExample
+InstanceOf: PhysicalExamsObservation
+Usage: #example
+Title: "Observation - Physical Examinations"
+Description: "Documents the outcome of findings associated with physical observations asserted during the context of the encounter."
+* status = #final
+* category = $OBSERVATION_CATEGORY#exam
+* code = $LNC#29544-4
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* valueCodeableConcept = $LNC#32450-9
+* valueCodeableConcept.text = "Lymph node"
+* interpretation = $ObservationInterpretation#A
