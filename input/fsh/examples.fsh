@@ -701,11 +701,11 @@ Description: "Used to record the ART treatment and care details for the patient 
 * activity[+].extension[NextVisitDate].valueDateTime = "2024-03-20"
 * activity[=].reference = Reference(ARVMedicationRequestForRegimenSwitchExample)
 
-Instance: HIVTestEligibleNoReasonsExample
-InstanceOf: HIVTestEligibilityStatus
+Instance: ARTEligibleNoReasonsExample
+InstanceOf: ARTEligibilityStatus
 Usage: #example
-Title: "Observation - Eligible For HIV Test (Without Reasons For Eligibility)"
-Description: "Represents the patient's eligibility for HIV test"
+Title: "Observation - Eligible For ART (Without Reasons For Eligibility)"
+Description: "Indicates that the patient is eligibile for ART"
 * status = #final
 * category = $OBSERVATION_CATEGORY#exam
 * code = $SCT#171121004
@@ -716,11 +716,11 @@ Description: "Represents the patient's eligibility for HIV test"
 * effectiveDateTime = "2024-01-25"
 * performer = Reference(CurrentServiceProviderExample)
 
-Instance: HIVTestEligibleWithReasonsExample
-InstanceOf: HIVTestEligibilityStatus
+Instance: ARTEligibleWithReasonsExample
+InstanceOf: ARTEligibilityStatus
 Usage: #example
-Title: "Observation - Eligible For HIV Test (With Reasons For Eligibility)"
-Description: "Represents the patient's eligibility for HIV test"
+Title: "Observation - Eligible For ART (With Reasons For Eligibility)"
+Description: "Indicates that the patient is eligibile for ART"
 * status = #final
 * category = $OBSERVATION_CATEGORY#exam
 * code = $SCT#171121004
@@ -730,29 +730,31 @@ Description: "Represents the patient's eligibility for HIV test"
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2024-01-25"
 * performer = Reference(CurrentServiceProviderExample)
-* hasMember = Reference(ReasonWhyEligibleForHIVTestExample)
+* hasMember = Reference(ReasonWhyEligibleForARTExample)
 
-Instance: ReasonWhyEligibleForHIVTestExample
-InstanceOf: ReasonWhyEligibleForHIVTest
+Instance: ReasonWhyEligibleForARTExample
+InstanceOf: ReasonWhyEligibleForART
 Usage: #example
-Title: "Observation - Reason Why Eligible for HIV Testing"
-Description: "Represents the reasons why a patient is considered eligibile for HIV testing."
+Title: "Observation - Reason Why Eligible for ART"
+Description: "Represents the reasons why a patient is considered eligibile for ART."
 * status = #final
 * category = $OBSERVATION_CATEGORY#exam
 * code = $LNC#45232-6
 * code.text = "Reason medically eligible for HIV treatment"
-* valueCodeableConcept.coding[WhyEligible][+] = $ReasonForARTEligibilityCodeSystem#Clinical-Staging
-* valueCodeableConcept.coding[WhyEligible][+] = $ReasonForARTEligibilityCodeSystem#Test-and-Treat
+* valueCodeableConcept.extension[WhyEligible][+].valueCodeableConcept = $ReasonForARTEligibilityCodeSystem#Clinical-Staging
+* valueCodeableConcept.extension[WhyEligible][=].valueCodeableConcept.text = "Clinical Staging"
+* valueCodeableConcept.extension[WhyEligible][+].valueCodeableConcept = $ReasonForARTEligibilityCodeSystem#Test-and-Treat
+* valueCodeableConcept.extension[WhyEligible][=].valueCodeableConcept.text = "Test and treat"
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2024-01-25"
 * performer = Reference(CurrentServiceProviderExample)
 
-Instance: HIVTestNotEligibleExample
-InstanceOf: HIVTestEligibilityStatus
+Instance: ARTNotEligibleExample
+InstanceOf: ARTEligibilityStatus
 Usage: #example
-Title: "Observation - Not Eligible For HIV Test"
-Description: "Represents the patient's eligibility for HIV test"
+Title: "Observation - Not Eligible For ART"
+Description: "Indicates that the patient is not eligibile for ART"
 * status = #final
 * category = $OBSERVATION_CATEGORY#exam
 * code = $SCT#171121004
@@ -1486,7 +1488,7 @@ Description: "Indicates that the patient has a positive screening for HPV."
 * category = $OBSERVATION_CATEGORY#laboratory
 * code = $LNC#21864-4
 * code.text = "HPV positive screening"
-* valueCodeableConcept.coding[HPV] = $LNC#LA6576-8
+* valueCodeableConcept = $CERVICAL_CANCER_HPV_SCREENING_RESULTS#hpv-positive
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * performer = Reference(CurrentServiceProviderExample)
@@ -1503,7 +1505,7 @@ Description: "Indicates that the patient has a positive screening for VIA."
 * category = $OBSERVATION_CATEGORY#laboratory
 * code = $LNC#21864-4
 * code.text = "VIA positive screening"
-* valueCodeableConcept.coding[VIA] = $CERVICAL_CANCER_VIA_SCREENING_RESULTS#via-positive-cryo-thermo-coagulation-eligible
+* valueCodeableConcept = $CERVICAL_CANCER_VIA_SCREENING_RESULTS#via-positive-cryo-thermo-coagulation-eligible
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * performer = Reference(CurrentServiceProviderExample)
@@ -1520,7 +1522,7 @@ Description: "Indicates that the patient has a negative screening for HPV."
 * category = $OBSERVATION_CATEGORY#laboratory
 * code = $LNC#21864-4
 * code.text = "HPV negative screening"
-* valueCodeableConcept.coding[HPV] = $LNC#LA6577-6
+* valueCodeableConcept = $CERVICAL_CANCER_HPV_SCREENING_RESULTS#hpv-negative
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * performer = Reference(CurrentServiceProviderExample)
@@ -1536,7 +1538,7 @@ Description: "Indicates that the patient has a negative screening for VIA."
 * category = $OBSERVATION_CATEGORY#laboratory
 * code = $LNC#21864-4
 * code.text = "VIA negative screening"
-* valueCodeableConcept.coding[VIA] = $CERVICAL_CANCER_VIA_SCREENING_RESULTS#via-negative
+* valueCodeableConcept = $CERVICAL_CANCER_VIA_SCREENING_RESULTS#via-negative
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * performer = Reference(CurrentServiceProviderExample)
@@ -1707,8 +1709,7 @@ Description: "This indicates that the ARV regimen was changed due to clinical fa
 * performer = Reference(CurrentServiceProviderExample)
 * valueCodeableConcept = $LNC#24467-3
 * valueCodeableConcept.text = "CD4 count"
-* interpretation[ClinicalFailure] = $ObservationInterpretation#LL
-* interpretation[ClinicalFailure].text = "CD4 below 100 cells/mm3"
+* valueCodeableConcept.extension[TreatmentFailureIndication].valueCodeableConcept = $CD4VLTreatmentFailureClassificationCodeSystem#Clinical-Failure
 
 Instance: ARVRegimenChangeReasonImmunologicFailureExample
 InstanceOf: ARVRegimenChangeReason
@@ -1725,8 +1726,7 @@ Description: "This indicates that the ARV regimen was changed due to immunologic
 * performer = Reference(CurrentServiceProviderExample)
 * valueCodeableConcept = $LNC#24467-3
 * valueCodeableConcept.text = "CD4 count"
-* interpretation[ImmunologicFailure] = $ObservationInterpretation#L
-* interpretation[ImmunologicFailure].text = "CD4 below 250 cells/mm3"
+* valueCodeableConcept.extension[TreatmentFailureIndication].valueCodeableConcept = $CD4VLTreatmentFailureClassificationCodeSystem#Immunologic-Failure
 
 Instance: ARVRegimenChangeReasonVirologicFailureExample
 InstanceOf: ARVRegimenChangeReason
@@ -1743,8 +1743,7 @@ Description: "This indicates that the ARV regimen was changed due to virologic f
 * performer = Reference(CurrentServiceProviderExample)
 * valueCodeableConcept = $LNC#20447-9
 * valueCodeableConcept.text = "VL count"
-* interpretation[VirologicFailure] = $ObservationInterpretation#H
-* interpretation[VirologicFailure].text = "VL above 999 copies/mL"
+* valueCodeableConcept.extension[TreatmentFailureIndication].valueCodeableConcept = $CD4VLTreatmentFailureClassificationCodeSystem#Virologic-Failure
 
 Instance: ARVRegimenSideEffectsExample
 InstanceOf: ARVRegimenSideEffects
@@ -1840,7 +1839,7 @@ Description: "This is used to indicate the type for the ARV regimen change as a 
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2024-01-25"
 * performer = Reference(CurrentServiceProviderExample)
-* valueCodeableConcept.coding[SubstitutionType] = $ARVRegimenSubstituteType#First-Substitute
+* valueCodeableConcept = $ARVRegimenSubstituteType#First-Substitute
 
 Instance: ARVRegimenChangeCategoryTypeSwitchExample
 InstanceOf: ARVRegimenChangeCategoryType
@@ -1855,7 +1854,7 @@ Description: "This is used to indicate the type for the ARV regimen change as a 
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2024-01-25"
 * performer = Reference(CurrentServiceProviderExample)
-* valueCodeableConcept.coding[SwitchType] = $ARVRegimenSwitchType#First-Switch
+* valueCodeableConcept = $ARVRegimenSwitchType#First-Switch
 
 Instance: ARVMedicationAdministrationExample
 InstanceOf: ARVMedicationAdministration
@@ -2204,7 +2203,7 @@ Usage: #example
 Title: "Episode of Care - ART (No Referral)"
 Description: "Records the health related activities for patients associated with HIV treatment and care services."
 * status = #active
-* type.coding[ART] = $LNC#LP66375-4
+* type[ART] = $LNC#LP66375-4
 * patient = Reference(GeneralPatientExample)
 * managingOrganization = Reference(CurrentServiceProviderExample)
 
@@ -2214,7 +2213,7 @@ Usage: #example
 Title: "Episode of Care - ART (Incoming Referral From Within Facility)"
 Description: "Records the health related activities for patients associated with HIV treatment and care services."
 * status = #active
-* type.coding[ART] = $LNC#LP66375-4
+* type[ART] = $LNC#LP66375-4
 * patient = Reference(GeneralPatientExample)
 * managingOrganization = Reference(CurrentServiceProviderExample)
 * referralRequest[Incoming] = Reference(ReferralWithinFacilityExample)
@@ -2225,7 +2224,7 @@ Usage: #example
 Title: "Episode of Care - ART (Incoming Referral From Outside the Facility)"
 Description: "Records the health related activities for patients associated with HIV treatment and care services."
 * status = #active
-* type.coding[ART] = $LNC#LP66375-4
+* type[ART] = $LNC#LP66375-4
 * patient = Reference(GeneralPatientExample)
 * managingOrganization = Reference(CurrentServiceProviderExample)
 * referralRequest[Incoming] = Reference(ReferralFromOutsideFacilitytExample)
@@ -2236,7 +2235,7 @@ Usage: #example
 Title: "Episode of Care - ART (Incoming Referral From Outside the Facility is Now Referred Out)"
 Description: "Records the health related activities for patients associated with HIV treatment and care services."
 * status = #active
-* type.coding[ART] = $LNC#LP66375-4
+* type[ART] = $LNC#LP66375-4
 * patient = Reference(GeneralPatientExample)
 * managingOrganization = Reference(CurrentServiceProviderExample)
 * referralRequest[Incoming] = Reference(ReferralFromOutsideFacilitytExample)
@@ -2248,7 +2247,7 @@ Usage: #example
 Title: "Episode of Care - ART (Outgoing Referral)"
 Description: "Records the health related activities for patients associated with HIV treatment and care services."
 * status = #active
-* type.coding[ART] = $LNC#LP66375-4
+* type[ART] = $LNC#LP66375-4
 * patient = Reference(GeneralPatientExample)
 * managingOrganization = Reference(CurrentServiceProviderExample)
 * referralRequest[Outgoing] = Reference(ReferralOutServiceRequestExample)
@@ -2261,8 +2260,8 @@ Description: "Records the health related activities for patients associated with
 * identifier[EpisodeOfCareID][+].value = "abd-123-11"
 * identifier[EpisodeOfCareID][=].system = $EpisodeOfCareID
 * status = #active
-* type.coding[ART] = $LNC#LP66375-4
-* type.coding[TB] = $SCT#171126009
+* type[ART] = $LNC#LP66375-4
+* type[TB] = $SCT#171126009
 * patient = Reference(GeneralPatientExample)
 * managingOrganization = Reference(CurrentServiceProviderExample)
 
@@ -2321,7 +2320,7 @@ Description: "This is used to represent a routine viral load exam."
 * status = #final
 * category = $OBSERVATION_CATEGORY#laboratory
 * code = $LNC#LA9035-2
-* valueCodeableConcept.coding[Routine] = $RoutineIndicationViralLoad#Annual-VL-Test
+* valueCodeableConcept = $RoutineIndicationViralLoad#Annual-VL-Test
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * performer = Reference(CurrentServiceProviderExample)
@@ -2336,7 +2335,7 @@ Description: "This is used to represent a routine viral load exam as an event in
 * status = #final
 * category = $OBSERVATION_CATEGORY#laboratory
 * code = $LNC#LA9035-2
-* valueCodeableConcept.coding[Routine] = $RoutineIndicationViralLoad#Annual-VL-Test
+* valueCodeableConcept = $RoutineIndicationViralLoad#Annual-VL-Test
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * performer = Reference(CurrentServiceProviderExample)
@@ -2352,7 +2351,7 @@ Description: "This is used to represent a targeted viral load exam."
 * status = #final
 * category = $OBSERVATION_CATEGORY#laboratory
 * code = $LNC#LA26675-1
-* valueCodeableConcept.coding[Targeted] = $TargetedIndicationViralLoad#Suspected-ART-Failure
+* valueCodeableConcept = $TargetedIndicationViralLoad#Suspected-ART-Failure
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * performer = Reference(CurrentServiceProviderExample)
@@ -4109,3 +4108,280 @@ Description: "Indicates that the patient is enrolled into the specialised progra
 * performer = Reference(CurrentServiceProviderExample)
 * valueCodeableConcept = $YesNoCodeSystem#true
 * valueCodeableConcept.extension[ObservedDate].valueDateTime = "2023-10-21"
+
+Instance: CurrentHIVTreatmentTherapyDurationExample
+InstanceOf: CurrentHIVTreatmentTherapyDuration
+Usage: #example
+Title: "Observation - Current HIV Treatment Therapy Duration"
+Description: "Indicates the duration the patient has been on the current ART."
+* status = #final
+* category = $OBSERVATION_CATEGORY#therapy
+* code = $LNC#45239-1
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* valueQuantity = $UCUM_UNIT#mo
+* valueQuantity.unit = "mo"
+* valueQuantity.value = 198
+
+Instance: HIVTreatmentPriorToEnrollmentExample
+InstanceOf: HIVTreatmentPriorToEnrollment
+Usage: #example
+Title: "Observation - HIV Treatment Prior to Enrollment"
+Description: "Indicates whether the patient has ever received ART prior to enrollment in the current facility."
+* status = #final
+* category = $OBSERVATION_CATEGORY#therapy
+* code = $LNC#45231-8
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* valueCodeableConcept = $YesNoCodeSystem#true
+
+Instance: PastCompletedCotrimoxazoleMedicationStatementExample
+InstanceOf: OIMedicationStatement
+Usage: #example
+Title: "Medication Statement - Past Cotrimoxazole (Completed)"
+Description: "Records the Cotrimoxazole details for the patient that was prescribed in the past and completed."
+* status = #completed
+* medicationReference = Reference(CotrimoxazoleMedicationExample)
+* subject = Reference(GeneralPatientExample)
+* context = Reference(GeneralEncounterExample)
+* effectivePeriod.start = "2018-05-12"
+* effectivePeriod.end = "2018-08-13"
+
+Instance: PastStoppedCotrimoxazoleMedicationStatementExample
+InstanceOf: OIMedicationStatement
+Usage: #example
+Title: "Medication Statement - Past Cotrimoxazole (Stopped)"
+Description: "Records the Cotrimoxazole details for the patient that was prescribed in the past and stopped."
+* status = #stopped
+* medicationReference = Reference(CotrimoxazoleMedicationExample)
+* subject = Reference(GeneralPatientExample)
+* context = Reference(GeneralEncounterExample)
+* effectivePeriod.start = "2018-05-12"
+* effectivePeriod.end = "2018-08-13"
+
+Instance: PastAndStillActiveCotrimoxazoleMedicationStatementExample
+InstanceOf: OIMedicationStatement
+Usage: #example
+Title: "Medication Statement - Past Cotrimoxazole (Still active)"
+Description: "Records the Cotrimoxazole details for the patient that was prescribed in the past and still active."
+* status = #active
+* medicationReference = Reference(CotrimoxazoleMedicationExample)
+* subject = Reference(GeneralPatientExample)
+* context = Reference(GeneralEncounterExample)
+* effectivePeriod.start = "2018-05-12"
+
+Instance: PastActiveTPTMedicationStatementExample
+InstanceOf: TPTMedicationStatement
+Usage: #example
+Title: "Medication Statement - Past INH (Still active)"
+Description: "Records the INH details for the patient that was prescribed in the past and still active."
+* status = #active
+* medicationReference = Reference(TPTMedicationExample)
+* subject = Reference(GeneralPatientExample)
+* context = Reference(GeneralEncounterExample)
+* effectivePeriod.start = "2009-11-24"
+
+Instance: PastCompletedTPTMedicationStatementExample
+InstanceOf: TPTMedicationStatement
+Usage: #example
+Title: "Medication Statement - Past INH (Completed)"
+Description: "Records the INH details for the patient that was prescribed in the past and completed."
+* status = #completed
+* medicationReference = Reference(TPTMedicationExample)
+* subject = Reference(GeneralPatientExample)
+* context = Reference(GeneralEncounterExample)
+* effectivePeriod.start = "2018-05-12"
+* effectivePeriod.end = "2018-08-13"
+
+Instance: PastInitiatedArvTreatmentAndStillActiveExample
+InstanceOf: ARTTreatmentMedicationStatement
+Usage: #example
+Title: "Medication Statement - Past ARV Treatment Initiated On (Still active)"
+Description: "Records the ARV Treatment details for the patient who was initiated on ART in the past and still active."
+* status = #active
+* medicationReference = Reference(ARVMedicationExample)
+* subject = Reference(GeneralPatientExample)
+* context = Reference(GeneralEncounterExample)
+* effectivePeriod.start = "2009-11-24"
+* effectivePeriod.end = "2018-08-13"
+
+Instance: PastInitiatedArvTreatmentAndStoppedMedicationStatementExample
+InstanceOf: ARTTreatmentMedicationStatement
+Usage: #example
+Title: "Medication Statement - Past ARV Treatment Initiated On (Stopped)"
+Description: "Records the ARV Treatment details for the patient who was initiated on ART in the past but stopped treatment"
+* status = #stopped
+* medicationReference = Reference(ARVMedicationExample)
+* subject = Reference(GeneralPatientExample)
+* context = Reference(GeneralEncounterExample)
+* effectivePeriod.start = "2009-11-24"
+* effectivePeriod.end = "2018-08-13"
+
+Instance: MedicationHistoryExample
+InstanceOf: MedicationHistory
+Usage: #example
+Title: "List - History of Past Medication"
+Description: "Documents the medication history of previsouly prescribed (cotrimoxazole, isoniazid and ARV) treatment for the patient."
+* code = $LNC#8677-7
+* mode = #working
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* date = "2024-03-20"
+* source = Reference(GeneralPractitionerExample)
+
+* entry[Cotrimoxazole][+].item = Reference(PastStoppedCotrimoxazoleMedicationStatementExample)
+* entry[Isoniazid][+].item = Reference(PastCompletedTPTMedicationStatementExample)
+* entry[ARV][+].item = Reference(HIVTreatmentPriorToEnrollmentExample)
+* entry[ARV][+].item = Reference(PastInitiatedArvTreatmentAndStillActiveExample)
+* entry[ARV][+].item = Reference(CurrentHIVTreatmentTherapyDurationExample)
+
+Instance: TemperatureExample
+InstanceOf: Temperature
+Usage: #example
+Title: "Observation - Temperature"
+Description: "Indicates the patient's current temperature."
+* status = #final
+* category = $OBSERVATION_CATEGORY#vital-signs
+* code = $LNC#8310-5
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* valueQuantity = $UCUM_UNIT#Cel
+* valueQuantity.unit = "degrees C"
+* valueQuantity.value = 38
+
+Instance: HeartRateExample
+InstanceOf: HeartRate
+Usage: #example
+Title: "Observation - Heart Rate"
+Description: "Indicates the patient's current heart rate."
+* status = #final
+* category = $OBSERVATION_CATEGORY#vital-signs
+* code = $LNC#8867-4
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* valueQuantity = $UCUM_UNIT#/min
+* valueQuantity.unit = "beats/min"
+* valueQuantity.value = 44
+
+Instance: BloodPressureExample
+InstanceOf: BloodPressure
+Usage: #example
+Title: "Observation - Blood Pressure"
+Description: "Represents the Systolic and Diastolic blood pressure for the patient."
+* status = #final
+* category = $OBSERVATION_CATEGORY#vital-signs
+* code = $LNC#85354-9
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2022-11-30"
+* performer[+] = Reference(CurrentServiceProviderExample)
+* performer[+] = Reference(GeneralPractitionerExample)
+
+* component[Systolic].valueQuantity.value = 106
+* component[Systolic].valueQuantity.unit = "mmHg"
+* component[Systolic].valueQuantity = $UCUM_UNIT#mm[Hg]
+
+* component[Diastolic].valueQuantity.value = 60
+* component[Diastolic].valueQuantity.unit = "mmHg"
+* component[Diastolic].valueQuantity = $UCUM_UNIT#mm[Hg]
+
+Instance: RespiratoryRateExample
+InstanceOf: RespiratoryRate
+Usage: #example
+Title: "Observation - Respiratory Rate"
+Description: "Indicates the patient's current respiratory rate."
+* status = #final
+* category = $OBSERVATION_CATEGORY#vital-signs
+* code = $LNC#9279-1
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* valueQuantity = $UCUM_UNIT#/min
+* valueQuantity.unit = "breaths/min"
+* valueQuantity.value = 26
+
+Instance: PresentingFeverSymptomExample
+InstanceOf: PresentingSymptomObservation
+Usage: #example
+Title: "Observation - Presenting Symptoms (Fever)"
+Description: "Indicates fever as a symptom presented by the patient in the context of the encounter."
+* status = #final
+* category = $OBSERVATION_CATEGORY#exam
+* code = $LNC#56817-0
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* valueCodeableConcept = $SCT#386661006
+* valueCodeableConcept.text = "Fever"
+
+Instance: PresentingNauseaSymptomExample
+InstanceOf: PresentingSymptomObservation
+Usage: #example
+Title: "Observation - Presenting Symptoms (Nausea)"
+Description: "Indicates nausea as a symptom presented by the patient in the context of the encounter."
+* status = #final
+* category = $OBSERVATION_CATEGORY#exam
+* code = $LNC#56817-0
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* valueCodeableConcept = $SCT#422587007
+* valueCodeableConcept.text = "Fever"
+
+Instance: PresentingSymptomsListExample
+InstanceOf: PresentingSymptomsHistory
+Usage: #example
+Title: "List - History of Presenting Symptoms"
+Description: "Documents the point in time symptoms presented by the patient in the context of the encounter."
+* code = $LNC#29547-7
+* mode = #working
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* date = "2024-03-20"
+* source = Reference(GeneralPractitionerExample)
+
+* entry[+].item = Reference(PresentingFeverSymptomExample)
+* entry[+].item = Reference(PresentingNauseaSymptomExample)
+
+Instance: PhysicalExamLymphNodeObservationExample
+InstanceOf: PhysicalExamsObservation
+Usage: #example
+Title: "Observation - Examination of Lymph node"
+Description: "Indicates that the findings of the lymph node examination appear to be Abnormal."
+* status = #final
+* category = $OBSERVATION_CATEGORY#exam
+* code = $LNC#29544-4
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* valueCodeableConcept = $LNC#32450-9
+* valueCodeableConcept.text = "Lymph node"
+* interpretation = $ObservationInterpretation#A
+
+Instance: PhysicalExamHEENTObservationExample
+InstanceOf: PhysicalExamsObservation
+Usage: #example
+Title: "Observation - Examination of HEENT"
+Description: "Indicates that the findings of the HEENT examination appear to be Normal."
+* status = #final
+* category = $OBSERVATION_CATEGORY#exam
+* code = $LNC#29544-4
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* valueCodeableConcept = $LNC#11424-9
+* valueCodeableConcept.text = "HEENT"
+* interpretation = $ObservationInterpretation#N

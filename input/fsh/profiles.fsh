@@ -234,7 +234,7 @@ Description: "Base Observation elements that are inherited by other Observation 
 * encounter only Reference(TargetFacilityEncounter)
 * effectiveDateTime 1..1
 * performer 1..*
-* performer only Reference(ServiceProvider)
+* performer only Reference(ServiceProvider or GeneralPractitioner)
 * category 0..*
 * category ^definition =
     "reason(s) why this should be supported."
@@ -252,6 +252,9 @@ Description: "Represents the patient's current ART follow-up status."
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
 * valueCodeableConcept from ARTFollowUpStatusValueSet (required)
+* valueCodeableConcept.extension contains ObservedDateExtension named ObservedDate 0..1 MS
+* valueCodeableConcept.extension[ObservedDate] ^definition =
+    "reason(s) why this should be supported."
 * hasMember 0..1 MS
 * hasMember ^definition =
     "reason(s) why this should be supported."
@@ -586,7 +589,9 @@ Title: "Medication Statement - ART"
 Description: "Records the medication history for the HIV+ patient."
 * medication[x] only Reference
 * medicationReference only Reference(ARVMedication)
-* reasonReference 1..1
+* reasonReference 0..1 MS
+  * ^definition = "Indicates a reason for the point in time prescription."
+  * ^short = "Used for indicating the reason for point in time prescriptions in the context of an encounter."
 * reasonReference only Reference(ARVRegimenChange or ARTFollowupStatusObservation)
 
 Profile: OIMedicationStatement
@@ -596,14 +601,16 @@ Title: "Medication Statement - Opportunisic Infections (OI)"
 Description: "Records the medication history for a patient suffering from OI's."
 * medication[x] only Reference
 * medicationReference only Reference(OIMedication)
-* reasonReference 1..1
+* reasonReference 0..1 MS
+  * ^definition = "Indicates a reason for the point in time prescription."
+  * ^short = "Used for indicating the reason for point in time prescriptions in the context of an encounter."
 * reasonReference only Reference(CotrimoxazolePreventiveTherapy or FluconazolePreventiveTherapy)
 
-Profile: HIVTestEligibilityStatus
+Profile: ARTEligibilityStatus
 Parent: GenericObservation
-Id: hiv-test-eligibility-status-observation
-Title: "Observation - HIV Test Eligibility Status"
-Description: "Represents the patient's eligibility status for an HIV test"
+Id: art-eligibility-status-observation
+Title: "Observation - ART Eligibility Status"
+Description: "Represents the patient's eligibility status for ART"
 * category 1..1
 * category = $OBSERVATION_CATEGORY#exam
 * code = $SCT#171121004
@@ -612,28 +619,19 @@ Description: "Represents the patient's eligibility status for an HIV test"
 * valueCodeableConcept from ARTEligibilityStatusValueSet (required)
 * hasMember 0..1 MS
 * hasMember ^definition = "reason(s) why this should be supported."
-* hasMember only Reference(ReasonWhyEligibleForHIVTest)
+* hasMember only Reference(ReasonWhyEligibleForART)
 
-Profile: ReasonWhyEligibleForHIVTest
+Profile: ReasonWhyEligibleForART
 Parent: GenericObservation
-Id: reason-eligible-for-hiv-test-observation
-Title: "Observation - Reason Why Eligible for HIV Testing"
-Description: "Represents the reasons why a patient is considered eligibile for HIV testing."
+Id: reason-eligible-for-art-observation
+Title: "Observation - Reason Why Eligible for ART"
+Description: "Represents the reasons why a patient is considered eligibile for ART."
 * category 1..1
 * category = $OBSERVATION_CATEGORY#exam
 * code = $LNC#45232-6
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
-
-* insert Slice(valueCodeableConcept.coding, reasons why this should be supported, value, code, open, Slicing the eligibility reason, false)
-
-* valueCodeableConcept.coding contains
-    WhyEligible 1..* MS
-
-* valueCodeableConcept.coding[WhyEligible] ^definition =
-    "reason(s) why this should be supported."
-* valueCodeableConcept.coding[WhyEligible].code 1..1
-* valueCodeableConcept.coding[WhyEligible].code from ReasonForARTEligibilityValueSet (required)
+* valueCodeableConcept.extension contains ReasonsForARTEligibilityExtension named WhyEligible 1..*
 
 Profile: PCRHIVTestServiceRequest
 Parent: GenericServiceRequest
@@ -1042,6 +1040,9 @@ Description: "Represents the patient's HIV WHO stage."
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
 * valueCodeableConcept from WHOStageValueSet (required)
+* note 0..* MS
+  * ^definition = "Reason for the WHO HIV clinical stage."
+  * ^short = "Used for indicating the WHO HIV clinical stage at enrollment into the HIV program."
 
 Profile: PregnancyStatus
 Parent: GenericObservation
@@ -1325,28 +1326,13 @@ Parent: GenericObservation
 Id: cervical-cancer-screening-result-observation
 Title: "Observation - Cervical Cancer Screening Result"
 Description: "This is used to record the patient's cervical cancer screening result."
-* obeys Cervical-Cancer-Screening-Result-1 and Cervical-Cancer-Screening-Result-2
+* obeys Cervical-Cancer-Screening-Result-1
 * category 1..1
 * category = $OBSERVATION_CATEGORY#laboratory
 * code = $LNC#21864-4
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
-* insert Slice(valueCodeableConcept.coding, reasons why this should be supported, value, code, open, Slicing the screening result based on the value, false)
-
-* valueCodeableConcept.coding contains
-    VIA 0..1 MS and
-    HPV 0..1 MS
-
-* valueCodeableConcept.coding[VIA] ^definition =
-    "reason(s) why this should be supported."
-* valueCodeableConcept.coding[VIA].code 1..1
-* valueCodeableConcept.coding[VIA].code from CervicalCancerScreeningVIAResultsValueSet (required)
-
-* valueCodeableConcept.coding[HPV] ^definition =
-    "reason(s) why this should be supported."
-* valueCodeableConcept.coding[HPV].code 1..1
-* valueCodeableConcept.coding[HPV].code from CervicalCancerScreeningHPVResultsValueSet (required)
-
+* valueCodeableConcept from CervicalCancerScreeningResultValueSet (required)
 * derivedFrom 1..1
 * derivedFrom only Reference(CervicalCancerScreeningStatus)
 * basedOn 0..* MS
@@ -1384,7 +1370,6 @@ Parent: GenericObservation
 Id: arv-regimen-change-reason-observation
 Title: "Observation - ARV Regimen Change Reason"
 Description: "This is used to capture the reason for the ARV regimen change."
-* obeys Observation-ARV-Regimen-Change-Reason-1 and Observation-ARV-Regimen-Change-Reason-2
 * category 1..1
 * category = $OBSERVATION_CATEGORY#therapy
 * code = $LNC#LL354-2
@@ -1392,33 +1377,9 @@ Description: "This is used to capture the reason for the ARV regimen change."
 * valueCodeableConcept 1..1
 * valueCodeableConcept from ReasonForARVRegimenChangeValueSet (required)
 * valueCodeableConcept.text 1..1
-* interpretation 0..* MS
-* interpretation ^definition =
+* valueCodeableConcept.extension contains CD4AndVLClassificationForTreatmentFailureExtension named TreatmentFailureIndication 0..1 MS
+* valueCodeableConcept.extension[TreatmentFailureIndication] ^definition =
     "reason(s) why this should be supported."
-* interpretation.text 1..1
-* interpretation.coding only StrictCoding
-
-* insert Slice(interpretation, reasons why this should be supported, value, text, open, Slicing the reason for the regimen change based on the text value, false)
-
-* interpretation contains
-    ImmunologicFailure 0..1 MS and
-    ClinicalFailure 0..1 MS and
-    VirologicFailure 0..1 MS
-
-* interpretation[ImmunologicFailure] ^definition =
-    "reason(s) why this should be supported."
-* interpretation[ImmunologicFailure].text = "CD4 below 250 cells/mm3"
-* interpretation[ImmunologicFailure] = $ObservationInterpretation#L
-
-* interpretation[ClinicalFailure] ^definition =
-    "reason(s) why this should be supported."
-* interpretation[ClinicalFailure].text = "CD4 below 100 cells/mm3"
-* interpretation[ClinicalFailure] = $ObservationInterpretation#LL
-
-* interpretation[VirologicFailure] ^definition =
-    "reason(s) why this should be supported."
-* interpretation[VirologicFailure].text = "VL above 999 copies/mL"
-* interpretation[VirologicFailure] = $ObservationInterpretation#H
 
 Profile: ARVRegimenSideEffects
 Parent: GenericObservation
@@ -1477,27 +1438,12 @@ Parent: GenericObservation
 Id: arv-change-category-type-observation
 Title: "Observation - ARV Regimen Category Type"
 Description: "This is used to record the type for the ARV regimen change category."
-* obeys Observation-ARV-Regimen-Change-Type-1
 * category 1..1
 * category = $OBSERVATION_CATEGORY#therapy
 * code = $SCT#182838006
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
-* insert Slice(valueCodeableConcept.coding, reasons why this should be supported, value, code, open, Slicing the screening result based on the value, false)
-
-* valueCodeableConcept.coding contains
-    SwitchType 0..1 MS and
-    SubstitutionType 0..1 MS
-
-* valueCodeableConcept.coding[SwitchType] ^definition =
-    "reason(s) why this should be supported."
-* valueCodeableConcept.coding[SwitchType].code 1..1
-* valueCodeableConcept.coding[SwitchType].code from ARVRegimenSwitchTypeValueSet (required)
-
-* valueCodeableConcept.coding[SubstitutionType] ^definition =
-    "reason(s) why this should be supported."
-* valueCodeableConcept.coding[SubstitutionType].code 1..1
-* valueCodeableConcept.coding[SubstitutionType].code from ARVRegimenSubstituteTypeValueSet (required)
+* valueCodeableConcept from ARVRegimenChangeTypeValueSet (required)
 
 Profile: ReferralOutServiceRequest
 Parent: GenericServiceRequest
@@ -1639,7 +1585,9 @@ Description: "This is used to record the family member's HIV status."
     "reason(s) why this should be supported."
 * hasMember[HealthStatus] only Reference(HealthStatus)
 
-* note 0..*
+* note 0..* MS
+* note ^definition =
+    "reason(s) why this should be supported."
 
 Profile: TestedForHIV
 Parent: GenericObservation
@@ -1755,39 +1703,39 @@ Description: "Records the health related activities for patients associated with
 * identifier[EpisodeOfCareID].system = $EpisodeOfCareID
 
 * type 1..*
-* insert Slice(type.coding, reasons why this should be supported, value, code, open, Slicing type based on the code value, false)
+* insert Slice(type, reasons why this should be supported, value, coding, open, Slicing type based on the coding value, false)
 
-* type.coding contains
+* type contains
     HIV-Tracking 0..1 MS and
     ART 0..1 MS and
     TB 0..1 MS and
     TPT 0..1 MS and
     Cervical-Cancer 0..1 MS
 
-* type.coding[HIV-Tracking] ^definition =
+* type[HIV-Tracking] ^definition =
     "reason(s) why this should be supported."
-* type.coding[HIV-Tracking].code 1..1
-* type.coding[HIV-Tracking].code = $LNC#LA28577-7
+* type[HIV-Tracking].coding 1..1
+* type[HIV-Tracking].coding = $LNC#LA28577-7
 
-* type.coding[ART] ^definition =
+* type[ART] ^definition =
     "reason(s) why this should be supported."
-* type.coding[ART].code 1..1
-* type.coding[ART].code = $LNC#LP66375-4
+* type[ART].coding 1..1
+* type[ART].coding = $LNC#LP66375-4
 
-* type.coding[TB] ^definition =
+* type[TB] ^definition =
     "reason(s) why this should be supported."
-* type.coding[TB].code 1..1
-* type.coding[TB].code = $SCT#171126009
+* type[TB].coding 1..1
+* type[TB].coding = $SCT#171126009
 
-* type.coding[TPT] ^definition =
+* type[TPT] ^definition =
     "reason(s) why this should be supported."
-* type.coding[TPT].code 1..1
-* type.coding[TPT].code = $SCT#699618001
+* type[TPT].coding 1..1
+* type[TPT].coding = $SCT#699618001
 
-* type.coding[Cervical-Cancer] ^definition =
+* type[Cervical-Cancer] ^definition =
     "reason(s) why this should be supported."
-* type.coding[Cervical-Cancer].code 1..1
-* type.coding[Cervical-Cancer].code = $SCT#702455009
+* type[Cervical-Cancer].coding 1..1
+* type[Cervical-Cancer].coding = $SCT#702455009
 
 * patient only Reference(EthPatient)
 * managingOrganization 1..1
@@ -1833,28 +1781,12 @@ Parent: GenericObservation
 Id: viral-load-indication-observation
 Title: "Observation - Viral Load Indication"
 Description: "This is used to represent the viral load indication."
-* obeys Observation-Viral-Load-Indication-1 and Observation-Viral-Load-Indication-2 and Observation-Viral-Load-Indication-3
 * category 1..1
 * category = $OBSERVATION_CATEGORY#laboratory
 * code from ViralLoadIndicationValueSet (required)
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
-* insert Slice(valueCodeableConcept.coding, reasons why this should be supported, value, code, open, Slicing the viral load indication on the code value, false)
-
-* valueCodeableConcept.coding contains
-    Routine 0..1 MS and
-    Targeted 0..1 MS
-
-* valueCodeableConcept.coding[Routine] ^definition =
-    "reason(s) why this should be supported."
-* valueCodeableConcept.coding[Routine].code 1..1
-* valueCodeableConcept.coding[Routine].code from RoutineIndicationViralLoadValueSet (required)
-
-* valueCodeableConcept.coding[Targeted] ^definition =
-    "reason(s) why this should be supported."
-* valueCodeableConcept.coding[Targeted].code 1..1
-* valueCodeableConcept.coding[Targeted].code from TargetedIndicationViralLoadValueSet (required)
-
+* valueCodeableConcept from VLIndicationValueSet (required)
 * basedOn 1..*
 
 * insert SliceForResolve(basedOn, reasons why this should be supported, open, Slicing basedOn based on the profile value, false)
@@ -2267,10 +2199,11 @@ Id: cotrimoxazole-preventive-therapy-medication-administration
 Title: "Medication Administration - For Prescribed Cotrimoxazole Preventive Therapy Medication"
 Description: "Used to record the medication administration period for prescribed cotrimoxazole preventive therapy medication."
 * status 1..1
-* request 1..1
 * medication[x] only Reference
 * medicationReference only Reference(OIMedication)
-
+* request 0..1 MS
+  * ^definition = "Indicates a point in time prescription."
+  * ^short = "Used for point in time prescriptions in the context of an encounter."
 * request only Reference(CotrimoxazolePreventiveTherapyMedicationRequest)
 * subject 1..1
 * subject only Reference(EthPatient)
@@ -2279,7 +2212,9 @@ Description: "Used to record the medication administration period for prescribed
 * effective[x] only Period
 * effectivePeriod 1..1
   * start 1..1
-  * end 1..1
+  * end 0..1 MS
+    * ^definition = "Indicates the medication end date for the request."
+    * ^short = "Used to represent the medication end date for the request (point in time prescription)."
 
 Profile: FluconazolePreventiveTherapy
 Parent: GenericObservation
@@ -2311,7 +2246,9 @@ Description: "Used to record the medication administration period for prescribed
 * effective[x] only Period
 * effectivePeriod 1..1
   * start 1..1
-  * end 1..1
+  * end 0..1 MS
+    * ^definition = "Indicates the medication end date for the request."
+    * ^short = "Used to represent the medication end date for the request (point in time prescription)."
 
 Profile: HIVProgramStatusObservation
 Parent: GenericObservation
@@ -2785,7 +2722,9 @@ Title: "Medication Statement - TB Preventive Therapy (TPT)"
 Description: "Records the medication history for the patient receiving TPT medication."
 * medication[x] only Reference
 * medicationReference only Reference(TPTMedication)
-* reasonReference 1..1
+* reasonReference 0..1 MS
+  * ^definition = "Indicates a reason for the point in time prescription."
+  * ^short = "Used for indicating the reason for point in time prescriptions in the context of an encounter."
 * reasonReference only Reference(TBProphylaxisTypeObservation)
 
 Profile: GenericCondition
@@ -2906,3 +2845,197 @@ Description: "Indicates whether the patient was enrolled into the specialised pr
 * valueCodeableConcept.extension contains ObservedDateExtension named ObservedDate 0..1 MS
 * valueCodeableConcept.extension[ObservedDate] ^definition =
     "reason(s) why this should be supported."
+
+Profile: MedicationHistory
+Parent: List
+Id: medication-history
+Title: "List - History of Past Medication"
+Description: "Documents the medication history of previsouly prescribed (cotrimoxazole, isoniazid and ARV) treatment for the patient."
+* status = #current
+* title 1..1
+* title = "Medication History"
+* code 1..1
+* code = $LNC#8677-7
+* subject 1..1
+* subject only Reference(EthPatient)
+* encounter 1..1
+* encounter only Reference(TargetFacilityEncounter)
+* date 1..1
+* source 1..1
+* source only Reference(GeneralPractitioner)
+* entry 1..*
+* entry obeys List-Medical-History-2
+
+* insert Slice(entry, reasons why this should be supported, value, flag.coding, open, Slicing the entry based on the flag value, false)
+
+* entry contains
+    Cotrimoxazole 0..1 MS and
+    Isoniazid 0..1 MS and
+    ARV 0..* MS
+
+* entry[Cotrimoxazole] ^definition =
+    "Cotrimoxazole status"
+* entry[Cotrimoxazole].flag 1..1
+* entry[Cotrimoxazole].flag.coding 1..1
+* entry[Cotrimoxazole].flag.coding = $LNC#18998-5
+* entry[Cotrimoxazole].item only Reference(OIMedicationStatement)
+
+* entry[Isoniazid] ^definition =
+    "Isoniazid (INH) status"
+* entry[Isoniazid].flag 1..1
+* entry[Isoniazid].flag.coding 1..1
+* entry[Isoniazid].flag.coding = $LNC#18934-0
+* entry[Isoniazid].item only Reference(TPTMedicationStatement)
+
+* entry[ARV] ^definition =
+    "Antiretroviral therapy status"
+* entry[ARV].flag 1..1
+* entry[ARV].flag.coding 1..1
+* entry[ARV].flag.coding = $LNC#47248-0
+* entry[ARV].item only Reference(HIVTreatmentPriorToEnrollment or ARTTreatmentMedicationStatement or CurrentHIVTreatmentTherapyDuration)
+
+Profile: HIVTreatmentPriorToEnrollment
+Parent: GenericObservation
+Id: hiv-treatment-prior-enrollment-observation
+Title: "Observation - HIV Treatment Prior to Enrollment"
+Description: "Indicates whether the patient has ever received ART prior to enrollment in the current facility."
+* category 1..1
+* category = $OBSERVATION_CATEGORY#therapy
+* code = $LNC#45231-8
+* value[x] only CodeableConcept
+* valueCodeableConcept 1..1
+* valueCodeableConcept from YesNoValueSet (required)
+
+Profile: CurrentHIVTreatmentTherapyDuration
+Parent: GenericObservation
+Id: current-art-duration-observation
+Title: "Observation - Current HIV Treatment Therapy Duration"
+Description: "Indicates the duration the patient has been on the current ART."
+* category 1..1
+* category = $OBSERVATION_CATEGORY#therapy
+* code = $LNC#45239-1
+* value[x] only Quantity
+* valueQuantity 1..1
+* valueQuantity = $UCUM_UNIT#mo
+* valueQuantity.unit = "mo"
+
+Profile: Temperature
+Parent: GenericObservation
+Id: temperature-observation
+Title: "Observation - Temperature"
+Description: "Indicates the patient's current temperature."
+* category 1..1
+* category = $OBSERVATION_CATEGORY#vital-signs
+* code = $LNC#8310-5
+* value[x] only Quantity
+* valueQuantity 1..1
+* valueQuantity = $UCUM_UNIT#Cel
+* valueQuantity.unit = "degrees C"
+
+Profile: HeartRate
+Parent: GenericObservation
+Id: heart-rate-observation
+Title: "Observation - Heart Rate"
+Description: "Indicates the patient's current heart rate."
+* category 1..1
+* category = $OBSERVATION_CATEGORY#vital-signs
+* code = $LNC#8867-4
+* value[x] only Quantity
+* valueQuantity 1..1
+* valueQuantity = $UCUM_UNIT#/min
+* valueQuantity.unit = "beats/min"
+
+Profile: BloodPressure
+Parent: GenericObservation
+Id: blood-pressure
+Title: "Blood Pressure Observation"
+Description: "Represents the patient's blood pressure."
+* subject only Reference(EthPatient)
+* encounter only Reference(TargetFacilityEncounter)
+* code = $LNC#85354-9
+* category 1..1
+* category = $OBSERVATION_CATEGORY#vital-signs
+* component 1..*
+
+* insert Slice(component, reasons why this should be supported, value, code, open, Slicing the component based on the code value, false)
+
+* component contains
+    Systolic 0..1 MS and
+    Diastolic 0..1 MS
+
+* component[Systolic] ^definition =
+    "reason(s) why this should be supported."
+* component[Systolic].code 1..1
+* component[Systolic].code = $LNC#8480-6
+* component[Systolic].valueQuantity.value 1..1
+* component[Systolic].valueQuantity.unit = "mmHg"
+* component[Systolic].valueQuantity = $UCUM_UNIT#mm[Hg]
+
+* component[Diastolic] ^definition =
+    "reason(s) why this should be supported."
+* component[Diastolic].code 1..1
+* component[Diastolic].code = $LNC#8462-4
+* component[Diastolic].valueQuantity.value 1..1
+* component[Diastolic].valueQuantity.unit = "mmHg"
+* component[Diastolic].valueQuantity = $UCUM_UNIT#mm[Hg]
+
+Profile: RespiratoryRate
+Parent: GenericObservation
+Id: respiratory-rate-observation
+Title: "Observation - Respiratory Rate"
+Description: "Indicates the patient's current respiratory rate."
+* category 1..1
+* category = $OBSERVATION_CATEGORY#vital-signs
+* code = $LNC#9279-1
+* value[x] only Quantity
+* valueQuantity 1..1
+* valueQuantity = $UCUM_UNIT#/min
+* valueQuantity.unit = "breaths/min"
+
+Profile: PresentingSymptomObservation
+Parent: GenericObservation
+Id: presenting-symptom-observation
+Title: "Observation - Presenting Symptoms"
+Description: "Indicates any symptoms presented by the patient in the context of the encounter."
+* category 1..1
+* category = $OBSERVATION_CATEGORY#exam
+* code = $LNC#56817-0
+* value[x] only CodeableConcept
+* valueCodeableConcept 1..1
+* valueCodeableConcept.text 1..1
+* valueCodeableConcept from PresentingSymptomsValueSet (extensible)
+
+Profile: PresentingSymptomsHistory
+Parent: List
+Id: presenting-symptoms-history
+Title: "List - History of Presenting Symptoms"
+Description: "Documents the point in time symptoms presented by the patient in the context of the encounter."
+* status = #current
+* title 1..1
+* title = "History of Presenting Symptoms"
+* code 1..1
+* code = $LNC#29547-7
+* subject 1..1
+* subject only Reference(EthPatient)
+* encounter 1..1
+* encounter only Reference(TargetFacilityEncounter)
+* date 1..1
+* source 1..1
+* source only Reference(GeneralPractitioner)
+* entry 1..*
+* entry.item only Reference(PresentingSymptomObservation)
+
+Profile: PhysicalExamsObservation
+Parent: GenericObservation
+Id: physical-examinations-observation
+Title: "Observation - Physical Examinations"
+Description: "Documents the outcome of findings associated with physical observations asserted during the context of the encounter."
+* category 1..1
+* category = $OBSERVATION_CATEGORY#exam
+* code = $LNC#29544-4
+* value[x] only CodeableConcept
+* valueCodeableConcept 1..1
+* valueCodeableConcept.text 1..1
+* valueCodeableConcept from PhysicalExamValueSet (extensible)
+* interpretation 1..1
+* interpretation from PhysicalExamInterpretationValueSet (required)

@@ -308,12 +308,13 @@ Description: "A list of codes describing the Cervical Cancer Screening Results"
 * $SCT#787724008 "Human papillomavirus deoxyribonucleic acid not detected"
 * $SCT#261665006 "Unknown"*/
 
-ValueSet: CervicalCancerScreeningVIAResultsValueSet
-Id: via-screening-result-value-set
-Title: "Cervical Cancer Screening Results - VIA"
+ValueSet: CervicalCancerScreeningResultValueSet
+Id: cervical-cancer-screening-result-value-set
+Title: "Cervical Cancer Screening Results"
 Description: "A list of codes describing the Cervical Cancer Screening Results"
 * ^experimental = false
 * include codes from system CervicalCancerScreeningVIAResultsCodeSystem
+* include codes from system CervicalCancerScreeningHPVResultsCodeSystem
 
 CodeSystem: CervicalCancerScreeningHPVResultsCodeSystem
 Id: hpv-screening-result-code-system
@@ -321,16 +322,9 @@ Title: "Cervical Cancer Screening Results - HPV"
 Description: "A list of codes describing the Cervical Cancer Screening Results"
 * ^experimental = false
 * ^caseSensitive = true
+* #hpv-positive "VIA positive"
+* #hpv-negative "VIA negative"
 * #hpv-screening-result-unknown "Screening result unknown"
-
-ValueSet: CervicalCancerScreeningHPVResultsValueSet
-Id: hpv-screening-result-value-set
-Title: "Cervical Cancer Screening Results - HPV"
-Description: "A list of codes describing the Cervical Cancer Screening Results"
-* ^experimental = false
-* $LNC#LA6576-8 "Positive"
-* $LNC#LA6577-6 "Negative"
-* include codes from system CervicalCancerScreeningHPVResultsCodeSystem
 
 /*ValueSet: HPVDNATestResultValueSet
 Id: hpv-dna-test-result-value-set
@@ -676,6 +670,9 @@ Description: "Reasons For ART Eligibility"
 * #Test-and-Treat "Test and treat"
 * #Clinical-Staging "Clinical Staging"
 * #Transfer-in "Transfer in"
+* #Stage-Three "Stage Three"
+* #Stage-Four "Stage Four"
+* #Discordant-Couple "Discordant couple"
 //* #Other "Other"
 
 ValueSet: ReasonForARTEligibilityValueSet
@@ -683,6 +680,10 @@ Id: reason-for-art-eligibility-value-set
 Title: "Reasons For ART Eligibility"
 Description: "Reasons For ART Eligibility"
 * ^experimental = false
+* $LNC#LA6530-5 "Pregnancy"
+* $LNC#63932-8 "Age at diagnosis"
+* $LNC#46251-5 "Age group"
+* $SCT#56393004 "Immunologic reaction, function"
 * include codes from system ReasonForARTEligibilityCodeSystem
 
 ValueSet: HIVTestResultsValueSet
@@ -1747,13 +1748,6 @@ Description: "Codes used for representing the type for the ARV regimen switched.
 * #Second-Switch "Second Switch"
 * #Third-Switch  "Third Switch"
 
-ValueSet: ARVRegimenSwitchTypeValueSet
-Id: arv-regimen-switch-type-value-set
-Title: "ARV Regimen Switch Type"
-Description: "Codes used for representing the type for the ARV regimen switched."
-* ^experimental = false
-* include codes from system ARVRegimenSwitchTypeCodeSystem
-
 CodeSystem: ARVRegimenSubstituteTypeCodeSystem
 Id: arv-regimen-substitute-type-code-system
 Title: "ARV Regimen Substitue Type"
@@ -1767,11 +1761,12 @@ Description: "Codes used for representing the type for the ARV regimen substitue
 * #Fifth-Substitute  "Fifth Substitute"
 * #Sixth-Substitute  "Sixth Substitute"
 
-ValueSet: ARVRegimenSubstituteTypeValueSet
-Id: arv-regimen-substitute-type-value-set
-Title: "ARV Regimen Substitue Type"
-Description: "Codes used for representing the type for the ARV regimen substitued."
+ValueSet: ARVRegimenChangeTypeValueSet
+Id: arv-regimen-change-type-value-set
+Title: "ARV Regimen Change Type"
+Description: "Codes used for representing the type of change associated with the ARV regimen (Switch or Substitute)."
 * ^experimental = false
+* include codes from system ARVRegimenSwitchTypeCodeSystem
 * include codes from system ARVRegimenSubstituteTypeCodeSystem
 
 ValueSet: ReasonARTStoppedValueSet
@@ -1962,12 +1957,13 @@ Description: "Codes used for representing routine indication for viral load."
 * #VL-after-EAC-Repeat-VL-50-to-1000  "VL after EAC: Repeat VL > 50 to <= 1000 copies/ml"
 * #VL-after-EAC-Confirmatory-VL-Initial-50-to-1000  "VL after EAC: Confirmatory VL: Initial > 50 to <= 1000 copies/ml"
 
-ValueSet: RoutineIndicationViralLoadValueSet
-Id: routine-indication-viral-load-value-set
-Title: "Routine Indication Viral Load"
-Description: "Codes used for representing routine indication for viral load."
+ValueSet: VLIndicationValueSet
+Id: vl-indication-value-set
+Title: "Viral Load Indication"
+Description: "Codes used for representing the indication type for the viral load."
 * ^experimental = false
 * include codes from system RoutineIndicationViralLoadCodeSystem
+* include codes from system TargetedIndicationViralLoadCodeSystem
 
 CodeSystem: TargetedIndicationViralLoadCodeSystem
 Id: targeted-indication-viral-load-code-system
@@ -1977,13 +1973,6 @@ Description: "Codes used for representing targeted indication for viral load."
 * ^caseSensitive = true
 * #Suspected-ART-Failure "Suspected ART Failure"
 * #Repeat-or-confirmatory-VL-Initial-VL-greater-than-1000 "Repeat or confirmatory VL Initial Viral load greater than 1000"
-
-ValueSet: TargetedIndicationViralLoadValueSet
-Id: targeted-indication-viral-load-value-set
-Title: "Targeted Indication Viral Load"
-Description: "Codes used for representing targeted indication for viral load."
-* ^experimental = false
-* include codes from system TargetedIndicationViralLoadCodeSystem
 
 ValueSet: ViralLoadStatusValueSet
 Id: viral-load-status-value-set
@@ -2073,3 +2062,68 @@ Description: "Codes used for representing the patient's plan for the prevention 
 * $SCT#25681007 "Sexually transmitted disease clinic"
 * $SCT#445563009 "Counseling for sexually transmitted disease"
 * $LNC#28355-6 "Substance Use Status"
+
+ValueSet: PresentingSymptomsValueSet
+Id: presenting-symptoms-value-set
+Title: "Presenting Symptoms"
+Description: "Codes used for representing the symptoms currently being experienced by the patient."
+* ^experimental = false
+* $SCT#68154008 "Chronic cough"
+* $SCT#267036007 "Dyspnea"
+* $SCT#66857006 "Hemoptysis"
+* $SCT#52702003 "Chronic fatigue syndrome"
+* $SCT#89362005 "Weight loss"
+* $SCT#95891005 "Influenza-like illness"
+* $SCT#42984000 "Night sweats"
+* $SCT#386661006 "Fever"
+* $SCT#40739000 "Dysphagia"
+* $SCT#30233002 "Swallowing painful"
+* $SCT#422587007 "Nausea"
+* $SCT#422400008 "Vomiting"
+* $SCT#21522001 "Abdominal pain"
+* $SCT#101000119102 "Numbness and tingling sensation of skin"
+* $SCT#121021000119105 "New daily persistent headache"
+* $SCT#712831003 "Frequent headache"
+* $SCT#2776000 "Delirium"
+* $SCT#236071009 "Chronic diarrhea"
+* $SCT#8098009 "Sexually transmitted infectious disease"
+
+ValueSet: PhysicalExamValueSet
+Id: physical-examination-value-set
+Title: "Physical Examinations"
+Description: "Codes used for representing a physical examination."
+* ^experimental = false
+* $LNC#11424-9 "Physical findings of Ears and Nose and Mouth and Throat"
+* $LNC#32450-9 "Physical findings of Lymph node"
+* $LNC#11391-0 "Physical findings of Chest Narrative"
+* $LNC#10200-4 "Physical findings of Heart Narrative"
+* $LNC#10191-5 "Physical findings of Abdomen Narrative"
+* $LNC#10198-0 "Physical findings of Genitourinary tract Narrative"
+* $LNC#11410-8 "Physical findings of Musculoskeletal system Narrative"
+* $LNC#10206-1 "Physical findings of Skin Narrative"
+* $LNC#10202-0 "Physical findings of Nervous system Narrative"
+
+ValueSet: PhysicalExamInterpretationValueSet
+Id: physical-examination-interpretation-value-set
+Title: "Physical Examinations Interpretation"
+Description: "Codes used for interpreting the finding associated with the physical examination."
+* ^experimental = false
+* $ObservationInterpretation#A "Abnormal"
+* $ObservationInterpretation#N "Normal"
+
+CodeSystem: CD4AndVLClassificationForTreatmentFailureCodeSystem
+Id: cd4-vl-classification-for-treatment-failure-code-system
+Title: "Viral Load/CD4 Count Classifications Indicating Treatment Failure"
+Description: "Codes used for indicating the classification for the Viral Load/CD4 count treatment failure."
+* ^experimental = false
+* ^caseSensitive = true
+* #Immunologic-Failure "CD4 below 250 cells/mm3 (Immunologic Failure)"
+* #Clinical-Failure "CD4 below 100 cells/mm3 (Clinical Failure)"
+* #Virologic-Failure "VL above 999 copies/mL (Virologic Failure)"
+
+ValueSet: CD4AndVLClassificationForTreatmentFailureValueSet
+Id: cd4-vl-classification-for-treatment-failure-value-set
+Title: "Viral Load/CD4 Count Classifications Indicating Treatment Failure"
+Description: "Codes used for indicating the classification for the Viral Load/CD4 count treatment failure."
+* ^experimental = false
+* include codes from system CD4AndVLClassificationForTreatmentFailureCodeSystem

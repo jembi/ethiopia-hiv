@@ -199,3 +199,26 @@ Description: "This is an extension to capture the patient's plan for the prevent
 * valueCodeableConcept.coding only StrictCoding
 * ^context[+].type = #element
 * ^context[=].expression = "Observation.value.ofType(CodeableConcept)"
+
+Extension: ReasonsForARTEligibilityExtension
+Id: reasons-eligible-for-art
+Title: "Reasons Why Eligible for ART"
+Description: "This is an extension to capture the reasons why the patient is considered eligible for ART."
+* value[x] only CodeableConcept
+* valueCodeableConcept 1..1
+* valueCodeableConcept.text 1..1
+* valueCodeableConcept from ReasonForARTEligibilityValueSet (required)
+* valueCodeableConcept.coding only StrictCoding
+* ^context[+].type = #element
+* ^context[=].expression = "Observation.value.ofType(CodeableConcept)"
+
+Extension: CD4AndVLClassificationForTreatmentFailureExtension
+Id: cd4-vl-classification-for-treatment-failure
+Title: "Viral Load/CD4 Count Classifications Indicating Treatment Failure"
+Description: "This is an extension to capture the classification of the Viral Load/CD4 treatment failure."
+* value[x] only CodeableConcept
+* valueCodeableConcept 1..1
+* valueCodeableConcept from CD4AndVLClassificationForTreatmentFailureValueSet (required)
+* valueCodeableConcept.coding only StrictCoding
+* ^context[+].type = #element
+* ^context[=].expression = "Observation.value.ofType(CodeableConcept)"
