@@ -1326,13 +1326,12 @@ Parent: GenericObservation
 Id: cervical-cancer-screening-result-observation
 Title: "Observation - Cervical Cancer Screening Result"
 Description: "This is used to record the patient's cervical cancer screening result."
-* obeys Cervical-Cancer-Screening-Result-2
+* obeys Cervical-Cancer-Screening-Result-1 and Cervical-Cancer-Screening-Result-2
 * category 1..1
 * category = $OBSERVATION_CATEGORY#laboratory
 * code = $LNC#21864-4
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
-* valueCodeableConcept obeys Cervical-Cancer-Screening-Result-1
 
 * valueCodeableConcept.extension contains VIACervicalCancerScreeningResultsExtension named VIA 0..1 MS
 * valueCodeableConcept.extension[VIA] ^definition =

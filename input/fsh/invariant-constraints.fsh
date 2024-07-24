@@ -49,8 +49,8 @@ Expression: "value.coding.where(system = 'http://snomed.info/sct' and code = '11
 Severity: #error
 
 Invariant: Cervical-Cancer-Screening-Result-1
-Description: "The Observation.valueCodeableConcept.extension SHALL have at least one of \"VIA\" or \"HPV\"."
-Expression: "extension.slice('http://moh.gov.et/fhir/hiv/StructureDefinition/cervical-cancer-screening-result-observation', 'VIA').count() + extension.slice('http://moh.gov.et/fhir/hiv/StructureDefinition/cervical-cancer-screening-result-observation', 'HPV').count() > 0"
+Description: "The Observation.valueCodeableConcept.extension SHALL have at least one of \"VIA\" or \"HPV\", not both."
+Expression: "value.extension.slice('http://moh.gov.et/fhir/hiv/StructureDefinition/cervical-cancer-screening-result-observation', 'VIA').count() + value.extension.slice('http://moh.gov.et/fhir/hiv/StructureDefinition/cervical-cancer-screening-result-observation', 'HPV').count() = 1"
 Severity: #error
 
 Invariant: Cervical-Cancer-Screening-Result-2
