@@ -1488,7 +1488,7 @@ Description: "Indicates that the patient has a positive screening for HPV."
 * category = $OBSERVATION_CATEGORY#laboratory
 * code = $LNC#21864-4
 * code.text = "HPV positive screening"
-* valueCodeableConcept.extension[HPV].valueCodeableConcept = $LNC#LA6576-8
+* valueCodeableConcept = $CERVICAL_CANCER_HPV_SCREENING_RESULTS#hpv-positive
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * performer = Reference(CurrentServiceProviderExample)
@@ -1505,7 +1505,7 @@ Description: "Indicates that the patient has a positive screening for VIA."
 * category = $OBSERVATION_CATEGORY#laboratory
 * code = $LNC#21864-4
 * code.text = "VIA positive screening"
-* valueCodeableConcept.extension[VIA].valueCodeableConcept = $CERVICAL_CANCER_VIA_SCREENING_RESULTS#via-positive-cryo-thermo-coagulation-eligible
+* valueCodeableConcept = $CERVICAL_CANCER_VIA_SCREENING_RESULTS#via-positive-cryo-thermo-coagulation-eligible
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * performer = Reference(CurrentServiceProviderExample)
@@ -1522,7 +1522,7 @@ Description: "Indicates that the patient has a negative screening for HPV."
 * category = $OBSERVATION_CATEGORY#laboratory
 * code = $LNC#21864-4
 * code.text = "HPV negative screening"
-* valueCodeableConcept.extension[HPV].valueCodeableConcept = $LNC#LA6577-6
+* valueCodeableConcept = $CERVICAL_CANCER_HPV_SCREENING_RESULTS#hpv-negative
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * performer = Reference(CurrentServiceProviderExample)
@@ -1538,7 +1538,7 @@ Description: "Indicates that the patient has a negative screening for VIA."
 * category = $OBSERVATION_CATEGORY#laboratory
 * code = $LNC#21864-4
 * code.text = "VIA negative screening"
-* valueCodeableConcept.extension[VIA].valueCodeableConcept = $CERVICAL_CANCER_VIA_SCREENING_RESULTS#via-negative
+* valueCodeableConcept = $CERVICAL_CANCER_VIA_SCREENING_RESULTS#via-negative
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * performer = Reference(CurrentServiceProviderExample)
@@ -1709,8 +1709,7 @@ Description: "This indicates that the ARV regimen was changed due to clinical fa
 * performer = Reference(CurrentServiceProviderExample)
 * valueCodeableConcept = $LNC#24467-3
 * valueCodeableConcept.text = "CD4 count"
-* interpretation[ClinicalFailure] = $ObservationInterpretation#LL
-* interpretation[ClinicalFailure].text = "CD4 below 100 cells/mm3"
+* valueCodeableConcept.extension[TreatmentFailureIndication].valueCodeableConcept = $CD4VLTreatmentFailureClassificationCodeSystem#Clinical-Failure
 
 Instance: ARVRegimenChangeReasonImmunologicFailureExample
 InstanceOf: ARVRegimenChangeReason
@@ -1727,8 +1726,7 @@ Description: "This indicates that the ARV regimen was changed due to immunologic
 * performer = Reference(CurrentServiceProviderExample)
 * valueCodeableConcept = $LNC#24467-3
 * valueCodeableConcept.text = "CD4 count"
-* interpretation[ImmunologicFailure] = $ObservationInterpretation#L
-* interpretation[ImmunologicFailure].text = "CD4 below 250 cells/mm3"
+* valueCodeableConcept.extension[TreatmentFailureIndication].valueCodeableConcept = $CD4VLTreatmentFailureClassificationCodeSystem#Immunologic-Failure
 
 Instance: ARVRegimenChangeReasonVirologicFailureExample
 InstanceOf: ARVRegimenChangeReason
@@ -1745,8 +1743,7 @@ Description: "This indicates that the ARV regimen was changed due to virologic f
 * performer = Reference(CurrentServiceProviderExample)
 * valueCodeableConcept = $LNC#20447-9
 * valueCodeableConcept.text = "VL count"
-* interpretation[VirologicFailure] = $ObservationInterpretation#H
-* interpretation[VirologicFailure].text = "VL above 999 copies/mL"
+* valueCodeableConcept.extension[TreatmentFailureIndication].valueCodeableConcept = $CD4VLTreatmentFailureClassificationCodeSystem#Virologic-Failure
 
 Instance: ARVRegimenSideEffectsExample
 InstanceOf: ARVRegimenSideEffects
@@ -1842,7 +1839,7 @@ Description: "This is used to indicate the type for the ARV regimen change as a 
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2024-01-25"
 * performer = Reference(CurrentServiceProviderExample)
-* valueCodeableConcept.coding[SubstitutionType] = $ARVRegimenSubstituteType#First-Substitute
+* valueCodeableConcept = $ARVRegimenSubstituteType#First-Substitute
 
 Instance: ARVRegimenChangeCategoryTypeSwitchExample
 InstanceOf: ARVRegimenChangeCategoryType
@@ -1857,7 +1854,7 @@ Description: "This is used to indicate the type for the ARV regimen change as a 
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2024-01-25"
 * performer = Reference(CurrentServiceProviderExample)
-* valueCodeableConcept.coding[SwitchType] = $ARVRegimenSwitchType#First-Switch
+* valueCodeableConcept = $ARVRegimenSwitchType#First-Switch
 
 Instance: ARVMedicationAdministrationExample
 InstanceOf: ARVMedicationAdministration
@@ -2206,7 +2203,7 @@ Usage: #example
 Title: "Episode of Care - ART (No Referral)"
 Description: "Records the health related activities for patients associated with HIV treatment and care services."
 * status = #active
-* type.coding[ART] = $LNC#LP66375-4
+* type[ART] = $LNC#LP66375-4
 * patient = Reference(GeneralPatientExample)
 * managingOrganization = Reference(CurrentServiceProviderExample)
 
@@ -2216,7 +2213,7 @@ Usage: #example
 Title: "Episode of Care - ART (Incoming Referral From Within Facility)"
 Description: "Records the health related activities for patients associated with HIV treatment and care services."
 * status = #active
-* type.coding[ART] = $LNC#LP66375-4
+* type[ART] = $LNC#LP66375-4
 * patient = Reference(GeneralPatientExample)
 * managingOrganization = Reference(CurrentServiceProviderExample)
 * referralRequest[Incoming] = Reference(ReferralWithinFacilityExample)
@@ -2227,7 +2224,7 @@ Usage: #example
 Title: "Episode of Care - ART (Incoming Referral From Outside the Facility)"
 Description: "Records the health related activities for patients associated with HIV treatment and care services."
 * status = #active
-* type.coding[ART] = $LNC#LP66375-4
+* type[ART] = $LNC#LP66375-4
 * patient = Reference(GeneralPatientExample)
 * managingOrganization = Reference(CurrentServiceProviderExample)
 * referralRequest[Incoming] = Reference(ReferralFromOutsideFacilitytExample)
@@ -2238,7 +2235,7 @@ Usage: #example
 Title: "Episode of Care - ART (Incoming Referral From Outside the Facility is Now Referred Out)"
 Description: "Records the health related activities for patients associated with HIV treatment and care services."
 * status = #active
-* type.coding[ART] = $LNC#LP66375-4
+* type[ART] = $LNC#LP66375-4
 * patient = Reference(GeneralPatientExample)
 * managingOrganization = Reference(CurrentServiceProviderExample)
 * referralRequest[Incoming] = Reference(ReferralFromOutsideFacilitytExample)
@@ -2250,7 +2247,7 @@ Usage: #example
 Title: "Episode of Care - ART (Outgoing Referral)"
 Description: "Records the health related activities for patients associated with HIV treatment and care services."
 * status = #active
-* type.coding[ART] = $LNC#LP66375-4
+* type[ART] = $LNC#LP66375-4
 * patient = Reference(GeneralPatientExample)
 * managingOrganization = Reference(CurrentServiceProviderExample)
 * referralRequest[Outgoing] = Reference(ReferralOutServiceRequestExample)
@@ -2263,8 +2260,8 @@ Description: "Records the health related activities for patients associated with
 * identifier[EpisodeOfCareID][+].value = "abd-123-11"
 * identifier[EpisodeOfCareID][=].system = $EpisodeOfCareID
 * status = #active
-* type.coding[ART] = $LNC#LP66375-4
-* type.coding[TB] = $SCT#171126009
+* type[ART] = $LNC#LP66375-4
+* type[TB] = $SCT#171126009
 * patient = Reference(GeneralPatientExample)
 * managingOrganization = Reference(CurrentServiceProviderExample)
 
@@ -2323,7 +2320,7 @@ Description: "This is used to represent a routine viral load exam."
 * status = #final
 * category = $OBSERVATION_CATEGORY#laboratory
 * code = $LNC#LA9035-2
-* valueCodeableConcept.coding[Routine] = $RoutineIndicationViralLoad#Annual-VL-Test
+* valueCodeableConcept = $RoutineIndicationViralLoad#Annual-VL-Test
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * performer = Reference(CurrentServiceProviderExample)
@@ -2338,7 +2335,7 @@ Description: "This is used to represent a routine viral load exam as an event in
 * status = #final
 * category = $OBSERVATION_CATEGORY#laboratory
 * code = $LNC#LA9035-2
-* valueCodeableConcept.coding[Routine] = $RoutineIndicationViralLoad#Annual-VL-Test
+* valueCodeableConcept = $RoutineIndicationViralLoad#Annual-VL-Test
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * performer = Reference(CurrentServiceProviderExample)
@@ -2354,7 +2351,7 @@ Description: "This is used to represent a targeted viral load exam."
 * status = #final
 * category = $OBSERVATION_CATEGORY#laboratory
 * code = $LNC#LA26675-1
-* valueCodeableConcept.coding[Targeted] = $TargetedIndicationViralLoad#Suspected-ART-Failure
+* valueCodeableConcept = $TargetedIndicationViralLoad#Suspected-ART-Failure
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * performer = Reference(CurrentServiceProviderExample)

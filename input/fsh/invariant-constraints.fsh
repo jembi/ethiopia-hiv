@@ -49,13 +49,8 @@ Expression: "value.coding.where(system = 'http://snomed.info/sct' and code = '11
 Severity: #error
 
 Invariant: Cervical-Cancer-Screening-Result-1
-Description: "The Observation.valueCodeableConcept.extension SHALL have at least one of \"VIA\" or \"HPV\", not both."
-Expression: "value.extension.slice('http://moh.gov.et/fhir/hiv/StructureDefinition/cervical-cancer-screening-result-observation', 'VIA').count() + value.extension.slice('http://moh.gov.et/fhir/hiv/StructureDefinition/cervical-cancer-screening-result-observation', 'HPV').count() = 1"
-Severity: #error
-
-Invariant: Cervical-Cancer-Screening-Result-2
-Description: "If Observation.valueCodeableConcept.extension.coding.code for slice \"VIA\" is NOT \"via-negative\" and NOT \"LA6577-6\" for slice \"HPV\" then Observation.basedOn SHALL be present."
-Expression: "value.extension.value.coding.where(system = 'http://moh.gov.et/fhir/hiv/CodeSystem/via-screening-result-code-system' and code = 'via-negative').exists().not() and value.extension.value.coding.where(system = 'http://loinc.org' and code = 'LA6577-6').exists().not() implies basedOn.exists()"
+Description: "If Observation.valueCodeableConcept.coding.code is NOT \"via-negative\" and NOT \"hpv-negative\" then Observation.basedOn SHALL be present."
+Expression: "value.coding.where(system = 'http://moh.gov.et/fhir/hiv/CodeSystem/via-screening-result-code-system' and code = 'via-negative').exists().not() and value.coding.where(system = 'http://moh.gov.et/fhir/hiv/CodeSystem/hpv-screening-result-code-system' and code = 'hpv-negative').exists().not() implies basedOn.exists()"
 Severity: #error
 
 Invariant: Extension-DSD-1
@@ -63,44 +58,14 @@ Description: "If the value for extension \"CategoryChangedOnAssessmentDate\" is 
 Expression: "extension.exists(url = 'http://moh.gov.et/fhir/hiv/StructureDefinition/dsd-assessment-category-changed-on-assessment-date' and value.coding.where(code = 'true')) implies extension.exists(url = 'http://moh.gov.et/fhir/hiv/StructureDefinition/dsd-assessment-category-change-reason')"
 Severity: #error
 
-Invariant: Observation-ARV-Regimen-Change-Reason-1
-Description: "If Observation.valueCodeableConcept.coding.code is \"24467-3\" then Observation.interpretation for slice \"ImmunologicFailure\" or slice \"ClinicalFailure\" SHALL be present."
-Expression: "value.coding.where(system = 'http://loinc.org' and code = '24467-3').exists() implies interpretation.slice('http://moh.gov.et/fhir/hiv/StructureDefinition/arv-regimen-change-reason-observation', 'ImmunologicFailure').exists() or interpretation.slice('http://moh.gov.et/fhir/hiv/StructureDefinition/arv-regimen-change-reason-observation', 'ClinicalFailure').exists()"
-Severity: #error
-
-Invariant: Observation-ARV-Regimen-Change-Reason-2
-Description: "If Observation.valueCodeableConcept.coding.code is \"20447-9\" then Observation.interpretation for slice \"VirologicFailure\" SHALL be present."
-Expression: "value.coding.where(system = 'http://loinc.org' and code = '20447-9').exists() implies interpretation.slice('http://moh.gov.et/fhir/hiv/StructureDefinition/arv-regimen-change-reason-observation', 'VirologicFailure').exists()"
-Severity: #error
-
 Invariant: Observation-ARV-Adherence-1
 Description: "If Observation.valueCodeableConcept.coding.code is NOT \"LA8967-7\" then Observation.hasMember SHALL be present."
 Expression: "value.coding.where(system = 'http://loinc.org' and code = 'LA8967-7').exists().not() implies hasMember.exists()"
 Severity: #error
 
-Invariant: Observation-ARV-Regimen-Change-Type-1
-Description: "The Observation.valueCodeableConcept.coding SHALL have at least one of \"SwitchType\" or \"SubstitutionType\"."
-Expression: "value.coding.slice('http://moh.gov.et/fhir/hiv/StructureDefinition/arv-change-category-type-observation', 'SwitchType').count() + value.coding.slice('http://moh.gov.et/fhir/hiv/StructureDefinition/arv-change-category-type-observation', 'SubstitutionType').count() > 0"
-Severity: #error
-
 Invariant: Observation-HIV-Status-Disclosure-At-Enrollment-1
 Description: "If Observation.valueCodeableConcept.coding.code is \"true\" then extension for \"PatientRelationship\" SHALL be present."
 Expression: "value.coding.where(system = 'http://moh.gov.et/fhir/hiv/CodeSystem/yes-no-code-system' and code = 'true').exists() implies extension.exists(url = 'http://moh.gov.et/fhir/hiv/StructureDefinition/patient-relationship')"
-Severity: #error
-
-Invariant: Observation-Viral-Load-Indication-1
-Description: "If Observation.code is \"LA9035-2\" then Observation.valueCodeableConcept.coding for slice \"Routine\" SHALL be present."
-Expression: "code.coding.where(system = 'http://loinc.org' and code = 'LA9035-2').exists() implies value.coding.slice('http://moh.gov.et/fhir/hiv/StructureDefinition/viral-load-indication-observation', 'Routine').exists()"
-Severity: #error
-
-Invariant: Observation-Viral-Load-Indication-2
-Description: "If Observation.code is \"LA26675-1\" then Observation.valueCodeableConcept.coding for slice \"Targeted\" SHALL be present."
-Expression: "code.coding.where(system = 'http://loinc.org' and code = 'LA26675-1').exists() implies value.coding.slice('http://moh.gov.et/fhir/hiv/StructureDefinition/viral-load-indication-observation', 'Targeted').exists()"
-Severity: #error
-
-Invariant: Observation-Viral-Load-Indication-3
-Description: "The Observation SHALL have at least one of Observation.valueCodeableConcept.coding for slice \"Routine\" or \"Targeted\"."
-Expression: "value.coding.slice('http://moh.gov.et/fhir/hiv/StructureDefinition/viral-load-indication-observation', 'Routine').count() + value.coding.slice('http://moh.gov.et/fhir/hiv/StructureDefinition/viral-load-indication-observation', 'Targeted').count() > 0"
 Severity: #error
 
 Invariant: Observation-Viral-Load-Performed-1

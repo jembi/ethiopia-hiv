@@ -212,24 +212,13 @@ Description: "This is an extension to capture the reasons why the patient is con
 * ^context[+].type = #element
 * ^context[=].expression = "Observation.value.ofType(CodeableConcept)"
 
-Extension: VIACervicalCancerScreeningResultsExtension
-Id: via-cervical-cancer-screening-results
-Title: "Cervical Cancer Screening Results (VIA)"
-Description: "This is an extension to capture the patient's cervical cancer screening result drawn using the VIA method."
+Extension: CD4AndVLClassificationForTreatmentFailureExtension
+Id: cd4-vl-classification-for-treatment-failure
+Title: "Viral Load/CD4 Count Classifications Indicating Treatment Failure"
+Description: "This is an extension to capture the classification of the Viral Load/CD4 treatment failure."
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
-* valueCodeableConcept from CervicalCancerScreeningVIAResultsValueSet (required)
-* valueCodeableConcept.coding only StrictCoding
-* ^context[+].type = #element
-* ^context[=].expression = "Observation.value.ofType(CodeableConcept)"
-
-Extension: HPVCervicalCancerScreeningResultsExtension
-Id: hpv-cervical-cancer-screening-results
-Title: "Cervical Cancer Screening Results (HPV)"
-Description: "This is an extension to capture the patient's cervical cancer screening result drawn using the HPV method."
-* value[x] only CodeableConcept
-* valueCodeableConcept 1..1
-* valueCodeableConcept from CervicalCancerScreeningHPVResultsValueSet (required)
+* valueCodeableConcept from CD4AndVLClassificationForTreatmentFailureValueSet (required)
 * valueCodeableConcept.coding only StrictCoding
 * ^context[+].type = #element
 * ^context[=].expression = "Observation.value.ofType(CodeableConcept)"

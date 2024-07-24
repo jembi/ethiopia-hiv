@@ -308,12 +308,13 @@ Description: "A list of codes describing the Cervical Cancer Screening Results"
 * $SCT#787724008 "Human papillomavirus deoxyribonucleic acid not detected"
 * $SCT#261665006 "Unknown"*/
 
-ValueSet: CervicalCancerScreeningVIAResultsValueSet
-Id: via-screening-result-value-set
-Title: "Cervical Cancer Screening Results - VIA"
+ValueSet: CervicalCancerScreeningResultValueSet
+Id: cervical-cancer-screening-result-value-set
+Title: "Cervical Cancer Screening Results"
 Description: "A list of codes describing the Cervical Cancer Screening Results"
 * ^experimental = false
 * include codes from system CervicalCancerScreeningVIAResultsCodeSystem
+* include codes from system CervicalCancerScreeningHPVResultsCodeSystem
 
 CodeSystem: CervicalCancerScreeningHPVResultsCodeSystem
 Id: hpv-screening-result-code-system
@@ -321,16 +322,9 @@ Title: "Cervical Cancer Screening Results - HPV"
 Description: "A list of codes describing the Cervical Cancer Screening Results"
 * ^experimental = false
 * ^caseSensitive = true
+* #hpv-positive "VIA positive"
+* #hpv-negative "VIA negative"
 * #hpv-screening-result-unknown "Screening result unknown"
-
-ValueSet: CervicalCancerScreeningHPVResultsValueSet
-Id: hpv-screening-result-value-set
-Title: "Cervical Cancer Screening Results - HPV"
-Description: "A list of codes describing the Cervical Cancer Screening Results"
-* ^experimental = false
-* $LNC#LA6576-8 "Positive"
-* $LNC#LA6577-6 "Negative"
-* include codes from system CervicalCancerScreeningHPVResultsCodeSystem
 
 /*ValueSet: HPVDNATestResultValueSet
 Id: hpv-dna-test-result-value-set
@@ -1754,13 +1748,6 @@ Description: "Codes used for representing the type for the ARV regimen switched.
 * #Second-Switch "Second Switch"
 * #Third-Switch  "Third Switch"
 
-ValueSet: ARVRegimenSwitchTypeValueSet
-Id: arv-regimen-switch-type-value-set
-Title: "ARV Regimen Switch Type"
-Description: "Codes used for representing the type for the ARV regimen switched."
-* ^experimental = false
-* include codes from system ARVRegimenSwitchTypeCodeSystem
-
 CodeSystem: ARVRegimenSubstituteTypeCodeSystem
 Id: arv-regimen-substitute-type-code-system
 Title: "ARV Regimen Substitue Type"
@@ -1774,11 +1761,12 @@ Description: "Codes used for representing the type for the ARV regimen substitue
 * #Fifth-Substitute  "Fifth Substitute"
 * #Sixth-Substitute  "Sixth Substitute"
 
-ValueSet: ARVRegimenSubstituteTypeValueSet
-Id: arv-regimen-substitute-type-value-set
-Title: "ARV Regimen Substitue Type"
-Description: "Codes used for representing the type for the ARV regimen substitued."
+ValueSet: ARVRegimenChangeTypeValueSet
+Id: arv-regimen-change-type-value-set
+Title: "ARV Regimen Change Type"
+Description: "Codes used for representing the type of change associated with the ARV regimen (Switch or Substitute)."
 * ^experimental = false
+* include codes from system ARVRegimenSwitchTypeCodeSystem
 * include codes from system ARVRegimenSubstituteTypeCodeSystem
 
 ValueSet: ReasonARTStoppedValueSet
@@ -1969,12 +1957,13 @@ Description: "Codes used for representing routine indication for viral load."
 * #VL-after-EAC-Repeat-VL-50-to-1000  "VL after EAC: Repeat VL > 50 to <= 1000 copies/ml"
 * #VL-after-EAC-Confirmatory-VL-Initial-50-to-1000  "VL after EAC: Confirmatory VL: Initial > 50 to <= 1000 copies/ml"
 
-ValueSet: RoutineIndicationViralLoadValueSet
-Id: routine-indication-viral-load-value-set
-Title: "Routine Indication Viral Load"
-Description: "Codes used for representing routine indication for viral load."
+ValueSet: VLIndicationValueSet
+Id: vl-indication-value-set
+Title: "Viral Load Indication"
+Description: "Codes used for representing the indication type for the viral load."
 * ^experimental = false
 * include codes from system RoutineIndicationViralLoadCodeSystem
+* include codes from system TargetedIndicationViralLoadCodeSystem
 
 CodeSystem: TargetedIndicationViralLoadCodeSystem
 Id: targeted-indication-viral-load-code-system
@@ -1984,13 +1973,6 @@ Description: "Codes used for representing targeted indication for viral load."
 * ^caseSensitive = true
 * #Suspected-ART-Failure "Suspected ART Failure"
 * #Repeat-or-confirmatory-VL-Initial-VL-greater-than-1000 "Repeat or confirmatory VL Initial Viral load greater than 1000"
-
-ValueSet: TargetedIndicationViralLoadValueSet
-Id: targeted-indication-viral-load-value-set
-Title: "Targeted Indication Viral Load"
-Description: "Codes used for representing targeted indication for viral load."
-* ^experimental = false
-* include codes from system TargetedIndicationViralLoadCodeSystem
 
 ValueSet: ViralLoadStatusValueSet
 Id: viral-load-status-value-set
@@ -2128,3 +2110,20 @@ Description: "Codes used for interpreting the finding associated with the physic
 * ^experimental = false
 * $ObservationInterpretation#A "Abnormal"
 * $ObservationInterpretation#N "Normal"
+
+CodeSystem: CD4AndVLClassificationForTreatmentFailureCodeSystem
+Id: cd4-vl-classification-for-treatment-failure-code-system
+Title: "Viral Load/CD4 Count Classifications Indicating Treatment Failure"
+Description: "Codes used for indicating the classification for the Viral Load/CD4 count treatment failure."
+* ^experimental = false
+* ^caseSensitive = true
+* #Immunologic-Failure "CD4 below 250 cells/mm3 (Immunologic Failure)"
+* #Clinical-Failure "CD4 below 100 cells/mm3 (Clinical Failure)"
+* #Virologic-Failure "VL above 999 copies/mL (Virologic Failure)"
+
+ValueSet: CD4AndVLClassificationForTreatmentFailureValueSet
+Id: cd4-vl-classification-for-treatment-failure-value-set
+Title: "Viral Load/CD4 Count Classifications Indicating Treatment Failure"
+Description: "Codes used for indicating the classification for the Viral Load/CD4 count treatment failure."
+* ^experimental = false
+* include codes from system CD4AndVLClassificationForTreatmentFailureCodeSystem

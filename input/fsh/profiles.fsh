@@ -1326,21 +1326,13 @@ Parent: GenericObservation
 Id: cervical-cancer-screening-result-observation
 Title: "Observation - Cervical Cancer Screening Result"
 Description: "This is used to record the patient's cervical cancer screening result."
-* obeys Cervical-Cancer-Screening-Result-1 and Cervical-Cancer-Screening-Result-2
+* obeys Cervical-Cancer-Screening-Result-1
 * category 1..1
 * category = $OBSERVATION_CATEGORY#laboratory
 * code = $LNC#21864-4
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
-
-* valueCodeableConcept.extension contains VIACervicalCancerScreeningResultsExtension named VIA 0..1 MS
-* valueCodeableConcept.extension[VIA] ^definition =
-    "reason(s) why this should be supported."
-
-* valueCodeableConcept.extension contains HPVCervicalCancerScreeningResultsExtension named HPV 0..1 MS
-* valueCodeableConcept.extension[HPV] ^definition =
-    "reason(s) why this should be supported."
-
+* valueCodeableConcept from CervicalCancerScreeningResultValueSet (required)
 * derivedFrom 1..1
 * derivedFrom only Reference(CervicalCancerScreeningStatus)
 * basedOn 0..* MS
@@ -1378,7 +1370,6 @@ Parent: GenericObservation
 Id: arv-regimen-change-reason-observation
 Title: "Observation - ARV Regimen Change Reason"
 Description: "This is used to capture the reason for the ARV regimen change."
-* obeys Observation-ARV-Regimen-Change-Reason-1 and Observation-ARV-Regimen-Change-Reason-2
 * category 1..1
 * category = $OBSERVATION_CATEGORY#therapy
 * code = $LNC#LL354-2
@@ -1386,33 +1377,9 @@ Description: "This is used to capture the reason for the ARV regimen change."
 * valueCodeableConcept 1..1
 * valueCodeableConcept from ReasonForARVRegimenChangeValueSet (required)
 * valueCodeableConcept.text 1..1
-* interpretation 0..* MS
-* interpretation ^definition =
+* valueCodeableConcept.extension contains CD4AndVLClassificationForTreatmentFailureExtension named TreatmentFailureIndication 0..1 MS
+* valueCodeableConcept.extension[TreatmentFailureIndication] ^definition =
     "reason(s) why this should be supported."
-* interpretation.text 1..1
-* interpretation.coding only StrictCoding
-
-* insert Slice(interpretation, reasons why this should be supported, value, text, open, Slicing the reason for the regimen change based on the text value, false)
-
-* interpretation contains
-    ImmunologicFailure 0..1 MS and
-    ClinicalFailure 0..1 MS and
-    VirologicFailure 0..1 MS
-
-* interpretation[ImmunologicFailure] ^definition =
-    "reason(s) why this should be supported."
-* interpretation[ImmunologicFailure].text = "CD4 below 250 cells/mm3"
-* interpretation[ImmunologicFailure] = $ObservationInterpretation#L
-
-* interpretation[ClinicalFailure] ^definition =
-    "reason(s) why this should be supported."
-* interpretation[ClinicalFailure].text = "CD4 below 100 cells/mm3"
-* interpretation[ClinicalFailure] = $ObservationInterpretation#LL
-
-* interpretation[VirologicFailure] ^definition =
-    "reason(s) why this should be supported."
-* interpretation[VirologicFailure].text = "VL above 999 copies/mL"
-* interpretation[VirologicFailure] = $ObservationInterpretation#H
 
 Profile: ARVRegimenSideEffects
 Parent: GenericObservation
@@ -1471,27 +1438,12 @@ Parent: GenericObservation
 Id: arv-change-category-type-observation
 Title: "Observation - ARV Regimen Category Type"
 Description: "This is used to record the type for the ARV regimen change category."
-* obeys Observation-ARV-Regimen-Change-Type-1
 * category 1..1
 * category = $OBSERVATION_CATEGORY#therapy
 * code = $SCT#182838006
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
-* insert Slice(valueCodeableConcept.coding, reasons why this should be supported, value, code, open, Slicing the screening result based on the value, false)
-
-* valueCodeableConcept.coding contains
-    SwitchType 0..1 MS and
-    SubstitutionType 0..1 MS
-
-* valueCodeableConcept.coding[SwitchType] ^definition =
-    "reason(s) why this should be supported."
-* valueCodeableConcept.coding[SwitchType].code 1..1
-* valueCodeableConcept.coding[SwitchType].code from ARVRegimenSwitchTypeValueSet (required)
-
-* valueCodeableConcept.coding[SubstitutionType] ^definition =
-    "reason(s) why this should be supported."
-* valueCodeableConcept.coding[SubstitutionType].code 1..1
-* valueCodeableConcept.coding[SubstitutionType].code from ARVRegimenSubstituteTypeValueSet (required)
+* valueCodeableConcept from ARVRegimenChangeTypeValueSet (required)
 
 Profile: ReferralOutServiceRequest
 Parent: GenericServiceRequest
@@ -1751,39 +1703,39 @@ Description: "Records the health related activities for patients associated with
 * identifier[EpisodeOfCareID].system = $EpisodeOfCareID
 
 * type 1..*
-* insert Slice(type.coding, reasons why this should be supported, value, code, open, Slicing type based on the code value, false)
+* insert Slice(type, reasons why this should be supported, value, coding, open, Slicing type based on the coding value, false)
 
-* type.coding contains
+* type contains
     HIV-Tracking 0..1 MS and
     ART 0..1 MS and
     TB 0..1 MS and
     TPT 0..1 MS and
     Cervical-Cancer 0..1 MS
 
-* type.coding[HIV-Tracking] ^definition =
+* type[HIV-Tracking] ^definition =
     "reason(s) why this should be supported."
-* type.coding[HIV-Tracking].code 1..1
-* type.coding[HIV-Tracking].code = $LNC#LA28577-7
+* type[HIV-Tracking].coding 1..1
+* type[HIV-Tracking].coding = $LNC#LA28577-7
 
-* type.coding[ART] ^definition =
+* type[ART] ^definition =
     "reason(s) why this should be supported."
-* type.coding[ART].code 1..1
-* type.coding[ART].code = $LNC#LP66375-4
+* type[ART].coding 1..1
+* type[ART].coding = $LNC#LP66375-4
 
-* type.coding[TB] ^definition =
+* type[TB] ^definition =
     "reason(s) why this should be supported."
-* type.coding[TB].code 1..1
-* type.coding[TB].code = $SCT#171126009
+* type[TB].coding 1..1
+* type[TB].coding = $SCT#171126009
 
-* type.coding[TPT] ^definition =
+* type[TPT] ^definition =
     "reason(s) why this should be supported."
-* type.coding[TPT].code 1..1
-* type.coding[TPT].code = $SCT#699618001
+* type[TPT].coding 1..1
+* type[TPT].coding = $SCT#699618001
 
-* type.coding[Cervical-Cancer] ^definition =
+* type[Cervical-Cancer] ^definition =
     "reason(s) why this should be supported."
-* type.coding[Cervical-Cancer].code 1..1
-* type.coding[Cervical-Cancer].code = $SCT#702455009
+* type[Cervical-Cancer].coding 1..1
+* type[Cervical-Cancer].coding = $SCT#702455009
 
 * patient only Reference(EthPatient)
 * managingOrganization 1..1
@@ -1829,28 +1781,12 @@ Parent: GenericObservation
 Id: viral-load-indication-observation
 Title: "Observation - Viral Load Indication"
 Description: "This is used to represent the viral load indication."
-* obeys Observation-Viral-Load-Indication-1 and Observation-Viral-Load-Indication-2 and Observation-Viral-Load-Indication-3
 * category 1..1
 * category = $OBSERVATION_CATEGORY#laboratory
 * code from ViralLoadIndicationValueSet (required)
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
-* insert Slice(valueCodeableConcept.coding, reasons why this should be supported, value, code, open, Slicing the viral load indication on the code value, false)
-
-* valueCodeableConcept.coding contains
-    Routine 0..1 MS and
-    Targeted 0..1 MS
-
-* valueCodeableConcept.coding[Routine] ^definition =
-    "reason(s) why this should be supported."
-* valueCodeableConcept.coding[Routine].code 1..1
-* valueCodeableConcept.coding[Routine].code from RoutineIndicationViralLoadValueSet (required)
-
-* valueCodeableConcept.coding[Targeted] ^definition =
-    "reason(s) why this should be supported."
-* valueCodeableConcept.coding[Targeted].code 1..1
-* valueCodeableConcept.coding[Targeted].code from TargetedIndicationViralLoadValueSet (required)
-
+* valueCodeableConcept from VLIndicationValueSet (required)
 * basedOn 1..*
 
 * insert SliceForResolve(basedOn, reasons why this should be supported, open, Slicing basedOn based on the profile value, false)
