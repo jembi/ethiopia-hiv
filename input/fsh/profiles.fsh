@@ -606,11 +606,11 @@ Description: "Records the medication history for a patient suffering from OI's."
   * ^short = "Used for indicating the reason for point in time prescriptions in the context of an encounter."
 * reasonReference only Reference(CotrimoxazolePreventiveTherapy or FluconazolePreventiveTherapy)
 
-Profile: HIVTestEligibilityStatus
+Profile: ARTEligibilityStatus
 Parent: GenericObservation
-Id: hiv-test-eligibility-status-observation
-Title: "Observation - HIV Test Eligibility Status"
-Description: "Represents the patient's eligibility status for an HIV test"
+Id: art-eligibility-status-observation
+Title: "Observation - ART Eligibility Status"
+Description: "Represents the patient's eligibility status for ART"
 * category 1..1
 * category = $OBSERVATION_CATEGORY#exam
 * code = $SCT#171121004
@@ -619,28 +619,19 @@ Description: "Represents the patient's eligibility status for an HIV test"
 * valueCodeableConcept from ARTEligibilityStatusValueSet (required)
 * hasMember 0..1 MS
 * hasMember ^definition = "reason(s) why this should be supported."
-* hasMember only Reference(ReasonWhyEligibleForHIVTest)
+* hasMember only Reference(ReasonWhyEligibleForART)
 
-Profile: ReasonWhyEligibleForHIVTest
+Profile: ReasonWhyEligibleForART
 Parent: GenericObservation
-Id: reason-eligible-for-hiv-test-observation
-Title: "Observation - Reason Why Eligible for HIV Testing"
-Description: "Represents the reasons why a patient is considered eligibile for HIV testing."
+Id: reason-eligible-for-art-observation
+Title: "Observation - Reason Why Eligible for ART"
+Description: "Represents the reasons why a patient is considered eligibile for ART."
 * category 1..1
 * category = $OBSERVATION_CATEGORY#exam
 * code = $LNC#45232-6
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
-
-* insert Slice(valueCodeableConcept.coding, reasons why this should be supported, value, code, open, Slicing the eligibility reason, false)
-
-* valueCodeableConcept.coding contains
-    WhyEligible 1..* MS
-
-* valueCodeableConcept.coding[WhyEligible] ^definition =
-    "reason(s) why this should be supported."
-* valueCodeableConcept.coding[WhyEligible].code 1..1
-* valueCodeableConcept.coding[WhyEligible].code from ReasonForARTEligibilityValueSet (required)
+* valueCodeableConcept.extension contains ReasonsForARTEligibilityExtension named WhyEligible 1..*
 
 Profile: PCRHIVTestServiceRequest
 Parent: GenericServiceRequest
@@ -1335,27 +1326,21 @@ Parent: GenericObservation
 Id: cervical-cancer-screening-result-observation
 Title: "Observation - Cervical Cancer Screening Result"
 Description: "This is used to record the patient's cervical cancer screening result."
-* obeys Cervical-Cancer-Screening-Result-1 and Cervical-Cancer-Screening-Result-2
+* obeys Cervical-Cancer-Screening-Result-2
 * category 1..1
 * category = $OBSERVATION_CATEGORY#laboratory
 * code = $LNC#21864-4
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
-* insert Slice(valueCodeableConcept.coding, reasons why this should be supported, value, code, open, Slicing the screening result based on the value, false)
+* valueCodeableConcept obeys Cervical-Cancer-Screening-Result-1
 
-* valueCodeableConcept.coding contains
-    VIA 0..1 MS and
-    HPV 0..1 MS
-
-* valueCodeableConcept.coding[VIA] ^definition =
+* valueCodeableConcept.extension contains VIACervicalCancerScreeningResultsExtension named VIA 0..1 MS
+* valueCodeableConcept.extension[VIA] ^definition =
     "reason(s) why this should be supported."
-* valueCodeableConcept.coding[VIA].code 1..1
-* valueCodeableConcept.coding[VIA].code from CervicalCancerScreeningVIAResultsValueSet (required)
 
-* valueCodeableConcept.coding[HPV] ^definition =
+* valueCodeableConcept.extension contains HPVCervicalCancerScreeningResultsExtension named HPV 0..1 MS
+* valueCodeableConcept.extension[HPV] ^definition =
     "reason(s) why this should be supported."
-* valueCodeableConcept.coding[HPV].code 1..1
-* valueCodeableConcept.coding[HPV].code from CervicalCancerScreeningHPVResultsValueSet (required)
 
 * derivedFrom 1..1
 * derivedFrom only Reference(CervicalCancerScreeningStatus)

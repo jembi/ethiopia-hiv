@@ -199,3 +199,37 @@ Description: "This is an extension to capture the patient's plan for the prevent
 * valueCodeableConcept.coding only StrictCoding
 * ^context[+].type = #element
 * ^context[=].expression = "Observation.value.ofType(CodeableConcept)"
+
+Extension: ReasonsForARTEligibilityExtension
+Id: reasons-eligible-for-art
+Title: "Reasons Why Eligible for ART"
+Description: "This is an extension to capture the reasons why the patient is considered eligible for ART."
+* value[x] only CodeableConcept
+* valueCodeableConcept 1..1
+* valueCodeableConcept.text 1..1
+* valueCodeableConcept from ReasonForARTEligibilityValueSet (required)
+* valueCodeableConcept.coding only StrictCoding
+* ^context[+].type = #element
+* ^context[=].expression = "Observation.value.ofType(CodeableConcept)"
+
+Extension: VIACervicalCancerScreeningResultsExtension
+Id: via-cervical-cancer-screening-results
+Title: "Cervical Cancer Screening Results (VIA)"
+Description: "This is an extension to capture the patient's cervical cancer screening result drawn using the VIA method."
+* value[x] only CodeableConcept
+* valueCodeableConcept 1..1
+* valueCodeableConcept from CervicalCancerScreeningVIAResultsValueSet (required)
+* valueCodeableConcept.coding only StrictCoding
+* ^context[+].type = #element
+* ^context[=].expression = "Observation.value.ofType(CodeableConcept)"
+
+Extension: HPVCervicalCancerScreeningResultsExtension
+Id: hpv-cervical-cancer-screening-results
+Title: "Cervical Cancer Screening Results (HPV)"
+Description: "This is an extension to capture the patient's cervical cancer screening result drawn using the HPV method."
+* value[x] only CodeableConcept
+* valueCodeableConcept 1..1
+* valueCodeableConcept from CervicalCancerScreeningHPVResultsValueSet (required)
+* valueCodeableConcept.coding only StrictCoding
+* ^context[+].type = #element
+* ^context[=].expression = "Observation.value.ofType(CodeableConcept)"

@@ -701,11 +701,11 @@ Description: "Used to record the ART treatment and care details for the patient 
 * activity[+].extension[NextVisitDate].valueDateTime = "2024-03-20"
 * activity[=].reference = Reference(ARVMedicationRequestForRegimenSwitchExample)
 
-Instance: HIVTestEligibleNoReasonsExample
-InstanceOf: HIVTestEligibilityStatus
+Instance: ARTEligibleNoReasonsExample
+InstanceOf: ARTEligibilityStatus
 Usage: #example
-Title: "Observation - Eligible For HIV Test (Without Reasons For Eligibility)"
-Description: "Represents the patient's eligibility for HIV test"
+Title: "Observation - Eligible For ART (Without Reasons For Eligibility)"
+Description: "Indicates that the patient is eligibile for ART"
 * status = #final
 * category = $OBSERVATION_CATEGORY#exam
 * code = $SCT#171121004
@@ -716,11 +716,11 @@ Description: "Represents the patient's eligibility for HIV test"
 * effectiveDateTime = "2024-01-25"
 * performer = Reference(CurrentServiceProviderExample)
 
-Instance: HIVTestEligibleWithReasonsExample
-InstanceOf: HIVTestEligibilityStatus
+Instance: ARTEligibleWithReasonsExample
+InstanceOf: ARTEligibilityStatus
 Usage: #example
-Title: "Observation - Eligible For HIV Test (With Reasons For Eligibility)"
-Description: "Represents the patient's eligibility for HIV test"
+Title: "Observation - Eligible For ART (With Reasons For Eligibility)"
+Description: "Indicates that the patient is eligibile for ART"
 * status = #final
 * category = $OBSERVATION_CATEGORY#exam
 * code = $SCT#171121004
@@ -730,29 +730,31 @@ Description: "Represents the patient's eligibility for HIV test"
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2024-01-25"
 * performer = Reference(CurrentServiceProviderExample)
-* hasMember = Reference(ReasonWhyEligibleForHIVTestExample)
+* hasMember = Reference(ReasonWhyEligibleForARTExample)
 
-Instance: ReasonWhyEligibleForHIVTestExample
-InstanceOf: ReasonWhyEligibleForHIVTest
+Instance: ReasonWhyEligibleForARTExample
+InstanceOf: ReasonWhyEligibleForART
 Usage: #example
-Title: "Observation - Reason Why Eligible for HIV Testing"
-Description: "Represents the reasons why a patient is considered eligibile for HIV testing."
+Title: "Observation - Reason Why Eligible for ART"
+Description: "Represents the reasons why a patient is considered eligibile for ART."
 * status = #final
 * category = $OBSERVATION_CATEGORY#exam
 * code = $LNC#45232-6
 * code.text = "Reason medically eligible for HIV treatment"
-* valueCodeableConcept.coding[WhyEligible][+] = $ReasonForARTEligibilityCodeSystem#Clinical-Staging
-* valueCodeableConcept.coding[WhyEligible][+] = $ReasonForARTEligibilityCodeSystem#Test-and-Treat
+* valueCodeableConcept.extension[WhyEligible][+].valueCodeableConcept = $ReasonForARTEligibilityCodeSystem#Clinical-Staging
+* valueCodeableConcept.extension[WhyEligible][=].valueCodeableConcept.text = "Clinical Staging"
+* valueCodeableConcept.extension[WhyEligible][+].valueCodeableConcept = $ReasonForARTEligibilityCodeSystem#Test-and-Treat
+* valueCodeableConcept.extension[WhyEligible][=].valueCodeableConcept.text = "Test and treat"
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2024-01-25"
 * performer = Reference(CurrentServiceProviderExample)
 
-Instance: HIVTestNotEligibleExample
-InstanceOf: HIVTestEligibilityStatus
+Instance: ARTNotEligibleExample
+InstanceOf: ARTEligibilityStatus
 Usage: #example
-Title: "Observation - Not Eligible For HIV Test"
-Description: "Represents the patient's eligibility for HIV test"
+Title: "Observation - Not Eligible For ART"
+Description: "Indicates that the patient is not eligibile for ART"
 * status = #final
 * category = $OBSERVATION_CATEGORY#exam
 * code = $SCT#171121004
@@ -1486,7 +1488,7 @@ Description: "Indicates that the patient has a positive screening for HPV."
 * category = $OBSERVATION_CATEGORY#laboratory
 * code = $LNC#21864-4
 * code.text = "HPV positive screening"
-* valueCodeableConcept.coding[HPV] = $LNC#LA6576-8
+* valueCodeableConcept.extension[HPV].valueCodeableConcept = $LNC#LA6576-8
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * performer = Reference(CurrentServiceProviderExample)
@@ -1503,7 +1505,7 @@ Description: "Indicates that the patient has a positive screening for VIA."
 * category = $OBSERVATION_CATEGORY#laboratory
 * code = $LNC#21864-4
 * code.text = "VIA positive screening"
-* valueCodeableConcept.coding[VIA] = $CERVICAL_CANCER_VIA_SCREENING_RESULTS#via-positive-cryo-thermo-coagulation-eligible
+* valueCodeableConcept.extension[VIA].valueCodeableConcept = $CERVICAL_CANCER_VIA_SCREENING_RESULTS#via-positive-cryo-thermo-coagulation-eligible
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * performer = Reference(CurrentServiceProviderExample)
@@ -1520,7 +1522,7 @@ Description: "Indicates that the patient has a negative screening for HPV."
 * category = $OBSERVATION_CATEGORY#laboratory
 * code = $LNC#21864-4
 * code.text = "HPV negative screening"
-* valueCodeableConcept.coding[HPV] = $LNC#LA6577-6
+* valueCodeableConcept.extension[HPV].valueCodeableConcept = $LNC#LA6577-6
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * performer = Reference(CurrentServiceProviderExample)
@@ -1536,7 +1538,7 @@ Description: "Indicates that the patient has a negative screening for VIA."
 * category = $OBSERVATION_CATEGORY#laboratory
 * code = $LNC#21864-4
 * code.text = "VIA negative screening"
-* valueCodeableConcept.coding[VIA] = $CERVICAL_CANCER_VIA_SCREENING_RESULTS#via-negative
+* valueCodeableConcept.extension[VIA].valueCodeableConcept = $CERVICAL_CANCER_VIA_SCREENING_RESULTS#via-negative
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * performer = Reference(CurrentServiceProviderExample)
@@ -4355,11 +4357,11 @@ Description: "Documents the point in time symptoms presented by the patient in t
 * entry[+].item = Reference(PresentingFeverSymptomExample)
 * entry[+].item = Reference(PresentingNauseaSymptomExample)
 
-Instance: PhysicalExamsObservationExample
+Instance: PhysicalExamLymphNodeObservationExample
 InstanceOf: PhysicalExamsObservation
 Usage: #example
-Title: "Observation - Physical Examinations"
-Description: "Documents the outcome of findings associated with physical observations asserted during the context of the encounter."
+Title: "Observation - Examination of Lymph node"
+Description: "Indicates that the findings of the lymph node examination appear to be Abnormal."
 * status = #final
 * category = $OBSERVATION_CATEGORY#exam
 * code = $LNC#29544-4
@@ -4370,3 +4372,19 @@ Description: "Documents the outcome of findings associated with physical observa
 * valueCodeableConcept = $LNC#32450-9
 * valueCodeableConcept.text = "Lymph node"
 * interpretation = $ObservationInterpretation#A
+
+Instance: PhysicalExamHEENTObservationExample
+InstanceOf: PhysicalExamsObservation
+Usage: #example
+Title: "Observation - Examination of HEENT"
+Description: "Indicates that the findings of the HEENT examination appear to be Normal."
+* status = #final
+* category = $OBSERVATION_CATEGORY#exam
+* code = $LNC#29544-4
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* valueCodeableConcept = $LNC#11424-9
+* valueCodeableConcept.text = "HEENT"
+* interpretation = $ObservationInterpretation#N

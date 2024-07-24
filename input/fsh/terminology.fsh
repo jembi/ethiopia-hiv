@@ -676,6 +676,8 @@ Description: "Reasons For ART Eligibility"
 * #Test-and-Treat "Test and treat"
 * #Clinical-Staging "Clinical Staging"
 * #Transfer-in "Transfer in"
+* #WHO-Stage-Three "Stage Three"
+* #WHO-Stage-Four "Stage Four"
 //* #Other "Other"
 
 ValueSet: ReasonForARTEligibilityValueSet
@@ -683,6 +685,8 @@ Id: reason-for-art-eligibility-value-set
 Title: "Reasons For ART Eligibility"
 Description: "Reasons For ART Eligibility"
 * ^experimental = false
+* $LNC#LA6530-5 "Pregnancy"
+* $LNC#63932-8 "Age at diagnosis"
 * include codes from system ReasonForARTEligibilityCodeSystem
 
 ValueSet: HIVTestResultsValueSet

@@ -49,13 +49,13 @@ Expression: "value.coding.where(system = 'http://snomed.info/sct' and code = '11
 Severity: #error
 
 Invariant: Cervical-Cancer-Screening-Result-1
-Description: "The Observation.valueCodeableConcept.coding SHALL have at least one of \"VIA\" or \"HPV\"."
-Expression: "value.coding.slice('http://moh.gov.et/fhir/hiv/StructureDefinition/cervical-cancer-screening-result-observation', 'VIA').count() + value.coding.slice('http://moh.gov.et/fhir/hiv/StructureDefinition/cervical-cancer-screening-result-observation', 'HPV').count() > 0"
+Description: "The Observation.valueCodeableConcept.extension SHALL have at least one of \"VIA\" or \"HPV\"."
+Expression: "extension.slice('http://moh.gov.et/fhir/hiv/StructureDefinition/cervical-cancer-screening-result-observation', 'VIA').count() + extension.slice('http://moh.gov.et/fhir/hiv/StructureDefinition/cervical-cancer-screening-result-observation', 'HPV').count() > 0"
 Severity: #error
 
 Invariant: Cervical-Cancer-Screening-Result-2
-Description: "If Observation.valueCodeableConcept.coding.code for slice \"VIA\" is NOT \"via-negative\" and NOT \"LA6577-6\" for slice \"HPV\" then Observation.basedOn SHALL be present."
-Expression: "value.coding.where(system = 'http://moh.gov.et/fhir/hiv/CodeSystem/via-screening-result-code-system' and code = 'via-negative').exists().not() and value.coding.where(system = 'http://loinc.org' and code = 'LA6577-6').exists().not() implies basedOn.exists()"
+Description: "If Observation.valueCodeableConcept.extension.coding.code for slice \"VIA\" is NOT \"via-negative\" and NOT \"LA6577-6\" for slice \"HPV\" then Observation.basedOn SHALL be present."
+Expression: "value.extension.value.coding.where(system = 'http://moh.gov.et/fhir/hiv/CodeSystem/via-screening-result-code-system' and code = 'via-negative').exists().not() and value.extension.value.coding.where(system = 'http://loinc.org' and code = 'LA6577-6').exists().not() implies basedOn.exists()"
 Severity: #error
 
 Invariant: Extension-DSD-1
