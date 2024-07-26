@@ -3039,3 +3039,15 @@ Description: "Documents the outcome of findings associated with physical observa
 * valueCodeableConcept from PhysicalExamValueSet (extensible)
 * interpretation 1..1
 * interpretation from PhysicalExamInterpretationValueSet (required)
+
+Profile: DisclosureStatusObservation
+Parent: GenericObservation
+Id: disclosure-status-observation
+Title: "Observation - Disclosure Status"
+Description: "Documents the disclosure of HIV status for minors."
+* category 1..1
+* category = $OBSERVATION_CATEGORY#therapy
+* code = $LNC#55277-8
+* value[x] only CodeableConcept
+* valueCodeableConcept 1..1
+* valueCodeableConcept from DisclosureStageValueSet (required)

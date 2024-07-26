@@ -2127,3 +2127,12 @@ Title: "Viral Load/CD4 Count Classifications Indicating Treatment Failure"
 Description: "Codes used for indicating the classification for the Viral Load/CD4 count treatment failure."
 * ^experimental = false
 * include codes from system CD4AndVLClassificationForTreatmentFailureCodeSystem
+
+ValueSet: DisclosureStageValueSet
+Id: disclosure-stage-value-set
+Title: "Disclosure Stage"
+Description: "Codes used for representing the stages of disclosure for the patient's current HIV status."
+* ^experimental = false
+* $SCT#258215001 "Stage 1"
+* $SCT#258219007 "Stage 2"
+* $SCT#258224005 "Stage 3"
