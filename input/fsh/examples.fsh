@@ -4385,3 +4385,17 @@ Description: "Indicates that the findings of the HEENT examination appear to be 
 * valueCodeableConcept = $LNC#11424-9
 * valueCodeableConcept.text = "HEENT"
 * interpretation = $ObservationInterpretation#N
+
+Instance: DisclosureStatusObservationExample
+InstanceOf: DisclosureStatusObservation
+Usage: #example
+Title: "Observation - Disclosure Status"
+Description: "Documents the disclosure of HIV status for minors."
+* status = #final
+* category = $OBSERVATION_CATEGORY#therapy
+* code = $LNC#55277-8
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* valueCodeableConcept = $SCT#258215001
