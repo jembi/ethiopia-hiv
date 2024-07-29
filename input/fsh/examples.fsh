@@ -180,11 +180,11 @@ Description: "Represents the current facility at which the patient is receiving 
 * serviceProvider = Reference(CurrentServiceProviderExample)
 * location[+].location = Reference(EncounterLocationANCExample)
 
-Instance: ARVDrugDispensationExample
+Instance: ARVDrugDispensationAliveOnARTExample
 InstanceOf: ARVDrugDispensation
 Usage: #example
-Title: "Medication Dispense - ARV Regimen"
-Description: "Used to represent prescribed medication dispensed to a patient."
+Title: "Medication Dispense - ARV Regimen Prescribed For Status \"Alive on ART\""
+Description: "Indicates ARV prescribed to a patient who is alive on ART."
 * status = #completed
 * medicationReference = Reference(ARVMedicationExample)
 * subject = Reference(GeneralPatientExample)
@@ -199,6 +199,27 @@ Description: "Used to represent prescribed medication dispensed to a patient."
 * daysSupply.value = 90
 
 * authorizingPrescription = Reference(ARVMedicationRequestAliveOnARTExample)
+* whenHandedOver = "2012-12-09"
+
+Instance: ARVDrugDispensationARTInitiatedExample
+InstanceOf: ARVDrugDispensation
+Usage: #example
+Title: "Medication Dispense - ARV Regimen Prescribed For Status \"ART Initiated\""
+Description: "Indicates ARV prescribed to a patient who initiated on ART."
+* status = #completed
+* medicationReference = Reference(ARVMedicationExample)
+* subject = Reference(GeneralPatientExample)
+* context = Reference(GeneralEncounterExample)
+
+* quantity = $OrderableDrugForm_UNIT#TAB 
+* quantity.unit = "TAB"
+* quantity.value = 90
+
+* daysSupply = $UCUM_UNIT#d
+* daysSupply.unit = "Days"
+* daysSupply.value = 90
+
+* authorizingPrescription = Reference(ARVMedicationRequestInitiatedARTExample)
 * whenHandedOver = "2012-12-09"
 
 Instance: ChildRelatedPersonExample
@@ -685,6 +706,7 @@ Description: "Used to record the ART treatment and care details for the patient 
 * encounter = Reference(GeneralEncounterExample)
 * activity[+].extension[NextVisitDate].valueDateTime = "2024-03-20"
 * activity[=].reference = Reference(ARVMedicationRequestInitiatedARTExample)
+* activity[=].extension[Adherence].valueReference = Reference(FairARVAdherenceExample)
 
 Instance: ARTAliveOnARTFollowUpCareplanRegimenSwitchedExample
 InstanceOf: ARTFollowUpCareplan
@@ -1513,7 +1535,7 @@ Description: "Indicates that the patient has a positive screening for VIA."
 * derivedFrom = Reference(CervicalCancerScreeningDoneExample)
 * basedOn = Reference(CervicalCancerCarePlanVIAWithTreatmentRequestExample)
 
-Instance: CervicalCancerHPVNegtiveScreeningResultExample
+Instance: CervicalCancerHPVNegativeScreeningResultExample
 InstanceOf: CervicalCancerScreeningResult
 Usage: #example
 Title: "Observation - Cervical Cancer Negative Screening Result (HPV)"
@@ -1529,7 +1551,7 @@ Description: "Indicates that the patient has a negative screening for HPV."
 * effectiveDateTime = "2024-01-25"
 * derivedFrom = Reference(CervicalCancerScreeningDoneExample)
 
-Instance: CervicalCancerVIANegtiveScreeningResultExample
+Instance: CervicalCancerVIANegativeScreeningResultExample
 InstanceOf: CervicalCancerScreeningResult
 Usage: #example
 Title: "Observation - Cervical Cancer Negative Screening Result (VIA)"
@@ -1864,7 +1886,7 @@ Description: "Used to record the medication administration period for prescribed
 * status = #completed
 * subject = Reference(GeneralPatientExample)
 * context = Reference(GeneralEncounterExample)
-* request = Reference(ARVMedicationRequestAliveOnARTExample)
+* request = Reference(ARVMedicationRequestInitiatedARTExample)
 * effectivePeriod.start = "2012-12-09"
 * effectivePeriod.end = "2013-04-08"
 * note.authorReference = Reference(GeneralPractitionerExample)
