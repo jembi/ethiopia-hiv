@@ -1513,7 +1513,7 @@ Description: "Indicates that the patient has a positive screening for VIA."
 * derivedFrom = Reference(CervicalCancerScreeningDoneExample)
 * basedOn = Reference(CervicalCancerCarePlanVIAWithTreatmentRequestExample)
 
-Instance: CervicalCancerHPVNegtiveScreeningResultExample
+Instance: CervicalCancerHPVNegativeScreeningResultExample
 InstanceOf: CervicalCancerScreeningResult
 Usage: #example
 Title: "Observation - Cervical Cancer Negative Screening Result (HPV)"
@@ -1529,7 +1529,7 @@ Description: "Indicates that the patient has a negative screening for HPV."
 * effectiveDateTime = "2024-01-25"
 * derivedFrom = Reference(CervicalCancerScreeningDoneExample)
 
-Instance: CervicalCancerVIANegtiveScreeningResultExample
+Instance: CervicalCancerVIANegativeScreeningResultExample
 InstanceOf: CervicalCancerScreeningResult
 Usage: #example
 Title: "Observation - Cervical Cancer Negative Screening Result (VIA)"
