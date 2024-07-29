@@ -1,11 +1,11 @@
 Instance: CleanCDRBundleExample
 InstanceOf: Bundle
 Usage: #example
-Title: "Bundle - NDR \"Posposed Closest\" Equivalent to the CDR (A \"CLEAN\" Representation)"
+Title: "Bundle - NDR \"Proposed Closest\" Equivalent to the CDR (A \"CLEAN\" Representation)"
 Description: 
     "A bundle containing the NDR requirements that the CDR payload will need to be compliant with.
 
-    Note: This bundle exlcudes references to the Resources for Patient, Encounter and Related Person!"
+    Note: This bundle excludes references to the Resources for Patient, Encounter and Related Person!"
 
 * type = #transaction
 * timestamp = "2024-02-18T09:30:00+02:00"
