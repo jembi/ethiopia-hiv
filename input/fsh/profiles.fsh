@@ -2650,14 +2650,17 @@ Description: "Used to record the TB treatment details for the patient."
 
 * activity 1..*
 
-* activity.outcomeReference 1..*
+/** activity.outcomeReference 1..*
 
 * insert SliceForResolve(activity.outcomeReference, reasons why this should be supported, open, Slicing outcomeReference based on the profile value, false)
 
 * activity.outcomeReference contains
     TreatmentStatus 1..1
 
-* activity.outcomeReference[TreatmentStatus] only Reference(TBTreatmentStatusObservation)
+* activity.outcomeReference[TreatmentStatus] only Reference(TBTreatmentStatusObservation)*/
+
+* activity.outcomeReference 1..1
+* activity.outcomeReference only Reference(TBTreatmentStatusObservation)
 
 * activity.reference 1..1
 * activity.reference only Reference(TBScreeningServiceRequest)
@@ -2703,14 +2706,17 @@ Description: "Used to record the TPT details for the patient."
 
 * activity 1..*
 
-* activity.outcomeReference 1..*
+/** activity.outcomeReference 1..*
 
 * insert SliceForResolve(activity.outcomeReference, reasons why this should be supported, open, Slicing outcomeReference based on the profile value, false)
 
 * activity.outcomeReference contains
     TreatmentStatus 1..1
 
-* activity.outcomeReference[TreatmentStatus] only Reference(TBProphylaxisTypeObservation)
+* activity.outcomeReference[TreatmentStatus] only Reference(TBProphylaxisTypeObservation)*/
+
+* activity.outcomeReference 1..1
+* activity.outcomeReference only Reference(TBProphylaxisTypeObservation)
 
 * activity.reference 1..1
 * activity.reference only Reference(TPTMedicationRequest)
