@@ -4421,3 +4421,52 @@ Description: "Documents the disclosure of HIV status for minors."
 * effectiveDateTime = "2023-12-11"
 * performer = Reference(CurrentServiceProviderExample)
 * valueCodeableConcept = $SCT#258215001
+
+Instance: IndexCaseScreeningARTQuestionnaireExample
+InstanceOf: IndexCaseScreeningARTQuestionnaire
+Usage: #example
+Title: "Questionnaire - Index Case Screening (ART)"
+Description: "A questionaire that provides eligibility criteria for the index case screening."
+* status = #active
+* subjectType = #Observation
+* item[EnrolledIntoCare].linkId = "enrolledintocare"
+* item[EnrolledIntoCare].text = "Is the client newly enrolled"
+* item[EnrolledIntoCare].type = #choice
+* item[EnrolledIntoCare].required = false
+* item[EnrolledIntoCare].repeats = false
+* item[EnrolledIntoCare].code[EnrolledIntoCare_CODE] = $LNC#67723-7
+
+Instance: IndexCaseScreeningARTNotEnrolledExample
+InstanceOf: IndexCaseScreeningARTQuestionnaireResponse
+Usage: #example
+Title: "Questionnaire Response - Index Case Screening (Not Enrolled to ART)"
+Description: "A questionaire response that documents the answers to the eligibility criteria for the index case screening questions."
+* questionnaire = Canonical(IndexCaseScreeningARTQuestionnaireExample)
+* status = #completed
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+
+* item[EnrolledIntoCare].linkId = "enrolledintocare"
+* item[EnrolledIntoCare].text = "Is the client newly enrolled"
+* item[EnrolledIntoCare].answer.valueCoding = $YesNoCodeSystem#false
+
+* author = Reference(GeneralPractitionerExample)
+* authored = "2008-10-13"
+
+Instance: IndexCaseScreeningARTEnrolledExample
+InstanceOf: IndexCaseScreeningARTQuestionnaireResponse
+Usage: #example
+Title: "Questionnaire Response - Index Case Screening (Enrolled to ART)"
+Description: "A questionaire response that documents the answers to the eligibility criteria for the index case screening questions."
+* questionnaire = Canonical(IndexCaseScreeningARTQuestionnaireExample)
+* status = #completed
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+
+* item[EnrolledIntoCare].linkId = "enrolledintocare"
+* item[EnrolledIntoCare].text = "Is the client newly enrolled"
+* item[EnrolledIntoCare].answer.valueCoding = $YesNoCodeSystem#true
+* item[EnrolledIntoCare].answer.extension[SupportingReference].valueReference = Reference(LinkedToCareExample)
+
+* author = Reference(GeneralPractitionerExample)
+* authored = "2008-10-13"

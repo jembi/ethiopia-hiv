@@ -3057,3 +3057,59 @@ Description: "Documents the disclosure of HIV status for minors."
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
 * valueCodeableConcept from DisclosureStageValueSet (required)
+
+/*Profile: IndexCaseScreeningFollowUpObservation
+Parent: GenericObservation
+Id: index-case-screening-follow-up-observation
+Title: "Observation - Index Case Screening Follow-up"
+Description: "Documents the date the patient was screened using an eligibility criteria to inform whether the patient is an index case."
+* category 1..1
+* category = $OBSERVATION_CATEGORY#exam
+* code = $LNC#55277-8
+* value[x] only dateTime
+* valueDateTime 1..1*/
+
+Profile: IndexCaseScreeningARTQuestionnaire
+Parent: Questionnaire
+Id: index-case-screening-art-questionnaire
+Title: "Questionnaire - Index Case Screening (ART)"
+Description: "A questionaire that provides eligibility criteria for the index case screening."
+* status 1..1
+* item 1..*
+* subjectType 1..1
+* subjectType = #Observation
+* insert Slice(item, reasons why this should be supported, value, linkId, open, Slicing the items based on the linkId value, false)
+* item contains
+    EnrolledIntoCare 0..1 MS //and
+    //HighViralLoad 0..1 MS and
+    //ARTRestart 0..1 MS
+
+* insert Question(EnrolledIntoCare, enrolledintocare, Is the client newly enrolled, choice, false, false, reasons why this should be supported)
+* item[EnrolledIntoCare]
+  * answerValueSet = Canonical(YesNoValueSet)
+
+* insert Slice(item[EnrolledIntoCare].code, reasons why this should be supported, value, code, open, Slicing the items based on the system value, false)
+* item[EnrolledIntoCare].code contains
+    EnrolledIntoCare_CODE 1..1
+
+* item[EnrolledIntoCare].code 1..1
+* item[EnrolledIntoCare].code[EnrolledIntoCare_CODE].code = #67723-7
+* item[EnrolledIntoCare].code[EnrolledIntoCare_CODE].system = $LNC
+
+Profile: IndexCaseScreeningARTQuestionnaireResponse
+Parent: GenericQuestionnaireResponse
+Id: index-case-screening-art-questionnaire-response
+Title: "Questionnaire Response - Index Case Screening (ART)"
+Description: "A questionaire response that documents the answers to the eligibility criteria for the index case screening questions."
+* questionnaire only Canonical(IndexCaseScreeningARTQuestionnaire)
+
+* insert Slice(item, reasons why this should be supported, value, linkId, open, Slicing the items based on the linkId value, false)
+* item contains
+    EnrolledIntoCare 0..1 MS
+
+* insert QuestionResponseItem(EnrolledIntoCare, enrolledintocare, Is the client newly enrolled, StrictCoding or Reference, reasons why this should be supported)
+* item[EnrolledIntoCare]
+  * answer.extension contains ResourceValueReferenceExtension named SupportingReference 0..1 MS
+  * answer.extension[SupportingReference] ^definition =
+    "reason(s) why this should be supported."
+  * answer.extension[SupportingReference].valueReference only Reference(HIVProgramStatusObservation)

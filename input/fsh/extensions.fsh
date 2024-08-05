@@ -222,3 +222,12 @@ Description: "This is an extension to capture the classification of the Viral Lo
 * valueCodeableConcept.coding only StrictCoding
 * ^context[+].type = #element
 * ^context[=].expression = "Observation.value.ofType(CodeableConcept)"
+
+Extension: ResourceValueReferenceExtension
+Id: resource-value-reference
+Title: "Resource Value Reference"
+Description: "This is an extension to assoiciate a referenced resource to support the answer to the questionnaire resource question."
+* value[x] only Reference
+* valueReference 1..1
+* ^context[+].type = #element
+* ^context[=].expression = "QuestionnaireResponse.item.answer"
