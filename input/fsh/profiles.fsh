@@ -162,6 +162,8 @@ Description: "Represents the current facility at which the patient is receiving 
 * class 1..1
 * type 1..1
 * type.extension contains EncounterVisitTypeExtension named VisitType 1..1
+* serviceType 0..1 MS
+* serviceType ^definition = "reason(s) why this should be supported."
 * subject 1..1 
 * subject only Reference(EthPatient)
 
@@ -3069,22 +3071,48 @@ Description: "A questionaire that provides eligibility criteria for the index ca
 * subjectType = #Observation
 * insert Slice(item, reasons why this should be supported, value, linkId, open, Slicing the items based on the linkId value, false)
 * item contains
-    EnrolledIntoCare 0..1 MS //and
-    //HighViralLoad 0..1 MS and
-    //ARTRestart 0..1 MS
+    NewlyEnrolledIntoCare 0..1 MS and
+    HighViralLoad 0..1 MS and
+    ARTRestart 0..1 MS
 
-* insert Question(EnrolledIntoCare, enrolledintocare, Is the client newly enrolled, choice, false, false, reasons why this should be supported)
-* item[EnrolledIntoCare]
+* insert Question(NewlyEnrolledIntoCare, newlyenrolledintocare, Is the client newly enrolled, choice, false, false, reasons why this should be supported)
+* item[NewlyEnrolledIntoCare]
   * answerValueSet 1..1
   * answerValueSet = Canonical(YesNoValueSet)
 
-* insert Slice(item[EnrolledIntoCare].code, reasons why this should be supported, value, code, open, Slicing the items based on the system value, false)
-* item[EnrolledIntoCare].code contains
-    EnrolledIntoCare_CODE 1..1
+* insert Slice(item[NewlyEnrolledIntoCare].code, reasons why this should be supported, value, code, open, Slicing the items based on the system value, false)
+* item[NewlyEnrolledIntoCare].code contains
+    NewlyEnrolledIntoCare_CODE 1..1
 
-* item[EnrolledIntoCare].code 1..1
-* item[EnrolledIntoCare].code[EnrolledIntoCare_CODE].code = #67723-7
-* item[EnrolledIntoCare].code[EnrolledIntoCare_CODE].system = $LNC
+* item[NewlyEnrolledIntoCare].code 1..1
+* item[NewlyEnrolledIntoCare].code[NewlyEnrolledIntoCare_CODE].code = #67723-7
+* item[NewlyEnrolledIntoCare].code[NewlyEnrolledIntoCare_CODE].system = $LNC
+
+* insert Question(HighViralLoad, highviralload, Does the client have a high viral load, choice, false, false, reasons why this should be supported)
+* item[HighViralLoad]
+  * answerValueSet 1..1
+  * answerValueSet = Canonical(YesNoValueSet)
+
+* insert Slice(item[HighViralLoad].code, reasons why this should be supported, value, code, open, Slicing the items based on the system value, false)
+* item[HighViralLoad].code contains
+    HighViralLoad_CODE 1..1
+
+* item[HighViralLoad].code 1..1
+* item[HighViralLoad].code[HighViralLoad_CODE].code = #315124004
+* item[HighViralLoad].code[HighViralLoad_CODE].system = $SCT
+
+* insert Question(ARTRestart, artrestart, Does the client have an ART status of Restart, choice, false, false, reasons why this should be supported)
+* item[ARTRestart]
+  * answerValueSet 1..1
+  * answerValueSet = Canonical(YesNoValueSet)
+
+* insert Slice(item[ARTRestart].code, reasons why this should be supported, value, code, open, Slicing the items based on the system value, false)
+* item[ARTRestart].code contains
+    ARTRestart_CODE 1..1
+
+* item[ARTRestart].code 1..1
+* item[ARTRestart].code[ARTRestart_CODE].code = #63936-9
+* item[ARTRestart].code[ARTRestart_CODE].system = $LNC
 
 Profile: IndexCaseScreeningQuestionnaireResponse
 Parent: GenericQuestionnaireResponse
@@ -3095,12 +3123,30 @@ Description: "A questionaire response that documents the answers to the eligibil
 
 * insert Slice(item, reasons why this should be supported, value, linkId, open, Slicing the items based on the linkId value, false)
 * item contains
-    EnrolledIntoCare 0..1 MS
+    NewlyEnrolledIntoCare 0..1 MS and
+    HighViralLoad 0..1 MS and
+    ARTRestart 0..1 MS
 
-* insert QuestionResponseItem(EnrolledIntoCare, enrolledintocare, Is the client newly enrolled, StrictCoding or Reference, reasons why this should be supported)
-* item[EnrolledIntoCare]
+* insert QuestionResponseItem(NewlyEnrolledIntoCare, newlyenrolledintocare, Is the client newly enrolled, StrictCoding or Reference, reasons why this should be supported)
+* item[NewlyEnrolledIntoCare]
   * answer.extension contains ResourceValueReferenceExtension named SupportingReference 0..1 MS
   * answer.extension[SupportingReference]
     * ^definition = "Provides supportive information during clinical assessment"
     * ^short = "Used for providing supporting clinical information."
   * answer.extension[SupportingReference].valueReference only Reference(HIVProgramStatusObservation)
+
+* insert QuestionResponseItem(HighViralLoad, highviralload, Does the client have a high viral load, StrictCoding or Reference, reasons why this should be supported)
+* item[HighViralLoad]
+  * answer.extension contains ResourceValueReferenceExtension named SupportingReference 0..1 MS
+  * answer.extension[SupportingReference]
+    * ^definition = "Provides supportive information during clinical assessment"
+    * ^short = "Used for providing supporting clinical information."
+  * answer.extension[SupportingReference].valueReference only Reference(ViralLoadResultObservation)
+
+* insert QuestionResponseItem(ARTRestart, artrestart, Does the client have an ART status of Restart, StrictCoding or Reference, reasons why this should be supported)
+* item[ARTRestart]
+  * answer.extension contains ResourceValueReferenceExtension named SupportingReference 0..1 MS
+  * answer.extension[SupportingReference]
+    * ^definition = "Provides supportive information during clinical assessment"
+    * ^short = "Used for providing supporting clinical information."
+  * answer.extension[SupportingReference].valueReference only Reference(ARTFollowupStatusObservation)

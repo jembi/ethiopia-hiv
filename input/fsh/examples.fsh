@@ -2548,6 +2548,20 @@ Description: "Represents the results for a targeted viral load as suppressed."
 * basedOn = Reference(TargetedViralLoadServiceRequestExample)
 * performer = Reference(CurrentServiceProviderExample)
 
+Instance: RestartARTFollowupStatusExample
+InstanceOf: ARTFollowupStatusObservation
+Usage: #example
+Title: "Observation - Restart"
+Description: "Indicates that the patient has restarted ART."
+* status = #final
+* category = $OBSERVATION_CATEGORY#therapy
+* code = $LNC#47248-0
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* valueCodeableConcept = $LNC#63936-9
+* effectiveDateTime = "2024-01-25"
+* performer = Reference(CurrentServiceProviderExample)
+
 Instance: LostARTFollowupStatusExample
 InstanceOf: ARTFollowupStatusObservation
 Usage: #example
@@ -4429,12 +4443,12 @@ Title: "Questionnaire - Index Case Screening"
 Description: "A questionaire that provides eligibility criteria for the index case screening."
 * status = #active
 * subjectType = #Observation
-* item[EnrolledIntoCare].linkId = "enrolledintocare"
-* item[EnrolledIntoCare].text = "Is the client newly enrolled"
-* item[EnrolledIntoCare].type = #choice
-* item[EnrolledIntoCare].required = false
-* item[EnrolledIntoCare].repeats = false
-* item[EnrolledIntoCare].code[EnrolledIntoCare_CODE] = $LNC#67723-7
+* item[NewlyEnrolledIntoCare].linkId = "newlyenrolledintocare"
+* item[NewlyEnrolledIntoCare].text = "Is the client newly enrolled"
+* item[NewlyEnrolledIntoCare].type = #choice
+* item[NewlyEnrolledIntoCare].required = false
+* item[NewlyEnrolledIntoCare].repeats = false
+* item[NewlyEnrolledIntoCare].code[NewlyEnrolledIntoCare_CODE] = $LNC#67723-7
 
 Instance: IndexCaseScreeningExample1
 InstanceOf: IndexCaseScreeningQuestionnaireResponse
@@ -4446,9 +4460,9 @@ Description: "A questionaire response that documents the answers to the eligibil
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 
-* item[EnrolledIntoCare].linkId = "enrolledintocare"
-* item[EnrolledIntoCare].text = "Is the client newly enrolled"
-* item[EnrolledIntoCare].answer.valueCoding = $YesNoCodeSystem#false
+* item[NewlyEnrolledIntoCare].linkId = "newlyenrolledintocare"
+* item[NewlyEnrolledIntoCare].text = "Is the client newly enrolled"
+* item[NewlyEnrolledIntoCare].answer.valueCoding = $YesNoCodeSystem#false
 
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"
@@ -4463,10 +4477,46 @@ Description: "A questionaire response that documents the answers to the eligibil
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 
-* item[EnrolledIntoCare].linkId = "enrolledintocare"
-* item[EnrolledIntoCare].text = "Is the client newly enrolled"
-* item[EnrolledIntoCare].answer.valueCoding = $YesNoCodeSystem#true
-* item[EnrolledIntoCare].answer.extension[SupportingReference].valueReference = Reference(LinkedToCareExample)
+* item[NewlyEnrolledIntoCare].linkId = "newlyenrolledintocare"
+* item[NewlyEnrolledIntoCare].text = "Is the client newly enrolled"
+* item[NewlyEnrolledIntoCare].answer.valueCoding = $YesNoCodeSystem#true
+* item[NewlyEnrolledIntoCare].answer.extension[SupportingReference].valueReference = Reference(LinkedToCareExample)
+
+* item[HighViralLoad].linkId = "highviralload"
+* item[HighViralLoad].text = "Does the client have a high viral load"
+* item[HighViralLoad].answer.valueCoding = $YesNoCodeSystem#true
+* item[HighViralLoad].answer.extension[SupportingReference].valueReference = Reference(UnsuppressedViralLoadResultExample)
+
+* item[ARTRestart].linkId = "artrestart"
+* item[ARTRestart].text = "Does the client have an ART status of Restart"
+* item[ARTRestart].answer.valueCoding = $YesNoCodeSystem#false
+
+* author = Reference(GeneralPractitionerExample)
+* authored = "2008-10-13"
+
+Instance: IndexCaseScreeningExample3
+InstanceOf: IndexCaseScreeningQuestionnaireResponse
+Usage: #example
+Title: "Questionnaire Response - Index Case Screening (Example 3)"
+Description: "A questionaire response that documents the answers to the eligibility criteria for the index case screening questions."
+* questionnaire = Canonical(IndexCaseScreeningQuestionnaireExample)
+* status = #completed
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+
+* item[NewlyEnrolledIntoCare].linkId = "newlyenrolledintocare"
+* item[NewlyEnrolledIntoCare].text = "Is the client newly enrolled"
+* item[NewlyEnrolledIntoCare].answer.valueCoding = $YesNoCodeSystem#false
+
+* item[HighViralLoad].linkId = "highviralload"
+* item[HighViralLoad].text = "Does the client have a high viral load"
+* item[HighViralLoad].answer.valueCoding = $YesNoCodeSystem#true
+* item[HighViralLoad].answer.extension[SupportingReference].valueReference = Reference(UnsuppressedViralLoadResultExample)
+
+* item[ARTRestart].linkId = "artrestart"
+* item[ARTRestart].text = "Does the client have an ART status of Restart"
+* item[ARTRestart].answer.valueCoding = $YesNoCodeSystem#true
+* item[ARTRestart].answer.extension[SupportingReference].valueReference = Reference(RestartARTFollowupStatusExample)
 
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"
