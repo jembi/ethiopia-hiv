@@ -4422,10 +4422,10 @@ Description: "Documents the disclosure of HIV status for minors."
 * performer = Reference(CurrentServiceProviderExample)
 * valueCodeableConcept = $SCT#258215001
 
-Instance: IndexCaseScreeningARTQuestionnaireExample
-InstanceOf: IndexCaseScreeningARTQuestionnaire
+Instance: IndexCaseScreeningQuestionnaireExample
+InstanceOf: IndexCaseScreeningQuestionnaire
 Usage: #example
-Title: "Questionnaire - Index Case Screening (ART)"
+Title: "Questionnaire - Index Case Screening"
 Description: "A questionaire that provides eligibility criteria for the index case screening."
 * status = #active
 * subjectType = #Observation
@@ -4436,12 +4436,12 @@ Description: "A questionaire that provides eligibility criteria for the index ca
 * item[EnrolledIntoCare].repeats = false
 * item[EnrolledIntoCare].code[EnrolledIntoCare_CODE] = $LNC#67723-7
 
-Instance: IndexCaseScreeningARTNotEnrolledExample
-InstanceOf: IndexCaseScreeningARTQuestionnaireResponse
+Instance: IndexCaseScreeningExample1
+InstanceOf: IndexCaseScreeningQuestionnaireResponse
 Usage: #example
-Title: "Questionnaire Response - Index Case Screening (Not Enrolled to ART)"
+Title: "Questionnaire Response - Index Case Screening (Example 1)"
 Description: "A questionaire response that documents the answers to the eligibility criteria for the index case screening questions."
-* questionnaire = Canonical(IndexCaseScreeningARTQuestionnaireExample)
+* questionnaire = Canonical(IndexCaseScreeningQuestionnaireExample)
 * status = #completed
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
@@ -4453,12 +4453,12 @@ Description: "A questionaire response that documents the answers to the eligibil
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"
 
-Instance: IndexCaseScreeningARTEnrolledExample
-InstanceOf: IndexCaseScreeningARTQuestionnaireResponse
+Instance: IndexCaseScreeningExample2
+InstanceOf: IndexCaseScreeningQuestionnaireResponse
 Usage: #example
-Title: "Questionnaire Response - Index Case Screening (Enrolled to ART)"
+Title: "Questionnaire Response - Index Case Screening (Example 2)"
 Description: "A questionaire response that documents the answers to the eligibility criteria for the index case screening questions."
-* questionnaire = Canonical(IndexCaseScreeningARTQuestionnaireExample)
+* questionnaire = Canonical(IndexCaseScreeningQuestionnaireExample)
 * status = #completed
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
