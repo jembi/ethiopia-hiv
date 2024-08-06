@@ -4450,6 +4450,20 @@ Description: "A questionaire that provides eligibility criteria for the index ca
 * item[NewlyEnrolledIntoCare].repeats = false
 * item[NewlyEnrolledIntoCare].code[NewlyEnrolledIntoCare_CODE] = $LNC#67723-7
 
+* item[HighViralLoad].linkId = "highviralload"
+* item[HighViralLoad].text = "Does the client have a high viral load"
+* item[HighViralLoad].type = #choice
+* item[HighViralLoad].required = false
+* item[HighViralLoad].repeats = false
+* item[HighViralLoad].code[HighViralLoad_CODE] = $SCT#315124004
+
+* item[ARTRestart].linkId = "artrestart"
+* item[ARTRestart].text = "Does the client have an ART status of Restart"
+* item[ARTRestart].type = #choice
+* item[ARTRestart].required = false
+* item[ARTRestart].repeats = false
+* item[ARTRestart].code[ARTRestart_CODE] = $LNC#63936-9
+
 Instance: IndexCaseScreeningExample1
 InstanceOf: IndexCaseScreeningQuestionnaireResponse
 Usage: #example
