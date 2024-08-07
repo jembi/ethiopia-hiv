@@ -3090,7 +3090,8 @@ Description: "A questionaire that provides eligibility criteria for the index ca
     HIVStatusNotDisclosedToSexPartner 0..1 MS and
     WithSexPartnerNotTested 0..1 MS and
     ClientInCareWithSTI 0..1 MS and
-    ClientHasChildUnder15YearsOfAgeNotTested 0..1 MS
+    ClientHasChildUnder15YearsOfAgeNotTested 0..1 MS and
+    ClientKnownPositive-FSW 0..1 MS
 
 * insert Question(NewlyEnrolledIntoCare, newlyenrolledintocare, Is the client newly enrolled, choice, false, false, reasons why this should be supported)
 * item[NewlyEnrolledIntoCare]
@@ -3212,6 +3213,21 @@ Description: "A questionaire that provides eligibility criteria for the index ca
 * item[ClientHasChildUnder15YearsOfAgeNotTested].code[ClientHasChildUnder15YearsOfAgeNotTested_CODE].code = #171121004
 * item[ClientHasChildUnder15YearsOfAgeNotTested].code[ClientHasChildUnder15YearsOfAgeNotTested_CODE].system = $SCT
 
+* insert Question(ClientKnownPositive-FSW, clientknownpositive-fsw, Is the client Known Positive, choice, false, false, reasons why this should be supported)
+* item[ClientKnownPositive-FSW]
+  * answerValueSet 1..1
+  * answerValueSet = Canonical(YesNoValueSet)
+
+* insert Slice(item[ClientKnownPositive-FSW].code, reasons why this should be supported, value, code, open, Slicing the items based on the system value, false)
+* item[ClientKnownPositive-FSW].code contains
+    ClientKnownPositive-FSW_CODE 1..1
+
+* item[ClientKnownPositive-FSW].code 1..1
+* item[ClientKnownPositive-FSW].code.code 1..1
+* item[ClientKnownPositive-FSW].code.system 1..1
+* item[ClientKnownPositive-FSW].code[ClientKnownPositive-FSW_CODE].code = #55277-8
+* item[ClientKnownPositive-FSW].code[ClientKnownPositive-FSW_CODE].system = $LNC
+
 Profile: IndexCaseScreeningQuestionnaireResponse
 Parent: GenericQuestionnaireResponse
 Id: index-case-screening-questionnaire-response
@@ -3228,7 +3244,8 @@ Description: "A questionaire response that documents the answers to the eligibil
     HIVStatusNotDisclosedToSexPartner 0..1 MS and
     WithSexPartnerNotTested 0..1 MS and
     ClientInCareWithSTI 0..1 MS and
-    ClientHasChildUnder15YearsOfAgeNotTested 0..1 MS
+    ClientHasChildUnder15YearsOfAgeNotTested 0..1 MS and
+    ClientKnownPositive-FSW 0..1 MS
 
 * insert QuestionResponseItem(NewlyEnrolledIntoCare, newlyenrolledintocare, Is the client newly enrolled, StrictCoding or Reference, reasons why this should be supported)
 * item[NewlyEnrolledIntoCare]
@@ -3269,3 +3286,5 @@ Description: "A questionaire response that documents the answers to the eligibil
 * insert QuestionResponseItem(ClientInCareWithSTI, clientincarewithsti, Is the client in care with STI, StrictCoding, reasons why this should be supported)
 
 * insert QuestionResponseItem(ClientHasChildUnder15YearsOfAgeNotTested, clienthaschildunder15yearsofagenottested, Does the client have a child under 15yrs of age who is not tested, StrictCoding, reasons why this should be supported)
+
+* insert QuestionResponseItem(ClientKnownPositive-FSW, clientknownpositive-fsw, Is the client Known Positive, StrictCoding, reasons why this should be supported)

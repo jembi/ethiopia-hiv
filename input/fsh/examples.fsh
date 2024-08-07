@@ -4401,6 +4401,7 @@ Description: "A questionaire that provides eligibility criteria for the index ca
 * insert QuestionForExample(WithSexPartnerNotTested, withsexpartnernottested, choice, false, false)
 * insert QuestionForExample(ClientInCareWithSTI, clientincarewithsti, choice, false, false)
 * insert QuestionForExample(ClientHasChildUnder15YearsOfAgeNotTested, clienthaschildunder15yearsofagenottested, choice, false, false)
+* insert QuestionForExample(ClientKnownPositive-FSW, clientknownpositive-fsw, choice, false, false)
 
 Instance: IndexCaseScreeningExample1
 InstanceOf: IndexCaseScreeningQuestionnaireResponse
@@ -4471,6 +4472,8 @@ Description: "A questionaire response that documents the answers to the eligibil
 * insert QuestionResponseItemForExample(ClientInCareWithSTI, clientincarewithsti, valueCoding, $YesNoCodeSystem#false)
 
 * insert QuestionResponseItemForExample(ClientHasChildUnder15YearsOfAgeNotTested, clienthaschildunder15yearsofagenottested, valueCoding, $YesNoCodeSystem#true)
+
+* insert QuestionResponseItemForExample(ClientKnownPositive-FSW, clientknownpositive-fsw, valueCoding, $YesNoCodeSystem#false)
 
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"
