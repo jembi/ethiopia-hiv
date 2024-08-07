@@ -3088,7 +3088,9 @@ Description: "A questionaire that provides eligibility criteria for the index ca
     ARTRestart 0..1 MS and
     NewSexPartner 0..1 MS and
     HIVStatusNotDisclosedToSexPartner 0..1 MS and
-    WithSexPartnerNotTested 0..1 MS
+    WithSexPartnerNotTested 0..1 MS and
+    ClientInCareWithSTI 0..1 MS and
+    ClientHasChildUnder15YearsOfAgeNotTested 0..1 MS
 
 * insert Question(NewlyEnrolledIntoCare, newlyenrolledintocare, Is the client newly enrolled, choice, false, false, reasons why this should be supported)
 * item[NewlyEnrolledIntoCare]
@@ -3180,6 +3182,36 @@ Description: "A questionaire that provides eligibility criteria for the index ca
 * item[WithSexPartnerNotTested].code[WithSexPartnerNotTested_CODE].code = #171121004
 * item[WithSexPartnerNotTested].code[WithSexPartnerNotTested_CODE].system = $SCT
 
+* insert Question(ClientInCareWithSTI, clientincarewithsti, Is the client in care with STI, choice, false, false, reasons why this should be supported)
+* item[ClientInCareWithSTI]
+  * answerValueSet 1..1
+  * answerValueSet = Canonical(YesNoValueSet)
+
+* insert Slice(item[ClientInCareWithSTI].code, reasons why this should be supported, value, code, open, Slicing the items based on the system value, false)
+* item[ClientInCareWithSTI].code contains
+    ClientInCareWithSTI_CODE 1..1
+
+* item[ClientInCareWithSTI].code 1..1
+* item[ClientInCareWithSTI].code.code 1..1
+* item[ClientInCareWithSTI].code.system 1..1
+* item[ClientInCareWithSTI].code[ClientInCareWithSTI_CODE].code = #8098009
+* item[ClientInCareWithSTI].code[ClientInCareWithSTI_CODE].system = $SCT
+
+* insert Question(ClientHasChildUnder15YearsOfAgeNotTested, clienthaschildunder15yearsofagenottested, Does the client have a child under 15yrs of age who is not tested, choice, false, false, reasons why this should be supported)
+* item[ClientHasChildUnder15YearsOfAgeNotTested]
+  * answerValueSet 1..1
+  * answerValueSet = Canonical(YesNoValueSet)
+
+* insert Slice(item[ClientHasChildUnder15YearsOfAgeNotTested].code, reasons why this should be supported, value, code, open, Slicing the items based on the system value, false)
+* item[ClientHasChildUnder15YearsOfAgeNotTested].code contains
+    ClientHasChildUnder15YearsOfAgeNotTested_CODE 1..1
+
+* item[ClientHasChildUnder15YearsOfAgeNotTested].code 1..1
+* item[ClientHasChildUnder15YearsOfAgeNotTested].code.code 1..1
+* item[ClientHasChildUnder15YearsOfAgeNotTested].code.system 1..1
+* item[ClientHasChildUnder15YearsOfAgeNotTested].code[ClientHasChildUnder15YearsOfAgeNotTested_CODE].code = #171121004
+* item[ClientHasChildUnder15YearsOfAgeNotTested].code[ClientHasChildUnder15YearsOfAgeNotTested_CODE].system = $SCT
+
 Profile: IndexCaseScreeningQuestionnaireResponse
 Parent: GenericQuestionnaireResponse
 Id: index-case-screening-questionnaire-response
@@ -3194,7 +3226,9 @@ Description: "A questionaire response that documents the answers to the eligibil
     ARTRestart 0..1 MS and
     NewSexPartner 0..1 MS and
     HIVStatusNotDisclosedToSexPartner 0..1 MS and
-    WithSexPartnerNotTested 0..1 MS
+    WithSexPartnerNotTested 0..1 MS and
+    ClientInCareWithSTI 0..1 MS and
+    ClientHasChildUnder15YearsOfAgeNotTested 0..1 MS
 
 * insert QuestionResponseItem(NewlyEnrolledIntoCare, newlyenrolledintocare, Is the client newly enrolled, StrictCoding or Reference, reasons why this should be supported)
 * item[NewlyEnrolledIntoCare]
@@ -3228,6 +3262,10 @@ Description: "A questionaire response that documents the answers to the eligibil
     * ^short = "Used for providing supporting clinical information."
   * answer.extension[SupportingReference].valueReference only Reference(EthRelatedPerson)
 
-* insert QuestionResponseItem(HIVStatusNotDisclosedToSexPartner, hivstatusnotdisclosedtosexpartner, Is the client with a partner not yet disclosed, StrictCoding or Reference, reasons why this should be supported)
+* insert QuestionResponseItem(HIVStatusNotDisclosedToSexPartner, hivstatusnotdisclosedtosexpartner, Is the client with a partner not yet disclosed, StrictCoding, reasons why this should be supported)
 
-* insert QuestionResponseItem(WithSexPartnerNotTested, withsexpartnernottested, Is the client with a partner who has not been tested yet for HIV, StrictCoding or Reference, reasons why this should be supported)
+* insert QuestionResponseItem(WithSexPartnerNotTested, withsexpartnernottested, Is the client with a partner who has not been tested yet for HIV, StrictCoding, reasons why this should be supported)
+
+* insert QuestionResponseItem(ClientInCareWithSTI, clientincarewithsti, Is the client in care with STI, StrictCoding, reasons why this should be supported)
+
+* insert QuestionResponseItem(ClientHasChildUnder15YearsOfAgeNotTested, clienthaschildunder15yearsofagenottested, Does the client have a child under 15yrs of age who is not tested, StrictCoding, reasons why this should be supported)

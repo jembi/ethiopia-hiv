@@ -822,12 +822,12 @@ Description: "A questionnaire that represents the pregnancy and breastfeeding st
 * status = #active
 * subjectType = #Observation
 
-* insert QuestionForExample(PREGNANT, pregnant, Is Pregnant, choice, false, false)
-* insert QuestionForExample(WANT_TO_BE_PREGNANT, want-to-be-pregnant, Wants to be pregnant, choice, false, false)
-* insert QuestionForExample(BREASTFEEDING, is-breast-feeding, Is breastfeeding, choice, false, false)
-* insert QuestionForExample(LMP, lmp, Last Menstrual Period, date, false, false)
-* insert QuestionForExample(EDD, edd, Estimated Delivery Date, date, false, false)
-* insert QuestionForExample(FamilyPlanningMethod, fpm, Family Planning Method, choice, false, true)
+* insert QuestionForExample(PREGNANT, pregnant, choice, false, false)
+* insert QuestionForExample(WANT_TO_BE_PREGNANT, want-to-be-pregnant, choice, false, false)
+* insert QuestionForExample(BREASTFEEDING, is-breast-feeding, choice, false, false)
+* insert QuestionForExample(LMP, lmp, date, false, false)
+* insert QuestionForExample(EDD, edd, date, false, false)
+* insert QuestionForExample(FamilyPlanningMethod, fpm, choice, false, true)
 
 Instance: WeightExample
 InstanceOf: Weight
@@ -4393,12 +4393,14 @@ Title: "Questionnaire - Index Case Screening"
 Description: "A questionaire that provides eligibility criteria for the index case screening."
 * status = #active
 * subjectType = #Observation
-* insert QuestionForExample(NewlyEnrolledIntoCare, newlyenrolledintocare, Is the client newly enrolled, choice, false, false)
-* insert QuestionForExample(HighViralLoad, highviralload, Does the client have a high viral load, choice, false, false)
-* insert QuestionForExample(ARTRestart, artrestart, Does the client have an ART status of Restart, choice, false, false)
-* insert QuestionForExample(NewSexPartner, newsexpartner, Is the client with a new partner, choice, false, false)
-* insert QuestionForExample(HIVStatusNotDisclosedToSexPartner, hivstatusnotdisclosedtosexpartner, Is the client with a partner not yet disclosed, choice, false, false)
-* insert QuestionForExample(WithSexPartnerNotTested, withsexpartnernottested, Is the client with a partner who has not been tested yet for HIV, choice, false, false)
+* insert QuestionForExample(NewlyEnrolledIntoCare, newlyenrolledintocare, choice, false, false)
+* insert QuestionForExample(HighViralLoad, highviralload, choice, false, false)
+* insert QuestionForExample(ARTRestart, artrestart, choice, false, false)
+* insert QuestionForExample(NewSexPartner, newsexpartner, choice, false, false)
+* insert QuestionForExample(HIVStatusNotDisclosedToSexPartner, hivstatusnotdisclosedtosexpartner, choice, false, false)
+* insert QuestionForExample(WithSexPartnerNotTested, withsexpartnernottested, choice, false, false)
+* insert QuestionForExample(ClientInCareWithSTI, clientincarewithsti, choice, false, false)
+* insert QuestionForExample(ClientHasChildUnder15YearsOfAgeNotTested, clienthaschildunder15yearsofagenottested, choice, false, false)
 
 Instance: IndexCaseScreeningExample1
 InstanceOf: IndexCaseScreeningQuestionnaireResponse
@@ -4465,6 +4467,10 @@ Description: "A questionaire response that documents the answers to the eligibil
 * insert QuestionResponseItemForExample(HIVStatusNotDisclosedToSexPartner, hivstatusnotdisclosedtosexpartner, valueCoding, $YesNoCodeSystem#true)
 
 * insert QuestionResponseItemForExample(WithSexPartnerNotTested, withsexpartnernottested, valueCoding, $YesNoCodeSystem#false)
+
+* insert QuestionResponseItemForExample(ClientInCareWithSTI, clientincarewithsti, valueCoding, $YesNoCodeSystem#false)
+
+* insert QuestionResponseItemForExample(ClientHasChildUnder15YearsOfAgeNotTested, clienthaschildunder15yearsofagenottested, valueCoding, $YesNoCodeSystem#true)
 
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"
