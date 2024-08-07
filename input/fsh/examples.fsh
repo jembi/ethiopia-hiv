@@ -443,10 +443,8 @@ Description: "A questionaire response that documents the answers to the pregnanc
 * insert QuestionResponseItemForExample(LMP, lmp, valueDate, "2024-06-18")
 * insert QuestionResponseItemForExample(EDD, edd, valueDate, "2025-05-25")
 
-* item[FamilyPlanningMethod].linkId = "fpm"
-* item[FamilyPlanningMethod].text = "Family Planning Method"
-* item[FamilyPlanningMethod].answer[+].valueCoding = $LNC#LA14543-5
-* item[FamilyPlanningMethod].answer[+].valueCoding = $LNC#LA27907-7
+* insert QuestionResponseItemForExample(FamilyPlanningMethod, fpm, valueCoding, $LNC#LA14543-5)
+* insert QuestionResponseItemForExample(FamilyPlanningMethod, fpm, valueCoding, $LNC#LA27907-7)
 
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"

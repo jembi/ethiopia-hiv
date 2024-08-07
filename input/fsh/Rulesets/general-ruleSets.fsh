@@ -32,7 +32,7 @@ RuleSet: QuestionResponseItem(id, linkId, text, type, definition)
 RuleSet: QuestionResponseItemForExample(id, linkId, dataType, dataValue)
 * item[{id}]
   * linkId = "{linkId}"
-  * answer.{dataType} = {dataValue}
+  * answer[+].{dataType} = {dataValue}
 
 RuleSet: Slice(item, definition, discriminatorType, discriminatorPath, rule, description, ordered)
 * {item} 
