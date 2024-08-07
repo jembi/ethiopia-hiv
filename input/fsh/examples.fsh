@@ -437,25 +437,11 @@ Description: "A questionaire response that documents the answers to the pregnanc
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 
-* item[PREGNANT].linkId = "pregnant"
-* item[PREGNANT].text = "Is Pregnant"
-* item[PREGNANT].answer.valueCoding = $YesNoCodeSystem#false
-
-* item[WANT_TO_BE_PREGNANT].linkId = "want-to-be-pregnant"
-* item[WANT_TO_BE_PREGNANT].text = "Wants to be pregnant"
-* item[WANT_TO_BE_PREGNANT].answer.valueCoding = $YesNoCodeSystem#true
-
-* item[BREASTFEEDING].linkId = "is-breast-feeding"
-* item[BREASTFEEDING].text = "Is breastfeeding"
-* item[BREASTFEEDING].answer.valueCoding = $YesNoCodeSystem#false
-
-* item[LMP].linkId = "lmp"
-* item[LMP].text = "Last Menstrual Period"
-* item[LMP].answer.valueDate = "2024-06-18"
-
-* item[EDD].linkId = "edd"
-* item[EDD].text = "Estimated Delivery Date"
-* item[EDD].answer.valueDate = "2025-05-25"
+* insert QuestionResponseItemForExample(PREGNANT, pregnant, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponseItemForExample(WANT_TO_BE_PREGNANT, want-to-be-pregnant, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponseItemForExample(BREASTFEEDING, is-breast-feeding, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponseItemForExample(LMP, lmp, valueDate, "2024-06-18")
+* insert QuestionResponseItemForExample(EDD, edd, valueDate, "2025-05-25")
 
 * item[FamilyPlanningMethod].linkId = "fpm"
 * item[FamilyPlanningMethod].text = "Family Planning Method"
@@ -837,47 +823,13 @@ Title: "Pregnancy Status Questionnaire"
 Description: "A questionnaire that represents the pregnancy and breastfeeding status questions."
 * status = #active
 * subjectType = #Observation
-* item[PREGNANT].linkId = "pregnant"
-* item[PREGNANT].text = "Is Pregnant"
-* item[PREGNANT].type = #choice
-* item[PREGNANT].required = false
-* item[PREGNANT].repeats = false
-* item[PREGNANT].code[PREGNANT_REPORTED_CODE] = $LNC#11449-6
 
-* item[WANT_TO_BE_PREGNANT].linkId = "want-to-be-pregnant"
-* item[WANT_TO_BE_PREGNANT].text = "Wants to be pregnant"
-* item[WANT_TO_BE_PREGNANT].type = #choice
-* item[WANT_TO_BE_PREGNANT].required = false
-* item[WANT_TO_BE_PREGNANT].repeats = false
-* item[WANT_TO_BE_PREGNANT].code[WANT_TO_BE_PREGNANT_REPORTED_CODE] = $LNC#86645-9
-
-* item[BREASTFEEDING].linkId = "is-breast-feeding"
-* item[BREASTFEEDING].text = "Is breastfeeding"
-* item[BREASTFEEDING].type = #choice
-* item[BREASTFEEDING].required = false
-* item[BREASTFEEDING].repeats = false
-* item[BREASTFEEDING].code[BREASTFEEDING_REPORTED_CODE] = $LNC#63895-7
-
-* item[LMP].linkId = "lmp"
-* item[LMP].text = "Last Menstrual Period"
-* item[LMP].type = #date
-* item[LMP].required = false
-* item[LMP].repeats = false
-* item[LMP].code[LMP_REPORTED_CODE] = $LNC#LP187193-0
-
-* item[EDD].linkId = "edd"
-* item[EDD].text = "Estimated Delivery Date"
-* item[EDD].type = #date
-* item[EDD].required = false
-* item[EDD].repeats = false
-* item[EDD].code[EDD_CODE] = $LNC#11779-6
-
-* item[FamilyPlanningMethod].linkId = "fpm"
-* item[FamilyPlanningMethod].text = "Family Planning Method"
-* item[FamilyPlanningMethod].type = #choice
-* item[FamilyPlanningMethod].required = false
-* item[FamilyPlanningMethod].repeats = true
-* item[FamilyPlanningMethod].code[FPM_CODE] = $LNC#8659-5
+* insert QuestionForExample(PREGNANT, pregnant, Is Pregnant, choice, false, false)
+* insert QuestionForExample(WANT_TO_BE_PREGNANT, want-to-be-pregnant, Wants to be pregnant, choice, false, false)
+* insert QuestionForExample(BREASTFEEDING, is-breast-feeding, Is breastfeeding, choice, false, false)
+* insert QuestionForExample(LMP, lmp, Last Menstrual Period, date, false, false)
+* insert QuestionForExample(EDD, edd, Estimated Delivery Date, date, false, false)
+* insert QuestionForExample(FamilyPlanningMethod, fpm, Family Planning Method, choice, false, true)
 
 Instance: WeightExample
 InstanceOf: Weight
@@ -4443,40 +4395,12 @@ Title: "Questionnaire - Index Case Screening"
 Description: "A questionaire that provides eligibility criteria for the index case screening."
 * status = #active
 * subjectType = #Observation
-* item[NewlyEnrolledIntoCare].linkId = "newlyenrolledintocare"
-* item[NewlyEnrolledIntoCare].text = "Is the client newly enrolled"
-* item[NewlyEnrolledIntoCare].type = #choice
-* item[NewlyEnrolledIntoCare].required = false
-* item[NewlyEnrolledIntoCare].repeats = false
-* item[NewlyEnrolledIntoCare].code[NewlyEnrolledIntoCare_CODE] = $LNC#67723-7
-
-* item[HighViralLoad].linkId = "highviralload"
-* item[HighViralLoad].text = "Does the client have a high viral load"
-* item[HighViralLoad].type = #choice
-* item[HighViralLoad].required = false
-* item[HighViralLoad].repeats = false
-* item[HighViralLoad].code[HighViralLoad_CODE] = $SCT#315124004
-
-* item[ARTRestart].linkId = "artrestart"
-* item[ARTRestart].text = "Does the client have an ART status of Restart"
-* item[ARTRestart].type = #choice
-* item[ARTRestart].required = false
-* item[ARTRestart].repeats = false
-* item[ARTRestart].code[ARTRestart_CODE] = $LNC#63936-9
-
-* item[NewSexPartner].linkId = "newsexpartner"
-* item[NewSexPartner].text = "Is the client with a new partner"
-* item[NewSexPartner].type = #choice
-* item[NewSexPartner].required = false
-* item[NewSexPartner].repeats = false
-* item[NewSexPartner].code[NewSexPartner_CODE] = $LNC#85656-7
-
-* item[HIVStatusNotDisclosedToSexPartner].linkId = "hivstatusnotdisclosedtosexpartner"
-* item[HIVStatusNotDisclosedToSexPartner].text = "Is the client with a partner not yet disclosed"
-* item[HIVStatusNotDisclosedToSexPartner].type = #choice
-* item[HIVStatusNotDisclosedToSexPartner].required = false
-* item[HIVStatusNotDisclosedToSexPartner].repeats = false
-* item[HIVStatusNotDisclosedToSexPartner].code[HIVStatusNotDisclosedToSexPartner_CODE] = $LNC#47249-8
+* insert QuestionForExample(NewlyEnrolledIntoCare, newlyenrolledintocare, Is the client newly enrolled, choice, false, false)
+* insert QuestionForExample(HighViralLoad, highviralload, Does the client have a high viral load, choice, false, false)
+* insert QuestionForExample(ARTRestart, artrestart, Does the client have an ART status of Restart, choice, false, false)
+* insert QuestionForExample(NewSexPartner, newsexpartner, Is the client with a new partner, choice, false, false)
+* insert QuestionForExample(HIVStatusNotDisclosedToSexPartner, hivstatusnotdisclosedtosexpartner, Is the client with a partner not yet disclosed, choice, false, false)
+* insert QuestionForExample(WithSexPartnerNotTested, withsexpartnernottested, Is the client with a partner who has not been tested yet for HIV, choice, false, false)
 
 Instance: IndexCaseScreeningExample1
 InstanceOf: IndexCaseScreeningQuestionnaireResponse
@@ -4488,9 +4412,7 @@ Description: "A questionaire response that documents the answers to the eligibil
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 
-* item[NewlyEnrolledIntoCare].linkId = "newlyenrolledintocare"
-* item[NewlyEnrolledIntoCare].text = "Is the client newly enrolled"
-* item[NewlyEnrolledIntoCare].answer.valueCoding = $YesNoCodeSystem#false
+* insert QuestionResponseItemForExample(NewlyEnrolledIntoCare, newlyenrolledintocare, valueCoding, $YesNoCodeSystem#false)
 
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"
@@ -4505,19 +4427,15 @@ Description: "A questionaire response that documents the answers to the eligibil
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 
-* item[NewlyEnrolledIntoCare].linkId = "newlyenrolledintocare"
-* item[NewlyEnrolledIntoCare].text = "Is the client newly enrolled"
-* item[NewlyEnrolledIntoCare].answer.valueCoding = $YesNoCodeSystem#true
-* item[NewlyEnrolledIntoCare].answer.extension[SupportingReference].valueReference = Reference(LinkedToCareExample)
+* insert QuestionResponseItemForExample(NewlyEnrolledIntoCare, newlyenrolledintocare, valueCoding, $YesNoCodeSystem#true)
+* item[NewlyEnrolledIntoCare]
+  * answer.extension[SupportingReference].valueReference = Reference(LinkedToCareExample)
 
-* item[HighViralLoad].linkId = "highviralload"
-* item[HighViralLoad].text = "Does the client have a high viral load"
-* item[HighViralLoad].answer.valueCoding = $YesNoCodeSystem#true
-* item[HighViralLoad].answer.extension[SupportingReference].valueReference = Reference(UnsuppressedViralLoadResultExample)
+* insert QuestionResponseItemForExample(HighViralLoad, highviralload, valueCoding, $YesNoCodeSystem#true)
+* item[HighViralLoad]
+  * answer.extension[SupportingReference].valueReference = Reference(UnsuppressedViralLoadResultExample)
 
-* item[ARTRestart].linkId = "artrestart"
-* item[ARTRestart].text = "Does the client have an ART status of Restart"
-* item[ARTRestart].answer.valueCoding = $YesNoCodeSystem#false
+* insert QuestionResponseItemForExample(ARTRestart, artrestart, valueCoding, $YesNoCodeSystem#false)
 
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"
@@ -4532,28 +4450,23 @@ Description: "A questionaire response that documents the answers to the eligibil
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 
-* item[NewlyEnrolledIntoCare].linkId = "newlyenrolledintocare"
-* item[NewlyEnrolledIntoCare].text = "Is the client newly enrolled"
-* item[NewlyEnrolledIntoCare].answer.valueCoding = $YesNoCodeSystem#false
+* insert QuestionResponseItemForExample(NewlyEnrolledIntoCare, newlyenrolledintocare, valueCoding, $YesNoCodeSystem#false)
 
-* item[HighViralLoad].linkId = "highviralload"
-* item[HighViralLoad].text = "Does the client have a high viral load"
-* item[HighViralLoad].answer.valueCoding = $YesNoCodeSystem#true
-* item[HighViralLoad].answer.extension[SupportingReference].valueReference = Reference(UnsuppressedViralLoadResultExample)
+* insert QuestionResponseItemForExample(HighViralLoad, highviralload, valueCoding, $YesNoCodeSystem#true)
+* item[HighViralLoad]
+  * answer.extension[SupportingReference].valueReference = Reference(UnsuppressedViralLoadResultExample)
 
-* item[ARTRestart].linkId = "artrestart"
-* item[ARTRestart].text = "Does the client have an ART status of Restart"
-* item[ARTRestart].answer.valueCoding = $YesNoCodeSystem#true
-* item[ARTRestart].answer.extension[SupportingReference].valueReference = Reference(RestartARTFollowupStatusExample)
+* insert QuestionResponseItemForExample(ARTRestart, artrestart, valueCoding, $YesNoCodeSystem#true)
+* item[ARTRestart]
+  * answer.extension[SupportingReference].valueReference = Reference(RestartARTFollowupStatusExample)
 
-* item[NewSexPartner].linkId = "newsexpartner"
-* item[NewSexPartner].text = "Is the client with a new partner"
-* item[NewSexPartner].answer.valueCoding = $YesNoCodeSystem#true
-* item[NewSexPartner].answer.extension[SupportingReference].valueReference = Reference(PartnerRelatedPersonExample)
+* insert QuestionResponseItemForExample(NewSexPartner, newsexpartner, valueCoding, $YesNoCodeSystem#true)
+* item[NewSexPartner]
+  * answer.extension[SupportingReference].valueReference = Reference(PartnerRelatedPersonExample)
 
-* item[HIVStatusNotDisclosedToSexPartner].linkId = "hivstatusnotdisclosedtosexpartner"
-* item[HIVStatusNotDisclosedToSexPartner].text = "Is the client with a partner not yet disclosed"
-* item[HIVStatusNotDisclosedToSexPartner].answer.valueCoding = $YesNoCodeSystem#true
+* insert QuestionResponseItemForExample(HIVStatusNotDisclosedToSexPartner, hivstatusnotdisclosedtosexpartner, valueCoding, $YesNoCodeSystem#true)
+
+* insert QuestionResponseItemForExample(WithSexPartnerNotTested, withsexpartnernottested, valueCoding, $YesNoCodeSystem#false)
 
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"

@@ -690,6 +690,8 @@ Description: "A questionaire that provides the questions to for pregnancy status
     PREGNANT_REPORTED_CODE 1..1
 
 * item[PREGNANT].code 1..1
+* item[PREGNANT].code.code 1..1
+* item[PREGNANT].code.system 1..1
 * item[PREGNANT].code[PREGNANT_REPORTED_CODE].code = #11449-6
 * item[PREGNANT].code[PREGNANT_REPORTED_CODE].system = $LNC
 
@@ -705,6 +707,8 @@ Description: "A questionaire that provides the questions to for pregnancy status
     WANT_TO_BE_PREGNANT_REPORTED_CODE 1..1
 
 * item[WANT_TO_BE_PREGNANT].code 1..1
+* item[WANT_TO_BE_PREGNANT].code.code 1..1
+* item[WANT_TO_BE_PREGNANT].code.system 1..1
 * item[WANT_TO_BE_PREGNANT].code[WANT_TO_BE_PREGNANT_REPORTED_CODE].code = #86645-9
 * item[WANT_TO_BE_PREGNANT].code[WANT_TO_BE_PREGNANT_REPORTED_CODE].system = $LNC
 
@@ -720,6 +724,8 @@ Description: "A questionaire that provides the questions to for pregnancy status
     BREASTFEEDING_REPORTED_CODE 1..1
 
 * item[BREASTFEEDING].code 1..1
+* item[BREASTFEEDING].code.code 1..1
+* item[BREASTFEEDING].code.system 1..1
 * item[BREASTFEEDING].code[BREASTFEEDING_REPORTED_CODE].code = #63895-7
 * item[BREASTFEEDING].code[BREASTFEEDING_REPORTED_CODE].system = $LNC
 
@@ -730,6 +736,8 @@ Description: "A questionaire that provides the questions to for pregnancy status
     LMP_REPORTED_CODE 1..1
 
 * item[LMP].code 1..1
+* item[LMP].code.code 1..1
+* item[LMP].code.system 1..1
 * item[LMP].code[LMP_REPORTED_CODE].code = #LP187193-0
 * item[LMP].code[LMP_REPORTED_CODE].system = $LNC
 
@@ -740,6 +748,8 @@ Description: "A questionaire that provides the questions to for pregnancy status
     EDD_CODE 1..1
 
 * item[EDD].code 1..1
+* item[EDD].code.code 1..1
+* item[EDD].code.system 1..1
 * item[EDD].code[EDD_CODE].code = #11779-6
 * item[EDD].code[EDD_CODE].system = $LNC
 
@@ -753,6 +763,8 @@ Description: "A questionaire that provides the questions to for pregnancy status
     FPM_CODE 1..1
 
 * item[FamilyPlanningMethod].code 1..1
+* item[FamilyPlanningMethod].code.code 1..1
+* item[FamilyPlanningMethod].code.system 1..1
 * item[FamilyPlanningMethod].code[FPM_CODE].code = #8659-5
 * item[FamilyPlanningMethod].code[FPM_CODE].system = $LNC
 
@@ -3075,7 +3087,8 @@ Description: "A questionaire that provides eligibility criteria for the index ca
     HighViralLoad 0..1 MS and
     ARTRestart 0..1 MS and
     NewSexPartner 0..1 MS and
-    HIVStatusNotDisclosedToSexPartner 0..1 MS
+    HIVStatusNotDisclosedToSexPartner 0..1 MS and
+    WithSexPartnerNotTested 0..1 MS
 
 * insert Question(NewlyEnrolledIntoCare, newlyenrolledintocare, Is the client newly enrolled, choice, false, false, reasons why this should be supported)
 * item[NewlyEnrolledIntoCare]
@@ -3087,6 +3100,8 @@ Description: "A questionaire that provides eligibility criteria for the index ca
     NewlyEnrolledIntoCare_CODE 1..1
 
 * item[NewlyEnrolledIntoCare].code 1..1
+* item[NewlyEnrolledIntoCare].code.code 1..1
+* item[NewlyEnrolledIntoCare].code.system 1..1
 * item[NewlyEnrolledIntoCare].code[NewlyEnrolledIntoCare_CODE].code = #67723-7
 * item[NewlyEnrolledIntoCare].code[NewlyEnrolledIntoCare_CODE].system = $LNC
 
@@ -3100,6 +3115,8 @@ Description: "A questionaire that provides eligibility criteria for the index ca
     HighViralLoad_CODE 1..1
 
 * item[HighViralLoad].code 1..1
+* item[HighViralLoad].code.code 1..1
+* item[HighViralLoad].code.system 1..1
 * item[HighViralLoad].code[HighViralLoad_CODE].code = #315124004
 * item[HighViralLoad].code[HighViralLoad_CODE].system = $SCT
 
@@ -3113,6 +3130,8 @@ Description: "A questionaire that provides eligibility criteria for the index ca
     ARTRestart_CODE 1..1
 
 * item[ARTRestart].code 1..1
+* item[ARTRestart].code.code 1..1
+* item[ARTRestart].code.system 1..1
 * item[ARTRestart].code[ARTRestart_CODE].code = #63936-9
 * item[ARTRestart].code[ARTRestart_CODE].system = $LNC
 
@@ -3126,6 +3145,8 @@ Description: "A questionaire that provides eligibility criteria for the index ca
     NewSexPartner_CODE 1..1
 
 * item[NewSexPartner].code 1..1
+* item[NewSexPartner].code.code 1..1
+* item[NewSexPartner].code.system 1..1
 * item[NewSexPartner].code[NewSexPartner_CODE].code = #85656-7
 * item[NewSexPartner].code[NewSexPartner_CODE].system = $LNC
 
@@ -3139,8 +3160,25 @@ Description: "A questionaire that provides eligibility criteria for the index ca
     HIVStatusNotDisclosedToSexPartner_CODE 1..1
 
 * item[HIVStatusNotDisclosedToSexPartner].code 1..1
+* item[HIVStatusNotDisclosedToSexPartner].code.code 1..1
+* item[HIVStatusNotDisclosedToSexPartner].code.system 1..1
 * item[HIVStatusNotDisclosedToSexPartner].code[HIVStatusNotDisclosedToSexPartner_CODE].code = #47249-8
 * item[HIVStatusNotDisclosedToSexPartner].code[HIVStatusNotDisclosedToSexPartner_CODE].system = $LNC
+
+* insert Question(WithSexPartnerNotTested, withsexpartnernottested, Is the client with a partner who has not been tested yet for HIV, choice, false, false, reasons why this should be supported)
+* item[WithSexPartnerNotTested]
+  * answerValueSet 1..1
+  * answerValueSet = Canonical(YesNoValueSet)
+
+* insert Slice(item[WithSexPartnerNotTested].code, reasons why this should be supported, value, code, open, Slicing the items based on the system value, false)
+* item[WithSexPartnerNotTested].code contains
+    WithSexPartnerNotTested_CODE 1..1
+
+* item[WithSexPartnerNotTested].code 1..1
+* item[WithSexPartnerNotTested].code.code 1..1
+* item[WithSexPartnerNotTested].code.system 1..1
+* item[WithSexPartnerNotTested].code[WithSexPartnerNotTested_CODE].code = #171121004
+* item[WithSexPartnerNotTested].code[WithSexPartnerNotTested_CODE].system = $SCT
 
 Profile: IndexCaseScreeningQuestionnaireResponse
 Parent: GenericQuestionnaireResponse
@@ -3155,7 +3193,8 @@ Description: "A questionaire response that documents the answers to the eligibil
     HighViralLoad 0..1 MS and
     ARTRestart 0..1 MS and
     NewSexPartner 0..1 MS and
-    HIVStatusNotDisclosedToSexPartner 0..1 MS
+    HIVStatusNotDisclosedToSexPartner 0..1 MS and
+    WithSexPartnerNotTested 0..1 MS
 
 * insert QuestionResponseItem(NewlyEnrolledIntoCare, newlyenrolledintocare, Is the client newly enrolled, StrictCoding or Reference, reasons why this should be supported)
 * item[NewlyEnrolledIntoCare]
@@ -3190,3 +3229,5 @@ Description: "A questionaire response that documents the answers to the eligibil
   * answer.extension[SupportingReference].valueReference only Reference(EthRelatedPerson)
 
 * insert QuestionResponseItem(HIVStatusNotDisclosedToSexPartner, hivstatusnotdisclosedtosexpartner, Is the client with a partner not yet disclosed, StrictCoding or Reference, reasons why this should be supported)
+
+* insert QuestionResponseItem(WithSexPartnerNotTested, withsexpartnernottested, Is the client with a partner who has not been tested yet for HIV, StrictCoding or Reference, reasons why this should be supported)
