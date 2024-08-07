@@ -3073,7 +3073,9 @@ Description: "A questionaire that provides eligibility criteria for the index ca
 * item contains
     NewlyEnrolledIntoCare 0..1 MS and
     HighViralLoad 0..1 MS and
-    ARTRestart 0..1 MS
+    ARTRestart 0..1 MS and
+    NewSexPartner 0..1 MS and
+    HIVStatusNotDisclosedToSexPartner 0..1 MS
 
 * insert Question(NewlyEnrolledIntoCare, newlyenrolledintocare, Is the client newly enrolled, choice, false, false, reasons why this should be supported)
 * item[NewlyEnrolledIntoCare]
@@ -3114,6 +3116,32 @@ Description: "A questionaire that provides eligibility criteria for the index ca
 * item[ARTRestart].code[ARTRestart_CODE].code = #63936-9
 * item[ARTRestart].code[ARTRestart_CODE].system = $LNC
 
+* insert Question(NewSexPartner, newsexpartner, Is the client with a new partner, choice, false, false, reasons why this should be supported)
+* item[NewSexPartner]
+  * answerValueSet 1..1
+  * answerValueSet = Canonical(YesNoValueSet)
+
+* insert Slice(item[NewSexPartner].code, reasons why this should be supported, value, code, open, Slicing the items based on the system value, false)
+* item[NewSexPartner].code contains
+    NewSexPartner_CODE 1..1
+
+* item[NewSexPartner].code 1..1
+* item[NewSexPartner].code[NewSexPartner_CODE].code = #85656-7
+* item[NewSexPartner].code[NewSexPartner_CODE].system = $LNC
+
+* insert Question(HIVStatusNotDisclosedToSexPartner, hivstatusnotdisclosedtosexpartner, Is the client with a partner not yet disclosed, choice, false, false, reasons why this should be supported)
+* item[HIVStatusNotDisclosedToSexPartner]
+  * answerValueSet 1..1
+  * answerValueSet = Canonical(YesNoValueSet)
+
+* insert Slice(item[HIVStatusNotDisclosedToSexPartner].code, reasons why this should be supported, value, code, open, Slicing the items based on the system value, false)
+* item[HIVStatusNotDisclosedToSexPartner].code contains
+    HIVStatusNotDisclosedToSexPartner_CODE 1..1
+
+* item[HIVStatusNotDisclosedToSexPartner].code 1..1
+* item[HIVStatusNotDisclosedToSexPartner].code[HIVStatusNotDisclosedToSexPartner_CODE].code = #47249-8
+* item[HIVStatusNotDisclosedToSexPartner].code[HIVStatusNotDisclosedToSexPartner_CODE].system = $LNC
+
 Profile: IndexCaseScreeningQuestionnaireResponse
 Parent: GenericQuestionnaireResponse
 Id: index-case-screening-questionnaire-response
@@ -3125,7 +3153,9 @@ Description: "A questionaire response that documents the answers to the eligibil
 * item contains
     NewlyEnrolledIntoCare 0..1 MS and
     HighViralLoad 0..1 MS and
-    ARTRestart 0..1 MS
+    ARTRestart 0..1 MS and
+    NewSexPartner 0..1 MS and
+    HIVStatusNotDisclosedToSexPartner 0..1 MS
 
 * insert QuestionResponseItem(NewlyEnrolledIntoCare, newlyenrolledintocare, Is the client newly enrolled, StrictCoding or Reference, reasons why this should be supported)
 * item[NewlyEnrolledIntoCare]
@@ -3150,3 +3180,13 @@ Description: "A questionaire response that documents the answers to the eligibil
     * ^definition = "Provides supportive information during clinical assessment"
     * ^short = "Used for providing supporting clinical information."
   * answer.extension[SupportingReference].valueReference only Reference(ARTFollowupStatusObservation)
+
+* insert QuestionResponseItem(NewSexPartner, newsexpartner, Is the client with a new partner, StrictCoding or Reference, reasons why this should be supported)
+* item[NewSexPartner]
+  * answer.extension contains ResourceValueReferenceExtension named SupportingReference 0..1 MS
+  * answer.extension[SupportingReference]
+    * ^definition = "Provides supportive information during clinical assessment"
+    * ^short = "Used for providing supporting clinical information."
+  * answer.extension[SupportingReference].valueReference only Reference(EthRelatedPerson)
+
+* insert QuestionResponseItem(HIVStatusNotDisclosedToSexPartner, hivstatusnotdisclosedtosexpartner, Is the client with a partner not yet disclosed, StrictCoding or Reference, reasons why this should be supported)

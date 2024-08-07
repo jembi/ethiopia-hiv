@@ -4464,6 +4464,20 @@ Description: "A questionaire that provides eligibility criteria for the index ca
 * item[ARTRestart].repeats = false
 * item[ARTRestart].code[ARTRestart_CODE] = $LNC#63936-9
 
+* item[NewSexPartner].linkId = "newsexpartner"
+* item[NewSexPartner].text = "Is the client with a new partner"
+* item[NewSexPartner].type = #choice
+* item[NewSexPartner].required = false
+* item[NewSexPartner].repeats = false
+* item[NewSexPartner].code[NewSexPartner_CODE] = $LNC#85656-7
+
+* item[HIVStatusNotDisclosedToSexPartner].linkId = "hivstatusnotdisclosedtosexpartner"
+* item[HIVStatusNotDisclosedToSexPartner].text = "Is the client with a partner not yet disclosed"
+* item[HIVStatusNotDisclosedToSexPartner].type = #choice
+* item[HIVStatusNotDisclosedToSexPartner].required = false
+* item[HIVStatusNotDisclosedToSexPartner].repeats = false
+* item[HIVStatusNotDisclosedToSexPartner].code[HIVStatusNotDisclosedToSexPartner_CODE] = $LNC#47249-8
+
 Instance: IndexCaseScreeningExample1
 InstanceOf: IndexCaseScreeningQuestionnaireResponse
 Usage: #example
@@ -4531,6 +4545,15 @@ Description: "A questionaire response that documents the answers to the eligibil
 * item[ARTRestart].text = "Does the client have an ART status of Restart"
 * item[ARTRestart].answer.valueCoding = $YesNoCodeSystem#true
 * item[ARTRestart].answer.extension[SupportingReference].valueReference = Reference(RestartARTFollowupStatusExample)
+
+* item[NewSexPartner].linkId = "newsexpartner"
+* item[NewSexPartner].text = "Is the client with a new partner"
+* item[NewSexPartner].answer.valueCoding = $YesNoCodeSystem#true
+* item[NewSexPartner].answer.extension[SupportingReference].valueReference = Reference(PartnerRelatedPersonExample)
+
+* item[HIVStatusNotDisclosedToSexPartner].linkId = "hivstatusnotdisclosedtosexpartner"
+* item[HIVStatusNotDisclosedToSexPartner].text = "Is the client with a partner not yet disclosed"
+* item[HIVStatusNotDisclosedToSexPartner].answer.valueCoding = $YesNoCodeSystem#true
 
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"
