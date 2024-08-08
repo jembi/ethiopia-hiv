@@ -10,6 +10,13 @@ RuleSet: Question(id, linkId, text, type, required, repeats, definition)
   * required 1..
   * required = {required}
 
+RuleSet: QuestionForExample(id, linkId, type, required, repeats)
+* item[{id}]
+  * linkId = "{linkId}"
+  * type = #{type}
+  * repeats = {repeats}
+  * required = {required}
+
 RuleSet: QuestionResponseItem(id, linkId, text, type, definition)
 * item[{id}]
   * ^definition = "{definition}"
@@ -20,6 +27,11 @@ RuleSet: QuestionResponseItem(id, linkId, text, type, definition)
   * answer
     * value[x] 1..
     * value[x] only {type}
+
+RuleSet: QuestionResponseItemForExample(id, linkId, dataType, dataValue)
+* item[{id}]
+  * linkId = "{linkId}"
+  * answer[+].{dataType} = {dataValue}
 
 RuleSet: Slice(item, definition, discriminatorType, discriminatorPath, rule, description, ordered)
 * {item} 

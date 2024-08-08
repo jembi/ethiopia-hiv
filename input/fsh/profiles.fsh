@@ -162,6 +162,8 @@ Description: "Represents the current facility at which the patient is receiving 
 * class 1..1
 * type 1..1
 * type.extension contains EncounterVisitTypeExtension named VisitType 1..1
+* serviceType 0..1 MS
+* serviceType ^definition = "reason(s) why this should be supported."
 * subject 1..1 
 * subject only Reference(EthPatient)
 
@@ -688,6 +690,8 @@ Description: "A questionaire that provides the questions to for pregnancy status
     PREGNANT_REPORTED_CODE 1..1
 
 * item[PREGNANT].code 1..1
+* item[PREGNANT].code.code 1..1
+* item[PREGNANT].code.system 1..1
 * item[PREGNANT].code[PREGNANT_REPORTED_CODE].code = #11449-6
 * item[PREGNANT].code[PREGNANT_REPORTED_CODE].system = $LNC
 
@@ -703,6 +707,8 @@ Description: "A questionaire that provides the questions to for pregnancy status
     WANT_TO_BE_PREGNANT_REPORTED_CODE 1..1
 
 * item[WANT_TO_BE_PREGNANT].code 1..1
+* item[WANT_TO_BE_PREGNANT].code.code 1..1
+* item[WANT_TO_BE_PREGNANT].code.system 1..1
 * item[WANT_TO_BE_PREGNANT].code[WANT_TO_BE_PREGNANT_REPORTED_CODE].code = #86645-9
 * item[WANT_TO_BE_PREGNANT].code[WANT_TO_BE_PREGNANT_REPORTED_CODE].system = $LNC
 
@@ -718,6 +724,8 @@ Description: "A questionaire that provides the questions to for pregnancy status
     BREASTFEEDING_REPORTED_CODE 1..1
 
 * item[BREASTFEEDING].code 1..1
+* item[BREASTFEEDING].code.code 1..1
+* item[BREASTFEEDING].code.system 1..1
 * item[BREASTFEEDING].code[BREASTFEEDING_REPORTED_CODE].code = #63895-7
 * item[BREASTFEEDING].code[BREASTFEEDING_REPORTED_CODE].system = $LNC
 
@@ -728,6 +736,8 @@ Description: "A questionaire that provides the questions to for pregnancy status
     LMP_REPORTED_CODE 1..1
 
 * item[LMP].code 1..1
+* item[LMP].code.code 1..1
+* item[LMP].code.system 1..1
 * item[LMP].code[LMP_REPORTED_CODE].code = #LP187193-0
 * item[LMP].code[LMP_REPORTED_CODE].system = $LNC
 
@@ -738,6 +748,8 @@ Description: "A questionaire that provides the questions to for pregnancy status
     EDD_CODE 1..1
 
 * item[EDD].code 1..1
+* item[EDD].code.code 1..1
+* item[EDD].code.system 1..1
 * item[EDD].code[EDD_CODE].code = #11779-6
 * item[EDD].code[EDD_CODE].system = $LNC
 
@@ -751,6 +763,8 @@ Description: "A questionaire that provides the questions to for pregnancy status
     FPM_CODE 1..1
 
 * item[FamilyPlanningMethod].code 1..1
+* item[FamilyPlanningMethod].code.code 1..1
+* item[FamilyPlanningMethod].code.system 1..1
 * item[FamilyPlanningMethod].code[FPM_CODE].code = #8659-5
 * item[FamilyPlanningMethod].code[FPM_CODE].system = $LNC
 
@@ -3057,3 +3071,220 @@ Description: "Documents the disclosure of HIV status for minors."
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
 * valueCodeableConcept from DisclosureStageValueSet (required)
+
+Profile: IndexCaseScreeningQuestionnaire
+Parent: Questionnaire
+Id: index-case-screening-questionnaire
+Title: "Questionnaire - Index Case Screening"
+Description: "A questionaire that provides eligibility criteria for the index case screening."
+* status 1..1
+* item 1..*
+* subjectType 1..1
+* subjectType = #Observation
+* insert Slice(item, reasons why this should be supported, value, linkId, open, Slicing the items based on the linkId value, false)
+* item contains
+    NewlyEnrolledIntoCare 0..1 MS and
+    HighViralLoad 0..1 MS and
+    ARTRestart 0..1 MS and
+    NewSexPartner 0..1 MS and
+    HIVStatusNotDisclosedToSexPartner 0..1 MS and
+    WithSexPartnerNotTested 0..1 MS and
+    ClientInCareWithSTI 0..1 MS and
+    ClientHasChildUnder15YearsOfAgeNotTested 0..1 MS and
+    ClientKnownPositive-FSW 0..1 MS
+
+* insert Question(NewlyEnrolledIntoCare, newlyenrolledintocare, Is the client newly enrolled, choice, false, false, reasons why this should be supported)
+* item[NewlyEnrolledIntoCare]
+  * answerValueSet 1..1
+  * answerValueSet = Canonical(YesNoValueSet)
+
+* insert Slice(item[NewlyEnrolledIntoCare].code, reasons why this should be supported, value, code, open, Slicing the items based on the system value, false)
+* item[NewlyEnrolledIntoCare].code contains
+    NewlyEnrolledIntoCare_CODE 1..1
+
+* item[NewlyEnrolledIntoCare].code 1..1
+* item[NewlyEnrolledIntoCare].code.code 1..1
+* item[NewlyEnrolledIntoCare].code.system 1..1
+* item[NewlyEnrolledIntoCare].code[NewlyEnrolledIntoCare_CODE].code = #67723-7
+* item[NewlyEnrolledIntoCare].code[NewlyEnrolledIntoCare_CODE].system = $LNC
+
+* insert Question(HighViralLoad, highviralload, Does the client have a high viral load, choice, false, false, reasons why this should be supported)
+* item[HighViralLoad]
+  * answerValueSet 1..1
+  * answerValueSet = Canonical(YesNoValueSet)
+
+* insert Slice(item[HighViralLoad].code, reasons why this should be supported, value, code, open, Slicing the items based on the system value, false)
+* item[HighViralLoad].code contains
+    HighViralLoad_CODE 1..1
+
+* item[HighViralLoad].code 1..1
+* item[HighViralLoad].code.code 1..1
+* item[HighViralLoad].code.system 1..1
+* item[HighViralLoad].code[HighViralLoad_CODE].code = #315124004
+* item[HighViralLoad].code[HighViralLoad_CODE].system = $SCT
+
+* insert Question(ARTRestart, artrestart, Does the client have an ART status of Restart, choice, false, false, reasons why this should be supported)
+* item[ARTRestart]
+  * answerValueSet 1..1
+  * answerValueSet = Canonical(YesNoValueSet)
+
+* insert Slice(item[ARTRestart].code, reasons why this should be supported, value, code, open, Slicing the items based on the system value, false)
+* item[ARTRestart].code contains
+    ARTRestart_CODE 1..1
+
+* item[ARTRestart].code 1..1
+* item[ARTRestart].code.code 1..1
+* item[ARTRestart].code.system 1..1
+* item[ARTRestart].code[ARTRestart_CODE].code = #63936-9
+* item[ARTRestart].code[ARTRestart_CODE].system = $LNC
+
+* insert Question(NewSexPartner, newsexpartner, Is the client with a new partner, choice, false, false, reasons why this should be supported)
+* item[NewSexPartner]
+  * answerValueSet 1..1
+  * answerValueSet = Canonical(YesNoValueSet)
+
+* insert Slice(item[NewSexPartner].code, reasons why this should be supported, value, code, open, Slicing the items based on the system value, false)
+* item[NewSexPartner].code contains
+    NewSexPartner_CODE 1..1
+
+* item[NewSexPartner].code 1..1
+* item[NewSexPartner].code.code 1..1
+* item[NewSexPartner].code.system 1..1
+* item[NewSexPartner].code[NewSexPartner_CODE].code = #85656-7
+* item[NewSexPartner].code[NewSexPartner_CODE].system = $LNC
+
+* insert Question(HIVStatusNotDisclosedToSexPartner, hivstatusnotdisclosedtosexpartner, Is the client with a partner not yet disclosed, choice, false, false, reasons why this should be supported)
+* item[HIVStatusNotDisclosedToSexPartner]
+  * answerValueSet 1..1
+  * answerValueSet = Canonical(YesNoValueSet)
+
+* insert Slice(item[HIVStatusNotDisclosedToSexPartner].code, reasons why this should be supported, value, code, open, Slicing the items based on the system value, false)
+* item[HIVStatusNotDisclosedToSexPartner].code contains
+    HIVStatusNotDisclosedToSexPartner_CODE 1..1
+
+* item[HIVStatusNotDisclosedToSexPartner].code 1..1
+* item[HIVStatusNotDisclosedToSexPartner].code.code 1..1
+* item[HIVStatusNotDisclosedToSexPartner].code.system 1..1
+* item[HIVStatusNotDisclosedToSexPartner].code[HIVStatusNotDisclosedToSexPartner_CODE].code = #47249-8
+* item[HIVStatusNotDisclosedToSexPartner].code[HIVStatusNotDisclosedToSexPartner_CODE].system = $LNC
+
+* insert Question(WithSexPartnerNotTested, withsexpartnernottested, Is the client with a partner who has not been tested yet for HIV, choice, false, false, reasons why this should be supported)
+* item[WithSexPartnerNotTested]
+  * answerValueSet 1..1
+  * answerValueSet = Canonical(YesNoValueSet)
+
+* insert Slice(item[WithSexPartnerNotTested].code, reasons why this should be supported, value, code, open, Slicing the items based on the system value, false)
+* item[WithSexPartnerNotTested].code contains
+    WithSexPartnerNotTested_CODE 1..1
+
+* item[WithSexPartnerNotTested].code 1..1
+* item[WithSexPartnerNotTested].code.code 1..1
+* item[WithSexPartnerNotTested].code.system 1..1
+* item[WithSexPartnerNotTested].code[WithSexPartnerNotTested_CODE].code = #171121004
+* item[WithSexPartnerNotTested].code[WithSexPartnerNotTested_CODE].system = $SCT
+
+* insert Question(ClientInCareWithSTI, clientincarewithsti, Is the client in care with STI, choice, false, false, reasons why this should be supported)
+* item[ClientInCareWithSTI]
+  * answerValueSet 1..1
+  * answerValueSet = Canonical(YesNoValueSet)
+
+* insert Slice(item[ClientInCareWithSTI].code, reasons why this should be supported, value, code, open, Slicing the items based on the system value, false)
+* item[ClientInCareWithSTI].code contains
+    ClientInCareWithSTI_CODE 1..1
+
+* item[ClientInCareWithSTI].code 1..1
+* item[ClientInCareWithSTI].code.code 1..1
+* item[ClientInCareWithSTI].code.system 1..1
+* item[ClientInCareWithSTI].code[ClientInCareWithSTI_CODE].code = #8098009
+* item[ClientInCareWithSTI].code[ClientInCareWithSTI_CODE].system = $SCT
+
+* insert Question(ClientHasChildUnder15YearsOfAgeNotTested, clienthaschildunder15yearsofagenottested, Does the client have a child under 15yrs of age who is not tested, choice, false, false, reasons why this should be supported)
+* item[ClientHasChildUnder15YearsOfAgeNotTested]
+  * answerValueSet 1..1
+  * answerValueSet = Canonical(YesNoValueSet)
+
+* insert Slice(item[ClientHasChildUnder15YearsOfAgeNotTested].code, reasons why this should be supported, value, code, open, Slicing the items based on the system value, false)
+* item[ClientHasChildUnder15YearsOfAgeNotTested].code contains
+    ClientHasChildUnder15YearsOfAgeNotTested_CODE 1..1
+
+* item[ClientHasChildUnder15YearsOfAgeNotTested].code 1..1
+* item[ClientHasChildUnder15YearsOfAgeNotTested].code.code 1..1
+* item[ClientHasChildUnder15YearsOfAgeNotTested].code.system 1..1
+* item[ClientHasChildUnder15YearsOfAgeNotTested].code[ClientHasChildUnder15YearsOfAgeNotTested_CODE].code = #171121004
+* item[ClientHasChildUnder15YearsOfAgeNotTested].code[ClientHasChildUnder15YearsOfAgeNotTested_CODE].system = $SCT
+
+* insert Question(ClientKnownPositive-FSW, clientknownpositive-fsw, Is the client Known Positive, choice, false, false, reasons why this should be supported)
+* item[ClientKnownPositive-FSW]
+  * answerValueSet 1..1
+  * answerValueSet = Canonical(YesNoValueSet)
+
+* insert Slice(item[ClientKnownPositive-FSW].code, reasons why this should be supported, value, code, open, Slicing the items based on the system value, false)
+* item[ClientKnownPositive-FSW].code contains
+    ClientKnownPositive-FSW_CODE 1..1
+
+* item[ClientKnownPositive-FSW].code 1..1
+* item[ClientKnownPositive-FSW].code.code 1..1
+* item[ClientKnownPositive-FSW].code.system 1..1
+* item[ClientKnownPositive-FSW].code[ClientKnownPositive-FSW_CODE].code = #55277-8
+* item[ClientKnownPositive-FSW].code[ClientKnownPositive-FSW_CODE].system = $LNC
+
+Profile: IndexCaseScreeningQuestionnaireResponse
+Parent: GenericQuestionnaireResponse
+Id: index-case-screening-questionnaire-response
+Title: "Questionnaire Response - Index Case Screening"
+Description: "A questionaire response that documents the answers to the eligibility criteria for the index case screening questions."
+* questionnaire only Canonical(IndexCaseScreeningQuestionnaire)
+
+* insert Slice(item, reasons why this should be supported, value, linkId, open, Slicing the items based on the linkId value, false)
+* item contains
+    NewlyEnrolledIntoCare 0..1 MS and
+    HighViralLoad 0..1 MS and
+    ARTRestart 0..1 MS and
+    NewSexPartner 0..1 MS and
+    HIVStatusNotDisclosedToSexPartner 0..1 MS and
+    WithSexPartnerNotTested 0..1 MS and
+    ClientInCareWithSTI 0..1 MS and
+    ClientHasChildUnder15YearsOfAgeNotTested 0..1 MS and
+    ClientKnownPositive-FSW 0..1 MS
+
+* insert QuestionResponseItem(NewlyEnrolledIntoCare, newlyenrolledintocare, Is the client newly enrolled, StrictCoding or Reference, reasons why this should be supported)
+* item[NewlyEnrolledIntoCare]
+  * answer.extension contains ResourceValueReferenceExtension named SupportingReference 0..1 MS
+  * answer.extension[SupportingReference]
+    * ^definition = "Provides supportive information during clinical assessment"
+    * ^short = "Used for providing supporting clinical information."
+  * answer.extension[SupportingReference].valueReference only Reference(HIVProgramStatusObservation)
+
+* insert QuestionResponseItem(HighViralLoad, highviralload, Does the client have a high viral load, StrictCoding or Reference, reasons why this should be supported)
+* item[HighViralLoad]
+  * answer.extension contains ResourceValueReferenceExtension named SupportingReference 0..1 MS
+  * answer.extension[SupportingReference]
+    * ^definition = "Provides supportive information during clinical assessment"
+    * ^short = "Used for providing supporting clinical information."
+  * answer.extension[SupportingReference].valueReference only Reference(ViralLoadResultObservation)
+
+* insert QuestionResponseItem(ARTRestart, artrestart, Does the client have an ART status of Restart, StrictCoding or Reference, reasons why this should be supported)
+* item[ARTRestart]
+  * answer.extension contains ResourceValueReferenceExtension named SupportingReference 0..1 MS
+  * answer.extension[SupportingReference]
+    * ^definition = "Provides supportive information during clinical assessment"
+    * ^short = "Used for providing supporting clinical information."
+  * answer.extension[SupportingReference].valueReference only Reference(ARTFollowupStatusObservation)
+
+* insert QuestionResponseItem(NewSexPartner, newsexpartner, Is the client with a new partner, StrictCoding or Reference, reasons why this should be supported)
+* item[NewSexPartner]
+  * answer.extension contains ResourceValueReferenceExtension named SupportingReference 0..1 MS
+  * answer.extension[SupportingReference]
+    * ^definition = "Provides supportive information during clinical assessment"
+    * ^short = "Used for providing supporting clinical information."
+  * answer.extension[SupportingReference].valueReference only Reference(EthRelatedPerson)
+
+* insert QuestionResponseItem(HIVStatusNotDisclosedToSexPartner, hivstatusnotdisclosedtosexpartner, Is the client with a partner not yet disclosed, StrictCoding, reasons why this should be supported)
+
+* insert QuestionResponseItem(WithSexPartnerNotTested, withsexpartnernottested, Is the client with a partner who has not been tested yet for HIV, StrictCoding, reasons why this should be supported)
+
+* insert QuestionResponseItem(ClientInCareWithSTI, clientincarewithsti, Is the client in care with STI, StrictCoding, reasons why this should be supported)
+
+* insert QuestionResponseItem(ClientHasChildUnder15YearsOfAgeNotTested, clienthaschildunder15yearsofagenottested, Does the client have a child under 15yrs of age who is not tested, StrictCoding, reasons why this should be supported)
+
+* insert QuestionResponseItem(ClientKnownPositive-FSW, clientknownpositive-fsw, Is the client Known Positive, StrictCoding, reasons why this should be supported)
