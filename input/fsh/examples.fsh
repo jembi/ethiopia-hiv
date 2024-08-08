@@ -4444,10 +4444,10 @@ Description: "A questionaire response that documents the answers to the eligibil
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"
 
-Instance: IndexCaseScreeningExample3
+Instance: IndexCaseScreeningFullExample
 InstanceOf: IndexCaseScreeningQuestionnaireResponse
 Usage: #example
-Title: "Questionnaire Response - Index Case Screening (Example 3)"
+Title: "Questionnaire Response - Index Case Screening (Full Example)"
 Description: "A questionaire response that documents the answers to the eligibility criteria for the index case screening questions."
 * questionnaire = Canonical(IndexCaseScreeningQuestionnaireExample)
 * status = #completed
@@ -4456,13 +4456,11 @@ Description: "A questionaire response that documents the answers to the eligibil
 
 * insert QuestionResponseItemForExample(NewlyEnrolledIntoCare, newlyenrolledintocare, valueCoding, $YesNoCodeSystem#false)
 
-* insert QuestionResponseItemForExample(HighViralLoad, highviralload, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponseItemForExample(HighViralLoad, highviralload, valueCoding, $YesNoCodeSystem#false)
 * item[HighViralLoad]
-  * answer.extension[SupportingReference].valueReference = Reference(UnsuppressedViralLoadResultExample)
+  * answer.extension[SupportingReference].valueReference = Reference(SuppressedViralLoadResultExample)
 
-* insert QuestionResponseItemForExample(ARTRestart, artrestart, valueCoding, $YesNoCodeSystem#true)
-* item[ARTRestart]
-  * answer.extension[SupportingReference].valueReference = Reference(RestartARTFollowupStatusExample)
+* insert QuestionResponseItemForExample(ARTRestart, artrestart, valueCoding, $YesNoCodeSystem#false)
 
 * insert QuestionResponseItemForExample(NewSexPartner, newsexpartner, valueCoding, $YesNoCodeSystem#true)
 * item[NewSexPartner]

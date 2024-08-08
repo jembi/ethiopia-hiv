@@ -74,3 +74,7 @@ Description:
 * insert ExampleTransactionalEntry(CervicalCancerTreatmentServiceRequestForHPVExample, ServiceRequest)
 * insert ExampleTransactionalEntry(CervicalCancerDiagnosticReportForHPVExample, DiagnosticReport)
 * insert ExampleTransactionalEntry(CervicalCancerTreatmentReceivedForHPVExample, Observation)
+
+* insert ExampleTransactionalEntry(MaternalHIVStatusKPExample, Observation)
+* insert ExampleTransactionalEntry(IndexCaseContactsElicitedExample, Observation)
+* insert ExampleTransactionalEntry(IndexCaseScreeningFullExample, QuestionnaireResponse)
