@@ -1142,3 +1142,23 @@ Description: "Codes used for representing the stages of disclosure for the patie
 * $SCT#258215001 "Stage 1"
 * $SCT#258219007 "Stage 2"
 * $SCT#258224005 "Stage 3"
+
+CodeSystem: PartnerAndFBICTCodeSystem
+Id: partner-and-fbict-code-system
+Title: "Partner and Family-based Index Case Testing (FBICT)"
+Description: "Codes used for indicating the patient's status for partner and FBICT."
+* ^experimental = false
+* ^caseSensitive = true
+* #Partner-FBICT-Eligibiity "Eligible for partner and FBICT"
+* #Partner-FBICT-Offered "Offered partner and FBICT"
+* #Partner-FBICT-Accepted "Accepted partner and FBICT"
+
+ValueSet: HIVStatusValueSet
+Id: hiv-status-value-set
+Title: "HIV Status Codes"
+Description: "A list of codes describing the patient's HIV status."
+* ^experimental = false
+* $LNC#94652-5 "Known exposure date"
+* $LNC#LA6577-6 "Negative"
+* $LNC#LA29947-1 "Carrier status unknown"
+* $LNC#77978-5 "Patient died from illness of interest"

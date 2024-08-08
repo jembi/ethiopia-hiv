@@ -58,3 +58,4 @@ Alias: $TPTAlternateProphylaxisType = http://moh.gov.et/fhir/hiv/CodeSystem/tpt-
 Alias: $ConditionCategoryCodeSystem = http://terminology.hl7.org/CodeSystem/condition-category
 Alias: $ConditionClinicalStatusCodeSystem = http://terminology.hl7.org/CodeSystem/condition-clinical
 Alias: $CD4VLTreatmentFailureClassificationCodeSystem = http://moh.gov.et/fhir/hiv/CodeSystem/cd4-vl-classification-for-treatment-failure-code-system
+Alias: $PartnerAndFBICTCodeSystem = http://moh.gov.et/fhir/hiv/CodeSystem/partner-and-fbict-code-system

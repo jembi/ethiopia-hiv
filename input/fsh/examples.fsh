@@ -4402,6 +4402,9 @@ Description: "A questionaire that provides eligibility criteria for the index ca
 * insert QuestionForExample(ClientInCareWithSTI, clientincarewithsti, choice, false, false)
 * insert QuestionForExample(ClientHasChildUnder15YearsOfAgeNotTested, clienthaschildunder15yearsofagenottested, choice, false, false)
 * insert QuestionForExample(ClientKnownPositive-FSW, clientknownpositive-fsw, choice, false, false)
+* insert QuestionForExample(PartnerAndFBICTEligibility, partnerandfbicteligibility, choice, false, false)
+* insert QuestionForExample(PartnerAndFBICTOffered, partnerandfbictoffered, choice, false, false)
+* insert QuestionForExample(PartnerAndFBICTAccepted, partnerandfbictacccepted, choice, false, false)
 
 Instance: IndexCaseScreeningExample1
 InstanceOf: IndexCaseScreeningQuestionnaireResponse
@@ -4475,5 +4478,53 @@ Description: "A questionaire response that documents the answers to the eligibil
 
 * insert QuestionResponseItemForExample(ClientKnownPositive-FSW, clientknownpositive-fsw, valueCoding, $YesNoCodeSystem#false)
 
+* insert QuestionResponseItemForExample(PartnerAndFBICTEligibility, partnerandfbicteligibility, valueCoding, $YesNoCodeSystem#false)
+
+* insert QuestionResponseItemForExample(PartnerAndFBICTOffered, partnerandfbictoffered, valueCoding, $YesNoCodeSystem#false)
+
+* insert QuestionResponseItemForExample(PartnerAndFBICTAccepted, partnerandfbictacccepted, valueCoding, $YesNoCodeSystem#false)
+
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"
+
+Instance: MaternalHIVStatusKPExample
+InstanceOf: MaternalHIVStatusObservation
+Usage: #example
+Title: "Observation - Maternal HIV Status is Known Positive"
+Description: "Indicates that the mother already knows her HIV status."
+* status = #final
+* category = $OBSERVATION_CATEGORY#exam
+* code = $LNC#75179-2
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* valueCodeableConcept = $LNC#94652-5
+
+Instance: MaternalHIVStatusUnknownExample
+InstanceOf: MaternalHIVStatusObservation
+Usage: #example
+Title: "Observation - Maternal HIV Status is Unknown"
+Description: "Indicates that the mother's HIV status is unknown."
+* status = #final
+* category = $OBSERVATION_CATEGORY#exam
+* code = $LNC#75179-2
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* valueCodeableConcept = $LNC#LA29947-1
+
+Instance: IndexCaseContactsElicitedExample
+InstanceOf: IndexCaseContactsElicitedObservation
+Usage: #example
+Title: "Observation - Number of Contacts Elicited For Index Case"
+Description: "Documents the total number of contacts elicited for the index case."
+* status = #final
+* category = $OBSERVATION_CATEGORY#social-history
+* code = $SCT#365951004
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* effectiveDateTime = "2023-12-11"
+* performer = Reference(CurrentServiceProviderExample)
+* valueInteger = 2
