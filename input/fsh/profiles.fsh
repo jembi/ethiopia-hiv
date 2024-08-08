@@ -3091,7 +3091,10 @@ Description: "A questionaire that provides eligibility criteria for the index ca
     WithSexPartnerNotTested 0..1 MS and
     ClientInCareWithSTI 0..1 MS and
     ClientHasChildUnder15YearsOfAgeNotTested 0..1 MS and
-    ClientKnownPositive-FSW 0..1 MS
+    ClientKnownPositive-FSW 0..1 MS and
+    PartnerAndFBICTEligibility 0..1 MS and
+    PartnerAndFBICTOffered 0..1 MS and
+    PartnerAndFBICTAccepted 0..1 MS
 
 * insert Question(NewlyEnrolledIntoCare, newlyenrolledintocare, Is the client newly enrolled, choice, false, false, reasons why this should be supported)
 * item[NewlyEnrolledIntoCare]
@@ -3228,6 +3231,52 @@ Description: "A questionaire that provides eligibility criteria for the index ca
 * item[ClientKnownPositive-FSW].code[ClientKnownPositive-FSW_CODE].code = #55277-8
 * item[ClientKnownPositive-FSW].code[ClientKnownPositive-FSW_CODE].system = $LNC
 
+* insert Question(PartnerAndFBICTEligibility, partnerandfbicteligibility, Is the client eligible for partner and FBICT, choice, false, false, reasons why this should be supported)
+* item[PartnerAndFBICTEligibility]
+  * answerValueSet 1..1
+  * answerValueSet = Canonical(YesNoValueSet)
+
+* insert Slice(item[PartnerAndFBICTEligibility].code, reasons why this should be supported, value, code, open, Slicing the items based on the system value, false)
+* item[PartnerAndFBICTEligibility].code contains
+    PartnerAndFBICTEligibility_CODE 1..1
+
+* item[PartnerAndFBICTEligibility].code 1..1
+* item[PartnerAndFBICTEligibility].code.code 1..1
+* item[PartnerAndFBICTEligibility].code.system 1..1
+* item[PartnerAndFBICTEligibility].code[PartnerAndFBICTEligibility_CODE].code = #Partner-FBICT-Eligibiity
+* item[PartnerAndFBICTEligibility].code[PartnerAndFBICTEligibility_CODE].system = $PartnerAndFBICTCodeSystem
+
+* insert Question(PartnerAndFBICTOffered, partnerandfbictoffered, Is the index case offered with partner and FBICT services, choice, false, false, reasons why this should be supported)
+* item[PartnerAndFBICTOffered]
+  * answerValueSet 1..1
+  * answerValueSet = Canonical(YesNoValueSet)
+
+* insert Slice(item[PartnerAndFBICTOffered].code, reasons why this should be supported, value, code, open, Slicing the items based on the system value, false)
+* item[PartnerAndFBICTOffered].code contains
+    PartnerAndFBICTOffered_CODE 1..1
+
+* item[PartnerAndFBICTOffered].code 1..1
+* item[PartnerAndFBICTOffered].code.code 1..1
+* item[PartnerAndFBICTOffered].code.system 1..1
+* item[PartnerAndFBICTOffered].code[PartnerAndFBICTOffered_CODE].code = #Partner-FBICT-Offered
+* item[PartnerAndFBICTOffered].code[PartnerAndFBICTOffered_CODE].system = $PartnerAndFBICTCodeSystem
+
+
+* insert Question(PartnerAndFBICTAccepted, partnerandfbictacccepted, Has the client accepted the offer for partner and FBICT, choice, false, false, reasons why this should be supported)
+* item[PartnerAndFBICTAccepted]
+  * answerValueSet 1..1
+  * answerValueSet = Canonical(YesNoValueSet)
+
+* insert Slice(item[PartnerAndFBICTAccepted].code, reasons why this should be supported, value, code, open, Slicing the items based on the system value, false)
+* item[PartnerAndFBICTAccepted].code contains
+    PartnerAndFBICTAccepted_CODE 1..1
+
+* item[PartnerAndFBICTAccepted].code 1..1
+* item[PartnerAndFBICTAccepted].code.code 1..1
+* item[PartnerAndFBICTAccepted].code.system 1..1
+* item[PartnerAndFBICTAccepted].code[PartnerAndFBICTAccepted_CODE].code = #Partner-FBICT-Accepted
+* item[PartnerAndFBICTAccepted].code[PartnerAndFBICTAccepted_CODE].system = $PartnerAndFBICTCodeSystem
+
 Profile: IndexCaseScreeningQuestionnaireResponse
 Parent: GenericQuestionnaireResponse
 Id: index-case-screening-questionnaire-response
@@ -3245,7 +3294,10 @@ Description: "A questionaire response that documents the answers to the eligibil
     WithSexPartnerNotTested 0..1 MS and
     ClientInCareWithSTI 0..1 MS and
     ClientHasChildUnder15YearsOfAgeNotTested 0..1 MS and
-    ClientKnownPositive-FSW 0..1 MS
+    ClientKnownPositive-FSW 0..1 MS and
+    PartnerAndFBICTEligibility 0..1 MS and
+    PartnerAndFBICTOffered 0..1 MS and
+    PartnerAndFBICTAccepted 0..1 MS
 
 * insert QuestionResponseItem(NewlyEnrolledIntoCare, newlyenrolledintocare, Is the client newly enrolled, StrictCoding or Reference, reasons why this should be supported)
 * item[NewlyEnrolledIntoCare]
@@ -3288,3 +3340,32 @@ Description: "A questionaire response that documents the answers to the eligibil
 * insert QuestionResponseItem(ClientHasChildUnder15YearsOfAgeNotTested, clienthaschildunder15yearsofagenottested, Does the client have a child under 15yrs of age who is not tested, StrictCoding, reasons why this should be supported)
 
 * insert QuestionResponseItem(ClientKnownPositive-FSW, clientknownpositive-fsw, Is the client Known Positive, StrictCoding, reasons why this should be supported)
+
+* insert QuestionResponseItem(PartnerAndFBICTEligibility, partnerandfbicteligibility, Is the client eligible for partner and FBICT, StrictCoding, reasons why this should be supported)
+
+* insert QuestionResponseItem(PartnerAndFBICTOffered, partnerandfbictoffered, Is the index case offered with partner and FBICT services, StrictCoding, reasons why this should be supported)
+
+* insert QuestionResponseItem(PartnerAndFBICTAccepted, partnerandfbictacccepted, Has the client accepted the offer for partner and FBICT, StrictCoding, reasons why this should be supported)
+
+Profile: MaternalHIVStatusObservation
+Parent: GenericObservation
+Id: maternal-hiv-status-observation
+Title: "Observation - Maternal HIV Status"
+Description: "Documents the mother's HIV status."
+* category 1..1
+* category = $OBSERVATION_CATEGORY#exam
+* code = $LNC#75179-2
+* value[x] only CodeableConcept
+* valueCodeableConcept 1..1
+* valueCodeableConcept from HIVStatusValueSet (required)
+
+Profile: IndexCaseContactsElicitedObservation
+Parent: GenericObservation
+Id: elicited-index-case-contacts-observation
+Title: "Observation - Number of Contacts Elicited For Index Case"
+Description: "Documents the total number of contacts elicited for the index case."
+* category 1..1
+* category = $OBSERVATION_CATEGORY#social-history
+* code = $SCT#365951004
+* value[x] only integer
+* valueInteger 1..1
