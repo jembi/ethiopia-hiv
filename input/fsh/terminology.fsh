@@ -106,7 +106,7 @@ Description: "Final Outcome"
 * ^experimental = false
 * $LNC#45237-5 "Date lost to HIV treatment follow-up"
 * $LNC#63936-9 "Start date of treatment or therapy"
-* $LNC#31211-6 "Date of death"
+* $LNC#81954-0 "Date of death"
 * $SCT#105480006 "Procedure declined by patient"
 * $LNC#39266-2 "Follow-up (referred to) provider /specialist Set CPHS"
 * $LNC#45235-9 "Date original clinic HIV treatment start"
@@ -1162,3 +1162,12 @@ Description: "A list of codes describing the patient's HIV status."
 * $LNC#LA6577-6 "Negative"
 * $LNC#LA29947-1 "Carrier status unknown"
 * $LNC#77978-5 "Patient died from illness of interest"
+
+ValueSet: ReasonIndexCaseNotInterviewedValueSet
+Id: reason-index-case-not-interviewed-value-set
+Title: "Reason Index Case Not Interviewed"
+Description: "Codes used for indicating the reason why the index case was not interviewed."
+* ^experimental = false
+* $LNC#LA46-8 "Other"
+* $LNC#81954-0 "Date of death"
+* $LNC#LA4014-2 "Eligible but Refused"

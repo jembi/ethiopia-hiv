@@ -822,12 +822,12 @@ Description: "A questionnaire that represents the pregnancy and breastfeeding st
 * status = #active
 * subjectType = #Observation
 
-* insert QuestionForExample(PREGNANT, pregnant, choice, false, false)
-* insert QuestionForExample(WANT_TO_BE_PREGNANT, want-to-be-pregnant, choice, false, false)
-* insert QuestionForExample(BREASTFEEDING, is-breast-feeding, choice, false, false)
-* insert QuestionForExample(LMP, lmp, date, false, false)
-* insert QuestionForExample(EDD, edd, date, false, false)
-* insert QuestionForExample(FamilyPlanningMethod, fpm, choice, false, true)
+* insert QuestionForExample(PREGNANT, pregnant)
+* insert QuestionForExample(WANT_TO_BE_PREGNANT, want-to-be-pregnant)
+* insert QuestionForExample(BREASTFEEDING, is-breast-feeding)
+* insert QuestionForExample(LMP, lmp)
+* insert QuestionForExample(EDD, edd)
+* insert QuestionForExample(FamilyPlanningMethod, fpm)
 
 Instance: WeightExample
 InstanceOf: Weight
@@ -4393,18 +4393,18 @@ Title: "Questionnaire - Index Case Screening"
 Description: "A questionaire that provides eligibility criteria for the index case screening."
 * status = #active
 * subjectType = #Observation
-* insert QuestionForExample(NewlyEnrolledIntoCare, newlyenrolledintocare, choice, false, false)
-* insert QuestionForExample(HighViralLoad, highviralload, choice, false, false)
-* insert QuestionForExample(ARTRestart, artrestart, choice, false, false)
-* insert QuestionForExample(NewSexPartner, newsexpartner, choice, false, false)
-* insert QuestionForExample(HIVStatusNotDisclosedToSexPartner, hivstatusnotdisclosedtosexpartner, choice, false, false)
-* insert QuestionForExample(WithSexPartnerNotTested, withsexpartnernottested, choice, false, false)
-* insert QuestionForExample(ClientInCareWithSTI, clientincarewithsti, choice, false, false)
-* insert QuestionForExample(ClientHasChildUnder15YearsOfAgeNotTested, clienthaschildunder15yearsofagenottested, choice, false, false)
-* insert QuestionForExample(ClientKnownPositive-FSW, clientknownpositive-fsw, choice, false, false)
-* insert QuestionForExample(PartnerAndFBICTEligibility, partnerandfbicteligibility, choice, false, false)
-* insert QuestionForExample(PartnerAndFBICTOffered, partnerandfbictoffered, choice, false, false)
-* insert QuestionForExample(PartnerAndFBICTAccepted, partnerandfbictacccepted, choice, false, false)
+* insert QuestionForExample(NewlyEnrolledIntoCare, newlyenrolledintocare)
+* insert QuestionForExample(HighViralLoad, highviralload)
+* insert QuestionForExample(ARTRestart, artrestart)
+* insert QuestionForExample(NewSexPartner, newsexpartner)
+* insert QuestionForExample(HIVStatusNotDisclosedToSexPartner, hivstatusnotdisclosedtosexpartner)
+* insert QuestionForExample(WithSexPartnerNotTested, withsexpartnernottested)
+* insert QuestionForExample(ClientInCareWithSTI, clientincarewithsti)
+* insert QuestionForExample(ClientHasChildUnder15YearsOfAgeNotTested, clienthaschildunder15yearsofagenottested)
+* insert QuestionForExample(ClientKnownPositive-FSW, clientknownpositive-fsw)
+* insert QuestionForExample(PartnerAndFBICTEligibility, partnerandfbicteligibility)
+* insert QuestionForExample(PartnerAndFBICTOffered, partnerandfbictoffered)
+* insert QuestionForExample(PartnerAndFBICTAccepted, partnerandfbictacccepted)
 
 Instance: IndexCaseScreeningExample1
 InstanceOf: IndexCaseScreeningQuestionnaireResponse
@@ -4526,3 +4526,64 @@ Description: "Documents the total number of contacts elicited for the index case
 * effectiveDateTime = "2023-12-11"
 * performer = Reference(CurrentServiceProviderExample)
 * valueInteger = 2
+
+Instance: IndexCaseAssessmentQuestionnaireExample
+InstanceOf: IndexCaseAssessmentQuestionnaire
+Usage: #example
+Title: "Questionnaire - Index Case Assessment"
+Description: "A questionaire that assesses the index case during interviews."
+* status = #active
+* subjectType = #Observation
+* insert QuestionForExample(AgreedToBeInterviewed, agreedtobeinterviewed)
+* insert QuestionForExample(ReasonNotInterviewed, reasonnotinterviewed)
+* insert QuestionForExample(OtherReasonNotInterviewed, otherreasonnotinterviewed)
+* insert QuestionForExample(DateIndexCaseInterviewed, dateindexcaseinterviewed)
+
+Instance: IndexCaseAssessmentQuestionnaireResponseExample1
+InstanceOf: IndexCaseAssessmentQuestionnaireResponse
+Usage: #example
+Title: "Questionnaire Response - Index Case Assessment (Example 1)"
+Description: "A questionaire response that documents the answers to the questions that assesses the index case during interviews."
+* questionnaire = Canonical(IndexCaseAssessmentQuestionnaireExample)
+* status = #completed
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+
+* insert QuestionResponseItemForExample(AgreedToBeInterviewed, agreedtobeinterviewed, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponseItemForExample(ReasonNotInterviewed, reasonnotinterviewed, valueCoding, $LNC#LA46-8)
+
+* author = Reference(GeneralPractitionerExample)
+* authored = "2008-10-13"
+
+Instance: IndexCaseAssessmentQuestionnaireResponseExample2
+InstanceOf: IndexCaseAssessmentQuestionnaireResponse
+Usage: #example
+Title: "Questionnaire Response - Index Case Assessment (Example 2)"
+Description: "A questionaire response that documents the answers to the questions that assesses the index case during interviews."
+* questionnaire = Canonical(IndexCaseAssessmentQuestionnaireExample)
+* status = #completed
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+
+* insert QuestionResponseItemForExample(AgreedToBeInterviewed, agreedtobeinterviewed, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponseItemForExample(ReasonNotInterviewed, reasonnotinterviewed, valueCoding, $LNC#LA46-8)
+* insert QuestionResponseItemForExample(OtherReasonNotInterviewed, otherreasonnotinterviewed, valueString, "some other reason")
+
+* author = Reference(GeneralPractitionerExample)
+* authored = "2008-10-13"
+
+Instance: IndexCaseAssessmentQuestionnaireResponseExample3
+InstanceOf: IndexCaseAssessmentQuestionnaireResponse
+Usage: #example
+Title: "Questionnaire Response - Index Case Assessment (Example 3)"
+Description: "A questionaire response that documents the answers to the questions that assesses the index case during interviews."
+* questionnaire = Canonical(IndexCaseAssessmentQuestionnaireExample)
+* status = #completed
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+
+* insert QuestionResponseItemForExample(AgreedToBeInterviewed, agreedtobeinterviewed, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponseItemForExample(DateIndexCaseInterviewed, dateindexcaseinterviewed, valueDate, 2008-10-13)
+
+* author = Reference(GeneralPractitionerExample)
+* authored = "2008-10-13"

@@ -10,12 +10,9 @@ RuleSet: Question(id, linkId, text, type, required, repeats, definition)
   * required 1..
   * required = {required}
 
-RuleSet: QuestionForExample(id, linkId, type, required, repeats)
+RuleSet: QuestionForExample(id, linkId)
 * item[{id}]
   * linkId = "{linkId}"
-  * type = #{type}
-  * repeats = {repeats}
-  * required = {required}
 
 RuleSet: QuestionResponseItem(id, linkId, text, type, definition)
 * item[{id}]
