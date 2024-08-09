@@ -4550,7 +4550,7 @@ Description: "A questionaire response that documents the answers to the question
 * encounter = Reference(GeneralEncounterExample)
 
 * insert QuestionResponseItemForExample(AgreedToBeInterviewed, agreedtobeinterviewed, valueCoding, $YesNoCodeSystem#false)
-* insert QuestionResponseItemForExample(ReasonNotInterviewed, reasonnotinterviewed, valueCoding, $LNC#LA46-8)
+* insert QuestionResponseItemForExample(ReasonNotInterviewed, reasonnotinterviewed, valueCoding, $LNC#81954-0)
 
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"

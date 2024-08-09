@@ -3379,7 +3379,9 @@ Description: "A questionaire that assesses the index case during interviews."
 * item 1..*
 * subjectType 1..1
 * subjectType = #Observation
+
 * insert Slice(item, reasons why this should be supported, value, linkId, open, Slicing the items based on the linkId value, false)
+
 * item contains
     AgreedToBeInterviewed 0..1 MS and
     ReasonNotInterviewed 0..1 MS and
@@ -3390,34 +3392,15 @@ Description: "A questionaire that assesses the index case during interviews."
 * item[AgreedToBeInterviewed]
   * answerValueSet 1..1
   * answerValueSet = Canonical(YesNoValueSet)
-
-* insert Slice(item[AgreedToBeInterviewed].code, reasons why this should be supported, value, code, open, Slicing the items based on the system value, false)
-* item[AgreedToBeInterviewed].code contains
-    AgreedToBeInterviewed_CODE 1..1
-
-* item[AgreedToBeInterviewed].code 1..1
-* item[AgreedToBeInterviewed].code.code 1..1
-* item[AgreedToBeInterviewed].code.system 1..1
-* item[AgreedToBeInterviewed].code[AgreedToBeInterviewed_CODE].code = #LA4601-6
-* item[AgreedToBeInterviewed].code[AgreedToBeInterviewed_CODE].system = $LNC
+  * code 1..1
+  * code = $LNC#LA14870-2
 
 * insert Question(ReasonNotInterviewed, reasonnotinterviewed, Reason for not being interviewed, choice, false, false, reasons why this should be supported)
 * item[ReasonNotInterviewed]
   * answerValueSet 1..1
   * answerValueSet = Canonical(ReasonIndexCaseNotInterviewedValueSet)
-
-* insert Slice(item[ReasonNotInterviewed].code, reasons why this should be supported, value, code, open, Slicing the items based on the system value, false)
-* item[ReasonNotInterviewed].code contains
-    Interview_CODE 1..1 and
-    InterviewStatus_CODE 1..1
-
-* item[ReasonNotInterviewed].code ..*
-* item[ReasonNotInterviewed].code.code 1..1
-* item[ReasonNotInterviewed].code.system 1..1
-* item[ReasonNotInterviewed].code[Interview_CODE].code = #LA4601-6
-* item[ReasonNotInterviewed].code[Interview_CODE].system = $LNC
-* item[ReasonNotInterviewed].code[InterviewStatus_CODE].code = #LA6630-3
-* item[ReasonNotInterviewed].code[InterviewStatus_CODE].system = $LNC
+  * code 1..1
+  * code = $LNC#LP95022-7
 
 * insert Question(OtherReasonNotInterviewed, otherreasonnotinterviewed, Other Reason for not being interviewed, string, true, false, reasons why this should be supported)
 * item[OtherReasonNotInterviewed]
@@ -3428,16 +3411,9 @@ Description: "A questionaire that assesses the index case during interviews."
   * enableWhen.answerCoding = $LNC#LA46-8
 
 * insert Question(DateIndexCaseInterviewed, dateindexcaseinterviewed, When did the index case receive the interview, date, false, false, reasons why this should be supported)
-
-* insert Slice(item[DateIndexCaseInterviewed].code, reasons why this should be supported, value, code, open, Slicing the items based on the system value, false)
-* item[DateIndexCaseInterviewed].code contains
-    DateIndexCaseInterviewed_CODE 1..1
-
-* item[DateIndexCaseInterviewed].code 1..1
-* item[DateIndexCaseInterviewed].code.code 1..1
-* item[DateIndexCaseInterviewed].code.system 1..1
-* item[DateIndexCaseInterviewed].code[DateIndexCaseInterviewed_CODE].code = #91714-6
-* item[DateIndexCaseInterviewed].code[DateIndexCaseInterviewed_CODE].system = $LNC
+* item[DateIndexCaseInterviewed]
+  * code 1..1
+  * code = $LNC#91714-6
 
 Profile: IndexCaseAssessmentQuestionnaireResponse
 Parent: GenericQuestionnaireResponse
@@ -3447,6 +3423,7 @@ Description: "A questionaire response that documents the answers to the question
 * questionnaire only Canonical(IndexCaseAssessmentQuestionnaire)
 
 * insert Slice(item, reasons why this should be supported, value, linkId, open, Slicing the items based on the linkId value, false)
+
 * item contains
     AgreedToBeInterviewed 0..1 MS and
     ReasonNotInterviewed 0..1 MS and
