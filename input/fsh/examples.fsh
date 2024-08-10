@@ -4538,6 +4538,13 @@ Description: "A questionaire that assesses the index case during interviews."
 * insert QuestionForExample(ReasonNotInterviewed, reasonnotinterviewed)
 * insert QuestionForExample(OtherReasonNotInterviewed, otherreasonnotinterviewed)
 * insert QuestionForExample(DateIndexCaseInterviewed, dateindexcaseinterviewed)
+* insert QuestionForExample(InterviewedForPartnerServices, interviewedforpartnerservices)
+* insert QuestionForExample(InterviewDateForPartnerServices, interviewdateforpartnerservices)
+* insert QuestionForExample(NumberOfSexPartnersInLast12Mths, numberofsexpartnersinlast12mths)
+* insert QuestionForExample(NumberOfSexPartnersInLast24Mths, numberofsexpartnersinlast24mths)
+* insert QuestionForExample(WillingToNameSexPartners, willingtonamesexpartners)
+* insert QuestionForExample(ReasonNotWillingToNameSexPartners, reasonnotwillingtonamesexpartners)
+* insert QuestionForExample(NextVisitDate, nextvisitdate)
 
 Instance: IndexCaseAssessmentQuestionnaireResponseExample1
 InstanceOf: IndexCaseAssessmentQuestionnaireResponse
@@ -4584,6 +4591,51 @@ Description: "A questionaire response that documents the answers to the question
 
 * insert QuestionResponseItemForExample(AgreedToBeInterviewed, agreedtobeinterviewed, valueCoding, $YesNoCodeSystem#true)
 * insert QuestionResponseItemForExample(DateIndexCaseInterviewed, dateindexcaseinterviewed, valueDate, 2008-10-13)
+* insert QuestionResponseItemForExample(InterviewedForPartnerServices, interviewedforpartnerservices, valueCoding, $YesNoCodeSystem#false)
+
+* author = Reference(GeneralPractitionerExample)
+* authored = "2008-10-13"
+
+Instance: IndexCaseAssessmentQuestionnaireResponseExample4
+InstanceOf: IndexCaseAssessmentQuestionnaireResponse
+Usage: #example
+Title: "Questionnaire Response - Index Case Assessment (Example 4)"
+Description: "A questionaire response that documents the answers to the questions that assesses the index case during interviews."
+* questionnaire = Canonical(IndexCaseAssessmentQuestionnaireExample)
+* status = #completed
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+
+* insert QuestionResponseItemForExample(AgreedToBeInterviewed, agreedtobeinterviewed, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponseItemForExample(DateIndexCaseInterviewed, dateindexcaseinterviewed, valueDate, 2008-10-13)
+* insert QuestionResponseItemForExample(InterviewedForPartnerServices, interviewedforpartnerservices, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponseItemForExample(InterviewDateForPartnerServices, interviewdateforpartnerservices, valueDate, 2008-10-13)
+* insert QuestionResponseItemForExample(NumberOfSexPartnersInLast12Mths, numberofsexpartnersinlast12mths, valueInteger, 4)
+* insert QuestionResponseItemForExample(NumberOfSexPartnersInLast24Mths, numberofsexpartnersinlast24mths, valueInteger, 6)
+* insert QuestionResponseItemForExample(WillingToNameSexPartners, willingtonamesexpartners, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponseItemForExample(ReasonNotWillingToNameSexPartners, reasonnotwillingtonamesexpartners, valueString, "some reason")
+
+* author = Reference(GeneralPractitionerExample)
+* authored = "2008-10-13"
+
+Instance: IndexCaseAssessmentQuestionnaireResponseFullExample
+InstanceOf: IndexCaseAssessmentQuestionnaireResponse
+Usage: #example
+Title: "Questionnaire Response - Index Case Assessment (Full Example)"
+Description: "A questionaire response that documents the answers to the questions that assesses the index case during interviews."
+* questionnaire = Canonical(IndexCaseAssessmentQuestionnaireExample)
+* status = #completed
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+
+* insert QuestionResponseItemForExample(AgreedToBeInterviewed, agreedtobeinterviewed, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponseItemForExample(DateIndexCaseInterviewed, dateindexcaseinterviewed, valueDate, 2008-10-13)
+* insert QuestionResponseItemForExample(InterviewedForPartnerServices, interviewedforpartnerservices, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponseItemForExample(InterviewDateForPartnerServices, interviewdateforpartnerservices, valueDate, 2008-10-13)
+* insert QuestionResponseItemForExample(NumberOfSexPartnersInLast12Mths, numberofsexpartnersinlast12mths, valueInteger, 4)
+* insert QuestionResponseItemForExample(NumberOfSexPartnersInLast24Mths, numberofsexpartnersinlast24mths, valueInteger, 6)
+* insert QuestionResponseItemForExample(WillingToNameSexPartners, willingtonamesexpartners, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponseItemForExample(NextVisitDate, nextvisitdate, valueDate, 2008-11-13)
 
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"

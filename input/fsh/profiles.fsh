@@ -3244,7 +3244,14 @@ Description: "A questionaire that assesses the index case during interviews."
     AgreedToBeInterviewed 0..1 MS and
     ReasonNotInterviewed 0..1 MS and
     OtherReasonNotInterviewed 0..1 MS and
-    DateIndexCaseInterviewed 0..1 MS
+    DateIndexCaseInterviewed 0..1 MS and
+    InterviewedForPartnerServices 0..1 MS and
+    InterviewDateForPartnerServices 0..1 MS and
+    NumberOfSexPartnersInLast12Mths 0..1 MS and
+    NumberOfSexPartnersInLast24Mths 0..1 MS and
+    WillingToNameSexPartners 0..1 MS and
+    ReasonNotWillingToNameSexPartners 0..1 MS and
+    NextVisitDate 0..1 MS
 
 * insert Question(AgreedToBeInterviewed, agreedtobeinterviewed, Did the index case agree to be interviewed, choice, false, false, reasons why this should be supported)
 * item[AgreedToBeInterviewed]
@@ -3268,10 +3275,62 @@ Description: "A questionaire that assesses the index case during interviews."
   * enableWhen.answerCoding 1..1
   * enableWhen.answerCoding = $LNC#LA46-8
 
-* insert Question(DateIndexCaseInterviewed, dateindexcaseinterviewed, When did the index case receive the interview, date, false, false, reasons why this should be supported)
+* insert Question(DateIndexCaseInterviewed, dateindexcaseinterviewed, When did the index case receive the interview, date, true, false, reasons why this should be supported)
 * item[DateIndexCaseInterviewed]
   * code 1..1
   * code = $LNC#91714-6
+  * enableWhen 1..1
+  * enableWhen.question = "agreedtobeinterviewed"
+  * enableWhen.operator = #=
+  * enableWhen.answerCoding 1..1
+  * enableWhen.answerCoding = $YesNoCodeSystem#true
+
+* insert Question(InterviewedForPartnerServices, interviewedforpartnerservices, Was the index case interviewed for partner services, choice, false, false, reasons why this should be supported)
+* item[InterviewedForPartnerServices]
+  * answerValueSet 1..1
+  * answerValueSet = Canonical(YesNoValueSet)
+  * code 1..1
+  * code = $PartnerAndFBICTCodeSystem#Partner-Services
+
+* insert Question(InterviewDateForPartnerServices, interviewdateforpartnerservices, When was the index case interviewed for partner services, date, true, false, reasons why this should be supported)
+* item[InterviewDateForPartnerServices]
+  * code 1..1
+  * code = $LNC#91714-6
+  * enableWhen 1..1
+  * enableWhen.question = "interviewedforpartnerservices"
+  * enableWhen.operator = #=
+  * enableWhen.answerCoding 1..1
+  * enableWhen.answerCoding = $YesNoCodeSystem#true
+
+* insert Question(NumberOfSexPartnersInLast12Mths, numberofsexpartnersinlast12mths, Number of sexual partners in past 12 months, integer, false, false, reasons why this should be supported)
+* item[NumberOfSexPartnersInLast12Mths]
+  * code 1..1
+  * code = $LNC#85736-7
+
+* insert Question(NumberOfSexPartnersInLast24Mths, numberofsexpartnersinlast24mths, Number of sexual partners in past 24 months, integer, false, false, reasons why this should be supported)
+* item[NumberOfSexPartnersInLast24Mths]
+  * code 1..1
+  * code = $SCT#228458001
+
+* insert Question(WillingToNameSexPartners, willingtonamesexpartners, Is the index client willing to identify the sex partners, choice, false, false, reasons why this should be supported)
+* item[WillingToNameSexPartners]
+  * answerValueSet 1..1
+  * answerValueSet = Canonical(YesNoValueSet)
+  * code 1..1
+  * code = $SCT#228465009
+
+* insert Question(ReasonNotWillingToNameSexPartners, reasonnotwillingtonamesexpartners, Reason for not being able to identify the sex partners, string, true, false, reasons why this should be supported)
+* item[ReasonNotWillingToNameSexPartners]
+  * enableWhen 1..1
+  * enableWhen.question = "willingtonamesexpartners"
+  * enableWhen.operator = #=
+  * enableWhen.answerCoding 1..1
+  * enableWhen.answerCoding = $YesNoCodeSystem#false
+
+* insert Question(NextVisitDate, nextvisitdate, What is the next visit date, date, false, false, reasons why this should be supported)
+* item[NextVisitDate]
+  * code 1..1
+  * code = $LNC#57070-5
 
 Profile: IndexCaseAssessmentQuestionnaireResponse
 Parent: GenericQuestionnaireResponse
@@ -3286,7 +3345,14 @@ Description: "A questionaire response that documents the answers to the question
     AgreedToBeInterviewed 0..1 MS and
     ReasonNotInterviewed 0..1 MS and
     OtherReasonNotInterviewed 0..1 MS and
-    DateIndexCaseInterviewed 0..1 MS
+    DateIndexCaseInterviewed 0..1 MS and
+    InterviewedForPartnerServices 0..1 MS and
+    InterviewDateForPartnerServices 0..1 MS and
+    NumberOfSexPartnersInLast12Mths 0..1 MS and
+    NumberOfSexPartnersInLast24Mths 0..1 MS and
+    WillingToNameSexPartners 0..1 MS and
+    ReasonNotWillingToNameSexPartners 0..1 MS and
+    NextVisitDate 0..1 MS
 
 * insert QuestionResponseItem(AgreedToBeInterviewed, agreedtobeinterviewed, Did the index case agree to be interviewed, StrictCoding, reasons why this should be supported)
 
@@ -3295,3 +3361,17 @@ Description: "A questionaire response that documents the answers to the question
 * insert QuestionResponseItem(OtherReasonNotInterviewed, otherreasonnotinterviewed, Other Reason for not being interviewed, string, reasons why this should be supported)
 
 * insert QuestionResponseItem(DateIndexCaseInterviewed, dateindexcaseinterviewed, When did the index case receive the interview, date, reasons why this should be supported)
+
+* insert QuestionResponseItem(InterviewedForPartnerServices, interviewedforpartnerservices, Was the index case interviewed for partner services, StrictCoding, reasons why this should be supported)
+
+* insert QuestionResponseItem(InterviewDateForPartnerServices, interviewdateforpartnerservices, When was the index case interviewed for partner services, date, reasons why this should be supported)
+
+* insert QuestionResponseItem(NumberOfSexPartnersInLast12Mths, numberofsexpartnersinlast12mths, Number of sexual partners in past 12 months, integer, reasons why this should be supported)
+
+* insert QuestionResponseItem(NumberOfSexPartnersInLast24Mths, numberofsexpartnersinlast24mths, Number of sexual partners in past 24 months, integer, reasons why this should be supported)
+
+* insert QuestionResponseItem(WillingToNameSexPartners, willingtonamesexpartners, Is the index client willing to identify the sex partners, StrictCoding, reasons why this should be supported)
+
+* insert QuestionResponseItem(ReasonNotWillingToNameSexPartners, reasonnotwillingtonamesexpartners, Reason for not being able to identify the sex partners, string, reasons why this should be supported)
+
+* insert QuestionResponseItem(NextVisitDate, nextvisitdate, What is the next visit date, date, reasons why this should be supported)

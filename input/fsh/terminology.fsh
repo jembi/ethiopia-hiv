@@ -1152,6 +1152,7 @@ Description: "Codes used for indicating the patient's status for partner and FBI
 * #Partner-FBICT-Eligibiity "Eligible for partner and FBICT"
 * #Partner-FBICT-Offered "Offered partner and FBICT"
 * #Partner-FBICT-Accepted "Accepted partner and FBICT"
+* #Partner-Services "Partner services"
 
 ValueSet: HIVStatusValueSet
 Id: hiv-status-value-set
