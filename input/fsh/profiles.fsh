@@ -684,16 +684,8 @@ Description: "A questionaire that provides the questions to for pregnancy status
   * answerValueSet.extension contains permitted-value-conceptmap named InternalCodesToExchangeCodes 1..1
   * answerValueSet = Canonical(YesNoValueSet)
   * answerValueSet.extension[InternalCodesToExchangeCodes].valueCanonical = Canonical(PregnancyStatusProprietaryToLOINC)
-
-* insert Slice(item[PREGNANT].code, reasons why this should be supported, value, code, open, Slicing the items based on the system value, false)
-* item[PREGNANT].code contains
-    PREGNANT_REPORTED_CODE 1..1
-
-* item[PREGNANT].code 1..1
-* item[PREGNANT].code.code 1..1
-* item[PREGNANT].code.system 1..1
-* item[PREGNANT].code[PREGNANT_REPORTED_CODE].code = #11449-6
-* item[PREGNANT].code[PREGNANT_REPORTED_CODE].system = $LNC
+  * code 1..1
+  * code = $LNC#11449-6
 
 * insert Question(WANT_TO_BE_PREGNANT, want-to-be-pregnant, Wants to be pregnant, choice, false, false, reasons why this should be supported)
 * item[WANT_TO_BE_PREGNANT]
@@ -701,16 +693,8 @@ Description: "A questionaire that provides the questions to for pregnancy status
   * answerValueSet.extension contains permitted-value-conceptmap named InternalCodesToExchangeCodes 1..1
   * answerValueSet = Canonical(YesNoValueSet)
   * answerValueSet.extension[InternalCodesToExchangeCodes].valueCanonical = Canonical(PregnancyFuturePlansProprietaryToLOINC)
-
-* insert Slice(item[WANT_TO_BE_PREGNANT].code, reasons why this should be supported, value, code, open, Slicing the items based on the system value, false)
-* item[WANT_TO_BE_PREGNANT].code contains
-    WANT_TO_BE_PREGNANT_REPORTED_CODE 1..1
-
-* item[WANT_TO_BE_PREGNANT].code 1..1
-* item[WANT_TO_BE_PREGNANT].code.code 1..1
-* item[WANT_TO_BE_PREGNANT].code.system 1..1
-* item[WANT_TO_BE_PREGNANT].code[WANT_TO_BE_PREGNANT_REPORTED_CODE].code = #86645-9
-* item[WANT_TO_BE_PREGNANT].code[WANT_TO_BE_PREGNANT_REPORTED_CODE].system = $LNC
+  * code 1..1
+  * code = $LNC#86645-9
 
 * insert Question(BREASTFEEDING, is-breast-feeding, Is breastfeeding, choice, false, false,reasons why this should be supported)
 * item[BREASTFEEDING]
@@ -718,55 +702,25 @@ Description: "A questionaire that provides the questions to for pregnancy status
   * answerValueSet.extension contains permitted-value-conceptmap named InternalCodesToExchangeCodes 1..1
   * answerValueSet = Canonical(YesNoValueSet)
   * answerValueSet.extension[InternalCodesToExchangeCodes].valueCanonical = Canonical(BreastfeedingStatusProprietaryToLOINC)
-
-* insert Slice(item[BREASTFEEDING].code, reasons why this should be supported, value, code, open, Slicing the items based on the system value, false)
-* item[BREASTFEEDING].code contains
-    BREASTFEEDING_REPORTED_CODE 1..1
-
-* item[BREASTFEEDING].code 1..1
-* item[BREASTFEEDING].code.code 1..1
-* item[BREASTFEEDING].code.system 1..1
-* item[BREASTFEEDING].code[BREASTFEEDING_REPORTED_CODE].code = #63895-7
-* item[BREASTFEEDING].code[BREASTFEEDING_REPORTED_CODE].system = $LNC
+  * code 1..1
+  * code = $LNC#63895-7
 
 * insert Question(LMP, lmp, Last Menstrual Period, date, false, false, reasons why this should be supported)
-
-* insert Slice(item[LMP].code, reasons why this should be supported, value, code, open, Slicing the items based on the system value, false)
-* item[LMP].code contains
-    LMP_REPORTED_CODE 1..1
-
-* item[LMP].code 1..1
-* item[LMP].code.code 1..1
-* item[LMP].code.system 1..1
-* item[LMP].code[LMP_REPORTED_CODE].code = #LP187193-0
-* item[LMP].code[LMP_REPORTED_CODE].system = $LNC
+* item[LMP]
+  * code 1..1
+  * code = $LNC#LP187193-0
 
 * insert Question(EDD, edd, Estimated Delivery Date, date, false, false, reasons why this should be supported)
-
-* insert Slice(item[EDD].code, reasons why this should be supported, value, code, open, Slicing the items based on the system value, false)
-* item[EDD].code contains
-    EDD_CODE 1..1
-
-* item[EDD].code 1..1
-* item[EDD].code.code 1..1
-* item[EDD].code.system 1..1
-* item[EDD].code[EDD_CODE].code = #11779-6
-* item[EDD].code[EDD_CODE].system = $LNC
+* item[EDD]
+  * code 1..1
+  * code = $LNC#11779-6
 
 * insert Question(FamilyPlanningMethod, fpm, Family Planning Method, choice, false, true, reasons why this should be supported)
 * item[FamilyPlanningMethod]
   * answerValueSet 1..1
   * answerValueSet = Canonical(FamilyPlanningMethodValueSet)
-
-* insert Slice(item[FamilyPlanningMethod].code, reasons why this should be supported, value, code, open, Slicing the items based on the system value, false)
-* item[FamilyPlanningMethod].code contains
-    FPM_CODE 1..1
-
-* item[FamilyPlanningMethod].code 1..1
-* item[FamilyPlanningMethod].code.code 1..1
-* item[FamilyPlanningMethod].code.system 1..1
-* item[FamilyPlanningMethod].code[FPM_CODE].code = #8659-5
-* item[FamilyPlanningMethod].code[FPM_CODE].system = $LNC
+  * code 1..1
+  * code = $LNC#8659-5
 
 Profile: GenericQuestionnaireResponse
 Parent: QuestionnaireResponse
@@ -3100,182 +3054,86 @@ Description: "A questionaire that provides eligibility criteria for the index ca
 * item[NewlyEnrolledIntoCare]
   * answerValueSet 1..1
   * answerValueSet = Canonical(YesNoValueSet)
-
-* insert Slice(item[NewlyEnrolledIntoCare].code, reasons why this should be supported, value, code, open, Slicing the items based on the system value, false)
-* item[NewlyEnrolledIntoCare].code contains
-    NewlyEnrolledIntoCare_CODE 1..1
-
-* item[NewlyEnrolledIntoCare].code 1..1
-* item[NewlyEnrolledIntoCare].code.code 1..1
-* item[NewlyEnrolledIntoCare].code.system 1..1
-* item[NewlyEnrolledIntoCare].code[NewlyEnrolledIntoCare_CODE].code = #67723-7
-* item[NewlyEnrolledIntoCare].code[NewlyEnrolledIntoCare_CODE].system = $LNC
+  * code 1..1
+  * code = $LNC#67723-7
 
 * insert Question(HighViralLoad, highviralload, Does the client have a high viral load, choice, false, false, reasons why this should be supported)
 * item[HighViralLoad]
   * answerValueSet 1..1
   * answerValueSet = Canonical(YesNoValueSet)
-
-* insert Slice(item[HighViralLoad].code, reasons why this should be supported, value, code, open, Slicing the items based on the system value, false)
-* item[HighViralLoad].code contains
-    HighViralLoad_CODE 1..1
-
-* item[HighViralLoad].code 1..1
-* item[HighViralLoad].code.code 1..1
-* item[HighViralLoad].code.system 1..1
-* item[HighViralLoad].code[HighViralLoad_CODE].code = #315124004
-* item[HighViralLoad].code[HighViralLoad_CODE].system = $SCT
+  * code 1..1
+  * code = $SCT#315124004
 
 * insert Question(ARTRestart, artrestart, Does the client have an ART status of Restart, choice, false, false, reasons why this should be supported)
 * item[ARTRestart]
   * answerValueSet 1..1
   * answerValueSet = Canonical(YesNoValueSet)
-
-* insert Slice(item[ARTRestart].code, reasons why this should be supported, value, code, open, Slicing the items based on the system value, false)
-* item[ARTRestart].code contains
-    ARTRestart_CODE 1..1
-
-* item[ARTRestart].code 1..1
-* item[ARTRestart].code.code 1..1
-* item[ARTRestart].code.system 1..1
-* item[ARTRestart].code[ARTRestart_CODE].code = #63936-9
-* item[ARTRestart].code[ARTRestart_CODE].system = $LNC
+  * code 1..1
+  * code = $LNC#63936-9
 
 * insert Question(NewSexPartner, newsexpartner, Is the client with a new partner, choice, false, false, reasons why this should be supported)
 * item[NewSexPartner]
   * answerValueSet 1..1
   * answerValueSet = Canonical(YesNoValueSet)
-
-* insert Slice(item[NewSexPartner].code, reasons why this should be supported, value, code, open, Slicing the items based on the system value, false)
-* item[NewSexPartner].code contains
-    NewSexPartner_CODE 1..1
-
-* item[NewSexPartner].code 1..1
-* item[NewSexPartner].code.code 1..1
-* item[NewSexPartner].code.system 1..1
-* item[NewSexPartner].code[NewSexPartner_CODE].code = #85656-7
-* item[NewSexPartner].code[NewSexPartner_CODE].system = $LNC
+  * code 1..1
+  * code = $LNC#85656-7
 
 * insert Question(HIVStatusNotDisclosedToSexPartner, hivstatusnotdisclosedtosexpartner, Is the client with a partner not yet disclosed, choice, false, false, reasons why this should be supported)
 * item[HIVStatusNotDisclosedToSexPartner]
   * answerValueSet 1..1
   * answerValueSet = Canonical(YesNoValueSet)
-
-* insert Slice(item[HIVStatusNotDisclosedToSexPartner].code, reasons why this should be supported, value, code, open, Slicing the items based on the system value, false)
-* item[HIVStatusNotDisclosedToSexPartner].code contains
-    HIVStatusNotDisclosedToSexPartner_CODE 1..1
-
-* item[HIVStatusNotDisclosedToSexPartner].code 1..1
-* item[HIVStatusNotDisclosedToSexPartner].code.code 1..1
-* item[HIVStatusNotDisclosedToSexPartner].code.system 1..1
-* item[HIVStatusNotDisclosedToSexPartner].code[HIVStatusNotDisclosedToSexPartner_CODE].code = #47249-8
-* item[HIVStatusNotDisclosedToSexPartner].code[HIVStatusNotDisclosedToSexPartner_CODE].system = $LNC
+  * code 1..1
+  * code = $LNC#47249-8
 
 * insert Question(WithSexPartnerNotTested, withsexpartnernottested, Is the client with a partner who has not been tested yet for HIV, choice, false, false, reasons why this should be supported)
 * item[WithSexPartnerNotTested]
   * answerValueSet 1..1
   * answerValueSet = Canonical(YesNoValueSet)
-
-* insert Slice(item[WithSexPartnerNotTested].code, reasons why this should be supported, value, code, open, Slicing the items based on the system value, false)
-* item[WithSexPartnerNotTested].code contains
-    WithSexPartnerNotTested_CODE 1..1
-
-* item[WithSexPartnerNotTested].code 1..1
-* item[WithSexPartnerNotTested].code.code 1..1
-* item[WithSexPartnerNotTested].code.system 1..1
-* item[WithSexPartnerNotTested].code[WithSexPartnerNotTested_CODE].code = #171121004
-* item[WithSexPartnerNotTested].code[WithSexPartnerNotTested_CODE].system = $SCT
+  * code 1..1
+  * code = $SCT#171121004
 
 * insert Question(ClientInCareWithSTI, clientincarewithsti, Is the client in care with STI, choice, false, false, reasons why this should be supported)
 * item[ClientInCareWithSTI]
   * answerValueSet 1..1
   * answerValueSet = Canonical(YesNoValueSet)
-
-* insert Slice(item[ClientInCareWithSTI].code, reasons why this should be supported, value, code, open, Slicing the items based on the system value, false)
-* item[ClientInCareWithSTI].code contains
-    ClientInCareWithSTI_CODE 1..1
-
-* item[ClientInCareWithSTI].code 1..1
-* item[ClientInCareWithSTI].code.code 1..1
-* item[ClientInCareWithSTI].code.system 1..1
-* item[ClientInCareWithSTI].code[ClientInCareWithSTI_CODE].code = #8098009
-* item[ClientInCareWithSTI].code[ClientInCareWithSTI_CODE].system = $SCT
+  * code 1..1
+  * code = $SCT#8098009
 
 * insert Question(ClientHasChildUnder15YearsOfAgeNotTested, clienthaschildunder15yearsofagenottested, Does the client have a child under 15yrs of age who is not tested, choice, false, false, reasons why this should be supported)
 * item[ClientHasChildUnder15YearsOfAgeNotTested]
   * answerValueSet 1..1
   * answerValueSet = Canonical(YesNoValueSet)
-
-* insert Slice(item[ClientHasChildUnder15YearsOfAgeNotTested].code, reasons why this should be supported, value, code, open, Slicing the items based on the system value, false)
-* item[ClientHasChildUnder15YearsOfAgeNotTested].code contains
-    ClientHasChildUnder15YearsOfAgeNotTested_CODE 1..1
-
-* item[ClientHasChildUnder15YearsOfAgeNotTested].code 1..1
-* item[ClientHasChildUnder15YearsOfAgeNotTested].code.code 1..1
-* item[ClientHasChildUnder15YearsOfAgeNotTested].code.system 1..1
-* item[ClientHasChildUnder15YearsOfAgeNotTested].code[ClientHasChildUnder15YearsOfAgeNotTested_CODE].code = #171121004
-* item[ClientHasChildUnder15YearsOfAgeNotTested].code[ClientHasChildUnder15YearsOfAgeNotTested_CODE].system = $SCT
+  * code 1..1
+  * code = $SCT#171121004
 
 * insert Question(ClientKnownPositive-FSW, clientknownpositive-fsw, Is the client Known Positive, choice, false, false, reasons why this should be supported)
 * item[ClientKnownPositive-FSW]
   * answerValueSet 1..1
   * answerValueSet = Canonical(YesNoValueSet)
-
-* insert Slice(item[ClientKnownPositive-FSW].code, reasons why this should be supported, value, code, open, Slicing the items based on the system value, false)
-* item[ClientKnownPositive-FSW].code contains
-    ClientKnownPositive-FSW_CODE 1..1
-
-* item[ClientKnownPositive-FSW].code 1..1
-* item[ClientKnownPositive-FSW].code.code 1..1
-* item[ClientKnownPositive-FSW].code.system 1..1
-* item[ClientKnownPositive-FSW].code[ClientKnownPositive-FSW_CODE].code = #55277-8
-* item[ClientKnownPositive-FSW].code[ClientKnownPositive-FSW_CODE].system = $LNC
+  * code 1..1
+  * code = $LNC#55277-8
 
 * insert Question(PartnerAndFBICTEligibility, partnerandfbicteligibility, Is the client eligible for partner and FBICT, choice, false, false, reasons why this should be supported)
 * item[PartnerAndFBICTEligibility]
   * answerValueSet 1..1
   * answerValueSet = Canonical(YesNoValueSet)
-
-* insert Slice(item[PartnerAndFBICTEligibility].code, reasons why this should be supported, value, code, open, Slicing the items based on the system value, false)
-* item[PartnerAndFBICTEligibility].code contains
-    PartnerAndFBICTEligibility_CODE 1..1
-
-* item[PartnerAndFBICTEligibility].code 1..1
-* item[PartnerAndFBICTEligibility].code.code 1..1
-* item[PartnerAndFBICTEligibility].code.system 1..1
-* item[PartnerAndFBICTEligibility].code[PartnerAndFBICTEligibility_CODE].code = #Partner-FBICT-Eligibiity
-* item[PartnerAndFBICTEligibility].code[PartnerAndFBICTEligibility_CODE].system = $PartnerAndFBICTCodeSystem
+  * code 1..1
+  * code = $PartnerAndFBICTCodeSystem#Partner-FBICT-Eligibiity
 
 * insert Question(PartnerAndFBICTOffered, partnerandfbictoffered, Is the index case offered with partner and FBICT services, choice, false, false, reasons why this should be supported)
 * item[PartnerAndFBICTOffered]
   * answerValueSet 1..1
   * answerValueSet = Canonical(YesNoValueSet)
-
-* insert Slice(item[PartnerAndFBICTOffered].code, reasons why this should be supported, value, code, open, Slicing the items based on the system value, false)
-* item[PartnerAndFBICTOffered].code contains
-    PartnerAndFBICTOffered_CODE 1..1
-
-* item[PartnerAndFBICTOffered].code 1..1
-* item[PartnerAndFBICTOffered].code.code 1..1
-* item[PartnerAndFBICTOffered].code.system 1..1
-* item[PartnerAndFBICTOffered].code[PartnerAndFBICTOffered_CODE].code = #Partner-FBICT-Offered
-* item[PartnerAndFBICTOffered].code[PartnerAndFBICTOffered_CODE].system = $PartnerAndFBICTCodeSystem
+  * code 1..1
+  * code = $PartnerAndFBICTCodeSystem#Partner-FBICT-Offered
 
 
 * insert Question(PartnerAndFBICTAccepted, partnerandfbictacccepted, Has the client accepted the offer for partner and FBICT, choice, false, false, reasons why this should be supported)
 * item[PartnerAndFBICTAccepted]
   * answerValueSet 1..1
   * answerValueSet = Canonical(YesNoValueSet)
-
-* insert Slice(item[PartnerAndFBICTAccepted].code, reasons why this should be supported, value, code, open, Slicing the items based on the system value, false)
-* item[PartnerAndFBICTAccepted].code contains
-    PartnerAndFBICTAccepted_CODE 1..1
-
-* item[PartnerAndFBICTAccepted].code 1..1
-* item[PartnerAndFBICTAccepted].code.code 1..1
-* item[PartnerAndFBICTAccepted].code.system 1..1
-* item[PartnerAndFBICTAccepted].code[PartnerAndFBICTAccepted_CODE].code = #Partner-FBICT-Accepted
-* item[PartnerAndFBICTAccepted].code[PartnerAndFBICTAccepted_CODE].system = $PartnerAndFBICTCodeSystem
+  * code 1..1
+  * code = $PartnerAndFBICTCodeSystem#Partner-FBICT-Accepted
 
 Profile: IndexCaseScreeningQuestionnaireResponse
 Parent: GenericQuestionnaireResponse
