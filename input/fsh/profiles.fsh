@@ -3409,7 +3409,7 @@ Parent: GenericQuestionnaireResponse
 Id: family-index-case-contacts-questionnaire-response
 Title: "Questionnaire Response - Family Index Case Contacts"
 Description: "A questionaire response that documents the answers to the questions regarding the HIV and health status for index case contacts."
-* questionnaire only Canonical(IndexCaseAssessmentQuestionnaire)
+* questionnaire only Canonical(FamilyIndexCaseContactsQuestionnaire)
 
 * insert Slice(item, reasons why this should be supported, value, linkId, open, Slicing the items based on the linkId value, false)
 
