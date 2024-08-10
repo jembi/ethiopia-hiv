@@ -78,3 +78,4 @@ Description:
 * insert ExampleTransactionalEntry(MaternalHIVStatusKPExample, Observation)
 * insert ExampleTransactionalEntry(IndexCaseContactsElicitedExample, Observation)
 * insert ExampleTransactionalEntry(IndexCaseScreeningFullExample, QuestionnaireResponse)
+* insert ExampleTransactionalEntry(IndexCaseAssessmentFullExample, QuestionnaireResponse)

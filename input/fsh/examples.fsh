@@ -4546,7 +4546,7 @@ Description: "A questionaire that assesses the index case during interviews."
 * insert QuestionForExample(ReasonNotWillingToNameSexPartners, reasonnotwillingtonamesexpartners)
 * insert QuestionForExample(NextVisitDate, nextvisitdate)
 
-Instance: IndexCaseAssessmentQuestionnaireResponseExample1
+Instance: IndexCaseAssessmentExample1
 InstanceOf: IndexCaseAssessmentQuestionnaireResponse
 Usage: #example
 Title: "Questionnaire Response - Index Case Assessment (Example 1)"
@@ -4562,7 +4562,7 @@ Description: "A questionaire response that documents the answers to the question
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"
 
-Instance: IndexCaseAssessmentQuestionnaireResponseExample2
+Instance: IndexCaseAssessmentExample2
 InstanceOf: IndexCaseAssessmentQuestionnaireResponse
 Usage: #example
 Title: "Questionnaire Response - Index Case Assessment (Example 2)"
@@ -4579,7 +4579,7 @@ Description: "A questionaire response that documents the answers to the question
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"
 
-Instance: IndexCaseAssessmentQuestionnaireResponseExample3
+Instance: IndexCaseAssessmentExample3
 InstanceOf: IndexCaseAssessmentQuestionnaireResponse
 Usage: #example
 Title: "Questionnaire Response - Index Case Assessment (Example 3)"
@@ -4596,7 +4596,7 @@ Description: "A questionaire response that documents the answers to the question
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"
 
-Instance: IndexCaseAssessmentQuestionnaireResponseExample4
+Instance: IndexCaseAssessmentExample4
 InstanceOf: IndexCaseAssessmentQuestionnaireResponse
 Usage: #example
 Title: "Questionnaire Response - Index Case Assessment (Example 4)"
@@ -4618,7 +4618,7 @@ Description: "A questionaire response that documents the answers to the question
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"
 
-Instance: IndexCaseAssessmentQuestionnaireResponseFullExample
+Instance: IndexCaseAssessmentFullExample
 InstanceOf: IndexCaseAssessmentQuestionnaireResponse
 Usage: #example
 Title: "Questionnaire Response - Index Case Assessment (Full Example)"
