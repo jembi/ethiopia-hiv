@@ -437,14 +437,14 @@ Description: "A questionaire response that documents the answers to the pregnanc
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 
-* insert QuestionResponseItemForExample(PREGNANT, pregnant, valueCoding, $YesNoCodeSystem#false)
-* insert QuestionResponseItemForExample(WANT_TO_BE_PREGNANT, want-to-be-pregnant, valueCoding, $YesNoCodeSystem#true)
-* insert QuestionResponseItemForExample(BREASTFEEDING, is-breast-feeding, valueCoding, $YesNoCodeSystem#false)
-* insert QuestionResponseItemForExample(LMP, lmp, valueDate, "2024-06-18")
-* insert QuestionResponseItemForExample(EDD, edd, valueDate, "2025-05-25")
+* insert QuestionResponseItemForExample(PREGNANT, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponseItemForExample(WANT_TO_BE_PREGNANT, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponseItemForExample(BREASTFEEDING, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponseItemForExample(LMP, valueDate, "2024-06-18")
+* insert QuestionResponseItemForExample(EDD, valueDate, "2025-05-25")
 
-* insert QuestionResponseItemForExample(FamilyPlanningMethod, fpm, valueCoding, $LNC#LA14543-5)
-* insert QuestionResponseItemForExample(FamilyPlanningMethod, fpm, valueCoding, $LNC#LA27907-7)
+* insert QuestionResponseItemForExample(FamilyPlanningMethod, valueCoding, $LNC#LA14543-5)
+* insert QuestionResponseItemForExample(FamilyPlanningMethod, valueCoding, $LNC#LA27907-7)
 
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"
@@ -1244,10 +1244,10 @@ Description: "Represents the other facility where the patient did receive health
 * serviceProvider = Reference(OutreachFacilityExample)
 * partOf = Reference(GeneralEncounterExample)
 
-Instance: RelatedPersonBecomesPatientExample
+Instance: SexualPartnerRelatedPersonBecomesPatientExample
 InstanceOf: EthPatient
 Usage: #example
-Title: "Patient - Related Person Becomes a Patient"
+Title: "Patient - Sexual Partner Related to the Index Case is Registered as a Patient"
 Description: "Is used to document demographics and other administrative information about an individual receiving care or other health-related services."
 * identifier[MRN].value = "MRN12345673"
 * identifier[MRN].system = $MRN
@@ -3217,7 +3217,7 @@ Description: "Used to record the HIV+ tracking details for the patient who start
 * status = #final
 * category = $OBSERVATION_CATEGORY#therapy
 * code = $LNC#LP95599-4
-* subject = Reference(RelatedPersonBecomesPatientExample)
+* subject = Reference(SexualPartnerRelatedPersonBecomesPatientExample)
 * encounter = Reference(EncounterWithEntryPointTBClinicExample)
 * effectiveDateTime = "2023-11-27"
 * valueCodeableConcept = $LNC#63936-9
@@ -4416,7 +4416,7 @@ Description: "A questionaire response that documents the answers to the eligibil
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 
-* insert QuestionResponseItemForExample(NewlyEnrolledIntoCare, newlyenrolledintocare, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponseItemForExample(NewlyEnrolledIntoCare, valueCoding, $YesNoCodeSystem#false)
 
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"
@@ -4431,15 +4431,15 @@ Description: "A questionaire response that documents the answers to the eligibil
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 
-* insert QuestionResponseItemForExample(NewlyEnrolledIntoCare, newlyenrolledintocare, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponseItemForExample(NewlyEnrolledIntoCare, valueCoding, $YesNoCodeSystem#true)
 * item[NewlyEnrolledIntoCare]
   * answer.extension[SupportingReference].valueReference = Reference(LinkedToCareExample)
 
-* insert QuestionResponseItemForExample(HighViralLoad, highviralload, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponseItemForExample(HighViralLoad, valueCoding, $YesNoCodeSystem#true)
 * item[HighViralLoad]
   * answer.extension[SupportingReference].valueReference = Reference(UnsuppressedViralLoadResultExample)
 
-* insert QuestionResponseItemForExample(ARTRestart, artrestart, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponseItemForExample(ARTRestart, valueCoding, $YesNoCodeSystem#false)
 
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"
@@ -4454,33 +4454,33 @@ Description: "A questionaire response that documents the answers to the eligibil
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 
-* insert QuestionResponseItemForExample(NewlyEnrolledIntoCare, newlyenrolledintocare, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponseItemForExample(NewlyEnrolledIntoCare, valueCoding, $YesNoCodeSystem#false)
 
-* insert QuestionResponseItemForExample(HighViralLoad, highviralload, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponseItemForExample(HighViralLoad, valueCoding, $YesNoCodeSystem#false)
 * item[HighViralLoad]
   * answer.extension[SupportingReference].valueReference = Reference(SuppressedViralLoadResultExample)
 
-* insert QuestionResponseItemForExample(ARTRestart, artrestart, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponseItemForExample(ARTRestart, valueCoding, $YesNoCodeSystem#false)
 
-* insert QuestionResponseItemForExample(NewSexPartner, newsexpartner, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponseItemForExample(NewSexPartner, valueCoding, $YesNoCodeSystem#true)
 * item[NewSexPartner]
   * answer.extension[SupportingReference].valueReference = Reference(PartnerRelatedPersonExample)
 
-* insert QuestionResponseItemForExample(HIVStatusNotDisclosedToSexPartner, hivstatusnotdisclosedtosexpartner, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponseItemForExample(HIVStatusNotDisclosedToSexPartner, valueCoding, $YesNoCodeSystem#true)
 
-* insert QuestionResponseItemForExample(WithSexPartnerNotTested, withsexpartnernottested, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponseItemForExample(WithSexPartnerNotTested, valueCoding, $YesNoCodeSystem#false)
 
-* insert QuestionResponseItemForExample(ClientInCareWithSTI, clientincarewithsti, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponseItemForExample(ClientInCareWithSTI, valueCoding, $YesNoCodeSystem#false)
 
-* insert QuestionResponseItemForExample(ClientHasChildUnder15YearsOfAgeNotTested, clienthaschildunder15yearsofagenottested, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponseItemForExample(ClientHasChildUnder15YearsOfAgeNotTested, valueCoding, $YesNoCodeSystem#true)
 
-* insert QuestionResponseItemForExample(ClientKnownPositive-FSW, clientknownpositive-fsw, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponseItemForExample(ClientKnownPositive-FSW, valueCoding, $YesNoCodeSystem#false)
 
-* insert QuestionResponseItemForExample(PartnerAndFBICTEligibility, partnerandfbicteligibility, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponseItemForExample(PartnerAndFBICTEligibility, valueCoding, $YesNoCodeSystem#false)
 
-* insert QuestionResponseItemForExample(PartnerAndFBICTOffered, partnerandfbictoffered, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponseItemForExample(PartnerAndFBICTOffered, valueCoding, $YesNoCodeSystem#false)
 
-* insert QuestionResponseItemForExample(PartnerAndFBICTAccepted, partnerandfbictacccepted, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponseItemForExample(PartnerAndFBICTAccepted, valueCoding, $YesNoCodeSystem#false)
 
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"
@@ -4556,8 +4556,8 @@ Description: "A questionaire response that documents the answers to the question
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 
-* insert QuestionResponseItemForExample(AgreedToBeInterviewed, agreedtobeinterviewed, valueCoding, $YesNoCodeSystem#false)
-* insert QuestionResponseItemForExample(ReasonNotInterviewed, reasonnotinterviewed, valueCoding, $LNC#81954-0)
+* insert QuestionResponseItemForExample(AgreedToBeInterviewed, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponseItemForExample(ReasonNotInterviewed, valueCoding, $LNC#81954-0)
 
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"
@@ -4572,9 +4572,9 @@ Description: "A questionaire response that documents the answers to the question
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 
-* insert QuestionResponseItemForExample(AgreedToBeInterviewed, agreedtobeinterviewed, valueCoding, $YesNoCodeSystem#false)
-* insert QuestionResponseItemForExample(ReasonNotInterviewed, reasonnotinterviewed, valueCoding, $LNC#LA46-8)
-* insert QuestionResponseItemForExample(OtherReasonNotInterviewed, otherreasonnotinterviewed, valueString, "some other reason")
+* insert QuestionResponseItemForExample(AgreedToBeInterviewed, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponseItemForExample(ReasonNotInterviewed, valueCoding, $LNC#LA46-8)
+* insert QuestionResponseItemForExample(OtherReasonNotInterviewed, valueString, "some other reason")
 
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"
@@ -4589,9 +4589,9 @@ Description: "A questionaire response that documents the answers to the question
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 
-* insert QuestionResponseItemForExample(AgreedToBeInterviewed, agreedtobeinterviewed, valueCoding, $YesNoCodeSystem#true)
-* insert QuestionResponseItemForExample(DateIndexCaseInterviewed, dateindexcaseinterviewed, valueDate, 2008-10-13)
-* insert QuestionResponseItemForExample(InterviewedForPartnerServices, interviewedforpartnerservices, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponseItemForExample(AgreedToBeInterviewed, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponseItemForExample(DateIndexCaseInterviewed, valueDate, 2008-10-13)
+* insert QuestionResponseItemForExample(InterviewedForPartnerServices, valueCoding, $YesNoCodeSystem#false)
 
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"
@@ -4606,14 +4606,14 @@ Description: "A questionaire response that documents the answers to the question
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 
-* insert QuestionResponseItemForExample(AgreedToBeInterviewed, agreedtobeinterviewed, valueCoding, $YesNoCodeSystem#true)
-* insert QuestionResponseItemForExample(DateIndexCaseInterviewed, dateindexcaseinterviewed, valueDate, 2008-10-13)
-* insert QuestionResponseItemForExample(InterviewedForPartnerServices, interviewedforpartnerservices, valueCoding, $YesNoCodeSystem#true)
-* insert QuestionResponseItemForExample(InterviewDateForPartnerServices, interviewdateforpartnerservices, valueDate, 2008-10-13)
-* insert QuestionResponseItemForExample(NumberOfSexPartnersInLast12Mths, numberofsexpartnersinlast12mths, valueInteger, 4)
-* insert QuestionResponseItemForExample(NumberOfSexPartnersInLast24Mths, numberofsexpartnersinlast24mths, valueInteger, 6)
-* insert QuestionResponseItemForExample(WillingToNameSexPartners, willingtonamesexpartners, valueCoding, $YesNoCodeSystem#false)
-* insert QuestionResponseItemForExample(ReasonNotWillingToNameSexPartners, reasonnotwillingtonamesexpartners, valueString, "some reason")
+* insert QuestionResponseItemForExample(AgreedToBeInterviewed, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponseItemForExample(DateIndexCaseInterviewed, valueDate, 2008-10-13)
+* insert QuestionResponseItemForExample(InterviewedForPartnerServices, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponseItemForExample(InterviewDateForPartnerServices, valueDate, 2008-10-13)
+* insert QuestionResponseItemForExample(NumberOfSexPartnersInLast12Mths, valueInteger, 4)
+* insert QuestionResponseItemForExample(NumberOfSexPartnersInLast24Mths, valueInteger, 6)
+* insert QuestionResponseItemForExample(WillingToNameSexPartners, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponseItemForExample(ReasonNotWillingToNameSexPartners, valueString, "some reason")
 
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"
@@ -4628,14 +4628,55 @@ Description: "A questionaire response that documents the answers to the question
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 
-* insert QuestionResponseItemForExample(AgreedToBeInterviewed, agreedtobeinterviewed, valueCoding, $YesNoCodeSystem#true)
-* insert QuestionResponseItemForExample(DateIndexCaseInterviewed, dateindexcaseinterviewed, valueDate, 2008-10-13)
-* insert QuestionResponseItemForExample(InterviewedForPartnerServices, interviewedforpartnerservices, valueCoding, $YesNoCodeSystem#true)
-* insert QuestionResponseItemForExample(InterviewDateForPartnerServices, interviewdateforpartnerservices, valueDate, 2008-10-13)
-* insert QuestionResponseItemForExample(NumberOfSexPartnersInLast12Mths, numberofsexpartnersinlast12mths, valueInteger, 4)
-* insert QuestionResponseItemForExample(NumberOfSexPartnersInLast24Mths, numberofsexpartnersinlast24mths, valueInteger, 6)
-* insert QuestionResponseItemForExample(WillingToNameSexPartners, willingtonamesexpartners, valueCoding, $YesNoCodeSystem#true)
-* insert QuestionResponseItemForExample(NextVisitDate, nextvisitdate, valueDate, 2008-11-13)
+* insert QuestionResponseItemForExample(AgreedToBeInterviewed, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponseItemForExample(DateIndexCaseInterviewed, valueDate, 2008-10-13)
+* insert QuestionResponseItemForExample(InterviewedForPartnerServices, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponseItemForExample(InterviewDateForPartnerServices, valueDate, 2008-10-13)
+* insert QuestionResponseItemForExample(NumberOfSexPartnersInLast12Mths, valueInteger, 4)
+* insert QuestionResponseItemForExample(NumberOfSexPartnersInLast24Mths, valueInteger, 6)
+* insert QuestionResponseItemForExample(WillingToNameSexPartners, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponseItemForExample(NextVisitDate, valueDate, 2008-11-13)
+
+* author = Reference(GeneralPractitionerExample)
+* authored = "2008-10-13"
+
+Instance: IndexCaseContactHealthStatusExample
+InstanceOf: HealthStatus
+Usage: #example
+Title: "Observation - Health Status (Index Case Contact)"
+Description: "This is used to record the health status for the index case contact."
+* status = #final
+* category = $OBSERVATION_CATEGORY#exam
+* code = $LNC#11323-3
+* code.text = "Health Status"
+* valueCodeableConcept = $LNC#LA14937-9
+* subject = Reference(SexualPartnerRelatedPersonBecomesPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* performer = Reference(CurrentServiceProviderExample)
+* effectiveDateTime = "2024-01-25"
+
+Instance: FamilyIndexCaseContactsQuestionnaireExample
+InstanceOf: FamilyIndexCaseContactsQuestionnaire
+Usage: #example
+Title: "Questionnaire - Family Index Case Contacts"
+Description: "A questionaire that assesses the HIV and health status for index case contacts."
+* status = #active
+* subjectType = #Observation
+* insert QuestionForExample(CurrentlyLivingWithIndexCase, currentlylivingwithindexcase)
+* insert QuestionForExample(HealthStatus, healthstatus)
+
+Instance: FamilyIndexCaseContactsFullExample
+InstanceOf: FamilyIndexCaseContactsQuestionnaireResponse
+Usage: #example
+Title: "Questionnaire Response - Family Index Case Contacts (Full Example)"
+Description: "A questionaire response that documents the answers to the questions regarding the HIV and health status for index case contacts."
+* questionnaire = Canonical(FamilyIndexCaseContactsQuestionnaireExample)
+* status = #completed
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+
+* insert QuestionResponseItemForExample(CurrentlyLivingWithIndexCase, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponseItemForReferenceExample(HealthStatus, IndexCaseContactHealthStatusExample)
 
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"

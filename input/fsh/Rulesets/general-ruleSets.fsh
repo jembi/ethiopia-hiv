@@ -25,10 +25,13 @@ RuleSet: QuestionResponseItem(id, linkId, text, type, definition)
     * value[x] 1..
     * value[x] only {type}
 
-RuleSet: QuestionResponseItemForExample(id, linkId, dataType, dataValue)
+RuleSet: QuestionResponseItemForExample(id, dataType, dataValue)
 * item[{id}]
-  * linkId = "{linkId}"
   * answer[+].{dataType} = {dataValue}
+
+RuleSet: QuestionResponseItemForReferenceExample(id, dataValue)
+* item[{id}]
+  * answer[+].valueReference = Reference({dataValue})
 
 RuleSet: Slice(item, definition, discriminatorType, discriminatorPath, rule, description, ordered)
 * {item} 

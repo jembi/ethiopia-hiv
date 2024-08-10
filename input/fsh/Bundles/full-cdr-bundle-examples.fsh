@@ -13,7 +13,7 @@ Description:
 * insert ExampleTransactionalEntry(GeneralPatientExample, Patient)
 * insert ExampleTransactionalEntry(GeneralEncounterExample, Encounter)
 * insert ExampleTransactionalEntry(PartnerRelatedPersonExample, RelatedPerson)
-* insert ExampleTransactionalEntry(RelatedPersonBecomesPatientExample, Patient)
+* insert ExampleTransactionalEntry(SexualPartnerRelatedPersonBecomesPatientExample, Patient)
 
 * insert ExampleTransactionalEntry(DifferentiatedServiceDeliveryFullExample, Observation)
 * insert ExampleTransactionalEntry(HighestEducationExample, Observation)

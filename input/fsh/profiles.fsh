@@ -1607,7 +1607,7 @@ Profile: HealthStatus
 Parent: GenericObservation
 Id:  health-status-observation
 Title: "Observation - Health Status"
-Description: "This is used to record the patient's health status."
+Description: "This is used to record the individual's health status."
 * category 1..1
 * category = $OBSERVATION_CATEGORY#exam
 * code = $LNC#11323-3
@@ -3375,3 +3375,50 @@ Description: "A questionaire response that documents the answers to the question
 * insert QuestionResponseItem(ReasonNotWillingToNameSexPartners, reasonnotwillingtonamesexpartners, Reason for not being able to identify the sex partners, string, reasons why this should be supported)
 
 * insert QuestionResponseItem(NextVisitDate, nextvisitdate, What is the next visit date, date, reasons why this should be supported)
+
+Profile: FamilyIndexCaseContactsQuestionnaire
+Parent: Questionnaire
+Id: family-index-case-contacts-questionnaire
+Title: "Questionnaire - Family Index Case Contacts"
+Description: "A questionaire that assesses the HIV and health status for index case contacts."
+* status 1..1
+* item 1..*
+* subjectType 1..1
+* subjectType = #Observation
+
+* insert Slice(item, reasons why this should be supported, value, linkId, open, Slicing the items based on the linkId value, false)
+
+* item contains
+    CurrentlyLivingWithIndexCase 0..1 MS and
+    HealthStatus 0..1 MS
+
+* insert Question(CurrentlyLivingWithIndexCase, currentlylivingwithindexcase, Currently living with the index case, choice, false, false, reasons why this should be supported)
+* item[CurrentlyLivingWithIndexCase]
+  * answerValueSet 1..1
+  * answerValueSet = Canonical(YesNoValueSet)
+  * code 1..1
+  * code = $SCT#408821002
+
+* insert Question(HealthStatus, healthstatus, Health status of the client, reference, false, false, reasons why this should be supported)
+* item[HealthStatus]
+  * code 1..1
+  * code = $LNC#11323-3
+
+Profile: FamilyIndexCaseContactsQuestionnaireResponse
+Parent: GenericQuestionnaireResponse
+Id: family-index-case-contacts-questionnaire-response
+Title: "Questionnaire Response - Family Index Case Contacts"
+Description: "A questionaire response that documents the answers to the questions regarding the HIV and health status for index case contacts."
+* questionnaire only Canonical(IndexCaseAssessmentQuestionnaire)
+
+* insert Slice(item, reasons why this should be supported, value, linkId, open, Slicing the items based on the linkId value, false)
+
+* item contains
+    CurrentlyLivingWithIndexCase 0..1 MS and
+    HealthStatus 0..1 MS
+
+* insert QuestionResponseItem(CurrentlyLivingWithIndexCase, currentlylivingwithindexcase, Currently living with the index case, StrictCoding, reasons why this should be supported)
+
+* insert QuestionResponseItem(HealthStatus, healthstatus, Health status of the client, Reference, reasons why this should be supported)
+* item[HealthStatus]
+  * answer.valueReference only Reference(HealthStatus)
