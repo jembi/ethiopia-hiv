@@ -660,108 +660,47 @@ Description: "Represents the date the patient was confirmed HIV positive."
 * basedOn ^definition = "reason(s) why this should be supported."
 * basedOn only Reference(PCRHIVTestServiceRequest)
 
-Profile: PregnancyStatusAndFPMQuestionnaire
-Parent: Questionnaire
-Id: pregnancy-status-and-fmp-questionnaire
+Instance: PregnancyStatusAndFPMQuestionnaire
+InstanceOf: Questionnaire
+Usage: #definition
 Title: "Questionnaire - Pregnancy Status and Family Planning Method (FPM)"
 Description: "A questionaire that provides the questions to for pregnancy status and FPM."
-* status 1..1
-* item 1..*
-* subjectType 1..1
+* status = #active
 * subjectType = #Observation
-* insert Slice(item, reasons why this should be supported, value, linkId, open, Slicing the items based on the linkId value, false)
-* item contains
-    PREGNANT 0..1 MS and
-    WANT_TO_BE_PREGNANT 0..1 MS and
-    BREASTFEEDING 0..1 MS and
-    LMP 0..1 MS and
-    EDD 0..1 MS and
-    FamilyPlanningMethod 0..1 MS
 
-* insert Question(PREGNANT, pregnant, Is Pregnant, choice, false, false, reasons why this should be supported)
-* item[PREGNANT]
-  * answerValueSet 1..1
-  * answerValueSet.extension contains permitted-value-conceptmap named InternalCodesToExchangeCodes 1..1
+* insert QuestionForDefinition(1.1, Is Pregnant, choice, false, false)
+* item[=]
   * answerValueSet = Canonical(YesNoValueSet)
-  * answerValueSet.extension[InternalCodesToExchangeCodes].valueCanonical = Canonical(PregnancyStatusProprietaryToLOINC)
-  * code 1..1
+  * answerValueSet.extension[+].valueCanonical = Canonical(PregnancyStatusProprietaryToLOINC)
+  * answerValueSet.extension[=].url = "http://hl7.org/fhir/StructureDefinition/11179-permitted-value-conceptmap"
   * code = $LNC#11449-6
 
-* insert Question(WANT_TO_BE_PREGNANT, want-to-be-pregnant, Wants to be pregnant, choice, false, false, reasons why this should be supported)
-* item[WANT_TO_BE_PREGNANT]
-  * answerValueSet 1..1
-  * answerValueSet.extension contains permitted-value-conceptmap named InternalCodesToExchangeCodes 1..1
+* insert QuestionForDefinition(1.2, Wants to be pregnant, choice, false, false)
+* item[=]
   * answerValueSet = Canonical(YesNoValueSet)
-  * answerValueSet.extension[InternalCodesToExchangeCodes].valueCanonical = Canonical(PregnancyFuturePlansProprietaryToLOINC)
-  * code 1..1
+  * answerValueSet.extension[+].valueCanonical = Canonical(PregnancyFuturePlansProprietaryToLOINC)
+  * answerValueSet.extension[=].url = "http://hl7.org/fhir/StructureDefinition/11179-permitted-value-conceptmap"
   * code = $LNC#86645-9
 
-* insert Question(BREASTFEEDING, is-breast-feeding, Is breastfeeding, choice, false, false,reasons why this should be supported)
-* item[BREASTFEEDING]
-  * answerValueSet 1..1
-  * answerValueSet.extension contains permitted-value-conceptmap named InternalCodesToExchangeCodes 1..1
+* insert QuestionForDefinition(1.3, Is breastfeeding, choice, false, false)
+* item[=]
   * answerValueSet = Canonical(YesNoValueSet)
-  * answerValueSet.extension[InternalCodesToExchangeCodes].valueCanonical = Canonical(BreastfeedingStatusProprietaryToLOINC)
-  * code 1..1
+  * answerValueSet.extension[+].valueCanonical = Canonical(BreastfeedingStatusProprietaryToLOINC)
+  * answerValueSet.extension[=].url = "http://hl7.org/fhir/StructureDefinition/11179-permitted-value-conceptmap"
   * code = $LNC#63895-7
 
-* insert Question(LMP, lmp, Last Menstrual Period, date, false, false, reasons why this should be supported)
-* item[LMP]
-  * code 1..1
+* insert QuestionForDefinition(1.4, Last Menstrual date, date, false, false)
+* item[=]
   * code = $LNC#LP187193-0
 
-* insert Question(EDD, edd, Estimated Delivery Date, date, false, false, reasons why this should be supported)
-* item[EDD]
-  * code 1..1
+* insert QuestionForDefinition(1.5, Estimated Delivery Date, date, false, false)
+* item[=]
   * code = $LNC#11779-6
 
-* insert Question(FamilyPlanningMethod, fpm, Family Planning Method, choice, false, true, reasons why this should be supported)
-* item[FamilyPlanningMethod]
-  * answerValueSet 1..1
+* insert QuestionForDefinition(1.6, Family Planning Method, choice, false, true)
+* item[=]
   * answerValueSet = Canonical(FamilyPlanningMethodValueSet)
-  * code 1..1
   * code = $LNC#8659-5
-
-Profile: GenericQuestionnaireResponse
-Parent: QuestionnaireResponse
-Id: generic-questionnaire-response
-Title: "Questionnaire Response - Generic"
-Description: "Base Questionnaire Response elements that are inherited by other Questionnaire Response resources."
-* questionnaire 1..1
-* status 1..1
-* subject 1..1
-* subject only Reference(EthPatient)
-* encounter 1..1
-* encounter only Reference(TargetFacilityEncounter)
-* item 1..*
-* author 1..1
-* authored 1..1
-
-Profile: PregnancyStatusAndFPMQuestionnaireResponse
-Parent: GenericQuestionnaireResponse
-Id: pregnancy-status-and-fmp-questionnaire-response
-Title: "Questionnaire Response - Pregnancy Status and Family Planning Method (FPM)"
-Description: "A questionaire response that documents the answers to the pregnancy status and FPM questions."
-* obeys QuestionnaireResponse-PregnancyStatus-1
-* questionnaire only Canonical(PregnancyStatusAndFPMQuestionnaire)
-* insert Slice(item, reasons why this should be supported, value, linkId, open, Slicing the items based on the linkId value, false)
-* item contains
-    PREGNANT 0..1 MS and
-    WANT_TO_BE_PREGNANT 0..1 MS and
-    BREASTFEEDING 0..1 MS and
-    LMP 0..1 MS and
-    EDD 0..1 MS and
-    FamilyPlanningMethod 0..1 MS
-
-* insert QuestionResponseItem(PREGNANT, pregnant,Is Pregnant, StrictCoding, reasons why this should be supported)
-
-* insert QuestionResponseItem(WANT_TO_BE_PREGNANT, want-to-be-pregnant, Wants to be pregnant, StrictCoding, reasons why this should be supported)
-
-* insert QuestionResponseItem(BREASTFEEDING, is-breast-feeding, Is breastfeeding, StrictCoding, reasons why this should be supported)
-
-* insert QuestionResponseItem(LMP, lmp, Last Menstrual Period, date, reasons why this should be supported)
-* insert QuestionResponseItem(EDD, edd, Estimated Delivery Date, date, reasons why this should be supported)
-* insert QuestionResponseItem(FamilyPlanningMethod, fpm, Family Planning Method, StrictCoding, reasons why this should be supported)
 
 Profile: Weight
 Parent: GenericObservation
@@ -3026,184 +2965,73 @@ Description: "Documents the disclosure of HIV status for minors."
 * valueCodeableConcept 1..1
 * valueCodeableConcept from DisclosureStageValueSet (required)
 
-Profile: IndexCaseScreeningQuestionnaire
-Parent: Questionnaire
-Id: index-case-screening-questionnaire
+Instance: IndexCaseScreeningQuestionnaire
+InstanceOf: Questionnaire
+Usage: #definition
 Title: "Questionnaire - Index Case Screening"
 Description: "A questionaire that provides eligibility criteria for the index case screening."
-* status 1..1
-* item 1..*
-* subjectType 1..1
+* status = #active
 * subjectType = #Observation
-* insert Slice(item, reasons why this should be supported, value, linkId, open, Slicing the items based on the linkId value, false)
-* item contains
-    NewlyEnrolledIntoCare 0..1 MS and
-    HighViralLoad 0..1 MS and
-    ARTRestart 0..1 MS and
-    NewSexPartner 0..1 MS and
-    HIVStatusNotDisclosedToSexPartner 0..1 MS and
-    WithSexPartnerNotTested 0..1 MS and
-    ClientInCareWithSTI 0..1 MS and
-    ClientHasChildUnder15YearsOfAgeNotTested 0..1 MS and
-    ClientKnownPositive-FSW 0..1 MS and
-    PartnerAndFBICTEligibility 0..1 MS and
-    PartnerAndFBICTOffered 0..1 MS and
-    PartnerAndFBICTAccepted 0..1 MS
 
-* insert Question(NewlyEnrolledIntoCare, newlyenrolledintocare, Is the client newly enrolled, choice, false, false, reasons why this should be supported)
-* item[NewlyEnrolledIntoCare]
-  * answerValueSet 1..1
+* insert QuestionForDefinition(1.1, Is the client newly enrolled, choice, false, false)
+* item[=]
   * answerValueSet = Canonical(YesNoValueSet)
-  * code 1..1
   * code = $LNC#67723-7
 
-* insert Question(HighViralLoad, highviralload, Does the client have a high viral load, choice, false, false, reasons why this should be supported)
-* item[HighViralLoad]
-  * answerValueSet 1..1
+* insert QuestionForDefinition(1.2, Does the client have a high viral load, choice, false, false)
+* item[=]
   * answerValueSet = Canonical(YesNoValueSet)
-  * code 1..1
   * code = $SCT#315124004
 
-* insert Question(ARTRestart, artrestart, Does the client have an ART status of Restart, choice, false, false, reasons why this should be supported)
-* item[ARTRestart]
-  * answerValueSet 1..1
+* insert QuestionForDefinition(1.3, Does the client have an ART status of Restart, choice, false, false)
+* item[=]
   * answerValueSet = Canonical(YesNoValueSet)
-  * code 1..1
   * code = $LNC#63936-9
 
-* insert Question(NewSexPartner, newsexpartner, Is the client with a new partner, choice, false, false, reasons why this should be supported)
-* item[NewSexPartner]
-  * answerValueSet 1..1
+* insert QuestionForDefinition(1.4, Is the client with a new partner, choice, false, false)
+* item[=]
   * answerValueSet = Canonical(YesNoValueSet)
-  * code 1..1
   * code = $LNC#85656-7
 
-* insert Question(HIVStatusNotDisclosedToSexPartner, hivstatusnotdisclosedtosexpartner, Is the client with a partner not yet disclosed, choice, false, false, reasons why this should be supported)
-* item[HIVStatusNotDisclosedToSexPartner]
-  * answerValueSet 1..1
+* insert QuestionForDefinition(1.5, Is the client with a partner not yet disclosed, choice, false, false)
+* item[=]
   * answerValueSet = Canonical(YesNoValueSet)
-  * code 1..1
   * code = $LNC#47249-8
 
-* insert Question(WithSexPartnerNotTested, withsexpartnernottested, Is the client with a partner who has not been tested yet for HIV, choice, false, false, reasons why this should be supported)
-* item[WithSexPartnerNotTested]
-  * answerValueSet 1..1
+* insert QuestionForDefinition(1.6, Is the client with a partner who has not been tested yet for HIV, choice, false, false)
+* item[=]
   * answerValueSet = Canonical(YesNoValueSet)
-  * code 1..1
   * code = $SCT#171121004
 
-* insert Question(ClientInCareWithSTI, clientincarewithsti, Is the client in care with STI, choice, false, false, reasons why this should be supported)
-* item[ClientInCareWithSTI]
-  * answerValueSet 1..1
+* insert QuestionForDefinition(1.7, Is the client in care with STI, choice, false, false)
+* item[=]
   * answerValueSet = Canonical(YesNoValueSet)
-  * code 1..1
   * code = $SCT#8098009
 
-* insert Question(ClientHasChildUnder15YearsOfAgeNotTested, clienthaschildunder15yearsofagenottested, Does the client have a child under 15yrs of age who is not tested, choice, false, false, reasons why this should be supported)
-* item[ClientHasChildUnder15YearsOfAgeNotTested]
-  * answerValueSet 1..1
+* insert QuestionForDefinition(1.8, Does the client have a child under 15yrs of age who is not tested, choice, false, false)
+* item[=]
   * answerValueSet = Canonical(YesNoValueSet)
-  * code 1..1
   * code = $SCT#171121004
 
-* insert Question(ClientKnownPositive-FSW, clientknownpositive-fsw, Is the client Known Positive, choice, false, false, reasons why this should be supported)
-* item[ClientKnownPositive-FSW]
-  * answerValueSet 1..1
+* insert QuestionForDefinition(1.9, Is the client Known Positive, choice, false, false)
+* item[=]
   * answerValueSet = Canonical(YesNoValueSet)
-  * code 1..1
   * code = $LNC#55277-8
 
-* insert Question(PartnerAndFBICTEligibility, partnerandfbicteligibility, Is the client eligible for partner and FBICT, choice, false, false, reasons why this should be supported)
-* item[PartnerAndFBICTEligibility]
-  * answerValueSet 1..1
+* insert QuestionForDefinition(1.10, Is the client eligible for partner and FBICT, choice, false, false)
+* item[=]
   * answerValueSet = Canonical(YesNoValueSet)
-  * code 1..1
   * code = $PartnerAndFBICTCodeSystem#Partner-FBICT-Eligibiity
 
-* insert Question(PartnerAndFBICTOffered, partnerandfbictoffered, Is the index case offered with partner and FBICT services, choice, false, false, reasons why this should be supported)
-* item[PartnerAndFBICTOffered]
-  * answerValueSet 1..1
+* insert QuestionForDefinition(1.11, Is the index case offered with partner and FBICT services, choice, false, false)
+* item[=]
   * answerValueSet = Canonical(YesNoValueSet)
-  * code 1..1
   * code = $PartnerAndFBICTCodeSystem#Partner-FBICT-Offered
 
-
-* insert Question(PartnerAndFBICTAccepted, partnerandfbictacccepted, Has the client accepted the offer for partner and FBICT, choice, false, false, reasons why this should be supported)
-* item[PartnerAndFBICTAccepted]
-  * answerValueSet 1..1
+* insert QuestionForDefinition(1.12, Has the client accepted the offer for partner and FBICT, choice, false, false)
+* item[=]
   * answerValueSet = Canonical(YesNoValueSet)
-  * code 1..1
   * code = $PartnerAndFBICTCodeSystem#Partner-FBICT-Accepted
-
-Profile: IndexCaseScreeningQuestionnaireResponse
-Parent: GenericQuestionnaireResponse
-Id: index-case-screening-questionnaire-response
-Title: "Questionnaire Response - Index Case Screening"
-Description: "A questionaire response that documents the answers to the eligibility criteria for the index case screening questions."
-* questionnaire only Canonical(IndexCaseScreeningQuestionnaire)
-
-* insert Slice(item, reasons why this should be supported, value, linkId, open, Slicing the items based on the linkId value, false)
-* item contains
-    NewlyEnrolledIntoCare 0..1 MS and
-    HighViralLoad 0..1 MS and
-    ARTRestart 0..1 MS and
-    NewSexPartner 0..1 MS and
-    HIVStatusNotDisclosedToSexPartner 0..1 MS and
-    WithSexPartnerNotTested 0..1 MS and
-    ClientInCareWithSTI 0..1 MS and
-    ClientHasChildUnder15YearsOfAgeNotTested 0..1 MS and
-    ClientKnownPositive-FSW 0..1 MS and
-    PartnerAndFBICTEligibility 0..1 MS and
-    PartnerAndFBICTOffered 0..1 MS and
-    PartnerAndFBICTAccepted 0..1 MS
-
-* insert QuestionResponseItem(NewlyEnrolledIntoCare, newlyenrolledintocare, Is the client newly enrolled, StrictCoding or Reference, reasons why this should be supported)
-* item[NewlyEnrolledIntoCare]
-  * answer.extension contains ResourceValueReferenceExtension named SupportingReference 0..1 MS
-  * answer.extension[SupportingReference]
-    * ^definition = "Provides supportive information during clinical assessment"
-    * ^short = "Used for providing supporting clinical information."
-  * answer.extension[SupportingReference].valueReference only Reference(HIVProgramStatusObservation)
-
-* insert QuestionResponseItem(HighViralLoad, highviralload, Does the client have a high viral load, StrictCoding or Reference, reasons why this should be supported)
-* item[HighViralLoad]
-  * answer.extension contains ResourceValueReferenceExtension named SupportingReference 0..1 MS
-  * answer.extension[SupportingReference]
-    * ^definition = "Provides supportive information during clinical assessment"
-    * ^short = "Used for providing supporting clinical information."
-  * answer.extension[SupportingReference].valueReference only Reference(ViralLoadResultObservation)
-
-* insert QuestionResponseItem(ARTRestart, artrestart, Does the client have an ART status of Restart, StrictCoding or Reference, reasons why this should be supported)
-* item[ARTRestart]
-  * answer.extension contains ResourceValueReferenceExtension named SupportingReference 0..1 MS
-  * answer.extension[SupportingReference]
-    * ^definition = "Provides supportive information during clinical assessment"
-    * ^short = "Used for providing supporting clinical information."
-  * answer.extension[SupportingReference].valueReference only Reference(ARTFollowupStatusObservation)
-
-* insert QuestionResponseItem(NewSexPartner, newsexpartner, Is the client with a new partner, StrictCoding or Reference, reasons why this should be supported)
-* item[NewSexPartner]
-  * answer.extension contains ResourceValueReferenceExtension named SupportingReference 0..1 MS
-  * answer.extension[SupportingReference]
-    * ^definition = "Provides supportive information during clinical assessment"
-    * ^short = "Used for providing supporting clinical information."
-  * answer.extension[SupportingReference].valueReference only Reference(EthRelatedPerson)
-
-* insert QuestionResponseItem(HIVStatusNotDisclosedToSexPartner, hivstatusnotdisclosedtosexpartner, Is the client with a partner not yet disclosed, StrictCoding, reasons why this should be supported)
-
-* insert QuestionResponseItem(WithSexPartnerNotTested, withsexpartnernottested, Is the client with a partner who has not been tested yet for HIV, StrictCoding, reasons why this should be supported)
-
-* insert QuestionResponseItem(ClientInCareWithSTI, clientincarewithsti, Is the client in care with STI, StrictCoding, reasons why this should be supported)
-
-* insert QuestionResponseItem(ClientHasChildUnder15YearsOfAgeNotTested, clienthaschildunder15yearsofagenottested, Does the client have a child under 15yrs of age who is not tested, StrictCoding, reasons why this should be supported)
-
-* insert QuestionResponseItem(ClientKnownPositive-FSW, clientknownpositive-fsw, Is the client Known Positive, StrictCoding, reasons why this should be supported)
-
-* insert QuestionResponseItem(PartnerAndFBICTEligibility, partnerandfbicteligibility, Is the client eligible for partner and FBICT, StrictCoding, reasons why this should be supported)
-
-* insert QuestionResponseItem(PartnerAndFBICTOffered, partnerandfbictoffered, Is the index case offered with partner and FBICT services, StrictCoding, reasons why this should be supported)
-
-* insert QuestionResponseItem(PartnerAndFBICTAccepted, partnerandfbictacccepted, Has the client accepted the offer for partner and FBICT, StrictCoding, reasons why this should be supported)
 
 Profile: MaternalHIVStatusObservation
 Parent: GenericObservation
@@ -3228,197 +3056,86 @@ Description: "Documents the total number of contacts elicited for the index case
 * value[x] only integer
 * valueInteger 1..1
 
-Profile: IndexCaseAssessmentQuestionnaire
-Parent: Questionnaire
-Id: index-case-assessment-questionnaire
+Instance: IndexCaseAssessmentQuestionnaire
+InstanceOf: Questionnaire
+Usage: #definition
 Title: "Questionnaire - Index Case Assessment"
 Description: "A questionaire that assesses the index case during interviews."
-* status 1..1
-* item 1..*
-* subjectType 1..1
+* status = #active
 * subjectType = #Observation
 
-* insert Slice(item, reasons why this should be supported, value, linkId, open, Slicing the items based on the linkId value, false)
-
-* item contains
-    AgreedToBeInterviewed 0..1 MS and
-    ReasonNotInterviewed 0..1 MS and
-    OtherReasonNotInterviewed 0..1 MS and
-    DateIndexCaseInterviewed 0..1 MS and
-    InterviewedForPartnerServices 0..1 MS and
-    InterviewDateForPartnerServices 0..1 MS and
-    NumberOfSexPartnersInLast12Mths 0..1 MS and
-    NumberOfSexPartnersInLast24Mths 0..1 MS and
-    WillingToNameSexPartners 0..1 MS and
-    ReasonNotWillingToNameSexPartners 0..1 MS and
-    NextVisitDate 0..1 MS
-
-* insert Question(AgreedToBeInterviewed, agreedtobeinterviewed, Did the index case agree to be interviewed, choice, false, false, reasons why this should be supported)
-* item[AgreedToBeInterviewed]
-  * answerValueSet 1..1
+* insert QuestionForDefinition(1.1, Did the index case agree to be interviewed, choice, false, false)
+* item[=]
   * answerValueSet = Canonical(YesNoValueSet)
-  * code 1..1
   * code = $LNC#LA14870-2
 
-* insert Question(ReasonNotInterviewed, reasonnotinterviewed, Reason for not being interviewed, choice, false, false, reasons why this should be supported)
-* item[ReasonNotInterviewed]
-  * answerValueSet 1..1
+* insert QuestionForDefinition(1.2, Reason for not being interviewed, choice, false, false)
+* item[=]
   * answerValueSet = Canonical(ReasonIndexCaseNotInterviewedValueSet)
-  * code 1..1
   * code = $LNC#LP95022-7
 
-* insert Question(OtherReasonNotInterviewed, otherreasonnotinterviewed, Other Reason for not being interviewed, string, true, false, reasons why this should be supported)
-* item[OtherReasonNotInterviewed]
-  * enableWhen 1..1
-  * enableWhen.question = "reasonnotinterviewed"
+* insert QuestionForDefinition(1.3, Other Reason for not being interviewed, string, true, false)
+* item[=]
+  * enableWhen.question = "1.2"
   * enableWhen.operator = #=
-  * enableWhen.answerCoding 1..1
   * enableWhen.answerCoding = $LNC#LA46-8
 
-* insert Question(DateIndexCaseInterviewed, dateindexcaseinterviewed, When did the index case receive the interview, date, true, false, reasons why this should be supported)
-* item[DateIndexCaseInterviewed]
-  * code 1..1
+* insert QuestionForDefinition(1.4, When did the index case receive the interview, date, true, false)
+* item[=]
   * code = $LNC#91714-6
-  * enableWhen 1..1
-  * enableWhen.question = "agreedtobeinterviewed"
+  * enableWhen.question = "1.1"
   * enableWhen.operator = #=
-  * enableWhen.answerCoding 1..1
   * enableWhen.answerCoding = $YesNoCodeSystem#true
 
-* insert Question(InterviewedForPartnerServices, interviewedforpartnerservices, Was the index case interviewed for partner services, choice, false, false, reasons why this should be supported)
-* item[InterviewedForPartnerServices]
-  * answerValueSet 1..1
+* insert QuestionForDefinition(1.5, Was the index case interviewed for partner services, choice, false, false)
+* item[=]
   * answerValueSet = Canonical(YesNoValueSet)
-  * code 1..1
   * code = $PartnerAndFBICTCodeSystem#Partner-Services
 
-* insert Question(InterviewDateForPartnerServices, interviewdateforpartnerservices, When was the index case interviewed for partner services, date, true, false, reasons why this should be supported)
-* item[InterviewDateForPartnerServices]
-  * code 1..1
+* insert QuestionForDefinition(1.6, When was the index case interviewed for partner services, date, true, false)
+* item[=]
   * code = $LNC#91714-6
-  * enableWhen 1..1
-  * enableWhen.question = "interviewedforpartnerservices"
+  * enableWhen.question = "1.5"
   * enableWhen.operator = #=
-  * enableWhen.answerCoding 1..1
   * enableWhen.answerCoding = $YesNoCodeSystem#true
 
-* insert Question(NumberOfSexPartnersInLast12Mths, numberofsexpartnersinlast12mths, Number of sexual partners in past 12 months, integer, false, false, reasons why this should be supported)
-* item[NumberOfSexPartnersInLast12Mths]
-  * code 1..1
+* insert QuestionForDefinition(1.7, Number of sexual partners in past 12 months, integer, false, false)
+* item[=]
   * code = $LNC#85736-7
 
-* insert Question(NumberOfSexPartnersInLast24Mths, numberofsexpartnersinlast24mths, Number of sexual partners in past 24 months, integer, false, false, reasons why this should be supported)
-* item[NumberOfSexPartnersInLast24Mths]
-  * code 1..1
+* insert QuestionForDefinition(1.8, Number of sexual partners in past 24 months, integer, false, false)
+* item[=]
   * code = $SCT#228458001
 
-* insert Question(WillingToNameSexPartners, willingtonamesexpartners, Is the index client willing to identify the sex partners, choice, false, false, reasons why this should be supported)
-* item[WillingToNameSexPartners]
-  * answerValueSet 1..1
+* insert QuestionForDefinition(1.9, Is the index client willing to identify the sex partners, choice, false, false)
+* item[=]
   * answerValueSet = Canonical(YesNoValueSet)
-  * code 1..1
   * code = $SCT#228465009
 
-* insert Question(ReasonNotWillingToNameSexPartners, reasonnotwillingtonamesexpartners, Reason for not being able to identify the sex partners, string, true, false, reasons why this should be supported)
-* item[ReasonNotWillingToNameSexPartners]
-  * enableWhen 1..1
-  * enableWhen.question = "willingtonamesexpartners"
+* insert QuestionForDefinition(1.10, Reason for not being able to identify the sex partners, string, true, false)
+* item[=]
+  * code = $SCT#225465005
+  * enableWhen.question = "1.9"
   * enableWhen.operator = #=
-  * enableWhen.answerCoding 1..1
   * enableWhen.answerCoding = $YesNoCodeSystem#false
 
-* insert Question(NextVisitDate, nextvisitdate, What is the next visit date, date, false, false, reasons why this should be supported)
-* item[NextVisitDate]
-  * code 1..1
+* insert QuestionForDefinition(1.11, What is the next visit date, date, false, false)
+* item[=]
   * code = $LNC#57070-5
 
-Profile: IndexCaseAssessmentQuestionnaireResponse
-Parent: GenericQuestionnaireResponse
-Id: index-case-assessment-questionnaire-response
-Title: "Questionnaire Response - Index Case Assessment"
-Description: "A questionaire response that documents the answers to the questions that assesses the index case during interviews."
-* questionnaire only Canonical(IndexCaseAssessmentQuestionnaire)
-
-* insert Slice(item, reasons why this should be supported, value, linkId, open, Slicing the items based on the linkId value, false)
-
-* item contains
-    AgreedToBeInterviewed 0..1 MS and
-    ReasonNotInterviewed 0..1 MS and
-    OtherReasonNotInterviewed 0..1 MS and
-    DateIndexCaseInterviewed 0..1 MS and
-    InterviewedForPartnerServices 0..1 MS and
-    InterviewDateForPartnerServices 0..1 MS and
-    NumberOfSexPartnersInLast12Mths 0..1 MS and
-    NumberOfSexPartnersInLast24Mths 0..1 MS and
-    WillingToNameSexPartners 0..1 MS and
-    ReasonNotWillingToNameSexPartners 0..1 MS and
-    NextVisitDate 0..1 MS
-
-* insert QuestionResponseItem(AgreedToBeInterviewed, agreedtobeinterviewed, Did the index case agree to be interviewed, StrictCoding, reasons why this should be supported)
-
-* insert QuestionResponseItem(ReasonNotInterviewed, reasonnotinterviewed, Reason for not being interviewed, StrictCoding, reasons why this should be supported)
-
-* insert QuestionResponseItem(OtherReasonNotInterviewed, otherreasonnotinterviewed, Other Reason for not being interviewed, string, reasons why this should be supported)
-
-* insert QuestionResponseItem(DateIndexCaseInterviewed, dateindexcaseinterviewed, When did the index case receive the interview, date, reasons why this should be supported)
-
-* insert QuestionResponseItem(InterviewedForPartnerServices, interviewedforpartnerservices, Was the index case interviewed for partner services, StrictCoding, reasons why this should be supported)
-
-* insert QuestionResponseItem(InterviewDateForPartnerServices, interviewdateforpartnerservices, When was the index case interviewed for partner services, date, reasons why this should be supported)
-
-* insert QuestionResponseItem(NumberOfSexPartnersInLast12Mths, numberofsexpartnersinlast12mths, Number of sexual partners in past 12 months, integer, reasons why this should be supported)
-
-* insert QuestionResponseItem(NumberOfSexPartnersInLast24Mths, numberofsexpartnersinlast24mths, Number of sexual partners in past 24 months, integer, reasons why this should be supported)
-
-* insert QuestionResponseItem(WillingToNameSexPartners, willingtonamesexpartners, Is the index client willing to identify the sex partners, StrictCoding, reasons why this should be supported)
-
-* insert QuestionResponseItem(ReasonNotWillingToNameSexPartners, reasonnotwillingtonamesexpartners, Reason for not being able to identify the sex partners, string, reasons why this should be supported)
-
-* insert QuestionResponseItem(NextVisitDate, nextvisitdate, What is the next visit date, date, reasons why this should be supported)
-
-Profile: FamilyIndexCaseContactsQuestionnaire
-Parent: Questionnaire
-Id: family-index-case-contacts-questionnaire
+Instance: FamilyIndexCaseContactsQuestionnaire
+InstanceOf: Questionnaire
+Usage: #definition
 Title: "Questionnaire - Family Index Case Contacts"
 Description: "A questionaire that assesses the HIV and health status for index case contacts."
-* status 1..1
-* item 1..*
-* subjectType 1..1
+* status = #active
 * subjectType = #Observation
 
-* insert Slice(item, reasons why this should be supported, value, linkId, open, Slicing the items based on the linkId value, false)
-
-* item contains
-    CurrentlyLivingWithIndexCase 0..1 MS and
-    HealthStatus 0..1 MS
-
-* insert Question(CurrentlyLivingWithIndexCase, currentlylivingwithindexcase, Currently living with the index case, choice, false, false, reasons why this should be supported)
-* item[CurrentlyLivingWithIndexCase]
-  * answerValueSet 1..1
+* insert QuestionForDefinition(1.1, Currently living with the index case, choice, false, false)
+* item[=]
   * answerValueSet = Canonical(YesNoValueSet)
-  * code 1..1
-  * code = $SCT#408821002
+  * code[+] = $SCT#408821002
 
-* insert Question(HealthStatus, healthstatus, Health status of the client, reference, false, false, reasons why this should be supported)
-* item[HealthStatus]
-  * code 1..1
-  * code = $LNC#11323-3
-
-Profile: FamilyIndexCaseContactsQuestionnaireResponse
-Parent: GenericQuestionnaireResponse
-Id: family-index-case-contacts-questionnaire-response
-Title: "Questionnaire Response - Family Index Case Contacts"
-Description: "A questionaire response that documents the answers to the questions regarding the HIV and health status for index case contacts."
-* questionnaire only Canonical(FamilyIndexCaseContactsQuestionnaire)
-
-* insert Slice(item, reasons why this should be supported, value, linkId, open, Slicing the items based on the linkId value, false)
-
-* item contains
-    CurrentlyLivingWithIndexCase 0..1 MS and
-    HealthStatus 0..1 MS
-
-* insert QuestionResponseItem(CurrentlyLivingWithIndexCase, currentlylivingwithindexcase, Currently living with the index case, StrictCoding, reasons why this should be supported)
-
-* insert QuestionResponseItem(HealthStatus, healthstatus, Health status of the client, Reference, reasons why this should be supported)
-* item[HealthStatus]
-  * answer.valueReference only Reference(HealthStatus)
+* insert QuestionForDefinition(1.2, Health status of the client, reference, false, false)
+* item[=]
+  * code[+] = $LNC#11323-3
