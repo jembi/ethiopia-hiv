@@ -79,3 +79,5 @@ Description:
 * insert ExampleTransactionalEntry(IndexCaseContactsElicitedExample, Observation)
 * insert ExampleTransactionalEntry(IndexCaseScreeningFullExample, QuestionnaireResponse)
 * insert ExampleTransactionalEntry(IndexCaseAssessmentFullExample, QuestionnaireResponse)
+//* insert ExampleTransactionalEntry(IndexCaseContactHealthStatusExample, Patient)
+* insert ExampleTransactionalEntry(FamilyIndexCaseContactsFullExample, QuestionnaireResponse)
