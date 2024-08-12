@@ -437,12 +437,12 @@ Description: "A questionaire response that documents the answers to the pregnanc
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 
-* insert QuestionResponseItemForExampleTest(1.1, Is Pregnant, valueCoding, $YesNoCodeSystem#false)
-* insert QuestionResponseItemForExampleTest(1.2, Wants to be pregnant, valueCoding, $YesNoCodeSystem#true)
-* insert QuestionResponseItemForExampleTest(1.3, Is breastfeeding, valueCoding, $YesNoCodeSystem#false)
-* insert QuestionResponseItemForExampleTest(1.4, Last Menstrual date, valueDate, "2024-06-18")
-* insert QuestionResponseItemForExampleTest(1.5, Estimated Delivery Date, valueDate, "2025-05-25")
-* insert QuestionResponseItemForExampleTest(1.6, Family Planning Method, valueCoding, $LNC#LA14543-5)
+* insert QuestionResponse(1.1, Is Pregnant, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.2, Wants to be pregnant, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponse(1.3, Is breastfeeding, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.4, Last Menstrual date, valueDate, "2024-06-18")
+* insert QuestionResponse(1.5, Estimated Delivery Date, valueDate, "2025-05-25")
+* insert QuestionResponse(1.6, Family Planning Method, valueCoding, $LNC#LA14543-5)
 * item[=]
   * answer[+].valueCoding = $LNC#LA27907-7
 
@@ -4381,7 +4381,7 @@ Description: "A questionaire response that documents the answers to the eligibil
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 
-* insert QuestionResponseItemForExampleTest(1.1, Is the client newly enrolled, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.1, Is the client newly enrolled, valueCoding, $YesNoCodeSystem#false)
 
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"
@@ -4396,17 +4396,17 @@ Description: "A questionaire response that documents the answers to the eligibil
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 
-* insert QuestionResponseItemForExampleTest(1.1, Is the client newly enrolled, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponse(1.1, Is the client newly enrolled, valueCoding, $YesNoCodeSystem#true)
 * item[=]
   * answer.extension[+].valueReference = Reference(LinkedToCareExample)
   * answer.extension[=].url = "http://moh.gov.et/fhir/hiv/StructureDefinition/resource-value-reference"
 
-* insert QuestionResponseItemForExampleTest(1.2, Does the client have a high viral load, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponse(1.2, Does the client have a high viral load, valueCoding, $YesNoCodeSystem#true)
 * item[=]
   * answer.extension[+].valueReference = Reference(UnsuppressedViralLoadResultExample)
   * answer.extension[=].url = "http://moh.gov.et/fhir/hiv/StructureDefinition/resource-value-reference"
 
-* insert QuestionResponseItemForExampleTest(1.3, Does the client have an ART status of Restart, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.3, Does the client have an ART status of Restart, valueCoding, $YesNoCodeSystem#false)
 
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"
@@ -4421,35 +4421,35 @@ Description: "A questionaire response that documents the answers to the eligibil
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 
-* insert QuestionResponseItemForExampleTest(1.1, Is the client newly enrolled, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.1, Is the client newly enrolled, valueCoding, $YesNoCodeSystem#false)
 
-* insert QuestionResponseItemForExampleTest(1.2, Does the client have a high viral load, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.2, Does the client have a high viral load, valueCoding, $YesNoCodeSystem#false)
 * item[=]
   * answer.extension[+].valueReference = Reference(SuppressedViralLoadResultExample)
   * answer.extension[=].url = "http://moh.gov.et/fhir/hiv/StructureDefinition/resource-value-reference"
 
-* insert QuestionResponseItemForExampleTest(1.3, Does the client have an ART status of Restart, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.3, Does the client have an ART status of Restart, valueCoding, $YesNoCodeSystem#false)
 
-* insert QuestionResponseItemForExampleTest(1.4, Is the client with a new partner, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponse(1.4, Is the client with a new partner, valueCoding, $YesNoCodeSystem#true)
 * item[=]
   * answer.extension[+].valueReference = Reference(PartnerRelatedPersonExample)
   * answer.extension[=].url = "http://moh.gov.et/fhir/hiv/StructureDefinition/resource-value-reference"
 
-* insert QuestionResponseItemForExampleTest(1.5, Is the client with a partner not yet disclosed, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponse(1.5, Is the client with a partner not yet disclosed, valueCoding, $YesNoCodeSystem#true)
 
-* insert QuestionResponseItemForExampleTest(1.6, Is the client with a partner who has not been tested yet for HIV, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.6, Is the client with a partner who has not been tested yet for HIV, valueCoding, $YesNoCodeSystem#false)
 
-* insert QuestionResponseItemForExampleTest(1.7, Is the client in care with STI, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.7, Is the client in care with STI, valueCoding, $YesNoCodeSystem#false)
 
-* insert QuestionResponseItemForExampleTest(1.8, Does the client have a child under 15yrs of age who is not tested, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponse(1.8, Does the client have a child under 15yrs of age who is not tested, valueCoding, $YesNoCodeSystem#true)
 
-* insert QuestionResponseItemForExampleTest(1.9, Is the client Known Positive, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.9, Is the client Known Positive, valueCoding, $YesNoCodeSystem#false)
 
-* insert QuestionResponseItemForExampleTest(1.10, Is the client eligible for partner and FBICT, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.10, Is the client eligible for partner and FBICT, valueCoding, $YesNoCodeSystem#false)
 
-* insert QuestionResponseItemForExampleTest(1.11, Is the index case offered with partner and FBICT services, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.11, Is the index case offered with partner and FBICT services, valueCoding, $YesNoCodeSystem#false)
 
-* insert QuestionResponseItemForExampleTest(1.12, Has the client accepted the offer for partner and FBICT, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.12, Has the client accepted the offer for partner and FBICT, valueCoding, $YesNoCodeSystem#false)
 
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"
@@ -4506,8 +4506,8 @@ Description: "A questionaire response that documents the answers to the question
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 
-* insert QuestionResponseItemForExampleTest(1.1, Did the index case agree to be interviewed, valueCoding, $YesNoCodeSystem#false)
-* insert QuestionResponseItemForExampleTest(1.2, Reason for not being interviewed, valueCoding, $LNC#81954-0)
+* insert QuestionResponse(1.1, Did the index case agree to be interviewed, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.2, Reason for not being interviewed, valueCoding, $LNC#81954-0)
 
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"
@@ -4522,9 +4522,9 @@ Description: "A questionaire response that documents the answers to the question
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 
-* insert QuestionResponseItemForExampleTest(1.1, Did the index case agree to be interviewed, valueCoding, $YesNoCodeSystem#false)
-* insert QuestionResponseItemForExampleTest(1.2, Reason for not being interviewed, valueCoding, $LNC#LA46-8)
-* insert QuestionResponseItemForExampleTest(1.3, Other Reason for not being interviewed, valueString, "some other reason")
+* insert QuestionResponse(1.1, Did the index case agree to be interviewed, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.2, Reason for not being interviewed, valueCoding, $LNC#LA46-8)
+* insert QuestionResponse(1.3, Other Reason for not being interviewed, valueString, "some other reason")
 
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"
@@ -4539,9 +4539,9 @@ Description: "A questionaire response that documents the answers to the question
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 
-* insert QuestionResponseItemForExampleTest(1.1, Did the index case agree to be interviewed, valueCoding, $YesNoCodeSystem#true)
-* insert QuestionResponseItemForExampleTest(1.4, When did the index case receive the interview, valueDate, 2008-10-13)
-* insert QuestionResponseItemForExampleTest(1.5, Was the index case interviewed for partner services, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.1, Did the index case agree to be interviewed, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponse(1.4, When did the index case receive the interview, valueDate, 2008-10-13)
+* insert QuestionResponse(1.5, Was the index case interviewed for partner services, valueCoding, $YesNoCodeSystem#false)
 
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"
@@ -4556,14 +4556,14 @@ Description: "A questionaire response that documents the answers to the question
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 
-* insert QuestionResponseItemForExampleTest(1.1, Did the index case agree to be interviewed, valueCoding, $YesNoCodeSystem#true)
-* insert QuestionResponseItemForExampleTest(1.4, When did the index case receive the interview, valueDate, 2008-10-13)
-* insert QuestionResponseItemForExampleTest(1.5, Was the index case interviewed for partner services, valueCoding, $YesNoCodeSystem#true)
-* insert QuestionResponseItemForExampleTest(1.6, When was the index case interviewed for partner services, valueDate, 2008-10-13)
-* insert QuestionResponseItemForExampleTest(1.7, Number of sexual partners in past 12 months, valueInteger, 4)
-* insert QuestionResponseItemForExampleTest(1.8, Number of sexual partners in past 24 months, valueInteger, 6)
-* insert QuestionResponseItemForExampleTest(1.9, Is the index client willing to identify the sex partners, valueCoding, $YesNoCodeSystem#false)
-* insert QuestionResponseItemForExampleTest(1.10, Reason for not being able to identify the sex partners, valueString, "some other reason")
+* insert QuestionResponse(1.1, Did the index case agree to be interviewed, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponse(1.4, When did the index case receive the interview, valueDate, 2008-10-13)
+* insert QuestionResponse(1.5, Was the index case interviewed for partner services, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponse(1.6, When was the index case interviewed for partner services, valueDate, 2008-10-13)
+* insert QuestionResponse(1.7, Number of sexual partners in past 12 months, valueInteger, 4)
+* insert QuestionResponse(1.8, Number of sexual partners in past 24 months, valueInteger, 6)
+* insert QuestionResponse(1.9, Is the index client willing to identify the sex partners, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.10, Reason for not being able to identify the sex partners, valueString, "some other reason")
 
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"
@@ -4578,22 +4578,22 @@ Description: "A questionaire response that documents the answers to the question
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 
-* insert QuestionResponseItemForExampleTest(1.1, Did the index case agree to be interviewed, valueCoding, $YesNoCodeSystem#true)
-* insert QuestionResponseItemForExampleTest(1.4, When did the index case receive the interview, valueDate, 2008-10-13)
-* insert QuestionResponseItemForExampleTest(1.5, Was the index case interviewed for partner services, valueCoding, $YesNoCodeSystem#true)
-* insert QuestionResponseItemForExampleTest(1.6, When was the index case interviewed for partner services, valueDate, 2008-10-13)
-* insert QuestionResponseItemForExampleTest(1.7, Number of sexual partners in past 12 months, valueInteger, 4)
-* insert QuestionResponseItemForExampleTest(1.8, Number of sexual partners in past 24 months, valueInteger, 6)
-* insert QuestionResponseItemForExampleTest(1.9, Is the index client willing to identify the sex partners, valueCoding, $YesNoCodeSystem#true)
-* insert QuestionResponseItemForExampleTest(1.11, What is the next visit date, valueDate, 2008-11-13)
+* insert QuestionResponse(1.1, Did the index case agree to be interviewed, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponse(1.4, When did the index case receive the interview, valueDate, 2008-10-13)
+* insert QuestionResponse(1.5, Was the index case interviewed for partner services, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponse(1.6, When was the index case interviewed for partner services, valueDate, 2008-10-13)
+* insert QuestionResponse(1.7, Number of sexual partners in past 12 months, valueInteger, 4)
+* insert QuestionResponse(1.8, Number of sexual partners in past 24 months, valueInteger, 6)
+* insert QuestionResponse(1.9, Is the index client willing to identify the sex partners, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponse(1.11, What is the next visit date, valueDate, 2008-11-13)
 
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"
 
-Instance: IndexCaseContactHealthStatusExample
+Instance: IndexCaseContactHealthStatusSexPartnerExample
 InstanceOf: HealthStatus
 Usage: #example
-Title: "Observation - Health Status (Index Case Contact)"
+Title: "Observation - Health Status (Index Case Contact - Sex Partner)"
 Description: "This is used to record the health status for the index case contact."
 * status = #final
 * category = $OBSERVATION_CATEGORY#exam
@@ -4605,6 +4605,41 @@ Description: "This is used to record the health status for the index case contac
 * performer = Reference(CurrentServiceProviderExample)
 * effectiveDateTime = "2024-01-25"
 
+Instance: IndexCaseContactHealthStatusFamilyMemberExample
+InstanceOf: HealthStatus
+Usage: #example
+Title: "Observation - Health Status (Index Case Contact - Family Member)"
+Description: "This is used to record the health status for the index case contact."
+* status = #final
+* category = $OBSERVATION_CATEGORY#exam
+* code = $LNC#11323-3
+* code.text = "Health Status"
+* valueCodeableConcept = $LNC#LA14937-9
+* subject = Reference(ChildRelatedPersonBecomesPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* performer = Reference(CurrentServiceProviderExample)
+* effectiveDateTime = "2024-01-25"
+
+Instance: FamilyIndexCaseContactsExample1
+InstanceOf: QuestionnaireResponse
+Usage: #example
+Title: "Questionnaire Response - Family Index Case Contacts (Example 1)"
+Description: "A questionaire response that documents the answers to the questions regarding the HIV and health status for index case contacts."
+* questionnaire = Canonical(FamilyIndexCaseContactsQuestionnaire)
+* status = #completed
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+
+* insert QuestionResponse(1.1, Currently living with the index case, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponseForReference(1.2, What is the contact's current health status, IndexCaseContactHealthStatusFamilyMemberExample)
+
+* item[+].linkId = "2"
+* item[=]
+  * insert QuestionResponse(2.1, Has the contact been previsouly tested for HIV, valueCoding, $YesNoCodeSystem#false)
+
+* author = Reference(GeneralPractitionerExample)
+* authored = "2008-10-13"
+
 Instance: FamilyIndexCaseContactsFullExample
 InstanceOf: QuestionnaireResponse
 Usage: #example
@@ -4615,8 +4650,8 @@ Description: "A questionaire response that documents the answers to the question
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 
-* insert QuestionResponseItemForExampleTest(1.1, Currently living with the index case, valueCoding, $YesNoCodeSystem#false)
-* insert QuestionResponseItemForReferenceExampleTest(1.2, Health status of the client, IndexCaseContactHealthStatusExample)
+* insert QuestionResponse(1.1, Currently living with the index case, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponseForReference(1.2, What is the contact's current health status, IndexCaseContactHealthStatusFamilyMemberExample)
 
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"

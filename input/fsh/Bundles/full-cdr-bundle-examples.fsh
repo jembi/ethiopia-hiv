@@ -13,7 +13,8 @@ Description:
 * insert ExampleTransactionalEntry(GeneralPatientExample, Patient)
 * insert ExampleTransactionalEntry(GeneralEncounterExample, Encounter)
 * insert ExampleTransactionalEntry(PartnerRelatedPersonExample, RelatedPerson)
-* insert ExampleTransactionalEntry(SexualPartnerRelatedPersonBecomesPatientExample, Patient)
+//* insert ExampleTransactionalEntry(SexualPartnerRelatedPersonBecomesPatientExample, Patient)
+* insert ExampleTransactionalEntry(ChildRelatedPersonBecomesPatientExample, Patient)
 
 * insert ExampleTransactionalEntry(DifferentiatedServiceDeliveryFullExample, Observation)
 * insert ExampleTransactionalEntry(HighestEducationExample, Observation)
@@ -78,5 +79,5 @@ Description:
 * insert ExampleTransactionalEntry(IndexCaseContactsElicitedExample, Observation)
 * insert ExampleTransactionalEntry(IndexCaseScreeningFullExample, QuestionnaireResponse)
 * insert ExampleTransactionalEntry(IndexCaseAssessmentFullExample, QuestionnaireResponse)
-* insert ExampleTransactionalEntry(IndexCaseContactHealthStatusExample, Observation)
+* insert ExampleTransactionalEntry(IndexCaseContactHealthStatusFamilyMemberExample, Observation)
 * insert ExampleTransactionalEntry(FamilyIndexCaseContactsFullExample, QuestionnaireResponse)
