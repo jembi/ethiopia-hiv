@@ -193,53 +193,59 @@ Description: "A questionaire that assesses the HIV and health status for index c
 * item[=]
   * code[+] = $LNC#11323-3
 
-* insert QuestionForDefinition(1.3, Previous HIV Testing Services, group, false, false)
+* insert QuestionForDefinition(2, Previous HIV Testing Services, group, false, false)
 * item[=]
-  * insert QuestionForDefinition(1.3.1, Has the contact been previsouly tested for HIV, choice, false, false)
+  * insert QuestionForDefinition(2.1, Has the contact been previsouly tested for HIV, choice, false, false)
   * item[=]
     * code[+] = $SCT#171121004
 
-  * insert QuestionForDefinition(1.3.2, Date of previous HIV test, date, true, false)
+  * insert QuestionForDefinition(2.2, Date of previous HIV test, date, true, false)
   * item[=]
     * code = $LNC#67723-7
-    * enableWhen.question = "1.3.1"
+    * enableWhen.question = "2.1"
     * enableWhen.operator = #=
     * enableWhen.answerCoding = $YesNoCodeSystem#true
 
-  * insert QuestionForDefinition(1.3.3, Previous HIV test result, quantity, true, false)
+  * insert QuestionForDefinition(2.3, Previous HIV test result, quantity, true, false)
   * item[=]
     * code = $SCT#315124004
-    * enableWhen.question = "1.3.2"
-    * enableWhen.operator = #=
-    * enableWhen.answerCoding = $YesNoCodeSystem#true
+    * enableWhen.question = "2.2"
+    * enableWhen.operator = #exists
+    * enableWhen.answerBoolean = true
 
-* insert QuestionForDefinition(1.4, Current HIV Testing Services, group, false, false)
+* insert QuestionForDefinition(3, Current HIV Testing Services, group, false, false)
 * item[=]
-  * insert QuestionForDefinition(1.4.1, Will the contact be counseled for HIV today, choice, false, false)
+  * insert QuestionForDefinition(3.1, Will the contact be counseled for HIV today, choice, false, false)
   * item[=]
     * code[+] = $SCT#313077009
 
-  * insert QuestionForDefinition(1.4.2, Will the contact be tested for HIV, choice, false, false)
+  * insert QuestionForDefinition(3.2, Will the contact be tested for HIV, choice, false, false)
   * item[=]
     * code[+] = $SCT#171121004
 
-  * insert QuestionForDefinition(1.4.3, Date of HIV test, date, true, false)
+  * insert QuestionForDefinition(3.3, Date of HIV test, date, true, false)
   * item[=]
     * code = $LNC#67723-7
-    * enableWhen.question = "1.4.2"
+    * enableWhen.question = "3.2"
     * enableWhen.operator = #=
     * enableWhen.answerCoding = $YesNoCodeSystem#true
 
-  * insert QuestionForDefinition(1.4.4, HIV test result, quantity, true, false)
+  * insert QuestionForDefinition(3.4, HIV test result, quantity, true, false)
   * item[=]
     * code = $SCT#315124004
-    * enableWhen.question = "1.4.3"
-    * enableWhen.operator = #=
-    * enableWhen.answerCoding = $YesNoCodeSystem#true
+    * enableWhen.question = "3.3"
+    * enableWhen.operator = #exists
+    * enableWhen.answerBoolean = true
 
-  * insert QuestionForDefinition(1.4.5, Reason for not being tested for HIV, choice, true, false)
+  * insert QuestionForDefinition(3.5, Reason for not being tested for HIV, choice, true, false)
   * item[=]
     * code = $SCT#445032002
-    * enableWhen.question = "1.4.2"
+    * enableWhen.question = "3.2"
     * enableWhen.operator = #=
     * enableWhen.answerCoding = $YesNoCodeSystem#false
+
+* insert QuestionForDefinition(4, HIV Program, group, false, false)
+* item[=]
+  * insert QuestionForDefinition(4.1, is the contact linked to HIV care, choice, false, false)
+  * item[=]
+    * code[+] = $LNC#LP95599-4
