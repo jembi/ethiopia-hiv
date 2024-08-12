@@ -131,6 +131,7 @@ Description: "A questionaire that assesses the index case during interviews."
   * enableWhen.question = "1.2"
   * enableWhen.operator = #=
   * enableWhen.answerCoding = $LNC#LA46-8
+  * code = $SCT#410666004
 
 * insert QuestionForDefinition(1.4, When did the index case receive the interview, date, true, false)
 * item[=]
@@ -191,3 +192,54 @@ Description: "A questionaire that assesses the HIV and health status for index c
 * insert QuestionForDefinition(1.2, Health status of the client, reference, false, false)
 * item[=]
   * code[+] = $LNC#11323-3
+
+* insert QuestionForDefinition(1.3, Previous HIV Testing Services, group, false, false)
+* item[=]
+  * insert QuestionForDefinition(1.3.1, Has the contact been previsouly tested for HIV, choice, false, false)
+  * item[=]
+    * code[+] = $SCT#171121004
+
+  * insert QuestionForDefinition(1.3.2, Date of previous HIV test, date, true, false)
+  * item[=]
+    * code = $LNC#67723-7
+    * enableWhen.question = "1.3.1"
+    * enableWhen.operator = #=
+    * enableWhen.answerCoding = $YesNoCodeSystem#true
+
+  * insert QuestionForDefinition(1.3.3, Previous HIV test result, quantity, true, false)
+  * item[=]
+    * code = $SCT#315124004
+    * enableWhen.question = "1.3.2"
+    * enableWhen.operator = #=
+    * enableWhen.answerCoding = $YesNoCodeSystem#true
+
+* insert QuestionForDefinition(1.4, Current HIV Testing Services, group, false, false)
+* item[=]
+  * insert QuestionForDefinition(1.4.1, Will the contact be counseled for HIV today, choice, false, false)
+  * item[=]
+    * code[+] = $SCT#313077009
+
+  * insert QuestionForDefinition(1.4.2, Will the contact be tested for HIV, choice, false, false)
+  * item[=]
+    * code[+] = $SCT#171121004
+
+  * insert QuestionForDefinition(1.4.3, Date of HIV test, date, true, false)
+  * item[=]
+    * code = $LNC#67723-7
+    * enableWhen.question = "1.4.2"
+    * enableWhen.operator = #=
+    * enableWhen.answerCoding = $YesNoCodeSystem#true
+
+  * insert QuestionForDefinition(1.4.4, HIV test result, quantity, true, false)
+  * item[=]
+    * code = $SCT#315124004
+    * enableWhen.question = "1.4.3"
+    * enableWhen.operator = #=
+    * enableWhen.answerCoding = $YesNoCodeSystem#true
+
+  * insert QuestionForDefinition(1.4.5, Reason for not being tested for HIV, choice, true, false)
+  * item[=]
+    * code = $SCT#445032002
+    * enableWhen.question = "1.4.2"
+    * enableWhen.operator = #=
+    * enableWhen.answerCoding = $YesNoCodeSystem#false
