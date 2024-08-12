@@ -4640,6 +4640,34 @@ Description: "A questionaire response that documents the answers to the question
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"
 
+Instance: FamilyIndexCaseContactsExample2
+InstanceOf: QuestionnaireResponse
+Usage: #example
+Title: "Questionnaire Response - Family Index Case Contacts (Example 2)"
+Description: "A questionaire response that documents the answers to the questions regarding the HIV and health status for index case contacts."
+* questionnaire = Canonical(FamilyIndexCaseContactsQuestionnaire)
+* status = #completed
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+
+* insert QuestionResponse(1.1, Currently living with the index case, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponseForReference(1.2, What is the contact's current health status, IndexCaseContactHealthStatusFamilyMemberExample)
+
+* item[+].linkId = "2"
+* item[=]
+  * insert QuestionResponse(2.1, Has the contact been previsouly tested for HIV, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(2.2, Date of previous HIV test, valueDate, 2008-10-13)
+  * insert QuestionResponseForQuantity(2.3, Previous HIV test result, 1001, 1/mL, copies/mL)
+
+* item[+].linkId = "3"
+* item[=]
+  * insert QuestionResponse(3.1, Will the contact be counseled for HIV today, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(3.2, Will the contact be tested for HIV, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(3.5, Reason for not being tested for HIV, valueString, "some other reason")
+
+* author = Reference(GeneralPractitionerExample)
+* authored = "2008-10-13"
+
 Instance: FamilyIndexCaseContactsFullExample
 InstanceOf: QuestionnaireResponse
 Usage: #example
@@ -4652,6 +4680,24 @@ Description: "A questionaire response that documents the answers to the question
 
 * insert QuestionResponse(1.1, Currently living with the index case, valueCoding, $YesNoCodeSystem#false)
 * insert QuestionResponseForReference(1.2, What is the contact's current health status, IndexCaseContactHealthStatusFamilyMemberExample)
+
+* item[+].linkId = "2"
+* item[=]
+  * insert QuestionResponse(2.1, Has the contact been previsouly tested for HIV, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(2.2, Date of previous HIV test, valueDate, 2008-10-13)
+  * insert QuestionResponseForQuantity(2.3, Previous HIV test result, 1001, 1/mL, copies/mL)
+
+* item[+].linkId = "3"
+* item[=]
+  * insert QuestionResponse(3.1, Will the contact be counseled for HIV today, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(3.2, Will the contact be tested for HIV, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(3.3, Date of HIV test, valueDate, 2008-10-13)
+  * insert QuestionResponseForQuantity(3.4, HIV test result, 845, 1/mL, copies/mL)
+
+* item[+].linkId = "4"
+* item[=]
+  * insert QuestionResponse(4.1, Is the contact linked to HIV care, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponseForReference(4.2, Contact MRN & UAN, ChildRelatedPersonBecomesPatientExample)
 
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"
