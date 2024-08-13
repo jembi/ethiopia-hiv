@@ -106,7 +106,7 @@ Description: "Final Outcome"
 * ^experimental = false
 * $LNC#45237-5 "Date lost to HIV treatment follow-up"
 * $LNC#63936-9 "Start date of treatment or therapy"
-* $LNC#31211-6 "Date of death"
+* $LNC#81954-0 "Date of death"
 * $SCT#105480006 "Procedure declined by patient"
 * $LNC#39266-2 "Follow-up (referred to) provider /specialist Set CPHS"
 * $LNC#45235-9 "Date original clinic HIV treatment start"
@@ -1152,6 +1152,7 @@ Description: "Codes used for indicating the patient's status for partner and FBI
 * #Partner-FBICT-Eligibiity "Eligible for partner and FBICT"
 * #Partner-FBICT-Offered "Offered partner and FBICT"
 * #Partner-FBICT-Accepted "Accepted partner and FBICT"
+* #Partner-Services "Partner services"
 
 ValueSet: HIVStatusValueSet
 Id: hiv-status-value-set
@@ -1162,3 +1163,78 @@ Description: "A list of codes describing the patient's HIV status."
 * $LNC#LA6577-6 "Negative"
 * $LNC#LA29947-1 "Carrier status unknown"
 * $LNC#77978-5 "Patient died from illness of interest"
+
+ValueSet: ReasonIndexCaseNotInterviewedValueSet
+Id: reason-index-case-not-interviewed-value-set
+Title: "Reason Index Case Not Interviewed"
+Description: "Codes used for indicating the reason why the index case was not interviewed."
+* ^experimental = false
+* $LNC#LA46-8 "Other"
+* $LNC#81954-0 "Date of death"
+* $LNC#LA4014-2 "Eligible but Refused"
+
+CodeSystem: PeriodOfHIVExposureCodeSystem
+Id: period-of-hiv-exposure-code-system
+Title: "Period of HIV Exposure"
+Description: "Codes used for indicating the period when last the individual was exposed to HIV."
+* ^experimental = false
+* ^caseSensitive = true
+* #<3Mths "Less than 3 months"
+* #3-12Mths "In 3 to 12 months"
+* #>12Mths "Greater than 12 months"
+
+ValueSet: PeriodOfHIVExposureValueSet
+Id: period-of-hiv-exposure-value-set
+Title: "Period of HIV Exposure"
+Description: "Codes used for indicating the period when last the individual was exposed to HIV."
+* ^experimental = false
+* include codes from system PeriodOfHIVExposureCodeSystem
+
+CodeSystem: PartnerNotificationPlanCodeSystem
+Id: partner-notification-plan-code-system
+Title: "Partner Notification Plan"
+Description: "Codes used for indicating the plan for notifying the partner regarding the index case's HIV status."
+* ^experimental = false
+* ^caseSensitive = true
+* #No-Notification-IPV+ "No Notification (IPV+)"
+* #Client-Referral "Client Referral"
+* #Provider-Referral "Provider Referral"
+* #Dual-Referral "Dual Referral"
+* #Contact-Referral "Contact Referral"
+
+ValueSet: PartnerNotificationPlanValueSet
+Id: partner-notification-plan-value-set
+Title: "Partner Notification Plan"
+Description: "Codes used for indicating the plan for notifying the partner regarding the index case's HIV status."
+* ^experimental = false
+* include codes from system PartnerNotificationPlanCodeSystem
+
+ValueSet: ReasonPartnerNotNotifiedValueSet
+Id: reason-partner-not-notified-value-set
+Title: "Reason Partner Not Notified"
+Description: "Codes used for indicating the reason why the partner was not notified about the index case's HIV status."
+* ^experimental = false
+* $LNC#LA46-8 "Other"
+* $LNC#LA4389-8 "Refused"
+* $LNC#77969-4 "Jurisdiction code"
+
+CodeSystem: IndexCasePartnerQuestionnaireCodeSystem
+Id: index-case-partner-questionnaire-code-system
+Title: "Index Case Sex Partner Questionnaire"
+Description: "Proprietary Codes used in the Index Case Partner Questionnaire."
+* ^experimental = false
+* ^caseSensitive = true
+* #Other-Reason-Partner-Not-Notified "Other Reason Partner Not Notified"
+* #Date-Notification-Offered "Date Notification Offered"
+* #Date-Partner-Contacted "Date Partner Contacted"
+* #Reason-Partner-Not-Contacted "Reason Partner Not Contacted"
+* #Partner-Unreachable "Unable to Locate the Partner"
+* #Other-Reason-Partner-Not-Contacted "Other Reason Partner Not Contacted"
+
+ValueSet: ReasonPartnerNotContactedValueSet
+Id: reason-partner-not-contacted-value-set
+Title: "Reason Partner Not Contacted"
+Description: "Codes used for indicating the reason why the partner was not contacted."
+* ^experimental = false
+* $LNC#LA46-8 "Other"
+* $IndexCasePartnerQuestionnaireCodeSystem#Partner-Unreachable

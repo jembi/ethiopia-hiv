@@ -3,7 +3,6 @@
 %The modifier extension http://hl7.org/fhir/1.0/StructureDefinition/extension-ConceptMap.element.target.equivalence from FHIR version 1.0 is not allowed to be used at this point%
 
 # Not all generic profiles need an example
-WARNING: StructureDefinition.where(url = 'http://moh.gov.et/fhir/hiv/StructureDefinition/generic-questionnaire-response'): The Implementation Guide contains no examples for this profile
 WARNING: StructureDefinition.where(url = 'http://moh.gov.et/fhir/hiv/StructureDefinition/generic-observation'): The Implementation Guide contains no examples for this profile
 WARNING: StructureDefinition.where(url = 'http://moh.gov.et/fhir/hiv/StructureDefinition/generic-medication-request'): The Implementation Guide contains no examples for this profile
 WARNING: StructureDefinition.where(url = 'http://moh.gov.et/fhir/hiv/StructureDefinition/generic-medication-dispense'): The Implementation Guide contains no examples for this profile
@@ -11,9 +10,6 @@ WARNING: StructureDefinition.where(url = 'http://moh.gov.et/fhir/hiv/StructureDe
 WARNING: StructureDefinition.where(url = 'http://moh.gov.et/fhir/hiv/StructureDefinition/generic-service-request'): The Implementation Guide contains no examples for this profile
 WARNING: StructureDefinition.where(url = 'http://moh.gov.et/fhir/hiv/StructureDefinition/generic-diagnostic-report'): The Implementation Guide contains no examples for this profile
 WARNING: StructureDefinition.where(url = 'http://moh.gov.et/fhir/hiv/StructureDefinition/generic-condition'): The Implementation Guide contains no examples for this profile
-
-# There is no requirement yet to have this IG registered with a package OID. For more info: https://www.hl7.org/oid/index.cfm
-INFORMATION: Resource: This resource could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
 
 # CodeSystems external to the Implementation Guide will not be validated from a ConceptMap Resource.  
 %ConceptMap.group[0].target: Target Code System http://loinc.org is only supported on the terminology server, so the target codes are not validated for performance reasons%
@@ -32,7 +28,5 @@ WARNING: Bundle/CleanCDRBundleExample: Bundle.entry[3].resource/*Observation/Pat
 WARNING: Bundle/CleanCDRBundleExample: Bundle.entry[3].resource/*Observation/PatientOccupationExample*/.value.ofType(CodeableConcept): A definition for CodeSystem 'http://terminology.hl7.org/CodeSystem/PHOccupationalDataForHealthODH' could not be found, so the code cannot be validated; Unable to check whether the code is in the value set 'http://phinvads.cdc.gov/fhir/ValueSet/2.16.840.1.114222.4.11.7901|1' because the code system http://terminology.hl7.org/CodeSystem/PHOccupationalDataForHealthODH was not found
 WARNING: Bundle/FullCDRBundleExample: Bundle.entry[7].resource/*Observation/PatientOccupationExample*/.value.ofType(CodeableConcept): Unable to check whether the code is in the value set 'http://phinvads.cdc.gov/fhir/ValueSet/2.16.840.1.114222.4.11.7901|1' because the code system http://terminology.hl7.org/CodeSystem/PHOccupationalDataForHealthODH was not found
 WARNING: Bundle/FullCDRBundleExample: Bundle.entry[7].resource/*Observation/PatientOccupationExample*/.value.ofType(CodeableConcept): A definition for CodeSystem 'http://terminology.hl7.org/CodeSystem/PHOccupationalDataForHealthODH' could not be found, so the code cannot be validated; Unable to check whether the code is in the value set 'http://phinvads.cdc.gov/fhir/ValueSet/2.16.840.1.114222.4.11.7901|1' because the code system http://terminology.hl7.org/CodeSystem/PHOccupationalDataForHealthODH was not found
-INFORMATION: Bundle/CleanCDRBundleExample: Bundle.entry[3].resource/*Observation/PatientOccupationExample*/.value.ofType(CodeableConcept).coding[0].system: A definition for CodeSystem 'http://terminology.hl7.org/CodeSystem/PHOccupationalDataForHealthODH' could not be found, so the code cannot be validated
-INFORMATION: Bundle/FullCDRBundleExample: Bundle.entry[7].resource/*Observation/PatientOccupationExample*/.value.ofType(CodeableConcept).coding[0].system: A definition for CodeSystem 'http://terminology.hl7.org/CodeSystem/PHOccupationalDataForHealthODH' could not be found, so the code cannot be validated
 WARNING: Bundle/CleanCDRBundleExample: Bundle.entry[3].resource/*Observation/PatientOccupationExample*/.value.ofType(CodeableConcept).coding[0].system: A definition for CodeSystem 'http://terminology.hl7.org/CodeSystem/PHOccupationalDataForHealthODH' could not be found, so the code cannot be validated
 WARNING: Bundle/FullCDRBundleExample: Bundle.entry[7].resource/*Observation/PatientOccupationExample*/.value.ofType(CodeableConcept).coding[0].system: A definition for CodeSystem 'http://terminology.hl7.org/CodeSystem/PHOccupationalDataForHealthODH' could not be found, so the code cannot be validated

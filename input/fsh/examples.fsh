@@ -47,8 +47,8 @@ Title: "Patient - General"
 Description: "Is used to document demographics and other administrative information about an individual receiving care or other health-related services."
 * identifier[MRN].value = "MRN12345671"
 * identifier[MRN].system = $MRN
-* identifier[MRN].type = $IdentifierTypeCodeSystem#MR
-* identifier[MRN].type.text = "Medical record number"
+//* identifier[MRN].type = $IdentifierTypeCodeSystem#MR
+//* identifier[MRN].type.text = "Medical record number"
 
 * identifier[UAN].value = "UAN12345671"
 * identifier[UAN].system = $UAN
@@ -89,8 +89,8 @@ Title: "Patient - With Partner Relationship"
 Description: "Is used to document demographics and other administrative information about an individual receiving care or other health-related services."
 * identifier[MRN].value = "MRN12345672"
 * identifier[MRN].system = $MRN
-* identifier[MRN].type = $IdentifierTypeCodeSystem#MR
-* identifier[MRN].type.text = "Medical record number"
+//* identifier[MRN].type = $IdentifierTypeCodeSystem#MR
+//* identifier[MRN].type.text = "Medical record number"
 
 * identifier[UAN].value = "UAN1234562"
 * identifier[UAN].system = $UAN
@@ -428,23 +428,23 @@ Description: "Records the Fluconazole details for the patient."
 * reasonReference = Reference(FluconazolePreventiveTherapyStartedExample)
 
 Instance: PregnancyStatusAndFPMQuestionnaireResponseExample
-InstanceOf: PregnancyStatusAndFPMQuestionnaireResponse
+InstanceOf: QuestionnaireResponse
 Usage: #example
 Title: "Questionnaire Response - Pregnancy Status and Family Planning Method (FPM)"
 Description: "A questionaire response that documents the answers to the pregnancy status and FPM questions."
-* questionnaire = Canonical(PregnancyStatusAndFPMQuestionnaireExample)
+* questionnaire = Canonical(PregnancyStatusAndFPMQuestionnaire)
 * status = #completed
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 
-* insert QuestionResponseItemForExample(PREGNANT, pregnant, valueCoding, $YesNoCodeSystem#false)
-* insert QuestionResponseItemForExample(WANT_TO_BE_PREGNANT, want-to-be-pregnant, valueCoding, $YesNoCodeSystem#true)
-* insert QuestionResponseItemForExample(BREASTFEEDING, is-breast-feeding, valueCoding, $YesNoCodeSystem#false)
-* insert QuestionResponseItemForExample(LMP, lmp, valueDate, "2024-06-18")
-* insert QuestionResponseItemForExample(EDD, edd, valueDate, "2025-05-25")
-
-* insert QuestionResponseItemForExample(FamilyPlanningMethod, fpm, valueCoding, $LNC#LA14543-5)
-* insert QuestionResponseItemForExample(FamilyPlanningMethod, fpm, valueCoding, $LNC#LA27907-7)
+* insert QuestionResponse(1.1, Is Pregnant, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.2, Wants to be pregnant, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponse(1.3, Is breastfeeding, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.4, Last Menstrual date, valueDate, "2024-06-18")
+* insert QuestionResponse(1.5, Estimated Delivery Date, valueDate, "2025-05-25")
+* insert QuestionResponse(1.6, Family Planning Method, valueCoding, $LNC#LA14543-5)
+* item[=]
+  * answer[+].valueCoding = $LNC#LA27907-7
 
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"
@@ -456,8 +456,8 @@ Title: "Medication Request - ARV Prescribed to a Patient Who is Alive On ART"
 Description: "This is to record requests for medication that are prescribed to a patient (Alive on ART)."
 * identifier[RequestID].value = "prescription-12345"
 * identifier[RequestID].system = $PrescriptionID
-* identifier[RequestID].type = $IdentifierTypeCodeSystem#FILL
-* identifier[RequestID].type.text = "Prescription identifier"
+//* identifier[RequestID].type = $IdentifierTypeCodeSystem#FILL
+//* identifier[RequestID].type.text = "Prescription identifier"
 * authoredOn = "2023-10-11T17:21:33-08:00"
 * status = #completed
 * intent = #order
@@ -477,8 +477,8 @@ Title: "Medication Request - ARV Prescribed to a Patient Who Initiated ART"
 Description: "This is to record requests for medication that are prescribed to a patient (Initiated on ART)."
 * identifier[RequestID].value = "prescription-12345"
 * identifier[RequestID].system = $PrescriptionID
-* identifier[RequestID].type = $IdentifierTypeCodeSystem#FILL
-* identifier[RequestID].type.text = "Prescription identifier"
+//* identifier[RequestID].type = $IdentifierTypeCodeSystem#FILL
+//* identifier[RequestID].type.text = "Prescription identifier"
 * authoredOn = "2023-10-11T17:21:33-08:00"
 * status = #completed
 * intent = #order
@@ -813,21 +813,6 @@ Description: "Represents the patient's PCR HIV test result."
 * performer = Reference(CurrentServiceProviderExample)
 * effectiveDateTime = "2024-01-25"
 * basedOn = Reference(PCRHIVTestExample)
-
-Instance: PregnancyStatusAndFPMQuestionnaireExample
-InstanceOf: PregnancyStatusAndFPMQuestionnaire
-Usage: #example
-Title: "Pregnancy Status Questionnaire"
-Description: "A questionnaire that represents the pregnancy and breastfeeding status questions."
-* status = #active
-* subjectType = #Observation
-
-* insert QuestionForExample(PREGNANT, pregnant, choice, false, false)
-* insert QuestionForExample(WANT_TO_BE_PREGNANT, want-to-be-pregnant, choice, false, false)
-* insert QuestionForExample(BREASTFEEDING, is-breast-feeding, choice, false, false)
-* insert QuestionForExample(LMP, lmp, date, false, false)
-* insert QuestionForExample(EDD, edd, date, false, false)
-* insert QuestionForExample(FamilyPlanningMethod, fpm, choice, false, true)
 
 Instance: WeightExample
 InstanceOf: Weight
@@ -1244,15 +1229,15 @@ Description: "Represents the other facility where the patient did receive health
 * serviceProvider = Reference(OutreachFacilityExample)
 * partOf = Reference(GeneralEncounterExample)
 
-Instance: RelatedPersonBecomesPatientExample
+Instance: SexualPartnerRelatedPersonBecomesPatientExample
 InstanceOf: EthPatient
 Usage: #example
-Title: "Patient - Related Person Becomes a Patient"
+Title: "Patient - Sexual Partner Related to the Index Case is Registered as a Patient"
 Description: "Is used to document demographics and other administrative information about an individual receiving care or other health-related services."
 * identifier[MRN].value = "MRN12345673"
 * identifier[MRN].system = $MRN
-* identifier[MRN].type = $IdentifierTypeCodeSystem#MR
-* identifier[MRN].type.text = "Medical record number"
+//* identifier[MRN].type = $IdentifierTypeCodeSystem#MR
+//* identifier[MRN].type.text = "Medical record number"
 
 * identifier[UAN].value = "UAN12345673"
 * identifier[UAN].system = $UAN
@@ -1620,8 +1605,8 @@ Title: "Medication Request - ARV Regimen Switch"
 Description: "This is to record requests for medication that are prescribed to a patient (who is Alive on ART) during a regimen switch."
 * identifier[RequestID].value = "prescription-12345"
 * identifier[RequestID].system = $PrescriptionID
-* identifier[RequestID].type = $IdentifierTypeCodeSystem#FILL
-* identifier[RequestID].type.text = "Prescription identifier"
+//* identifier[RequestID].type = $IdentifierTypeCodeSystem#FILL
+//* identifier[RequestID].type.text = "Prescription identifier"
 * authoredOn = "2023-10-11T17:21:33-08:00"
 * status = #completed
 * intent = #order
@@ -2075,8 +2060,8 @@ Title: "Patient - With Child Relationship"
 Description: "Is used to document demographics and other administrative information about an individual receiving care or other health-related services."
 * identifier[MRN].value = "MRN12345674"
 * identifier[MRN].system = $MRN
-* identifier[MRN].type = $IdentifierTypeCodeSystem#MR
-* identifier[MRN].type.text = "Medical record number"
+//* identifier[MRN].type = $IdentifierTypeCodeSystem#MR
+//* identifier[MRN].type.text = "Medical record number"
 
 * identifier[UAN].value = "UAN12345674"
 * identifier[UAN].system = $UAN
@@ -2136,8 +2121,8 @@ Title: "Patient - Child, Related to the Patient, Becomes a Patient"
 Description: "Is used to document demographics and other administrative information about an individual receiving care or other health-related services."
 * identifier[MRN].value = "MRN12345675"
 * identifier[MRN].system = $MRN
-* identifier[MRN].type = $IdentifierTypeCodeSystem#MR
-* identifier[MRN].type.text = "Medical record number"
+//* identifier[MRN].type = $IdentifierTypeCodeSystem#MR
+//* identifier[MRN].type.text = "Medical record number"
 
 * identifier[UAN].value = "UAN12345675"
 * identifier[UAN].system = $UAN
@@ -2881,8 +2866,8 @@ Title: "Medication Request - Cotrimoxazole Preventive Therapy"
 Description: "Used to record requests for medication that are prescribed to a patient receiving cotrimoxazole preventive therapy."
 * identifier[RequestID].value = "prescription-12345"
 * identifier[RequestID].system = $PrescriptionID
-* identifier[RequestID].type = $IdentifierTypeCodeSystem#FILL
-* identifier[RequestID].type.text = "Prescription identifier"
+//* identifier[RequestID].type = $IdentifierTypeCodeSystem#FILL
+//* identifier[RequestID].type.text = "Prescription identifier"
 * authoredOn = "2023-10-11T17:21:33-08:00"
 * status = #completed
 * intent = #order
@@ -3217,7 +3202,7 @@ Description: "Used to record the HIV+ tracking details for the patient who start
 * status = #final
 * category = $OBSERVATION_CATEGORY#therapy
 * code = $LNC#LP95599-4
-* subject = Reference(RelatedPersonBecomesPatientExample)
+* subject = Reference(SexualPartnerRelatedPersonBecomesPatientExample)
 * encounter = Reference(EncounterWithEntryPointTBClinicExample)
 * effectiveDateTime = "2023-11-27"
 * valueCodeableConcept = $LNC#63936-9
@@ -3712,8 +3697,8 @@ Title: "Medication Request - INH For TB Preventive Therapy (TPT)"
 Description: "Used to indicate a request for INH medication to be prescribed to a patient."
 * identifier[RequestID].value = "prescription-12345"
 * identifier[RequestID].system = $PrescriptionID
-* identifier[RequestID].type = $IdentifierTypeCodeSystem#FILL
-* identifier[RequestID].type.text = "Prescription identifier"
+//* identifier[RequestID].type = $IdentifierTypeCodeSystem#FILL
+//* identifier[RequestID].type.text = "Prescription identifier"
 * authoredOn = "2023-10-11T17:21:33-08:00"
 * status = #completed
 * intent = #order
@@ -4386,101 +4371,85 @@ Description: "Documents the disclosure of HIV status for minors."
 * performer = Reference(CurrentServiceProviderExample)
 * valueCodeableConcept = $SCT#258215001
 
-Instance: IndexCaseScreeningQuestionnaireExample
-InstanceOf: IndexCaseScreeningQuestionnaire
-Usage: #example
-Title: "Questionnaire - Index Case Screening"
-Description: "A questionaire that provides eligibility criteria for the index case screening."
-* status = #active
-* subjectType = #Observation
-* insert QuestionForExample(NewlyEnrolledIntoCare, newlyenrolledintocare, choice, false, false)
-* insert QuestionForExample(HighViralLoad, highviralload, choice, false, false)
-* insert QuestionForExample(ARTRestart, artrestart, choice, false, false)
-* insert QuestionForExample(NewSexPartner, newsexpartner, choice, false, false)
-* insert QuestionForExample(HIVStatusNotDisclosedToSexPartner, hivstatusnotdisclosedtosexpartner, choice, false, false)
-* insert QuestionForExample(WithSexPartnerNotTested, withsexpartnernottested, choice, false, false)
-* insert QuestionForExample(ClientInCareWithSTI, clientincarewithsti, choice, false, false)
-* insert QuestionForExample(ClientHasChildUnder15YearsOfAgeNotTested, clienthaschildunder15yearsofagenottested, choice, false, false)
-* insert QuestionForExample(ClientKnownPositive-FSW, clientknownpositive-fsw, choice, false, false)
-* insert QuestionForExample(PartnerAndFBICTEligibility, partnerandfbicteligibility, choice, false, false)
-* insert QuestionForExample(PartnerAndFBICTOffered, partnerandfbictoffered, choice, false, false)
-* insert QuestionForExample(PartnerAndFBICTAccepted, partnerandfbictacccepted, choice, false, false)
-
 Instance: IndexCaseScreeningExample1
-InstanceOf: IndexCaseScreeningQuestionnaireResponse
+InstanceOf: QuestionnaireResponse
 Usage: #example
 Title: "Questionnaire Response - Index Case Screening (Example 1)"
 Description: "A questionaire response that documents the answers to the eligibility criteria for the index case screening questions."
-* questionnaire = Canonical(IndexCaseScreeningQuestionnaireExample)
+* questionnaire = Canonical(IndexCaseScreeningQuestionnaire)
 * status = #completed
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 
-* insert QuestionResponseItemForExample(NewlyEnrolledIntoCare, newlyenrolledintocare, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.1, Is the client newly enrolled, valueCoding, $YesNoCodeSystem#false)
 
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"
 
 Instance: IndexCaseScreeningExample2
-InstanceOf: IndexCaseScreeningQuestionnaireResponse
+InstanceOf: QuestionnaireResponse
 Usage: #example
 Title: "Questionnaire Response - Index Case Screening (Example 2)"
 Description: "A questionaire response that documents the answers to the eligibility criteria for the index case screening questions."
-* questionnaire = Canonical(IndexCaseScreeningQuestionnaireExample)
+* questionnaire = Canonical(IndexCaseScreeningQuestionnaire)
 * status = #completed
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 
-* insert QuestionResponseItemForExample(NewlyEnrolledIntoCare, newlyenrolledintocare, valueCoding, $YesNoCodeSystem#true)
-* item[NewlyEnrolledIntoCare]
-  * answer.extension[SupportingReference].valueReference = Reference(LinkedToCareExample)
+* insert QuestionResponse(1.1, Is the client newly enrolled, valueCoding, $YesNoCodeSystem#true)
+* item[=]
+  * answer.extension[+].valueReference = Reference(LinkedToCareExample)
+  * answer.extension[=].url = "http://moh.gov.et/fhir/hiv/StructureDefinition/resource-value-reference"
 
-* insert QuestionResponseItemForExample(HighViralLoad, highviralload, valueCoding, $YesNoCodeSystem#true)
-* item[HighViralLoad]
-  * answer.extension[SupportingReference].valueReference = Reference(UnsuppressedViralLoadResultExample)
+* insert QuestionResponse(1.2, Does the client have a high viral load, valueCoding, $YesNoCodeSystem#true)
+* item[=]
+  * answer.extension[+].valueReference = Reference(UnsuppressedViralLoadResultExample)
+  * answer.extension[=].url = "http://moh.gov.et/fhir/hiv/StructureDefinition/resource-value-reference"
 
-* insert QuestionResponseItemForExample(ARTRestart, artrestart, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.3, Does the client have an ART status of Restart, valueCoding, $YesNoCodeSystem#false)
 
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"
 
 Instance: IndexCaseScreeningFullExample
-InstanceOf: IndexCaseScreeningQuestionnaireResponse
+InstanceOf: QuestionnaireResponse
 Usage: #example
 Title: "Questionnaire Response - Index Case Screening (Full Example)"
 Description: "A questionaire response that documents the answers to the eligibility criteria for the index case screening questions."
-* questionnaire = Canonical(IndexCaseScreeningQuestionnaireExample)
+* questionnaire = Canonical(IndexCaseScreeningQuestionnaire)
 * status = #completed
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 
-* insert QuestionResponseItemForExample(NewlyEnrolledIntoCare, newlyenrolledintocare, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.1, Is the client newly enrolled, valueCoding, $YesNoCodeSystem#false)
 
-* insert QuestionResponseItemForExample(HighViralLoad, highviralload, valueCoding, $YesNoCodeSystem#false)
-* item[HighViralLoad]
-  * answer.extension[SupportingReference].valueReference = Reference(SuppressedViralLoadResultExample)
+* insert QuestionResponse(1.2, Does the client have a high viral load, valueCoding, $YesNoCodeSystem#false)
+* item[=]
+  * answer.extension[+].valueReference = Reference(SuppressedViralLoadResultExample)
+  * answer.extension[=].url = "http://moh.gov.et/fhir/hiv/StructureDefinition/resource-value-reference"
 
-* insert QuestionResponseItemForExample(ARTRestart, artrestart, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.3, Does the client have an ART status of Restart, valueCoding, $YesNoCodeSystem#false)
 
-* insert QuestionResponseItemForExample(NewSexPartner, newsexpartner, valueCoding, $YesNoCodeSystem#true)
-* item[NewSexPartner]
-  * answer.extension[SupportingReference].valueReference = Reference(PartnerRelatedPersonExample)
+* insert QuestionResponse(1.4, Is the client with a new partner, valueCoding, $YesNoCodeSystem#true)
+* item[=]
+  * answer.extension[+].valueReference = Reference(PartnerRelatedPersonExample)
+  * answer.extension[=].url = "http://moh.gov.et/fhir/hiv/StructureDefinition/resource-value-reference"
 
-* insert QuestionResponseItemForExample(HIVStatusNotDisclosedToSexPartner, hivstatusnotdisclosedtosexpartner, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponse(1.5, Is the client with a partner not yet disclosed, valueCoding, $YesNoCodeSystem#true)
 
-* insert QuestionResponseItemForExample(WithSexPartnerNotTested, withsexpartnernottested, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.6, Is the client with a partner who has not been tested yet for HIV, valueCoding, $YesNoCodeSystem#false)
 
-* insert QuestionResponseItemForExample(ClientInCareWithSTI, clientincarewithsti, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.7, Is the client in care with STI, valueCoding, $YesNoCodeSystem#false)
 
-* insert QuestionResponseItemForExample(ClientHasChildUnder15YearsOfAgeNotTested, clienthaschildunder15yearsofagenottested, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponse(1.8, Does the client have a child under 15yrs of age who is not tested, valueCoding, $YesNoCodeSystem#true)
 
-* insert QuestionResponseItemForExample(ClientKnownPositive-FSW, clientknownpositive-fsw, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.9, Is the client Known Positive, valueCoding, $YesNoCodeSystem#false)
 
-* insert QuestionResponseItemForExample(PartnerAndFBICTEligibility, partnerandfbicteligibility, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.10, Is the client eligible for partner and FBICT, valueCoding, $YesNoCodeSystem#false)
 
-* insert QuestionResponseItemForExample(PartnerAndFBICTOffered, partnerandfbictoffered, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.11, Is the index case offered with partner and FBICT services, valueCoding, $YesNoCodeSystem#false)
 
-* insert QuestionResponseItemForExample(PartnerAndFBICTAccepted, partnerandfbictacccepted, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.12, Has the client accepted the offer for partner and FBICT, valueCoding, $YesNoCodeSystem#false)
 
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"
@@ -4526,3 +4495,209 @@ Description: "Documents the total number of contacts elicited for the index case
 * effectiveDateTime = "2023-12-11"
 * performer = Reference(CurrentServiceProviderExample)
 * valueInteger = 2
+
+Instance: IndexCaseAssessmentExample1
+InstanceOf: QuestionnaireResponse
+Usage: #example
+Title: "Questionnaire Response - Index Case Assessment (Example 1)"
+Description: "A questionaire response that documents the answers to the questions that assesses the index case during interviews."
+* questionnaire = Canonical(IndexCaseAssessmentQuestionnaire)
+* status = #completed
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+
+* insert QuestionResponse(1.1, Did the index case agree to be interviewed, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.2, Reason for not being interviewed, valueCoding, $LNC#81954-0)
+
+* author = Reference(GeneralPractitionerExample)
+* authored = "2008-10-13"
+
+Instance: IndexCaseAssessmentExample2
+InstanceOf: QuestionnaireResponse
+Usage: #example
+Title: "Questionnaire Response - Index Case Assessment (Example 2)"
+Description: "A questionaire response that documents the answers to the questions that assesses the index case during interviews."
+* questionnaire = Canonical(IndexCaseAssessmentQuestionnaire)
+* status = #completed
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+
+* insert QuestionResponse(1.1, Did the index case agree to be interviewed, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.2, Reason for not being interviewed, valueCoding, $LNC#LA46-8)
+* insert QuestionResponse(1.3, Other Reason for not being interviewed, valueString, "some other reason")
+
+* author = Reference(GeneralPractitionerExample)
+* authored = "2008-10-13"
+
+Instance: IndexCaseAssessmentExample3
+InstanceOf: QuestionnaireResponse
+Usage: #example
+Title: "Questionnaire Response - Index Case Assessment (Example 3)"
+Description: "A questionaire response that documents the answers to the questions that assesses the index case during interviews."
+* questionnaire = Canonical(IndexCaseAssessmentQuestionnaire)
+* status = #completed
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+
+* insert QuestionResponse(1.1, Did the index case agree to be interviewed, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponse(1.4, When did the index case receive the interview, valueDate, 2008-10-13)
+* insert QuestionResponse(1.5, Was the index case interviewed for partner services, valueCoding, $YesNoCodeSystem#false)
+
+* author = Reference(GeneralPractitionerExample)
+* authored = "2008-10-13"
+
+Instance: IndexCaseAssessmentExample4
+InstanceOf: QuestionnaireResponse
+Usage: #example
+Title: "Questionnaire Response - Index Case Assessment (Example 4)"
+Description: "A questionaire response that documents the answers to the questions that assesses the index case during interviews."
+* questionnaire = Canonical(IndexCaseAssessmentQuestionnaire)
+* status = #completed
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+
+* insert QuestionResponse(1.1, Did the index case agree to be interviewed, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponse(1.4, When did the index case receive the interview, valueDate, 2008-10-13)
+* insert QuestionResponse(1.5, Was the index case interviewed for partner services, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponse(1.6, When was the index case interviewed for partner services, valueDate, 2008-10-13)
+* insert QuestionResponse(1.7, Number of sexual partners in past 12 months, valueInteger, 4)
+* insert QuestionResponse(1.8, Number of sexual partners in past 24 months, valueInteger, 6)
+* insert QuestionResponse(1.9, Is the index client willing to identify the sex partners, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.10, Reason for not being able to identify the sex partners, valueString, "some other reason")
+
+* author = Reference(GeneralPractitionerExample)
+* authored = "2008-10-13"
+
+Instance: IndexCaseAssessmentFullExample
+InstanceOf: QuestionnaireResponse
+Usage: #example
+Title: "Questionnaire Response - Index Case Assessment (Full Example)"
+Description: "A questionaire response that documents the answers to the questions that assesses the index case during interviews."
+* questionnaire = Canonical(IndexCaseAssessmentQuestionnaire)
+* status = #completed
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+
+* insert QuestionResponse(1.1, Did the index case agree to be interviewed, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponse(1.4, When did the index case receive the interview, valueDate, 2008-10-13)
+* insert QuestionResponse(1.5, Was the index case interviewed for partner services, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponse(1.6, When was the index case interviewed for partner services, valueDate, 2008-10-13)
+* insert QuestionResponse(1.7, Number of sexual partners in past 12 months, valueInteger, 4)
+* insert QuestionResponse(1.8, Number of sexual partners in past 24 months, valueInteger, 6)
+* insert QuestionResponse(1.9, Is the index client willing to identify the sex partners, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponse(1.11, What is the next visit date, valueDate, 2008-11-13)
+
+* author = Reference(GeneralPractitionerExample)
+* authored = "2008-10-13"
+
+Instance: IndexCaseContactHealthStatusSexPartnerExample
+InstanceOf: HealthStatus
+Usage: #example
+Title: "Observation - Health Status (Index Case Contact - Sex Partner)"
+Description: "This is used to record the health status for the index case contact."
+* status = #final
+* category = $OBSERVATION_CATEGORY#exam
+* code = $LNC#11323-3
+* code.text = "Health Status"
+* valueCodeableConcept = $LNC#LA14937-9
+* subject = Reference(SexualPartnerRelatedPersonBecomesPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* performer = Reference(CurrentServiceProviderExample)
+* effectiveDateTime = "2024-01-25"
+
+Instance: IndexCaseContactHealthStatusFamilyMemberExample
+InstanceOf: HealthStatus
+Usage: #example
+Title: "Observation - Health Status (Index Case Contact - Family Member)"
+Description: "This is used to record the health status for the index case contact."
+* status = #final
+* category = $OBSERVATION_CATEGORY#exam
+* code = $LNC#11323-3
+* code.text = "Health Status"
+* valueCodeableConcept = $LNC#LA14937-9
+* subject = Reference(ChildRelatedPersonBecomesPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+* performer = Reference(CurrentServiceProviderExample)
+* effectiveDateTime = "2024-01-25"
+
+Instance: FamilyIndexCaseContactsExample1
+InstanceOf: QuestionnaireResponse
+Usage: #example
+Title: "Questionnaire Response - Family Index Case Contacts (Example 1)"
+Description: "A questionaire response that documents the answers to the questions regarding the HIV and health status for index case contacts."
+* questionnaire = Canonical(FamilyIndexCaseContactsQuestionnaire)
+* status = #completed
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+
+* insert QuestionResponse(1.1, Currently living with the index case, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponseForReference(1.2, What is the contact's current health status, IndexCaseContactHealthStatusFamilyMemberExample)
+
+* item[+].linkId = "2"
+* item[=]
+  * insert QuestionResponse(2.1, Has the contact been previsouly tested for HIV, valueCoding, $YesNoCodeSystem#false)
+
+* author = Reference(GeneralPractitionerExample)
+* authored = "2008-10-13"
+
+Instance: FamilyIndexCaseContactsExample2
+InstanceOf: QuestionnaireResponse
+Usage: #example
+Title: "Questionnaire Response - Family Index Case Contacts (Example 2)"
+Description: "A questionaire response that documents the answers to the questions regarding the HIV and health status for index case contacts."
+* questionnaire = Canonical(FamilyIndexCaseContactsQuestionnaire)
+* status = #completed
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+
+* insert QuestionResponse(1.1, Currently living with the index case, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponseForReference(1.2, What is the contact's current health status, IndexCaseContactHealthStatusFamilyMemberExample)
+
+* item[+].linkId = "2"
+* item[=]
+  * insert QuestionResponse(2.1, Has the contact been previsouly tested for HIV, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(2.2, Date of previous HIV test, valueDate, 2008-10-13)
+  * insert QuestionResponseForQuantity(2.3, Previous HIV test result, 1001, 1/mL, copies/mL)
+
+* item[+].linkId = "3"
+* item[=]
+  * insert QuestionResponse(3.1, Will the contact be counseled for HIV today, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(3.2, Will the contact be tested for HIV, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(3.5, Reason for not being tested for HIV, valueString, "some other reason")
+
+* author = Reference(GeneralPractitionerExample)
+* authored = "2008-10-13"
+
+Instance: FamilyIndexCaseContactsFullExample
+InstanceOf: QuestionnaireResponse
+Usage: #example
+Title: "Questionnaire Response - Family Index Case Contacts (Full Example)"
+Description: "A questionaire response that documents the answers to the questions regarding the HIV and health status for index case contacts."
+* questionnaire = Canonical(FamilyIndexCaseContactsQuestionnaire)
+* status = #completed
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+
+* insert QuestionResponse(1.1, Currently living with the index case, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponseForReference(1.2, What is the contact's current health status, IndexCaseContactHealthStatusFamilyMemberExample)
+
+* item[+].linkId = "2"
+* item[=]
+  * insert QuestionResponse(2.1, Has the contact been previsouly tested for HIV, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(2.2, Date of previous HIV test, valueDate, 2008-10-13)
+  * insert QuestionResponseForQuantity(2.3, Previous HIV test result, 1001, 1/mL, copies/mL)
+
+* item[+].linkId = "3"
+* item[=]
+  * insert QuestionResponse(3.1, Will the contact be counseled for HIV today, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(3.2, Will the contact be tested for HIV, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(3.3, Date of HIV test, valueDate, 2008-10-13)
+  * insert QuestionResponseForQuantity(3.4, HIV test result, 845, 1/mL, copies/mL)
+
+* item[+].linkId = "4"
+* item[=]
+  * insert QuestionResponse(4.1, Is the contact linked to HIV care, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponseForReference(4.2, Contact identifiers, ChildRelatedPersonBecomesPatientExample)
+
+* author = Reference(GeneralPractitionerExample)
+* authored = "2008-10-13"
