@@ -254,7 +254,7 @@ Description: "A questionaire that assesses the HIV and health status for index c
     * code[+] = $LNC#LP95599-4
     * answerValueSet = Canonical(YesNoValueSet)
 
-  * insert Question(4.2, Contact MRN & UAN, reference, true, false)
+  * insert Question(4.2, Contact identifiers, reference, true, false)
   * item[=]
     * code[+] = $LNC#94648-3
     * enableWhen.question = "4.1"
@@ -269,14 +269,78 @@ Description: "A questionaire that captures information for index case sex partne
 * status = #active
 * subjectType = #Observation
 
+* insert Question(1.1, Date of last exposure, date, false, false)
+* item[=]
+  * code = $LNC#94652-5
+
+* insert Question(1.2, Period of exposure if the exact date of exposure is not known, choice, false, false)
+* item[=]
+  * answerValueSet = Canonical(PeriodOfHIVExposureValueSet)
+  * code[+] = $LNC#LP6260-6
+
+* insert Question(1.3, Priority category, integer, false, false)
+* item[=]
+  * code[+] = $LNC#LA9036-0
+
+* insert Question(2, Intimate Partner Violence Assessment, group, false, false)
+* item[=]
+  * insert Question(2.1, Violence Assessment Completed, choice, false, false)
+  * item[=]
+    * answerValueSet = Canonical(YesNoValueSet)
+    * code[+] = $LNC#LA30873-6
+
+  * insert QuestionWithoutText(2.2, choice, false, false)
+  * item[=]
+    * text = "Have you been kicked, hit, slapped, or otherwise physically hurt by your partner"
+    * answerValueSet = Canonical(YesNoValueSet)
+    * code[+] = $LNC#76503-2
+
+  * insert Question(2.3, Has you partner ever threatened to hurt you, choice, false, false)
+  * item[=]
+    * answerValueSet = Canonical(YesNoValueSet)
+    * code[+] = $LNC#66900-2
+
+  * insert Question(2.4, Has you partner ever forced or coerced you to engage in unwanted sexual activity, choice, false, false)
+  * item[=]
+    * answerValueSet = Canonical(YesNoValueSet)
+    * code[+] = $LNC#66905-1
+
+* insert Question(3, HIV Status, group, false, false)
+* item[=]
+  * insert Question(3.1, What is the plan for notifying the partner regarding the index case's HIV status, choice, false, false)
+  * item[=]
+    * answerValueSet = Canonical(PartnerNotificationPlanValueSet)
+    * code[+] = $SCT#223454002
+
+  * insert Question(3.2, Was the partner notified?, choice, false, false)
+  * item[=]
+    * answerValueSet = Canonical(YesNoValueSet)
+    * code[+] = $SCT#310368009
+
+  * insert Question(3.3, Reason for not being notified, choice, true, false)
+  * item[=]
+    * answerValueSet = Canonical(ReasonPartnerNotNotifiedValueSet)
+    * code = $SCT#410666004
+    * enableWhen.question = "3.2"
+    * enableWhen.operator = #=
+    * enableWhen.answerCoding = $YesNoCodeSystem#false
+    
+  * insert Question(3.4, Other Reason for not being notified, string, true, false)
+  * item[=]
+    * enableWhen.question = "3.3"
+    * enableWhen.operator = #=
+    * enableWhen.answerCoding = $LNC#LA46-8
+    * code = $SCT#410666004
+
+
+
 * insert Question(4, HIV Program, group, false, false)
 * item[=]
   * insert Question(4.3, Has the contact started ART, choice, false, false)
   * item[=]
     * answerValueSet = Canonical(YesNoValueSet)
     * code[+] = $LNC#63936-9
-    * answerValueSet = Canonical(YesNoValueSet)
 
-  * insert Question(4.1, Contact MRN & UAN, reference, false, false)
+  * insert Question(4.1, Contact identifiers, reference, false, false)
   * item[=]
     * code[+] = $LNC#94648-3

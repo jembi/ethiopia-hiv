@@ -5,6 +5,12 @@ RuleSet: Question(linkId, text, type, required, repeats)
 * item[=].repeats = {repeats}
 * item[=].required = {required}
 
+RuleSet: QuestionWithoutText(linkId, type, required, repeats)
+* item[+].linkId = "{linkId}"
+* item[=].type = #{type}
+* item[=].repeats = {repeats}
+* item[=].required = {required}
+
 RuleSet: QuestionResponse(linkId, text, dataType, dataValue)
 * item[+]
   * linkId = "{linkId}"

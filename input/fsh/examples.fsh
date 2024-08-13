@@ -4697,7 +4697,7 @@ Description: "A questionaire response that documents the answers to the question
 * item[+].linkId = "4"
 * item[=]
   * insert QuestionResponse(4.1, Is the contact linked to HIV care, valueCoding, $YesNoCodeSystem#true)
-  * insert QuestionResponseForReference(4.2, Contact MRN & UAN, ChildRelatedPersonBecomesPatientExample)
+  * insert QuestionResponseForReference(4.2, Contact identifiers, ChildRelatedPersonBecomesPatientExample)
 
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"

@@ -1172,3 +1172,48 @@ Description: "Codes used for indicating the reason why the index case was not in
 * $LNC#LA46-8 "Other"
 * $LNC#81954-0 "Date of death"
 * $LNC#LA4014-2 "Eligible but Refused"
+
+CodeSystem: PeriodOfHIVExposureCodeSystem
+Id: period-of-hiv-exposure-code-system
+Title: "Period of HIV Exposure"
+Description: "Codes used for indicating the period when last the individual was exposed to HIV."
+* ^experimental = false
+* ^caseSensitive = true
+* #<3Mths "Less than 3 months"
+* #3-12Mths "In 3 to 12 months"
+* #>12Mths "Greater than 12 months"
+
+ValueSet: PeriodOfHIVExposureValueSet
+Id: period-of-hiv-exposure-value-set
+Title: "Period of HIV Exposure"
+Description: "Codes used for indicating the period when last the individual was exposed to HIV."
+* ^experimental = false
+* include codes from system PeriodOfHIVExposureCodeSystem
+
+CodeSystem: PartnerNotificationPlanCodeSystem
+Id: partner-notification-plan-code-system
+Title: "Partner Notification Plan"
+Description: "Codes used for indicating the plan for notifying the partner regarding the index case's HIV status."
+* ^experimental = false
+* ^caseSensitive = true
+* #No-Notification-IPV+ "No Notification (IPV+)"
+* #Client-Referral "Client Referral"
+* #Provider-Referral "Provider Referral"
+* #Dual-Referral "Dual Referral"
+* #Contact-Referral "Contact Referral"
+
+ValueSet: PartnerNotificationPlanValueSet
+Id: partner-notification-plan-value-set
+Title: "Partner Notification Plan"
+Description: "Codes used for indicating the plan for notifying the partner regarding the index case's HIV status."
+* ^experimental = false
+* include codes from system PartnerNotificationPlanCodeSystem
+
+ValueSet: ReasonPartnerNotNotifiedValueSet
+Id: reason-partner-not-notified-value-set
+Title: "Reason Partner Not Notified"
+Description: "Codes used for indicating the reason why the partner was not notified about the index case's HIV status."
+* ^experimental = false
+* $LNC#LA46-8 "Other"
+* $LNC#LA4389-8 "Refused"
+* $LNC#77969-4 "Jurisdiction code"
