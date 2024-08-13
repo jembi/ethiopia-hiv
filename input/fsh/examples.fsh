@@ -47,8 +47,8 @@ Title: "Patient - General"
 Description: "Is used to document demographics and other administrative information about an individual receiving care or other health-related services."
 * identifier[MRN].value = "MRN12345671"
 * identifier[MRN].system = $MRN
-* identifier[MRN].type = $IdentifierTypeCodeSystem#MR
-* identifier[MRN].type.text = "Medical record number"
+//* identifier[MRN].type = $IdentifierTypeCodeSystem#MR
+//* identifier[MRN].type.text = "Medical record number"
 
 * identifier[UAN].value = "UAN12345671"
 * identifier[UAN].system = $UAN
@@ -89,8 +89,8 @@ Title: "Patient - With Partner Relationship"
 Description: "Is used to document demographics and other administrative information about an individual receiving care or other health-related services."
 * identifier[MRN].value = "MRN12345672"
 * identifier[MRN].system = $MRN
-* identifier[MRN].type = $IdentifierTypeCodeSystem#MR
-* identifier[MRN].type.text = "Medical record number"
+//* identifier[MRN].type = $IdentifierTypeCodeSystem#MR
+//* identifier[MRN].type.text = "Medical record number"
 
 * identifier[UAN].value = "UAN1234562"
 * identifier[UAN].system = $UAN
@@ -456,8 +456,8 @@ Title: "Medication Request - ARV Prescribed to a Patient Who is Alive On ART"
 Description: "This is to record requests for medication that are prescribed to a patient (Alive on ART)."
 * identifier[RequestID].value = "prescription-12345"
 * identifier[RequestID].system = $PrescriptionID
-* identifier[RequestID].type = $IdentifierTypeCodeSystem#FILL
-* identifier[RequestID].type.text = "Prescription identifier"
+//* identifier[RequestID].type = $IdentifierTypeCodeSystem#FILL
+//* identifier[RequestID].type.text = "Prescription identifier"
 * authoredOn = "2023-10-11T17:21:33-08:00"
 * status = #completed
 * intent = #order
@@ -477,8 +477,8 @@ Title: "Medication Request - ARV Prescribed to a Patient Who Initiated ART"
 Description: "This is to record requests for medication that are prescribed to a patient (Initiated on ART)."
 * identifier[RequestID].value = "prescription-12345"
 * identifier[RequestID].system = $PrescriptionID
-* identifier[RequestID].type = $IdentifierTypeCodeSystem#FILL
-* identifier[RequestID].type.text = "Prescription identifier"
+//* identifier[RequestID].type = $IdentifierTypeCodeSystem#FILL
+//* identifier[RequestID].type.text = "Prescription identifier"
 * authoredOn = "2023-10-11T17:21:33-08:00"
 * status = #completed
 * intent = #order
@@ -1236,8 +1236,8 @@ Title: "Patient - Sexual Partner Related to the Index Case is Registered as a Pa
 Description: "Is used to document demographics and other administrative information about an individual receiving care or other health-related services."
 * identifier[MRN].value = "MRN12345673"
 * identifier[MRN].system = $MRN
-* identifier[MRN].type = $IdentifierTypeCodeSystem#MR
-* identifier[MRN].type.text = "Medical record number"
+//* identifier[MRN].type = $IdentifierTypeCodeSystem#MR
+//* identifier[MRN].type.text = "Medical record number"
 
 * identifier[UAN].value = "UAN12345673"
 * identifier[UAN].system = $UAN
@@ -1605,8 +1605,8 @@ Title: "Medication Request - ARV Regimen Switch"
 Description: "This is to record requests for medication that are prescribed to a patient (who is Alive on ART) during a regimen switch."
 * identifier[RequestID].value = "prescription-12345"
 * identifier[RequestID].system = $PrescriptionID
-* identifier[RequestID].type = $IdentifierTypeCodeSystem#FILL
-* identifier[RequestID].type.text = "Prescription identifier"
+//* identifier[RequestID].type = $IdentifierTypeCodeSystem#FILL
+//* identifier[RequestID].type.text = "Prescription identifier"
 * authoredOn = "2023-10-11T17:21:33-08:00"
 * status = #completed
 * intent = #order
@@ -2060,8 +2060,8 @@ Title: "Patient - With Child Relationship"
 Description: "Is used to document demographics and other administrative information about an individual receiving care or other health-related services."
 * identifier[MRN].value = "MRN12345674"
 * identifier[MRN].system = $MRN
-* identifier[MRN].type = $IdentifierTypeCodeSystem#MR
-* identifier[MRN].type.text = "Medical record number"
+//* identifier[MRN].type = $IdentifierTypeCodeSystem#MR
+//* identifier[MRN].type.text = "Medical record number"
 
 * identifier[UAN].value = "UAN12345674"
 * identifier[UAN].system = $UAN
@@ -2121,8 +2121,8 @@ Title: "Patient - Child, Related to the Patient, Becomes a Patient"
 Description: "Is used to document demographics and other administrative information about an individual receiving care or other health-related services."
 * identifier[MRN].value = "MRN12345675"
 * identifier[MRN].system = $MRN
-* identifier[MRN].type = $IdentifierTypeCodeSystem#MR
-* identifier[MRN].type.text = "Medical record number"
+//* identifier[MRN].type = $IdentifierTypeCodeSystem#MR
+//* identifier[MRN].type.text = "Medical record number"
 
 * identifier[UAN].value = "UAN12345675"
 * identifier[UAN].system = $UAN
@@ -2866,8 +2866,8 @@ Title: "Medication Request - Cotrimoxazole Preventive Therapy"
 Description: "Used to record requests for medication that are prescribed to a patient receiving cotrimoxazole preventive therapy."
 * identifier[RequestID].value = "prescription-12345"
 * identifier[RequestID].system = $PrescriptionID
-* identifier[RequestID].type = $IdentifierTypeCodeSystem#FILL
-* identifier[RequestID].type.text = "Prescription identifier"
+//* identifier[RequestID].type = $IdentifierTypeCodeSystem#FILL
+//* identifier[RequestID].type.text = "Prescription identifier"
 * authoredOn = "2023-10-11T17:21:33-08:00"
 * status = #completed
 * intent = #order
@@ -3697,8 +3697,8 @@ Title: "Medication Request - INH For TB Preventive Therapy (TPT)"
 Description: "Used to indicate a request for INH medication to be prescribed to a patient."
 * identifier[RequestID].value = "prescription-12345"
 * identifier[RequestID].system = $PrescriptionID
-* identifier[RequestID].type = $IdentifierTypeCodeSystem#FILL
-* identifier[RequestID].type.text = "Prescription identifier"
+//* identifier[RequestID].type = $IdentifierTypeCodeSystem#FILL
+//* identifier[RequestID].type.text = "Prescription identifier"
 * authoredOn = "2023-10-11T17:21:33-08:00"
 * status = #completed
 * intent = #order

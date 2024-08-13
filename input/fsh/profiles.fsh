@@ -74,8 +74,8 @@ Description: "Is used to document demographics and other administrative informat
 * identifier[MRN].value 1..1
   * obeys MRN-UAN-EMR-ID-1
 * identifier[MRN].system = $MRN 
-* identifier[MRN].type = $IdentifierTypeCodeSystem#MR
-* identifier[MRN].type.text = "Medical record number"
+//* identifier[MRN].type = $IdentifierTypeCodeSystem#MR
+//* identifier[MRN].type.text = "Medical record number"
 
 * identifier[UAN] ^definition =
     "reason(s) why this should be supported."
@@ -967,8 +967,8 @@ Description: "Base Medication Request elements that are inherited by other Medic
     "reason(s) why this should be supported."
 * identifier[RequestID].value 1..1
 * identifier[RequestID].system = $PrescriptionID
-* identifier[RequestID].type = $IdentifierTypeCodeSystem#FILL
-* identifier[RequestID].type.text = "Prescription identifier"
+//* identifier[RequestID].type = $IdentifierTypeCodeSystem#FILL
+//* identifier[RequestID].type.text = "Prescription identifier"
 
 * status 1..1
 * intent 1..1
