@@ -59,3 +59,4 @@ Alias: $ConditionCategoryCodeSystem = http://terminology.hl7.org/CodeSystem/cond
 Alias: $ConditionClinicalStatusCodeSystem = http://terminology.hl7.org/CodeSystem/condition-clinical
 Alias: $CD4VLTreatmentFailureClassificationCodeSystem = http://moh.gov.et/fhir/hiv/CodeSystem/cd4-vl-classification-for-treatment-failure-code-system
 Alias: $PartnerAndFBICTCodeSystem = http://moh.gov.et/fhir/hiv/CodeSystem/partner-and-fbict-code-system
+Alias: $IndexCasePartnerQuestionnaireCodeSystem = http://moh.gov.et/fhir/hiv/CodeSystem/index-case-partner-questionnaire-code-system

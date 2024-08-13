@@ -1217,3 +1217,24 @@ Description: "Codes used for indicating the reason why the partner was not notif
 * $LNC#LA46-8 "Other"
 * $LNC#LA4389-8 "Refused"
 * $LNC#77969-4 "Jurisdiction code"
+
+CodeSystem: IndexCasePartnerQuestionnaireCodeSystem
+Id: index-case-partner-questionnaire-code-system
+Title: "Index Case Sex Partner Questionnaire"
+Description: "Proprietary Codes used in the Index Case Partner Questionnaire."
+* ^experimental = false
+* ^caseSensitive = true
+* #Other-Reason-Partner-Not-Notified "Other Reason Partner Not Notified"
+* #Date-Notification-Offered "Date Notification Offered"
+* #Date-Partner-Contacted "Date Partner Contacted"
+* #Reason-Partner-Not-Contacted "Reason Partner Not Contacted"
+* #Partner-Unreachable "Unable to Locate the Partner"
+* #Other-Reason-Partner-Not-Contacted "Other Reason Partner Not Contacted"
+
+ValueSet: ReasonPartnerNotContactedValueSet
+Id: reason-partner-not-contacted-value-set
+Title: "Reason Partner Not Contacted"
+Description: "Codes used for indicating the reason why the partner was not contacted."
+* ^experimental = false
+* $LNC#LA46-8 "Other"
+* $IndexCasePartnerQuestionnaireCodeSystem#Partner-Unreachable

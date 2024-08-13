@@ -330,17 +330,69 @@ Description: "A questionaire that captures information for index case sex partne
     * enableWhen.question = "3.3"
     * enableWhen.operator = #=
     * enableWhen.answerCoding = $LNC#LA46-8
-    * code = $SCT#410666004
+    * code = $IndexCasePartnerQuestionnaireCodeSystem#Other-Reason-Partner-Not-Notified
 
+  * insert Question(3.5, Date notification offered, date, false, false)
+  * item[=]
+    * code = $IndexCasePartnerQuestionnaireCodeSystem#Date-Notification-Offered
 
+  * insert Question(3.6, Date partner contacted, date, false, false)
+  * item[=]
+    * code = $IndexCasePartnerQuestionnaireCodeSystem#Date-Partner-Contacted
 
-* insert Question(4, HIV Program, group, false, false)
+  * insert Question(3.7, Reason partner not contacted, choice, true, false)
+  * item[=]
+    * code = $IndexCasePartnerQuestionnaireCodeSystem#Reason-Partner-Not-Contacted
+    * answerValueSet = Canonical(ReasonPartnerNotContactedValueSet)
+    * enableWhen.question = "3.6"
+    * enableWhen.operator = #exists
+    * enableWhen.answerBoolean = false
+
+  * insert Question(3.8, Other Reason partner not contacted, string, true, false)
+  * item[=]
+    * enableWhen.question = "3.7"
+    * enableWhen.operator = #=
+    * enableWhen.answerCoding = $LNC#LA46-8
+    * code = $IndexCasePartnerQuestionnaireCodeSystem#Other-Reason-Partner-Not-Contacted
+
+* insert Question(4, Previous HIV Testing Services, group, false, false)
 * item[=]
-  * insert Question(4.3, Has the contact started ART, choice, false, false)
+  * insert Question(4.1, Has the partner been previsouly tested for HIV, choice, false, false)
   * item[=]
+    * code[+] = $SCT#171121004
     * answerValueSet = Canonical(YesNoValueSet)
-    * code[+] = $LNC#63936-9
 
-  * insert Question(4.1, Contact identifiers, reference, false, false)
+  * insert Question(4.2, Date of previous HIV test, date, true, false)
   * item[=]
-    * code[+] = $LNC#94648-3
+    * code = $LNC#67723-7
+    * enableWhen.question = "4.1"
+    * enableWhen.operator = #=
+    * enableWhen.answerCoding = $YesNoCodeSystem#true
+
+  * insert Question(4.3, Previous HIV test result, quantity, true, false)
+  * item[=]
+    * code = $SCT#315124004
+    * enableWhen.question = "4.2"
+    * enableWhen.operator = #exists
+    * enableWhen.answerBoolean = true
+
+* insert Question(5, Current HIV Testing Services, group, false, false)
+* item[=]
+  * insert Question(5.1, Will the partner be tested for HIV, choice, false, false)
+  * item[=]
+    * code[+] = $SCT#171121004
+    * answerValueSet = Canonical(YesNoValueSet)
+
+  * insert Question(5.2, Date of HIV test, date, true, false)
+  * item[=]
+    * code = $LNC#67723-7
+    * enableWhen.question = "5.1"
+    * enableWhen.operator = #=
+    * enableWhen.answerCoding = $YesNoCodeSystem#true
+
+  * insert Question(5.3, HIV test result, quantity, true, false)
+  * item[=]
+    * code = $SCT#315124004
+    * enableWhen.question = "5.2"
+    * enableWhen.operator = #exists
+    * enableWhen.answerBoolean = true
