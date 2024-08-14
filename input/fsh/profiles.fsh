@@ -1198,8 +1198,6 @@ Description: "This is used to record the patient's cervical cancer screening res
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
 * valueCodeableConcept from CervicalCancerScreeningResultValueSet (required)
-* derivedFrom 1..1
-* derivedFrom only Reference(CervicalCancerScreeningStatus)
 * basedOn 0..* MS
 * basedOn ^definition =
     "reason(s) why this should be supported."

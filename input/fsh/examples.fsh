@@ -1450,7 +1450,6 @@ Description: "Indicates that the patient has a positive screening for HPV."
 * encounter = Reference(GeneralEncounterExample)
 * performer = Reference(CurrentServiceProviderExample)
 * effectiveDateTime = "2024-01-25"
-* derivedFrom = Reference(CervicalCancerScreeningDoneExample)
 * basedOn = Reference(CervicalCancerCarePlanHPVWithTreatmentRequestExample)
 
 Instance: CervicalCancerVIAPositiveScreeningResultExample
@@ -1467,7 +1466,6 @@ Description: "Indicates that the patient has a positive screening for VIA."
 * encounter = Reference(GeneralEncounterExample)
 * performer = Reference(CurrentServiceProviderExample)
 * effectiveDateTime = "2024-01-25"
-* derivedFrom = Reference(CervicalCancerScreeningDoneExample)
 * basedOn = Reference(CervicalCancerCarePlanVIAWithTreatmentRequestExample)
 
 Instance: CervicalCancerHPVNegativeScreeningResultExample
@@ -1484,7 +1482,6 @@ Description: "Indicates that the patient has a negative screening for HPV."
 * encounter = Reference(GeneralEncounterExample)
 * performer = Reference(CurrentServiceProviderExample)
 * effectiveDateTime = "2024-01-25"
-* derivedFrom = Reference(CervicalCancerScreeningDoneExample)
 
 Instance: CervicalCancerVIANegativeScreeningResultExample
 InstanceOf: CervicalCancerScreeningResult
@@ -1500,7 +1497,6 @@ Description: "Indicates that the patient has a negative screening for VIA."
 * encounter = Reference(GeneralEncounterExample)
 * performer = Reference(CurrentServiceProviderExample)
 * effectiveDateTime = "2024-01-25"
-* derivedFrom = Reference(CervicalCancerScreeningDoneExample)
 
 Instance: TargetPopulationExample
 InstanceOf: TargetPopulation
