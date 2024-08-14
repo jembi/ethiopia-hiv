@@ -2253,7 +2253,7 @@ Parent: GenericObservation
 Id: tb-treatment-status-observation
 Title: "Observation - TB Treatment Status"
 Description: "Documents the patient's TB treatment status."
-//* obeys Observation-TB-Treatment-Status-1 and Observation-TB-Treatment-Status-2
+* obeys Observation-TB-Treatment-Status-1 and Observation-TB-Treatment-Status-2
 * category 1..1
 * category = $OBSERVATION_CATEGORY#therapy
 * code = $LNC#45241-7
@@ -2261,7 +2261,7 @@ Description: "Documents the patient's TB treatment status."
 * valueCodeableConcept 1..1
 * valueCodeableConcept from TBTreatmentStatusValueSet (required)
 
-/** derivedFrom 1..1
+* derivedFrom 1..1
 * derivedFrom only Reference(TBTreatmentStartedObservation)
 
 * hasMember 0..* MS
@@ -2280,7 +2280,7 @@ Description: "Documents the patient's TB treatment status."
 
 * hasMember[ActiveTBCompleted] ^definition =
     "reason(s) why this should be supported."
-* hasMember[ActiveTBCompleted] only Reference(TreatmentCompletedObservation)*/
+* hasMember[ActiveTBCompleted] only Reference(TreatmentCompletedObservation)
 
 Profile: TreatmentDiscontinuedObservation
 Parent: GenericObservation
