@@ -2248,7 +2248,7 @@ Description: "Documents whether the patient has started TB treatment."
     "reason(s) why this should be supported."
 * basedOn only Reference(TBTreatmentCareplan)
 
-Profile: TBTreatmentStatusObservation
+/*Profile: TBTreatmentStatusObservation
 Parent: GenericObservation
 Id: tb-treatment-status-observation
 Title: "Observation - TB Treatment Status"
@@ -2259,7 +2259,7 @@ Description: "Documents the patient's TB treatment status."
 * code = $LNC#45241-7
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
-* valueCodeableConcept from TBTreatmentStatusValueSet (required)
+* valueCodeableConcept from TBTreatmentStatusValueSet (required)*/
 
 /** derivedFrom 1..1
 * derivedFrom only Reference(TBTreatmentStartedObservation)
@@ -2513,7 +2513,7 @@ Description: "Used to record the TB treatment details for the patient."
 * created 0..1 MS
 * created ^definition = "reason(s) why this should be supported."
 
-* activity 1..*
+//* activity 1..*
 
 /** activity.outcomeReference 1..*
 
@@ -2522,13 +2522,13 @@ Description: "Used to record the TB treatment details for the patient."
 * activity.outcomeReference contains
     TreatmentStatus 1..1
 
-* activity.outcomeReference[TreatmentStatus] only Reference(TBTreatmentStatusObservation)*/
+* activity.outcomeReference[TreatmentStatus] only Reference(TBTreatmentStatusObservation)
 
 * activity.outcomeReference 1..1
 * activity.outcomeReference only Reference(TBTreatmentStatusObservation)
 
 * activity.reference 1..1
-* activity.reference only Reference(TBScreeningServiceRequest)
+* activity.reference only Reference(TBScreeningServiceRequest)*/
 
 Profile: TPTMedicationRequest
 Parent: GenericMedicationRequest
