@@ -16,6 +16,7 @@ Description:
 //* insert ExampleTransactionalEntry(PartnerRelatedPersonExample, RelatedPerson)
 //* insert ExampleTransactionalEntry(SexualPartnerRelatedPersonBecomesPatientExample, Patient)
 //* insert ExampleTransactionalEntry(ChildRelatedPersonBecomesPatientExample, Patient)
+//* insert ExampleTransactionalEntry(ChildRelatedPersonExample, RelatedPerson)
 
 * insert ExampleTransactionalEntry(DifferentiatedServiceDeliveryFullExample, Observation)
 * insert ExampleTransactionalEntry(HighestEducationExample, Observation)
