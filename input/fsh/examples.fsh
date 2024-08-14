@@ -3332,7 +3332,7 @@ Description: "Indicates that the patient's current TB treatment status is TBRx1.
 * effectiveDateTime = "2023-12-11"
 * performer = Reference(CurrentServiceProviderExample)
 * valueCodeableConcept = $TBTreatmentStatusCodeSystem#TBRx1
-//* derivedFrom = Reference(TBTreatmentStartedAfterDiagnosticTestObservationExample)
+* derivedFrom = Reference(TBTreatmentStartedAfterDiagnosticTestObservationExample)
 
 Instance: TBTreatmentStatusRxDiscontinuedObservationExample
 InstanceOf: TBTreatmentStatusObservation
@@ -3349,7 +3349,7 @@ Description: "Indicates that the patient's current TB treatment status is TBRx-d
 * performer = Reference(CurrentServiceProviderExample)
 * valueCodeableConcept = $TBTreatmentStatusCodeSystem#TBRx-discontinued
 * hasMember[ActiveTBDiscontinued] = Reference(ActiveTBDiscontinuedObservationExample)
-//* derivedFrom = Reference(TBTreatmentStartedAfterDiagnosticTestObservationExample)
+* derivedFrom = Reference(TBTreatmentStartedAfterDiagnosticTestObservationExample)
 
 Instance: TBTreatmentStatusRxCompletedObservationExample
 InstanceOf: TBTreatmentStatusObservation
@@ -3366,7 +3366,7 @@ Description: "Indicates that the patient's current TB treatment status is TBRx-c
 * performer = Reference(CurrentServiceProviderExample)
 * valueCodeableConcept = $TBTreatmentStatusCodeSystem#TBRx-completed
 * hasMember[ActiveTBCompleted] = Reference(ActiveTBCompletedObservationExample)
-//* derivedFrom = Reference(TBTreatmentStartedAfterDiagnosticTestObservationExample)
+* derivedFrom = Reference(TBTreatmentStartedAfterDiagnosticTestObservationExample)
 
 Instance: TPTStartedObservationExample
 InstanceOf: TPTStartedObservation

@@ -2261,8 +2261,8 @@ Description: "Documents the patient's TB treatment status."
 * valueCodeableConcept 1..1
 * valueCodeableConcept from TBTreatmentStatusValueSet (required)
 
-//* derivedFrom 1..1
-//* derivedFrom only Reference(TBTreatmentStartedObservation)
+* derivedFrom 1..1
+* derivedFrom only Reference(TBTreatmentStartedObservation)
 
 * hasMember 0..* MS
 * hasMember ^definition =
