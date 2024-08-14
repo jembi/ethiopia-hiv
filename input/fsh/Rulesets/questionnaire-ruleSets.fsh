@@ -17,6 +17,11 @@ RuleSet: QuestionResponse(linkId, text, dataType, dataValue)
   * text = "{text}"
   * answer[+].{dataType} = {dataValue}
 
+RuleSet: QuestionResponseWithoutText(linkId, dataType, dataValue)
+* item[+]
+  * linkId = "{linkId}"
+  * answer[+].{dataType} = {dataValue}
+
 RuleSet: QuestionResponseForReference(linkId, text, dataValue)
 * item[+]
   * linkId = "{linkId}"

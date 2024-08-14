@@ -312,7 +312,7 @@ Description: "A questionaire that captures information for index case sex partne
     * answerValueSet = Canonical(PartnerNotificationPlanValueSet)
     * code[+] = $SCT#223454002
 
-  * insert Question(3.2, Was the partner notified?, choice, false, false)
+  * insert Question(3.2, Was the partner notified, choice, false, false)
   * item[=]
     * answerValueSet = Canonical(YesNoValueSet)
     * code[+] = $SCT#310368009
@@ -340,13 +340,10 @@ Description: "A questionaire that captures information for index case sex partne
   * item[=]
     * code = $IndexCasePartnerQuestionnaireCodeSystem#Date-Partner-Contacted
 
-  * insert Question(3.7, Reason partner not contacted, choice, true, false)
+  * insert Question(3.7, Reason partner not contacted, choice, false, false)
   * item[=]
     * code = $IndexCasePartnerQuestionnaireCodeSystem#Reason-Partner-Not-Contacted
     * answerValueSet = Canonical(ReasonPartnerNotContactedValueSet)
-    * enableWhen.question = "3.6"
-    * enableWhen.operator = #exists
-    * enableWhen.answerBoolean = false
 
   * insert Question(3.8, Other Reason partner not contacted, string, true, false)
   * item[=]
