@@ -3677,7 +3677,7 @@ Description: "Used to record the TB treatment details for the patient."
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * activity[+].reference = Reference(TBScreeningServiceRequestExample)
-* activity[=].outcomeReference = Reference(TBTreatmentStatusRx1ObservationExample)
+//* activity[=].outcomeReference = Reference(TBTreatmentStatusRx1ObservationExample)
 
 Instance: TPTMedicationExample
 InstanceOf: TPTMedication
@@ -3755,7 +3755,7 @@ Description: "Indicates that the patient tested HPV positive for cervical cancer
 * encounter = Reference(GeneralEncounterExample)
 * result = Reference(CervicalCancerHPVPositiveScreeningResultExample)
 * issued = "2024-01-25T11:45:33+11:00"
-//* basedOn = Reference(CervicalCancerScreeningServiceRequestForHPVExample)
+* basedOn = Reference(CervicalCancerScreeningServiceRequestForHPVExample)
 * performer = Reference(CurrentServiceProviderExample)
 
 Instance: CervicalCancerTreatmentServiceRequestForHPVExample
@@ -3841,7 +3841,7 @@ Description: "Indicates that the patient tested VIA positive for cervical cancer
 * encounter = Reference(GeneralEncounterExample)
 * result = Reference(CervicalCancerVIAPositiveScreeningResultExample)
 * issued = "2024-01-25T11:45:33+11:00"
-//* basedOn = Reference(CervicalCancerScreeningServiceRequestForVIAExample)
+* basedOn = Reference(CervicalCancerScreeningServiceRequestForVIAExample)
 * performer = Reference(CurrentServiceProviderExample)
 
 Instance: CervicalCancerTreatmentServiceRequestForVIAExample

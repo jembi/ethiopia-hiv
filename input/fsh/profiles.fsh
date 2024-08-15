@@ -362,7 +362,7 @@ Description: "Represents the results for the cervical cancer screening."
 * code = $LNC#72135-7
 * result 1..1
 * result only Reference(CervicalCancerScreeningResult)
-//* basedOn only Reference(CervicalCancerScreeningServiceRequest)
+* basedOn only Reference(CervicalCancerScreeningServiceRequest)
 
 Profile: CervicalCancerTreatmentServiceRequest
 Parent: GenericServiceRequest
