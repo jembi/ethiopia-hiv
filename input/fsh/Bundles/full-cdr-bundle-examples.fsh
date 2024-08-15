@@ -55,7 +55,7 @@ Description:
 * insert ExampleTransactionalEntry(TBTreatmentCareplanExample, CarePlan)
 * insert ExampleTransactionalEntry(TBScreeningServiceRequestExample, ServiceRequest)
 * insert ExampleTransactionalEntry(TBPositiveScreeningExample, Observation)
-//* insert ExampleTransactionalEntry(TBTreatmentStatusRx1ObservationExample, Observation)
+* insert ExampleTransactionalEntry(TBTreatmentStatusRx1ObservationExample, Observation)
 * insert ExampleTransactionalEntry(TBTreatmentStartedAfterDiagnosticTestObservationExample, Observation)
 * insert ExampleTransactionalEntry(TBDiagnosticTestResultExample, Observation)
 * insert ExampleTransactionalEntry(TBScreeningSpecimenExample, Specimen)
