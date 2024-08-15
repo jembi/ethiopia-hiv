@@ -362,7 +362,7 @@ Description: "Represents the results for the cervical cancer screening."
 * code = $LNC#72135-7
 * result 1..1
 * result only Reference(CervicalCancerScreeningResult)
-* basedOn only Reference(CervicalCancerScreeningServiceRequest)
+//* basedOn only Reference(CervicalCancerScreeningServiceRequest)
 
 Profile: CervicalCancerTreatmentServiceRequest
 Parent: GenericServiceRequest
@@ -386,8 +386,8 @@ Description: "This is used to record the date the patient received cervical canc
 * code = $LNC#LA13405-8
 * value[x] only dateTime
 * valueDateTime 1..1
-* basedOn 1..1
-* basedOn only Reference(CervicalCancerScreeningServiceRequest)
+//* basedOn 1..1
+//* basedOn only Reference(CervicalCancerScreeningServiceRequest)
 
 Profile: CervicalCancerCarePlan
 Parent: CarePlan
@@ -1690,7 +1690,7 @@ Description: "Base DiagnosticReport elements that are inherited by other Diagnos
 * encounter only Reference(TargetFacilityEncounter)
 * result 1..*
 * issued 1..1
-* basedOn 1..1
+//* basedOn 1..1
 * performer 1..*
 * performer only Reference(ServiceProvider)
 
@@ -2259,8 +2259,8 @@ Description: "Documents the patient's TB treatment status."
 * valueCodeableConcept 1..1
 * valueCodeableConcept from TBTreatmentStatusValueSet (required)
 
-* derivedFrom 1..1
-* derivedFrom only Reference(TBTreatmentStartedObservation)
+//* derivedFrom 1..1
+//* derivedFrom only Reference(TBTreatmentStartedObservation)
 
 * hasMember 0..* MS
 * hasMember ^definition =
