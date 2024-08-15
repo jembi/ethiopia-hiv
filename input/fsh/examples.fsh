@@ -3315,7 +3315,7 @@ Description: "Documents the details for the patient who completed TB treatment."
 * performer = Reference(CurrentServiceProviderExample)
 * valueDateTime = "2023-12-11"
 
-Instance: TBTreatmentStatusRx1ObservationExample
+/*Instance: TBTreatmentStatusRx1ObservationExample
 InstanceOf: TBTreatmentStatusObservation
 Usage: #example
 Title: "Observation - TB Treatment Status (TBRx1)"
@@ -3676,8 +3676,8 @@ Description: "Used to record the TB treatment details for the patient."
 * category[=].text = "TB treatment"
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
-* activity[+].reference = Reference(TBScreeningServiceRequestExample)
-* activity[=].outcomeReference = Reference(TBTreatmentStatusRx1ObservationExample)
+//* activity[+].reference = Reference(TBScreeningServiceRequestExample)
+//* activity[=].outcomeReference = Reference(TBTreatmentStatusRx1ObservationExample)
 
 Instance: TPTMedicationExample
 InstanceOf: TPTMedication
