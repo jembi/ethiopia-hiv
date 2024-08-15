@@ -2522,8 +2522,8 @@ Description: "Used to record the TB treatment details for the patient."
 
 * activity.outcomeReference[TreatmentStatus] only Reference(TBTreatmentStatusObservation)*/
 
-* activity.outcomeReference 1..1
-* activity.outcomeReference only Reference(TBTreatmentStatusObservation)
+//* activity.outcomeReference 1..1
+//* activity.outcomeReference only Reference(TBTreatmentStatusObservation)
 
 * activity.reference 1..1
 * activity.reference only Reference(TBScreeningServiceRequest)
