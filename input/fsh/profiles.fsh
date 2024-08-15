@@ -1127,7 +1127,7 @@ Parent: GenericObservation
 Id: cervical-cancer-screening-observation
 Title: "Observation - Cervical Cancer Screening"
 Description: "Represents the cervical cancer screening details."
-* obeys Cervical-Cancer-Screening-1
+//* obeys Cervical-Cancer-Screening-1
 * category 1..1
 * category = $OBSERVATION_CATEGORY#exam
 * code = $SCT#243877001
@@ -2251,7 +2251,7 @@ Parent: Observation
 Id: tb-treatment-status-observation
 Title: "Observation - TB Treatment Status"
 Description: "Documents the patient's TB treatment status."
-* obeys Observation-TB-Treatment-Status-1 and Observation-TB-Treatment-Status-2
+//* obeys Observation-TB-Treatment-Status-1 and Observation-TB-Treatment-Status-2
 * category 1..1
 * status 1..1
 * category = $OBSERVATION_CATEGORY#therapy
