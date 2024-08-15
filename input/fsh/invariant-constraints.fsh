@@ -43,10 +43,10 @@ Description: "If CarePlan.activity.reference for \"MedicationRequest\" is presen
 Expression: "reference.exists(type = 'http://moh.gov.et/fhir/hiv/StructureDefinition/arv-medication-request') implies extension.exists(url = 'http://moh.gov.et/fhir/hiv/StructureDefinition/care-plan-next-visit')"
 Severity: #error
 
-Invariant: Cervical-Cancer-Screening-1
+/*Invariant: Cervical-Cancer-Screening-1
 Description: "If Observation.valueCodeableConcept is \"1148678002\" then Observation.hasMember for slices \"ScreeningType\", \"ScreeningMethod\" and \"ScreeningResult\" SHALL be present."
 Expression: "value.coding.where(system = 'http://snomed.info/sct' and code = '1148678002').exists() implies hasMember.slice('http://moh.gov.et/fhir/hiv/StructureDefinition/cervical-cancer-screening-observation', 'ScreeningType').exists() and hasMember.slice('http://moh.gov.et/fhir/hiv/StructureDefinition/cervical-cancer-screening-observation', 'ScreeningMethod').exists() and hasMember.slice('http://moh.gov.et/fhir/hiv/StructureDefinition/cervical-cancer-screening-observation', 'ScreeningResult').exists()"
-Severity: #error
+Severity: #error*/
 
 Invariant: Cervical-Cancer-Screening-Result-1
 Description: "If Observation.valueCodeableConcept.coding.code is NOT \"via-negative\" and NOT \"hpv-negative\" then Observation.basedOn SHALL be present."
@@ -83,7 +83,7 @@ Description: "The DiagnosticReport SHALL have at least one of DiagnosticReport.r
 Expression: "result.slice('http://moh.gov.et/fhir/hiv/StructureDefinition/cd4-diagnostic-report', 'CD4AbsoluteCount').count() + result.slice('http://moh.gov.et/fhir/hiv/StructureDefinition/cd4-diagnostic-report', 'CD4Percentage').count() > 0"
 Severity: #error
 
-Invariant: Observation-TB-Treatment-Status-1
+/*Invariant: Observation-TB-Treatment-Status-1
 Description: "If Observation.valueCodeableConcept.coding.code is \"TBRx-discontinued\" then Observation.hasMember for slice \"ActiveTBDiscontinued\" SHALL be present."
 Expression: "value.coding.where(system = 'http://moh.gov.et/fhir/hiv/CodeSystem/tb-treatment-status-code-system' and code = 'TBRx-discontinued').exists() implies hasMember.slice('http://moh.gov.et/fhir/hiv/StructureDefinition/tb-treatment-status-observation', 'ActiveTBDiscontinued').exists()"
 Severity: #error
@@ -91,7 +91,7 @@ Severity: #error
 Invariant: Observation-TB-Treatment-Status-2
 Description: "If Observation.valueCodeableConcept.coding.code is \"TBRx-completed\" then Observation.hasMember for slice \"ActiveTBCompleted\" SHALL be present."
 Expression: "value.coding.where(system = 'http://moh.gov.et/fhir/hiv/CodeSystem/tb-treatment-status-code-system' and code = 'TBRx-completed').exists() implies hasMember.slice('http://moh.gov.et/fhir/hiv/StructureDefinition/tb-treatment-status-observation', 'ActiveTBCompleted').exists()"
-Severity: #error
+Severity: #error*/
 
 Invariant: Observation-TB-Treatment-Started-1
 Description: "If Observation.valueCodeableConcept.coding.code is \"true\" then extension for \"ObservedDate\" SHALL be present."
