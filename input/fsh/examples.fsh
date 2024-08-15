@@ -1450,7 +1450,6 @@ Description: "Indicates that the patient has a positive screening for HPV."
 * encounter = Reference(GeneralEncounterExample)
 * performer = Reference(CurrentServiceProviderExample)
 * effectiveDateTime = "2024-01-25"
-* derivedFrom = Reference(CervicalCancerScreeningDoneExample)
 * basedOn = Reference(CervicalCancerCarePlanHPVWithTreatmentRequestExample)
 
 Instance: CervicalCancerVIAPositiveScreeningResultExample
@@ -1467,7 +1466,6 @@ Description: "Indicates that the patient has a positive screening for VIA."
 * encounter = Reference(GeneralEncounterExample)
 * performer = Reference(CurrentServiceProviderExample)
 * effectiveDateTime = "2024-01-25"
-* derivedFrom = Reference(CervicalCancerScreeningDoneExample)
 * basedOn = Reference(CervicalCancerCarePlanVIAWithTreatmentRequestExample)
 
 Instance: CervicalCancerHPVNegativeScreeningResultExample
@@ -1484,7 +1482,6 @@ Description: "Indicates that the patient has a negative screening for HPV."
 * encounter = Reference(GeneralEncounterExample)
 * performer = Reference(CurrentServiceProviderExample)
 * effectiveDateTime = "2024-01-25"
-* derivedFrom = Reference(CervicalCancerScreeningDoneExample)
 
 Instance: CervicalCancerVIANegativeScreeningResultExample
 InstanceOf: CervicalCancerScreeningResult
@@ -1500,7 +1497,6 @@ Description: "Indicates that the patient has a negative screening for VIA."
 * encounter = Reference(GeneralEncounterExample)
 * performer = Reference(CurrentServiceProviderExample)
 * effectiveDateTime = "2024-01-25"
-* derivedFrom = Reference(CervicalCancerScreeningDoneExample)
 
 Instance: TargetPopulationExample
 InstanceOf: TargetPopulation
@@ -3253,7 +3249,7 @@ Description: "Indicates that the patient did not start TB treatment after being 
 * effectiveDateTime = "2023-12-11"
 * performer = Reference(CurrentServiceProviderExample)
 * valueCodeableConcept = $YesNoCodeSystem#false
-* hasMember[+] = Reference(TBDiagnosticTestResultExample)
+* derivedFrom[+] = Reference(TBDiagnosticTestResultExample)
 
 Instance: TBTreatmentStartedObservationExample
 InstanceOf: TBTreatmentStartedObservation
@@ -3286,7 +3282,8 @@ Description: "Indicates that the patient did start TB treatment after being test
 * performer = Reference(CurrentServiceProviderExample)
 * valueCodeableConcept = $YesNoCodeSystem#true
 * valueCodeableConcept.extension[ObservedDate].valueDateTime = "2023-10-21"
-* hasMember[+] = Reference(TBDiagnosticTestResultExample)
+* derivedFrom[+] = Reference(TBDiagnosticTestResultExample)
+* basedOn[+] = Reference(TBTreatmentCareplanExample)
 
 Instance: ActiveTBDiscontinuedObservationExample
 InstanceOf: TreatmentDiscontinuedObservation
@@ -3332,7 +3329,7 @@ Description: "Indicates that the patient's current TB treatment status is TBRx1.
 * effectiveDateTime = "2023-12-11"
 * performer = Reference(CurrentServiceProviderExample)
 * valueCodeableConcept = $TBTreatmentStatusCodeSystem#TBRx1
-* derivedFrom = Reference(TBTreatmentStartedAfterDiagnosticTestObservationExample)
+//* derivedFrom = Reference(TBTreatmentStartedAfterDiagnosticTestObservationExample)
 
 Instance: TBTreatmentStatusRxDiscontinuedObservationExample
 InstanceOf: TBTreatmentStatusObservation
@@ -3348,8 +3345,8 @@ Description: "Indicates that the patient's current TB treatment status is TBRx-d
 * effectiveDateTime = "2023-12-11"
 * performer = Reference(CurrentServiceProviderExample)
 * valueCodeableConcept = $TBTreatmentStatusCodeSystem#TBRx-discontinued
-//* hasMember[ActiveTBDiscontinued] = Reference(ActiveTBDiscontinuedObservationExample)
-* derivedFrom = Reference(TBTreatmentStartedAfterDiagnosticTestObservationExample)
+* hasMember[ActiveTBDiscontinued] = Reference(ActiveTBDiscontinuedObservationExample)
+//* derivedFrom = Reference(TBTreatmentStartedAfterDiagnosticTestObservationExample)
 
 Instance: TBTreatmentStatusRxCompletedObservationExample
 InstanceOf: TBTreatmentStatusObservation
@@ -3365,8 +3362,8 @@ Description: "Indicates that the patient's current TB treatment status is TBRx-c
 * effectiveDateTime = "2023-12-11"
 * performer = Reference(CurrentServiceProviderExample)
 * valueCodeableConcept = $TBTreatmentStatusCodeSystem#TBRx-completed
-//* hasMember[ActiveTBCompleted] = Reference(ActiveTBCompletedObservationExample)
-* derivedFrom = Reference(TBTreatmentStartedAfterDiagnosticTestObservationExample)*/
+* hasMember[ActiveTBCompleted] = Reference(ActiveTBCompletedObservationExample)
+//* derivedFrom = Reference(TBTreatmentStartedAfterDiagnosticTestObservationExample)
 
 Instance: TPTStartedObservationExample
 InstanceOf: TPTStartedObservation
@@ -3758,7 +3755,7 @@ Description: "Indicates that the patient tested HPV positive for cervical cancer
 * encounter = Reference(GeneralEncounterExample)
 * result = Reference(CervicalCancerHPVPositiveScreeningResultExample)
 * issued = "2024-01-25T11:45:33+11:00"
-* basedOn = Reference(CervicalCancerScreeningServiceRequestForHPVExample)
+//* basedOn = Reference(CervicalCancerScreeningServiceRequestForHPVExample)
 * performer = Reference(CurrentServiceProviderExample)
 
 Instance: CervicalCancerTreatmentServiceRequestForHPVExample
@@ -3788,7 +3785,7 @@ Description: "Indicates that the patient received cryotherapy as treatment after
 * effectiveDateTime = "2023-12-11"
 * performer = Reference(CurrentServiceProviderExample)
 * valueDateTime = "2023-12-11"
-* basedOn = Reference(CervicalCancerScreeningServiceRequestForHPVExample)
+//* basedOn = Reference(CervicalCancerScreeningServiceRequestForHPVExample)
 
 Instance: CervicalCancerCarePlanHPVExample
 InstanceOf: CervicalCancerCarePlan
@@ -3844,7 +3841,7 @@ Description: "Indicates that the patient tested VIA positive for cervical cancer
 * encounter = Reference(GeneralEncounterExample)
 * result = Reference(CervicalCancerVIAPositiveScreeningResultExample)
 * issued = "2024-01-25T11:45:33+11:00"
-* basedOn = Reference(CervicalCancerScreeningServiceRequestForVIAExample)
+//* basedOn = Reference(CervicalCancerScreeningServiceRequestForVIAExample)
 * performer = Reference(CurrentServiceProviderExample)
 
 Instance: CervicalCancerTreatmentServiceRequestForVIAExample
@@ -3874,7 +3871,7 @@ Description: "Indicates that the patient received cryotherapy as treatment after
 * effectiveDateTime = "2023-12-11"
 * performer = Reference(CurrentServiceProviderExample)
 * valueDateTime = "2023-12-11"
-* basedOn = Reference(CervicalCancerScreeningServiceRequestForVIAExample)
+//* basedOn = Reference(CervicalCancerScreeningServiceRequestForVIAExample)
 
 Instance: CervicalCancerCarePlanVIAExample
 InstanceOf: CervicalCancerCarePlan
