@@ -2257,7 +2257,7 @@ Description: "Documents the patient's TB treatment status."
 * code = $LNC#45241-7
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
-//* valueCodeableConcept from TBTreatmentStatusValueSet (required)
+* valueCodeableConcept from TBTreatmentStatusValueSet (required)
 
 //* derivedFrom 1..1
 //* derivedFrom only Reference(TBTreatmentStartedObservation)
