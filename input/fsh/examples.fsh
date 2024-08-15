@@ -4701,3 +4701,450 @@ Description: "A questionaire response that documents the answers to the question
 
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"
+
+Instance: IndexCaseSexPartnerExample1
+InstanceOf: QuestionnaireResponse
+Usage: #example
+Title: "Questionnaire Response - Sex Partner Information (Example 1)"
+Description: "A questionaire response that documents the answers to the questions regarding index case sex partners."
+* questionnaire = Canonical(IndexCaseSexPartnerQuestionnaire)
+* status = #completed
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+
+* insert QuestionResponse(1.1, Date of last exposure, valueDate, 2008-10-13)
+* insert QuestionResponse(1.2, Period of exposure if the exact date of exposure is not known, valueCoding, $PeriodOfExposureCodeSystem#<3Mths)
+* insert QuestionResponse(1.3, Priority category, valueInteger, 2)
+
+* item[+].linkId = "2"
+* item[=]
+  * insert QuestionResponse(2.1, Violence Assessment Completed, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponseWithoutText(2.2, valueCoding, $YesNoCodeSystem#false)
+  * item[=]
+    * text = "Have you been kicked, hit, slapped, or otherwise physically hurt by your partner"
+  * insert QuestionResponse(2.3, Has you partner ever threatened to hurt you, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(2.4, Has you partner ever forced or coerced you to engage in unwanted sexual activity, valueCoding, $YesNoCodeSystem#true)
+
+* item[+].linkId = "3"
+* item[=]
+  * insert QuestionResponse(3.1, What is the plan for notifying the partner regarding the index case's HIV status, valueCoding, $PartnerNotificationPlanCodeSystem#Provider-Referral)
+  * insert QuestionResponse(3.2, Was the partner notified, valueCoding, $YesNoCodeSystem#true)
+
+* author = Reference(GeneralPractitionerExample)
+* authored = "2008-10-13"
+
+Instance: IndexCaseSexPartnerExample2
+InstanceOf: QuestionnaireResponse
+Usage: #example
+Title: "Questionnaire Response - Sex Partner Information (Example 2)"
+Description: "A questionaire response that documents the answers to the questions regarding index case sex partners."
+* questionnaire = Canonical(IndexCaseSexPartnerQuestionnaire)
+* status = #completed
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+
+* insert QuestionResponse(1.1, Date of last exposure, valueDate, 2008-10-13)
+* insert QuestionResponse(1.2, Period of exposure if the exact date of exposure is not known, valueCoding, $PeriodOfExposureCodeSystem#<3Mths)
+* insert QuestionResponse(1.3, Priority category, valueInteger, 2)
+
+* item[+].linkId = "2"
+* item[=]
+  * insert QuestionResponse(2.1, Violence Assessment Completed, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponseWithoutText(2.2, valueCoding, $YesNoCodeSystem#false)
+  * item[=]
+    * text = "Have you been kicked, hit, slapped, or otherwise physically hurt by your partner"
+  * insert QuestionResponse(2.3, Has you partner ever threatened to hurt you, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(2.4, Has you partner ever forced or coerced you to engage in unwanted sexual activity, valueCoding, $YesNoCodeSystem#true)
+
+* item[+].linkId = "3"
+* item[=]
+  * insert QuestionResponse(3.1, What is the plan for notifying the partner regarding the index case's HIV status, valueCoding, $PartnerNotificationPlanCodeSystem#Provider-Referral)
+  * insert QuestionResponse(3.2, Was the partner notified, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(3.3, Reason for not being notified, valueCoding, $LNC#LA4389-8)
+
+* author = Reference(GeneralPractitionerExample)
+* authored = "2008-10-13"
+
+Instance: IndexCaseSexPartnerExample3
+InstanceOf: QuestionnaireResponse
+Usage: #example
+Title: "Questionnaire Response - Sex Partner Information (Example 3)"
+Description: "A questionaire response that documents the answers to the questions regarding index case sex partners."
+* questionnaire = Canonical(IndexCaseSexPartnerQuestionnaire)
+* status = #completed
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+
+* insert QuestionResponse(1.1, Date of last exposure, valueDate, 2008-10-13)
+* insert QuestionResponse(1.2, Period of exposure if the exact date of exposure is not known, valueCoding, $PeriodOfExposureCodeSystem#<3Mths)
+* insert QuestionResponse(1.3, Priority category, valueInteger, 2)
+
+* item[+].linkId = "2"
+* item[=]
+  * insert QuestionResponse(2.1, Violence Assessment Completed, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponseWithoutText(2.2, valueCoding, $YesNoCodeSystem#false)
+  * item[=]
+    * text = "Have you been kicked, hit, slapped, or otherwise physically hurt by your partner"
+  * insert QuestionResponse(2.3, Has you partner ever threatened to hurt you, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(2.4, Has you partner ever forced or coerced you to engage in unwanted sexual activity, valueCoding, $YesNoCodeSystem#true)
+
+* item[+].linkId = "3"
+* item[=]
+  * insert QuestionResponse(3.1, What is the plan for notifying the partner regarding the index case's HIV status, valueCoding, $PartnerNotificationPlanCodeSystem#Provider-Referral)
+  * insert QuestionResponse(3.2, Was the partner notified, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(3.3, Reason for not being notified, valueCoding, $LNC#LA46-8)
+  * insert QuestionResponse(3.4, Other Reason for not being notified, valueString, "some reason")
+  * insert QuestionResponse(3.5, Date notification offered, valueDate, 2008-10-13)
+  * insert QuestionResponse(3.6, Date partner contacted, valueDate, 2008-10-13)
+
+* author = Reference(GeneralPractitionerExample)
+* authored = "2008-10-13"
+
+Instance: IndexCaseSexPartnerExample4
+InstanceOf: QuestionnaireResponse
+Usage: #example
+Title: "Questionnaire Response - Sex Partner Information (Example 4)"
+Description: "A questionaire response that documents the answers to the questions regarding index case sex partners."
+* questionnaire = Canonical(IndexCaseSexPartnerQuestionnaire)
+* status = #completed
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+
+* insert QuestionResponse(1.1, Date of last exposure, valueDate, 2008-10-13)
+* insert QuestionResponse(1.2, Period of exposure if the exact date of exposure is not known, valueCoding, $PeriodOfExposureCodeSystem#<3Mths)
+* insert QuestionResponse(1.3, Priority category, valueInteger, 2)
+
+* item[+].linkId = "2"
+* item[=]
+  * insert QuestionResponse(2.1, Violence Assessment Completed, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponseWithoutText(2.2, valueCoding, $YesNoCodeSystem#false)
+  * item[=]
+    * text = "Have you been kicked, hit, slapped, or otherwise physically hurt by your partner"
+  * insert QuestionResponse(2.3, Has you partner ever threatened to hurt you, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(2.4, Has you partner ever forced or coerced you to engage in unwanted sexual activity, valueCoding, $YesNoCodeSystem#true)
+
+* item[+].linkId = "3"
+* item[=]
+  * insert QuestionResponse(3.1, What is the plan for notifying the partner regarding the index case's HIV status, valueCoding, $PartnerNotificationPlanCodeSystem#Provider-Referral)
+  * insert QuestionResponse(3.2, Was the partner notified, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(3.3, Reason for not being notified, valueCoding, $LNC#LA46-8)
+  * insert QuestionResponse(3.4, Other Reason for not being notified, valueString, "some reason")
+  * insert QuestionResponse(3.5, Date notification offered, valueDate, 2008-10-13)
+  * insert QuestionResponse(3.7, Reason partner not contacted, valueCoding, $IndexCasePartnerQuestionnaireCodeSystem#Partner-Unreachable)
+
+* author = Reference(GeneralPractitionerExample)
+* authored = "2008-10-13"
+
+Instance: IndexCaseSexPartnerExample5
+InstanceOf: QuestionnaireResponse
+Usage: #example
+Title: "Questionnaire Response - Sex Partner Information (Example 5)"
+Description: "A questionaire response that documents the answers to the questions regarding index case sex partners."
+* questionnaire = Canonical(IndexCaseSexPartnerQuestionnaire)
+* status = #completed
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+
+* insert QuestionResponse(1.1, Date of last exposure, valueDate, 2008-10-13)
+* insert QuestionResponse(1.2, Period of exposure if the exact date of exposure is not known, valueCoding, $PeriodOfExposureCodeSystem#<3Mths)
+* insert QuestionResponse(1.3, Priority category, valueInteger, 2)
+
+* item[+].linkId = "2"
+* item[=]
+  * insert QuestionResponse(2.1, Violence Assessment Completed, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponseWithoutText(2.2, valueCoding, $YesNoCodeSystem#false)
+  * item[=]
+    * text = "Have you been kicked, hit, slapped, or otherwise physically hurt by your partner"
+  * insert QuestionResponse(2.3, Has you partner ever threatened to hurt you, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(2.4, Has you partner ever forced or coerced you to engage in unwanted sexual activity, valueCoding, $YesNoCodeSystem#true)
+
+* item[+].linkId = "3"
+* item[=]
+  * insert QuestionResponse(3.1, What is the plan for notifying the partner regarding the index case's HIV status, valueCoding, $PartnerNotificationPlanCodeSystem#Provider-Referral)
+  * insert QuestionResponse(3.2, Was the partner notified, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(3.3, Reason for not being notified, valueCoding, $LNC#LA46-8)
+  * insert QuestionResponse(3.4, Other Reason for not being notified, valueString, "some reason")
+  * insert QuestionResponse(3.5, Date notification offered, valueDate, 2008-10-13)
+  * insert QuestionResponse(3.7, Reason partner not contacted, valueCoding, $LNC#LA46-8)
+  * insert QuestionResponse(3.8, Other Reason partner not contacted, valueString, "some reason")
+
+* item[+].linkId = "4"
+* item[=]
+  * insert QuestionResponse(4.1, Has the partner been previsouly tested for HIV, valueCoding, $YesNoCodeSystem#false)
+
+* author = Reference(GeneralPractitionerExample)
+* authored = "2008-10-13"
+
+Instance: IndexCaseSexPartnerExample6
+InstanceOf: QuestionnaireResponse
+Usage: #example
+Title: "Questionnaire Response - Sex Partner Information (Example 6)"
+Description: "A questionaire response that documents the answers to the questions regarding index case sex partners."
+* questionnaire = Canonical(IndexCaseSexPartnerQuestionnaire)
+* status = #completed
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+
+* insert QuestionResponse(1.1, Date of last exposure, valueDate, 2008-10-13)
+* insert QuestionResponse(1.2, Period of exposure if the exact date of exposure is not known, valueCoding, $PeriodOfExposureCodeSystem#<3Mths)
+* insert QuestionResponse(1.3, Priority category, valueInteger, 2)
+
+* item[+].linkId = "2"
+* item[=]
+  * insert QuestionResponse(2.1, Violence Assessment Completed, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponseWithoutText(2.2, valueCoding, $YesNoCodeSystem#false)
+  * item[=]
+    * text = "Have you been kicked, hit, slapped, or otherwise physically hurt by your partner"
+  * insert QuestionResponse(2.3, Has you partner ever threatened to hurt you, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(2.4, Has you partner ever forced or coerced you to engage in unwanted sexual activity, valueCoding, $YesNoCodeSystem#true)
+
+* item[+].linkId = "3"
+* item[=]
+  * insert QuestionResponse(3.1, What is the plan for notifying the partner regarding the index case's HIV status, valueCoding, $PartnerNotificationPlanCodeSystem#Provider-Referral)
+  * insert QuestionResponse(3.2, Was the partner notified, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(3.3, Reason for not being notified, valueCoding, $LNC#LA46-8)
+  * insert QuestionResponse(3.4, Other Reason for not being notified, valueString, "some reason")
+  * insert QuestionResponse(3.5, Date notification offered, valueDate, 2008-10-13)
+  * insert QuestionResponse(3.7, Reason partner not contacted, valueCoding, $LNC#LA46-8)
+  * insert QuestionResponse(3.8, Other Reason partner not contacted, valueString, "some reason")
+
+* item[+].linkId = "4"
+* item[=]
+  * insert QuestionResponse(4.1, Has the partner been previsouly tested for HIV, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(4.2, Date of previous HIV test, valueDate, 2007-10-13)
+  * insert QuestionResponseForQuantity(4.3, Previous HIV test result, 1001, 1/mL, copies/mL)
+
+* item[+].linkId = "5"
+* item[=]
+  * insert QuestionResponse(5.1, Will the partner be tested for HIV, valueCoding, $YesNoCodeSystem#false)
+
+* author = Reference(GeneralPractitionerExample)
+* authored = "2008-10-13"
+
+Instance: IndexCaseSexPartnerExample7
+InstanceOf: QuestionnaireResponse
+Usage: #example
+Title: "Questionnaire Response - Sex Partner Information (Example 7)"
+Description: "A questionaire response that documents the answers to the questions regarding index case sex partners."
+* questionnaire = Canonical(IndexCaseSexPartnerQuestionnaire)
+* status = #completed
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+
+* insert QuestionResponse(1.1, Date of last exposure, valueDate, 2008-10-13)
+* insert QuestionResponse(1.2, Period of exposure if the exact date of exposure is not known, valueCoding, $PeriodOfExposureCodeSystem#<3Mths)
+* insert QuestionResponse(1.3, Priority category, valueInteger, 2)
+
+* item[+].linkId = "2"
+* item[=]
+  * insert QuestionResponse(2.1, Violence Assessment Completed, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponseWithoutText(2.2, valueCoding, $YesNoCodeSystem#false)
+  * item[=]
+    * text = "Have you been kicked, hit, slapped, or otherwise physically hurt by your partner"
+  * insert QuestionResponse(2.3, Has you partner ever threatened to hurt you, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(2.4, Has you partner ever forced or coerced you to engage in unwanted sexual activity, valueCoding, $YesNoCodeSystem#true)
+
+* item[+].linkId = "3"
+* item[=]
+  * insert QuestionResponse(3.1, What is the plan for notifying the partner regarding the index case's HIV status, valueCoding, $PartnerNotificationPlanCodeSystem#Provider-Referral)
+  * insert QuestionResponse(3.2, Was the partner notified, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(3.3, Reason for not being notified, valueCoding, $LNC#LA46-8)
+  * insert QuestionResponse(3.4, Other Reason for not being notified, valueString, "some reason")
+  * insert QuestionResponse(3.5, Date notification offered, valueDate, 2008-10-13)
+  * insert QuestionResponse(3.7, Reason partner not contacted, valueCoding, $LNC#LA46-8)
+  * insert QuestionResponse(3.8, Other Reason partner not contacted, valueString, "some reason")
+
+* item[+].linkId = "4"
+* item[=]
+  * insert QuestionResponse(4.1, Has the partner been previsouly tested for HIV, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(4.2, Date of previous HIV test, valueDate, 2007-10-13)
+  * insert QuestionResponseForQuantity(4.3, Previous HIV test result, 1001, 1/mL, copies/mL)
+
+* item[+].linkId = "5"
+* item[=]
+  * insert QuestionResponse(5.1, Will the partner be tested for HIV, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(5.2, Date of HIV test, valueDate, 2007-10-13)
+  * insert QuestionResponseForQuantity(5.3, HIV test result, 988, 1/mL, copies/mL)
+
+* item[+].linkId = "6"
+* item[=]
+  * insert QuestionResponse(6.1, Is the newly diagnosed partner linked to partner services, valueCoding, $YesNoCodeSystem#true)
+
+* author = Reference(GeneralPractitionerExample)
+* authored = "2008-10-13"
+
+Instance: IndexCaseSexPartnerExample8
+InstanceOf: QuestionnaireResponse
+Usage: #example
+Title: "Questionnaire Response - Sex Partner Information (Example 8)"
+Description: "A questionaire response that documents the answers to the questions regarding index case sex partners."
+* questionnaire = Canonical(IndexCaseSexPartnerQuestionnaire)
+* status = #completed
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+
+* insert QuestionResponse(1.1, Date of last exposure, valueDate, 2008-10-13)
+* insert QuestionResponse(1.2, Period of exposure if the exact date of exposure is not known, valueCoding, $PeriodOfExposureCodeSystem#<3Mths)
+* insert QuestionResponse(1.3, Priority category, valueInteger, 2)
+
+* item[+].linkId = "2"
+* item[=]
+  * insert QuestionResponse(2.1, Violence Assessment Completed, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponseWithoutText(2.2, valueCoding, $YesNoCodeSystem#false)
+  * item[=]
+    * text = "Have you been kicked, hit, slapped, or otherwise physically hurt by your partner"
+  * insert QuestionResponse(2.3, Has you partner ever threatened to hurt you, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(2.4, Has you partner ever forced or coerced you to engage in unwanted sexual activity, valueCoding, $YesNoCodeSystem#true)
+
+* item[+].linkId = "3"
+* item[=]
+  * insert QuestionResponse(3.1, What is the plan for notifying the partner regarding the index case's HIV status, valueCoding, $PartnerNotificationPlanCodeSystem#Provider-Referral)
+  * insert QuestionResponse(3.2, Was the partner notified, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(3.3, Reason for not being notified, valueCoding, $LNC#LA46-8)
+  * insert QuestionResponse(3.4, Other Reason for not being notified, valueString, "some reason")
+  * insert QuestionResponse(3.5, Date notification offered, valueDate, 2008-10-13)
+  * insert QuestionResponse(3.7, Reason partner not contacted, valueCoding, $LNC#LA46-8)
+  * insert QuestionResponse(3.8, Other Reason partner not contacted, valueString, "some reason")
+
+* item[+].linkId = "4"
+* item[=]
+  * insert QuestionResponse(4.1, Has the partner been previsouly tested for HIV, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(4.2, Date of previous HIV test, valueDate, 2007-10-13)
+  * insert QuestionResponseForQuantity(4.3, Previous HIV test result, 1001, 1/mL, copies/mL)
+
+* item[+].linkId = "5"
+* item[=]
+  * insert QuestionResponse(5.1, Will the partner be tested for HIV, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(5.2, Date of HIV test, valueDate, 2007-10-13)
+  * insert QuestionResponseForQuantity(5.3, HIV test result, 988, 1/mL, copies/mL)
+
+* item[+].linkId = "6"
+* item[=]
+  * insert QuestionResponse(6.1, Is the newly diagnosed partner linked to partner services, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(6.2, Reason why the newly diagnosed partner is not linked to partner services, valueCoding, $LNC#LA4389-8)
+
+* author = Reference(GeneralPractitionerExample)
+* authored = "2008-10-13"
+
+Instance: IndexCaseSexPartnerExample9
+InstanceOf: QuestionnaireResponse
+Usage: #example
+Title: "Questionnaire Response - Sex Partner Information (Example 9)"
+Description: "A questionaire response that documents the answers to the questions regarding index case sex partners."
+* questionnaire = Canonical(IndexCaseSexPartnerQuestionnaire)
+* status = #completed
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+
+* insert QuestionResponse(1.1, Date of last exposure, valueDate, 2008-10-13)
+* insert QuestionResponse(1.2, Period of exposure if the exact date of exposure is not known, valueCoding, $PeriodOfExposureCodeSystem#<3Mths)
+* insert QuestionResponse(1.3, Priority category, valueInteger, 2)
+
+* item[+].linkId = "2"
+* item[=]
+  * insert QuestionResponse(2.1, Violence Assessment Completed, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponseWithoutText(2.2, valueCoding, $YesNoCodeSystem#false)
+  * item[=]
+    * text = "Have you been kicked, hit, slapped, or otherwise physically hurt by your partner"
+  * insert QuestionResponse(2.3, Has you partner ever threatened to hurt you, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(2.4, Has you partner ever forced or coerced you to engage in unwanted sexual activity, valueCoding, $YesNoCodeSystem#true)
+
+* item[+].linkId = "3"
+* item[=]
+  * insert QuestionResponse(3.1, What is the plan for notifying the partner regarding the index case's HIV status, valueCoding, $PartnerNotificationPlanCodeSystem#Provider-Referral)
+  * insert QuestionResponse(3.2, Was the partner notified, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(3.3, Reason for not being notified, valueCoding, $LNC#LA46-8)
+  * insert QuestionResponse(3.4, Other Reason for not being notified, valueString, "some reason")
+  * insert QuestionResponse(3.5, Date notification offered, valueDate, 2008-10-13)
+  * insert QuestionResponse(3.7, Reason partner not contacted, valueCoding, $LNC#LA46-8)
+  * insert QuestionResponse(3.8, Other Reason partner not contacted, valueString, "some reason")
+
+* item[+].linkId = "4"
+* item[=]
+  * insert QuestionResponse(4.1, Has the partner been previsouly tested for HIV, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(4.2, Date of previous HIV test, valueDate, 2007-10-13)
+  * insert QuestionResponseForQuantity(4.3, Previous HIV test result, 1001, 1/mL, copies/mL)
+
+* item[+].linkId = "5"
+* item[=]
+  * insert QuestionResponse(5.1, Will the partner be tested for HIV, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(5.2, Date of HIV test, valueDate, 2007-10-13)
+  * insert QuestionResponseForQuantity(5.3, HIV test result, 988, 1/mL, copies/mL)
+
+* item[+].linkId = "6"
+* item[=]
+  * insert QuestionResponse(6.1, Is the newly diagnosed partner linked to partner services, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(6.2, Reason why the newly diagnosed partner is not linked to partner services, valueCoding, $LNC#LA46-8)
+  * insert QuestionResponse(6.3, Other Reason for not being notified, valueString, "some reason")
+
+* item[+].linkId = "7"
+* item[=]
+  * insert QuestionResponse(7.1, Has the partner started ART, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponseForReference(7.2, Partner identifiers, SexualPartnerRelatedPersonBecomesPatientExample)
+
+* insert QuestionResponse(8.1, Case closure status, valueCoding, $LNC#LA4389-8)
+
+* author = Reference(GeneralPractitionerExample)
+* authored = "2008-10-13"
+
+Instance: IndexCaseSexPartnerExample10
+InstanceOf: QuestionnaireResponse
+Usage: #example
+Title: "Questionnaire Response - Sex Partner Information (Example 10)"
+Description: "A questionaire response that documents the answers to the questions regarding index case sex partners."
+* questionnaire = Canonical(IndexCaseSexPartnerQuestionnaire)
+* status = #completed
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+
+* insert QuestionResponse(1.1, Date of last exposure, valueDate, 2008-10-13)
+* insert QuestionResponse(1.2, Period of exposure if the exact date of exposure is not known, valueCoding, $PeriodOfExposureCodeSystem#<3Mths)
+* insert QuestionResponse(1.3, Priority category, valueInteger, 2)
+
+* item[+].linkId = "2"
+* item[=]
+  * insert QuestionResponse(2.1, Violence Assessment Completed, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponseWithoutText(2.2, valueCoding, $YesNoCodeSystem#false)
+  * item[=]
+    * text = "Have you been kicked, hit, slapped, or otherwise physically hurt by your partner"
+  * insert QuestionResponse(2.3, Has you partner ever threatened to hurt you, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(2.4, Has you partner ever forced or coerced you to engage in unwanted sexual activity, valueCoding, $YesNoCodeSystem#true)
+
+* item[+].linkId = "3"
+* item[=]
+  * insert QuestionResponse(3.1, What is the plan for notifying the partner regarding the index case's HIV status, valueCoding, $PartnerNotificationPlanCodeSystem#Provider-Referral)
+  * insert QuestionResponse(3.2, Was the partner notified, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(3.3, Reason for not being notified, valueCoding, $LNC#LA46-8)
+  * insert QuestionResponse(3.4, Other Reason for not being notified, valueString, "some reason")
+  * insert QuestionResponse(3.5, Date notification offered, valueDate, 2008-10-13)
+  * insert QuestionResponse(3.7, Reason partner not contacted, valueCoding, $LNC#LA46-8)
+  * insert QuestionResponse(3.8, Other Reason partner not contacted, valueString, "some reason")
+
+* item[+].linkId = "4"
+* item[=]
+  * insert QuestionResponse(4.1, Has the partner been previsouly tested for HIV, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(4.2, Date of previous HIV test, valueDate, 2007-10-13)
+  * insert QuestionResponseForQuantity(4.3, Previous HIV test result, 1001, 1/mL, copies/mL)
+
+* item[+].linkId = "5"
+* item[=]
+  * insert QuestionResponse(5.1, Will the partner be tested for HIV, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(5.2, Date of HIV test, valueDate, 2007-10-13)
+  * insert QuestionResponseForQuantity(5.3, HIV test result, 988, 1/mL, copies/mL)
+
+* item[+].linkId = "6"
+* item[=]
+  * insert QuestionResponse(6.1, Is the newly diagnosed partner linked to partner services, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(6.2, Reason why the newly diagnosed partner is not linked to partner services, valueCoding, $LNC#LA46-8)
+  * insert QuestionResponse(6.3, Other Reason for not being notified, valueString, "some reason")
+
+* item[+].linkId = "7"
+* item[=]
+  * insert QuestionResponse(7.1, Has the partner started ART, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponseForReference(7.2, Partner identifiers, SexualPartnerRelatedPersonBecomesPatientExample)
+
+* insert QuestionResponse(8.1, Case closure status, valueCoding, $LNC#LA46-8)
+* insert QuestionResponse(8.2, Other Reason for case closure, valueString, "some reason")
+
+* author = Reference(GeneralPractitionerExample)
+* authored = "2008-10-13"

@@ -83,3 +83,4 @@ Description:
 * insert ExampleTransactionalEntry(IndexCaseAssessmentFullExample, QuestionnaireResponse)
 * insert ExampleTransactionalEntry(IndexCaseContactHealthStatusFamilyMemberExample, Observation)
 * insert ExampleTransactionalEntry(FamilyIndexCaseContactsFullExample, QuestionnaireResponse)
+* insert ExampleTransactionalEntry(IndexCaseSexPartnerExample10, QuestionnaireResponse)

@@ -60,3 +60,6 @@ Alias: $ConditionClinicalStatusCodeSystem = http://terminology.hl7.org/CodeSyste
 Alias: $CD4VLTreatmentFailureClassificationCodeSystem = http://moh.gov.et/fhir/hiv/CodeSystem/cd4-vl-classification-for-treatment-failure-code-system
 Alias: $PartnerAndFBICTCodeSystem = http://moh.gov.et/fhir/hiv/CodeSystem/partner-and-fbict-code-system
 Alias: $IndexCasePartnerQuestionnaireCodeSystem = http://moh.gov.et/fhir/hiv/CodeSystem/index-case-partner-questionnaire-code-system
+Alias: $PeriodOfExposureCodeSystem = http://moh.gov.et/fhir/hiv/CodeSystem/period-of-hiv-exposure-code-system
+Alias: $PartnerNotificationPlanCodeSystem = http://moh.gov.et/fhir/hiv/CodeSystem/partner-notification-plan-code-system
+Alias: $CaseClosureStatusSexPartnerCodeSystem = http://moh.gov.et/fhir/hiv/CodeSystem/partner-case-closure-status-value-set

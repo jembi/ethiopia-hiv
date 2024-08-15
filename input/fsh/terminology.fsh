@@ -1230,6 +1230,14 @@ Description: "Proprietary Codes used in the Index Case Partner Questionnaire."
 * #Reason-Partner-Not-Contacted "Reason Partner Not Contacted"
 * #Partner-Unreachable "Unable to Locate the Partner"
 * #Other-Reason-Partner-Not-Contacted "Other Reason Partner Not Contacted"
+* #Linked-to-Partner-Services "Linked to Partner Services"
+* #Reason-Not-Linked-to-Partner-Services "Reason Not Linked to Partner Services"
+* #Other-Reason-Not-Linked-to-Partner-Services "Other Reason Not Linked to Partner Services"
+* #Partner-Case-Closure-Status "Partner Case Closure Status"
+* #Other-Reason-Partner-Case-Closure "Other Reason Partner Case Closure"
+* #Successful-Intervention "Successful Intervention"
+* #Intervention-Completed "Intervention Completed"
+* #Intervention-Partially-Completed "Intervention Partially Completed"
 
 ValueSet: ReasonPartnerNotContactedValueSet
 Id: reason-partner-not-contacted-value-set
@@ -1238,3 +1246,26 @@ Description: "Codes used for indicating the reason why the partner was not conta
 * ^experimental = false
 * $LNC#LA46-8 "Other"
 * $IndexCasePartnerQuestionnaireCodeSystem#Partner-Unreachable
+
+ValueSet: ReasonNotLinkedToPartnerServicesValueSet
+Id: reason-not-linked-to-partner-services-value-set
+Title: "Reason Not Linked to Partner Services"
+Description: "Codes used for indicating the reason why the partner was not linked to partner services."
+* ^experimental = false
+* $LNC#LA46-8 "Other"
+* $LNC#LA4389-8 "Refused"
+* $LNC#LA6624-6 "Referred"
+
+ValueSet: PartnerCaseClosureStatusValueSet
+Id: partner-case-closure-status-value-set
+Title: "Partner Case Closure Status"
+Description: "Codes used for indicating the closure status for partner services."
+* ^experimental = false
+* $LNC#LA46-8 "Other"
+* $LNC#LA4389-8 "Refused"
+* $LNC#77969-4 "Jurisdiction code"
+* $IndexCasePartnerQuestionnaireCodeSystem#Partner-Unreachable
+* $SCT#162171002 "Currently not sexually active"
+* $IndexCasePartnerQuestionnaireCodeSystem#Successful-Intervention
+* $IndexCasePartnerQuestionnaireCodeSystem#Intervention-Completed
+* $IndexCasePartnerQuestionnaireCodeSystem#Intervention-Partially-Completed

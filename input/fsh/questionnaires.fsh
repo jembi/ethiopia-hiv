@@ -312,7 +312,7 @@ Description: "A questionaire that captures information for index case sex partne
     * answerValueSet = Canonical(PartnerNotificationPlanValueSet)
     * code[+] = $SCT#223454002
 
-  * insert Question(3.2, Was the partner notified?, choice, false, false)
+  * insert Question(3.2, Was the partner notified, choice, false, false)
   * item[=]
     * answerValueSet = Canonical(YesNoValueSet)
     * code[+] = $SCT#310368009
@@ -340,13 +340,10 @@ Description: "A questionaire that captures information for index case sex partne
   * item[=]
     * code = $IndexCasePartnerQuestionnaireCodeSystem#Date-Partner-Contacted
 
-  * insert Question(3.7, Reason partner not contacted, choice, true, false)
+  * insert Question(3.7, Reason partner not contacted, choice, false, false)
   * item[=]
     * code = $IndexCasePartnerQuestionnaireCodeSystem#Reason-Partner-Not-Contacted
     * answerValueSet = Canonical(ReasonPartnerNotContactedValueSet)
-    * enableWhen.question = "3.6"
-    * enableWhen.operator = #exists
-    * enableWhen.answerBoolean = false
 
   * insert Question(3.8, Other Reason partner not contacted, string, true, false)
   * item[=]
@@ -396,3 +393,48 @@ Description: "A questionaire that captures information for index case sex partne
     * enableWhen.question = "5.2"
     * enableWhen.operator = #exists
     * enableWhen.answerBoolean = true
+
+* insert Question(6, Partner Services, group, false, false)
+* item[=]
+  * insert Question(6.1, Is the newly diagnosed partner linked to partner services, choice, false, false)
+  * item[=]
+    * code[+] = $IndexCasePartnerQuestionnaireCodeSystem#Linked-to-Partner-Services
+    * answerValueSet = Canonical(YesNoValueSet)
+
+  * insert Question(6.2, Reason why the newly diagnosed partner is not linked to partner services, choice, true, false)
+  * item[=]
+    * code[+] = $IndexCasePartnerQuestionnaireCodeSystem#Reason-Not-Linked-to-Partner-Services
+    * answerValueSet = Canonical(ReasonNotLinkedToPartnerServicesValueSet)
+    * enableWhen.question = "6.1"
+    * enableWhen.operator = #=
+    * enableWhen.answerCoding = $YesNoCodeSystem#false
+
+  * insert Question(6.3, Other Reason for not being notified, string, true, false)
+  * item[=]
+    * enableWhen.question = "6.2"
+    * enableWhen.operator = #=
+    * enableWhen.answerCoding = $LNC#LA46-8
+    * code = $IndexCasePartnerQuestionnaireCodeSystem#Other-Reason-Not-Linked-to-Partner-Services
+
+* insert Question(7, HIV Program, group, false, false)
+* item[=]
+  * insert Question(7.1, Has the partner started ART, choice, false, false)
+  * item[=]
+    * answerValueSet = Canonical(YesNoValueSet)
+    * code[+] = $LNC#63936-9
+
+  * insert Question(7.2, Partner identifiers, reference, false, false)
+  * item[=]
+    * code[+] = $LNC#94648-3
+
+* insert Question(8.1, Case closure status, choice, false, false)
+* item[=]
+  * answerValueSet = Canonical(PartnerCaseClosureStatusValueSet)
+  * code[+] = $IndexCasePartnerQuestionnaireCodeSystem#Partner-Case-Closure-Status
+
+* insert Question(8.2, Other Reason for case closure, string, true, false)
+* item[=]
+  * enableWhen.question = "8.1"
+  * enableWhen.operator = #=
+  * enableWhen.answerCoding = $LNC#LA46-8
+  * code = $IndexCasePartnerQuestionnaireCodeSystem#Other-Reason-Partner-Case-Closure
