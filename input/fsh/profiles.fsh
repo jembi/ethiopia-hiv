@@ -2257,7 +2257,7 @@ Description: "Documents the patient's TB treatment status."
 * code = $LNC#45241-7
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
-* valueCodeableConcept from TBTreatmentStatusValueSet (required)
+//* valueCodeableConcept from TBTreatmentStatusValueSet (required)
 
 //* derivedFrom 1..1
 //* derivedFrom only Reference(TBTreatmentStartedObservation)
@@ -2266,7 +2266,7 @@ Description: "Documents the patient's TB treatment status."
 * hasMember ^definition =
     "reason(s) why this should be supported."
 
-/** insert SliceForResolve(hasMember, reasons why this should be supported, open, Slicing hasMember based on the profile value, false)
+* insert SliceForResolve(hasMember, reasons why this should be supported, open, Slicing hasMember based on the profile value, false)
 
 * hasMember contains
     ActiveTBDiscontinued 0..1 MS and
@@ -2278,7 +2278,7 @@ Description: "Documents the patient's TB treatment status."
 
 * hasMember[ActiveTBCompleted] ^definition =
     "reason(s) why this should be supported."
-* hasMember[ActiveTBCompleted] only Reference(TreatmentCompletedObservation)*/
+* hasMember[ActiveTBCompleted] only Reference(TreatmentCompletedObservation)
 
 Profile: TreatmentDiscontinuedObservation
 Parent: GenericObservation
