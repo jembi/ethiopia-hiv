@@ -2251,7 +2251,6 @@ Parent: GenericObservation
 Id: tb-treatment-status-observation
 Title: "Observation - TB Treatment Status"
 Description: "Documents the patient's TB treatment status."
-//* obeys Observation-TB-Treatment-Status-1 and Observation-TB-Treatment-Status-2
 * category 1..1
 * status 1..1
 * category = $OBSERVATION_CATEGORY#therapy
