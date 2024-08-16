@@ -2247,7 +2247,7 @@ Description: "Documents whether the patient has started TB treatment."
 * basedOn only Reference(TBTreatmentCareplan)
 
 Profile: TBTreatmentStatusObservation
-Parent: Observation
+Parent: GenericObservation
 Id: tb-treatment-status-observation
 Title: "Observation - TB Treatment Status"
 Description: "Documents the patient's TB treatment status."
