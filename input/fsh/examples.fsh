@@ -3677,7 +3677,7 @@ Description: "Used to record the TB treatment details for the patient."
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * activity[+].reference = Reference(TBScreeningServiceRequestExample)
-//* activity[=].outcomeReference = Reference(TBTreatmentStatusRx1ObservationExample)
+* activity[=].outcomeReference = Reference(TBTreatmentStatusRx1ObservationExample)
 
 Instance: TPTMedicationExample
 InstanceOf: TPTMedication
