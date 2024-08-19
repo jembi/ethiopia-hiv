@@ -64,6 +64,10 @@ dependencies:
     id: uscdcphinvads
     uri: 'http://fhir.org/packages/us.cdc.phinvads/ImplementationGuide/us.cdc.phinvads'
     version: 0.12.0
+  ihe.iti.pixm:
+    id: IHE_PIXm
+    uri: https://profiles.ihe.net/ITI/PDQm/ImplementationGuide/ihe.iti.pixm
+    version: 3.0.4
 #  hl7.fhir.us.core: 3.1.0
 #  hl7.fhir.us.mcode:
 #    id: mcode
