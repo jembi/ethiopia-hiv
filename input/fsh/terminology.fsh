@@ -1269,3 +1269,20 @@ Description: "Codes used for indicating the closure status for partner services.
 * $IndexCasePartnerQuestionnaireCodeSystem#Successful-Intervention
 * $IndexCasePartnerQuestionnaireCodeSystem#Intervention-Completed
 * $IndexCasePartnerQuestionnaireCodeSystem#Intervention-Partially-Completed
+
+CodeSystem: AbsentUnknownCodeSystem
+Id: absent-unknown-code-system
+Title: "Absent or Unknown"
+Description: "Codes used for indicating when a value is absent or unknown."
+* ^experimental = false
+* ^caseSensitive = true
+* #Absent-or-unknown "Absent or unknown"
+
+/*ValueSet: EncounterClassValueSet
+Id: encounter-class-value-set
+Title: "Encounter Class"
+Description: "Codes used for indicating the Enxcounter class."
+* ^experimental = false
+* include codes from system ActCode where concept is-a #_ActEncounterCode
+* exclude ActCode#_ActEncounterCode
+* include codes from system AbsentUnknownCodeSystem*/

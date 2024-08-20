@@ -63,3 +63,4 @@ Alias: $IndexCasePartnerQuestionnaireCodeSystem = http://moh.gov.et/fhir/hiv/Cod
 Alias: $PeriodOfExposureCodeSystem = http://moh.gov.et/fhir/hiv/CodeSystem/period-of-hiv-exposure-code-system
 Alias: $PartnerNotificationPlanCodeSystem = http://moh.gov.et/fhir/hiv/CodeSystem/partner-notification-plan-code-system
 Alias: $CaseClosureStatusSexPartnerCodeSystem = http://moh.gov.et/fhir/hiv/CodeSystem/partner-case-closure-status-value-set
+Alias: $AbsentUnknownCodeSystem = http://moh.gov.et/fhir/hiv/CodeSystem/absent-unknown-code-system

@@ -159,7 +159,6 @@ Description: "Represents the current facility at which the patient is receiving 
 * identifier[ENCOUNTER-ID].system = $ENCOUNTER
 
 * status 1..1
-* class 1..1
 * type 1..1
 * type.extension contains EncounterVisitTypeExtension named VisitType 1..1
 * serviceType 0..1 MS
@@ -1013,7 +1012,9 @@ Description: "Base Medication Request elements that are inherited by other Medic
 * daysSupply.code 1..1
 * daysSupply.system 1..1
 
-* whenHandedOver 1..1
+* whenHandedOver 0..1
+* whenHandedOver ^definition =
+    "reason(s) why this should be supported."
 
 Profile: GenericMedicationStatement
 Parent: MedicationStatement
