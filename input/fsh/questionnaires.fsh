@@ -5,6 +5,7 @@ Title: "Questionnaire - Pregnancy Status and Family Planning Method (FPM)"
 Description: "A questionaire that provides the questions to for pregnancy status and FPM."
 * status = #active
 * subjectType = #Observation
+* name = "PregnancyStatusAndFPMQuestionnaire"
 
 * insert Question(1.1, Is Pregnant, choice, false, false)
 * item[=]
@@ -47,6 +48,7 @@ Title: "Questionnaire - Index Case Screening"
 Description: "A questionaire that provides eligibility criteria for the index case screening."
 * status = #active
 * subjectType = #Observation
+* name = "IndexCaseScreeningQuestionnaire"
 
 * insert Question(1.1, Is the client newly enrolled, choice, false, false)
 * item[=]
@@ -115,6 +117,8 @@ Title: "Questionnaire - Index Case Assessment"
 Description: "A questionaire that assesses the index case during interviews."
 * status = #active
 * subjectType = #Observation
+* subjectType = #Observation
+* name = "IndexCaseAssessmentQuestionnaire"
 
 * insert Question(1.1, Did the index case agree to be interviewed, choice, false, false)
 * item[=]
@@ -183,6 +187,7 @@ Title: "Questionnaire - Family Index Case Contacts"
 Description: "A questionaire that assesses the HIV and health status for index case contacts."
 * status = #active
 * subjectType = #Observation
+* name = "FamilyIndexCaseContactsQuestionnaire"
 
 * insert Question(1.1, Currently living with the index case, choice, false, false)
 * item[=]
@@ -268,6 +273,7 @@ Title: "Questionnaire - Sex Partner Information"
 Description: "A questionaire that captures information for index case sex partners."
 * status = #active
 * subjectType = #Observation
+* name = "IndexCaseSexPartnerQuestionnaire"
 
 * insert Question(1.1, Date of last exposure, date, false, false)
 * item[=]
