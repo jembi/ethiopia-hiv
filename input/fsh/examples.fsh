@@ -5146,3 +5146,19 @@ Description: "A questionaire response that documents the answers to the question
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"
 
+Instance: GeneralEncounterAbsentUnknownClassExample
+InstanceOf: TargetFacilityEncounter
+Usage: #example
+Title: "Encounter - Referencing a General Patient (With Absent or Unknown Class)"
+Description: "Represents the current facility at which the patient is receiving health services."
+* class = $AbsentUnknownCodeSystem#Absent-or-unknown
+* status = #finished
+* identifier[ENCOUNTER-ID].value = "001"
+* identifier[ENCOUNTER-ID].system = $ENCOUNTER
+* subject = Reference(GeneralPatientExample)
+* type[+] = $SCT#390906007
+* type[=].text = "Follow-up encounter"
+* type[=].extension[VisitType].valueCodeableConcept = $VisitTypeCodeSystem#unscheduled
+* period.start = "2012-12-09"
+* period.end = "2012-12-09"
+* serviceProvider = Reference(CurrentServiceProviderExample)
