@@ -1278,11 +1278,19 @@ Description: "Codes used for indicating when a value is absent or unknown."
 * ^caseSensitive = true
 * #Absent-or-unknown "Absent or unknown"
 
-/*ValueSet: EncounterClassValueSet
-Id: encounter-class-value-set
-Title: "Encounter Class"
-Description: "Codes used for indicating the Enxcounter class."
+CodeSystem: EncounterServiceTypeCodeSystem
+Id: encounter-service-type-code-system
+Title: "Proprietary Service Type"
+Description: "Codes used for indicating a proprietary encounter service type."
 * ^experimental = false
-* include codes from system ActCode where concept is-a #_ActEncounterCode
-* exclude ActCode#_ActEncounterCode
-* include codes from system AbsentUnknownCodeSystem*/
+* ^caseSensitive = true
+* #arv-therapy "ARV Therapy"
+
+ValueSet: EncounterTypeValueSet
+Id: encounter-type-value-set
+Title: "Encounter Type"
+Description: "Codes used for indicating the type of encounter."
+* ^experimental = false
+* $SCT#769681006 "First encounter by subject"
+* $SCT#390906007 "Follow-up encounter"
+* $SCT#1137457009 "Pre-exposure prophylaxis"
