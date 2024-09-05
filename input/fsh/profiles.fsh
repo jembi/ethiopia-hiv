@@ -1086,7 +1086,7 @@ Description: "Represents the patient's current occupation."
 * code = $LNC#85658-3
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
-* valueCodeableConcept from http://phinvads.cdc.gov/fhir/ValueSet/2.16.840.1.114222.4.11.7901 (extensible)
+* valueCodeableConcept from OccupationValueSet (extensible)
 * valueCodeableConcept.text 1..1
 
 Profile: StrictCoding

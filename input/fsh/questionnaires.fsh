@@ -245,12 +245,19 @@ Description: "A questionaire that assesses the HIV and health status for index c
     * enableWhen.operator = #exists
     * enableWhen.answerBoolean = true
 
-  * insert Question(3.5, Reason for not being tested for HIV, string, true, false)
+  * insert Question(3.5, Reason for not being tested for HIV, choice, true, false)
   * item[=]
     * code = $SCT#445032002
     * enableWhen.question = "3.2"
     * enableWhen.operator = #=
     * enableWhen.answerCoding = $YesNoCodeSystem#false
+
+  * insert Question(3.6, Other reason for not being tested for HIV, string, true, false)
+  * item[=]
+    * code = $SCT#445032002
+    * enableWhen.question = "3.5"
+    * enableWhen.operator = #=
+    * enableWhen.answerCoding = $LNC#LA46-8
 
 * insert Question(4, HIV Program, group, false, false)
 * item[=]
