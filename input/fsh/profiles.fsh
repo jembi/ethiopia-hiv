@@ -160,6 +160,7 @@ Description: "Represents the current facility at which the patient is receiving 
 
 * status 1..1
 * type 1..1
+* type from EncounterTypeValueSet (extensible)
 * type.extension contains EncounterVisitTypeExtension named VisitType 1..1
 * serviceType 0..1 MS
 * serviceType ^definition = "reason(s) why this should be supported."

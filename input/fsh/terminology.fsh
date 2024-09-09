@@ -1422,14 +1422,22 @@ Description: "Codes used for indicating when a value is absent or unknown."
 * #Absent-or-unknown "Absent or unknown" "When the value is not available at the time of the event"
 * #Not-Applicable "Not Applicable" "The value is not applicable for one or more reasons that are captured by the clinician"
 
-/*ValueSet: EncounterClassValueSet
-Id: encounter-class-value-set
-Title: "Encounter Class"
-Description: "Codes used for indicating the Enxcounter class."
+CodeSystem: EncounterServiceTypeCodeSystem
+Id: encounter-service-type-code-system
+Title: "Proprietary Service Type"
+Description: "Codes used for indicating a proprietary encounter service type."
 * ^experimental = false
-* include codes from system ActCode where concept is-a #_ActEncounterCode
-* exclude ActCode#_ActEncounterCode
-* include codes from system AbsentUnknownCodeSystem*/
+* ^caseSensitive = true
+* #arv-therapy "ARV Therapy"
+
+ValueSet: EncounterTypeValueSet
+Id: encounter-type-value-set
+Title: "Encounter Type"
+Description: "Codes used for indicating the type of encounter."
+* ^experimental = false
+* $SCT#769681006 "First encounter by subject"
+* $SCT#390906007 "Follow-up encounter"
+* $SCT#1137457009 "Pre-exposure prophylaxis"
 
 CodeSystem: OccupationCodeSystem
 Id: occupation-code-system
