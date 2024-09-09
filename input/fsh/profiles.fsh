@@ -955,7 +955,9 @@ Parent: MedicationRequest
 Id: generic-medication-request
 Title: "Medication Request - Generic"
 Description: "Base Medication Request elements that are inherited by other Medication Request profiles."
-* authoredOn 1..1
+* authoredOn 0..1 MS
+* authoredOn ^definition =
+    "reason(s) why this should be supported."
 * identifier 1..*
 
 * insert Slice(identifier, reasons why this should be supported, value, system, open, Slicing the identifier based on the system value, false)
@@ -1338,9 +1340,13 @@ Description: "Used to record the medication administration period for prescribed
 * context only Reference(TargetFacilityEncounter)
 * effective[x] only Period
 * effectivePeriod 1..1
-  * start 1..1
+  * start 0..1 MS
+  * start ^definition =
+    "reason(s) why this should be supported."
   * end 1..1
-* note 1..*
+* note 0..* MS
+* note ^definition =
+    "reason(s) why this should be supported."
 
 Profile: ARVMedication
 Parent: Medication
