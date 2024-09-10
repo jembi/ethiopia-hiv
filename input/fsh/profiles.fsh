@@ -234,7 +234,9 @@ Description: "Base Observation elements that are inherited by other Observation 
 * subject only Reference(EthPatient or Group)
 * encounter 1..1
 * encounter only Reference(TargetFacilityEncounter)
-* effectiveDateTime 1..1
+* effective[x] 1..1
+* effective[x] only dateTime or Period
+//* effectiveDateTime 1..1
 * performer 1..*
 * performer only Reference(ServiceProvider or GeneralPractitioner)
 * category 0..*
