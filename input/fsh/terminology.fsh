@@ -3,6 +3,7 @@ Id: art-follow-up-status-code-system
 Title: "Follow Up Status"
 Description: "A list of codes describing the follow up statuses"
 * ^experimental = false
+* ^status = #active
 * ^caseSensitive = true
 * #alive-on-art "Alive on ART"
 * #to "TO"
@@ -17,13 +18,14 @@ Id: art-follow-up-status-value-set
 Title: "Follow Up Status"
 Description: "FollowUp Status"
 * ^experimental = false
-* $SCT#129019007 "Taking medication"
+* ^status = #active
+/** $SCT#129019007 "Taking medication"
 * $LNC#45257-3 "Date dropped from HIV treatment"
 * $LNC#45256-5 "HIV treatment clinic transferred to"
 * $LNC#91382-2 "Date medication stopped - Reported"
 * $LNC#45237-5 "Date lost to HIV treatment follow-up"
 * $LNC#77978-5 "Patient died from illness of interest"
-* $LNC#63936-9 "Start date of treatment or therapy"
+* $LNC#63936-9 "Start date of treatment or therapy"*/
 * include codes from system ARTFollowUpStatusCodeSystem
 
 // Possible codes from https://app.openconceptlab.org/#/orgs/Regenstrief/sources/LOINC/concepts/LP31423-4/
@@ -32,6 +34,7 @@ Id: arv-treatment-code-system
 Title: "ARV Drugs"
 Description: "A list of codes describing the ARV Drugs."
 * ^experimental = false
+* ^status = #active
 * ^caseSensitive = true
 * #1a "1a"
 * #1b "1b"
@@ -110,6 +113,7 @@ Id: arv-treatment-value-set
 Title: "ARV Drugs"
 Description: "A list of codes describing the ARV Drugs."
 * ^experimental = false
+* ^status = #active
 * $SCT#874950001 "Product containing only efavirenz and lamivudine and tenofovir"
 * $SCT#324859007 "Product containing lamivudine and zidovudine"
 * $SCT#776467001 "Product containing only lamivudine and nevirapine and zidovudine"
@@ -122,6 +126,7 @@ Id: reason-not-started-art-value-set
 Title: "Reason Not Started ART"
 Description: "Reason Not Started ART"
 * ^experimental = false
+* ^status = #active
 * $LNC#LP73973-7 "Date patient referred for treatment"
 * $LNC#LA4645-3 "Patient Died Before Therapy"
 * $SCT#105480006 "Procedure declined by patient"
@@ -135,6 +140,7 @@ Id: final-outcome-value-set
 Title: "Final Outcome"
 Description: "Final Outcome"
 * ^experimental = false
+* ^status = #active
 * $LNC#45237-5 "Date lost to HIV treatment follow-up"
 * $LNC#63936-9 "Start date of treatment or therapy"
 * $LNC#81954-0 "Date of death"
@@ -148,6 +154,7 @@ Id: precancerous-lesion-treatment-received-code-system
 Title: "Precancerous Lesion Treatment Received"
 Description: "A list of codes describing the precancerous lesion treatment received"
 * ^experimental = false
+* ^status = #active
 * ^caseSensitive = true
 * #no-treatment "No Treatment"
 * #cryotherapy "Cryotherapy"
@@ -162,6 +169,7 @@ Id: cervical-cancer-treatment-received-value-set
 Title: "Cervical Cancer Treatment Received"
 Description: "Cervical Cancer Treatment Received"
 * ^experimental = false
+* ^status = #active
 * $LNC#LA46-8 "Other"
 * include codes from system PrecancerousLesionTreatmentReceivedCodeSystem
 * include codes from system SuspiciousCancerousTreatmentCodeSystem
@@ -171,6 +179,7 @@ Id: suspicious-cancerous-treatment-code-system
 Title: "Suspicious Cancerous Treatment"
 Description: "A list of codes describing the suspicious Cancerous treatment"
 * ^experimental = false
+* ^status = #active
 * ^caseSensitive = true
 * #treated-at-facility "Treated at the facility"
 * #referred-to-another-facility "Referred to another facility"
@@ -182,6 +191,7 @@ Id: arv-adherence-code-system
 Title: "ARV Adherence"
 Description: "ARV Adherence"
 * ^experimental = false
+* ^status = #active
 * ^caseSensitive = true
 * #Poor "Poor"
 * #Fair "Fair"
@@ -192,16 +202,19 @@ Id: arv-adherence-value-set
 Title: "ARV Adherence"
 Description: "ARV Adherence"
 * ^experimental = false
-* $LNC#LA8969-3 "Poor"
+* ^status = #active
+/** $LNC#LA8969-3 "Poor"
 * $LNC#LA8968-5 "Fair"
 * $LNC#LA8967-7 "Good"
-* $LNC#91382-2 "Date medication stopped - Reported"
+* $LNC#91382-2 "Date medication stopped - Reported"*/
+* include codes from system ARVAdherenceCodeSystem
 
 CodeSystem: CervicalCancerScreeningMethodCodeSystem
 Id: cervical-cancer-screening-method-code-system
 Title: "Cervical Cancer Screening Method"
 Description: "A list of codes describing the Cervical Cancer Screening Method"
 * ^experimental = false
+* ^status = #active
 * ^caseSensitive = true
 * #hpv-dna-test "HPV DNA-test"
 * #via-test "VIA test"
@@ -213,6 +226,7 @@ Id: cervical-cancer-screening-method-value-set
 Title: "Cervical Cancer Screening Method"
 Description: "Cervical Cancer Screening Method."
 * ^experimental = false
+* ^status = #active
 * include codes from system CervicalCancerScreeningMethodCodeSystem
 
 CodeSystem: CervicalCancerScreeningVIAResultsCodeSystem
@@ -220,6 +234,7 @@ Id: via-screening-result-code-system
 Title: "Cervical Cancer Screening Results - VIA"
 Description: "A list of codes describing the Cervical Cancer Screening Results"
 * ^experimental = false
+* ^status = #active
 * ^caseSensitive = true
 * #via-negative "VIA negative"
 * #via-positive-cryo-thermo-coagulation-eligible "VIA positive cryo-thermo coagulation eligible"
@@ -232,6 +247,7 @@ Id: cervical-cancer-screening-result-value-set
 Title: "Cervical Cancer Screening Results"
 Description: "A list of codes describing the Cervical Cancer Screening Results"
 * ^experimental = false
+* ^status = #active
 * include codes from system CervicalCancerScreeningVIAResultsCodeSystem
 * include codes from system CervicalCancerScreeningHPVResultsCodeSystem
 
@@ -240,6 +256,7 @@ Id: hpv-screening-result-code-system
 Title: "Cervical Cancer Screening Results - HPV"
 Description: "A list of codes describing the Cervical Cancer Screening Results"
 * ^experimental = false
+* ^status = #active
 * ^caseSensitive = true
 * #hpv-positive "VIA positive"
 * #hpv-negative "VIA negative"
@@ -250,6 +267,7 @@ Id: cervical-cancer-care-plan-code-system
 Title: "Cervical Cancer Care Plan"
 Description: "A list of codes describing the Cervical Cancer Care Plan"
 * ^experimental = false
+* ^status = #active
 * ^caseSensitive = true
 * #cervical-cancer-care-plan "Cervical Cancer Care Plan"
 
@@ -258,6 +276,7 @@ Id: encounter-visit-type-code-system
 Title: "Nature of Encounter"
 Description: "A list of codes describing the nature of the patient visit to the health facility"
 * ^experimental = false
+* ^status = #active
 * ^caseSensitive = true
 * #unscheduled "Unscheduled"
 * #scheduled "Scheduled"
@@ -267,6 +286,7 @@ Id: encounter-visit-type-value-set
 Title: "Nature of Encounter"
 Description: "A list of codes describing the nature of the patient visit to the health facility"
 * ^experimental = false
+* ^status = #active
 * include codes from system EncounterVisitTypeCodeSystem
 
 ValueSet: OpportunisticInfectionsTreatmentValueSet
@@ -274,6 +294,7 @@ Id: opportunistic-infections-related-to-hiv-value-set
 Title: "Opportunistic Infection Medication Codes"
 Description: "A list of codes describing the medication for opportunistic infections related to the patient."
 * ^experimental = false
+* ^status = #active
 * $LNC#18998-5 "Trimethoprim+Sulfamethoxazole [Susceptibility]"
 * $LNC#18924-1 "Fluconazole [Susceptibility]"
 
@@ -282,6 +303,7 @@ Id: tb-screening-type-value-set
 Title: "TB Screening Type Codes"
 Description: "A list of codes describing the Type of TB Screening."
 * ^experimental = false
+* ^status = #active
 * $LNC#71773-6 "Mycobacterium tuberculosis stimulated gamma interferon [Interpretation] in Blood Qualitative"
 
 ValueSet: TBScreeningResultValueSet
@@ -289,6 +311,7 @@ Id: tb-screening-result-value-set
 Title: "TB Screening Result Codes"
 Description: "A list of codes describing the result of the TB Screening."
 * ^experimental = false
+* ^status = #active
 * $LNC#LA6576-8 "Positive"
 * $LNC#LA6577-6 "Negative"
 
@@ -297,6 +320,7 @@ Id: tb-screening-specimen-type-value-set
 Title: "TB Screening Specimen Type Codes"
 Description: "A list of codes describing the specimen types that can be taken during TB Screening for the laboratory examination."
 * ^experimental = false
+* ^status = #active
 * $SPECIMEN_TYPE#PLAS "Plasma"
 * $SPECIMEN_TYPE#SER "Serum"
 * $SPECIMEN_TYPE#BLD "Whole blood"
@@ -307,6 +331,7 @@ Id: tb-screening-diagnostic-test-type-code-system
 Title: "TB Screening Diagnostic Test Type Codes"
 Description: "A list of codes describing the types of diagnostic tests that can be peformed on the specimen taken during TB screening."
 * ^experimental = false
+* ^status = #active
 * ^caseSensitive = true
 * #Smear-microscopy-only "Smear microscopy only"
 * #Gene-xpert-MTB/RIF-assay-with-other-testing "Gene-Xpert(MTB/RIF assay) with other testing"
@@ -318,6 +343,7 @@ Id: tb-screening-diagnostic-test-type-value-set
 Title: "TB Screening Diagnostic Test Type Codes"
 Description: "A list of codes describing the types of diagnostic tests that can be peformed on the specimen taken during TB screening."
 * ^experimental = false
+* ^status = #active
 * include codes from system TBScreeningDiagnosticTestTypeCodeSystem
 
 CodeSystem: TBTreatmentStatusCodeSystem
@@ -325,6 +351,7 @@ Id: tb-treatment-status-code-system
 Title: "TB Treatment Status Codes"
 Description: "A list of codes describing the status of TB treatment."
 * ^experimental = false
+* ^status = #active
 * ^caseSensitive = true
 * #TBRx1 "TBRx1"
 * #TBRx2 "TBRx2"
@@ -342,6 +369,7 @@ Id: tb-treatment-status-value-set
 Title: "TB Treatment Status Codes"
 Description: "A list of codes describing the status of TB treatment."
 * ^experimental = false
+* ^status = #active
 * include codes from system TBTreatmentStatusCodeSystem
 
 ValueSet: TBDiagnosticTestResultValueSet
@@ -349,6 +377,7 @@ Id: tb-diagnostic-test-result-value-set
 Title: "TB Diagnostic Test Result Codes"
 Description: "A list of codes describing a TB diagnostic test result."
 * ^experimental = false
+* ^status = #active
 * $LNC#LA6577-6 "Negative"
 * $LNC#LA6576-8 "Positive"
 * $LNC#LA11884-6 "Indeterminate"
@@ -358,6 +387,7 @@ Id: active-tb-diagnosis-value-set
 Title: "Active TB Diagnosis Codes"
 Description: "A list of codes describing whether the patient is infected with active TB."
 * ^experimental = false
+* ^status = #active
 * $SCT#427099000 "Active tuberculosis"
 * $SCT#11999007 "Inactive tuberculosis"
 
@@ -366,6 +396,7 @@ Id: tpt-eligibility-status-code-system
 Title: "Eligility Status for TPT Codes"
 Description: "Observation codes used for indicating whether the patient is eligible for TPT."
 * ^experimental = false
+* ^status = #active
 * ^caseSensitive = true
 * #Eligible-For-TPT "Is Eligible for TPT"
 * #TPT-Reason-Not-Eligible "Reason Not Eligible for TPT"
@@ -375,6 +406,7 @@ Id: tpt-reason-not-eligibile-value-set
 Title: "Reason Not Eligible for TPT Codes"
 Description: "A list of codes used for indicating the reason why the patient is not eligible for TPT."
 * ^experimental = false
+* ^status = #active
 * $SCT#182834008 "Drug course completed"
 * $SCT#473151000 "History of tuberculosis drug therapy"
 * $SCT#373147003 "Administration of medication not done due to contraindication"
@@ -384,6 +416,7 @@ Id: tpt-prophylaxis-type-code-system
 Title: "TPT Prophylaxis Type Codes"
 Description: "A list of codes describing the TPT prophylaxis type."
 * ^experimental = false
+* ^status = #active
 * ^caseSensitive = true
 * #Continuous "Continuous"
 * #Alternate "Alternate"
@@ -393,6 +426,7 @@ Id: tpt-prophylaxis-type-value-set
 Title: "TPT Prophylaxis Type Codes"
 Description: "A list of codes describing the TPT prophylaxis type."
 * ^experimental = false
+* ^status = #active
 * $LNC#18934-0 "Isoniazid [Susceptibility]"
 * include codes from system TPTProphylaxisTypeCodeSystem
 
@@ -401,6 +435,7 @@ Id: treatment-outcome-value-set
 Title: "Treatment Outcome Codes"
 Description: "A list of codes indicating the status of the treatment."
 * ^experimental = false
+* ^status = #active
 * $SCT#182992009 "Treatment completed"
 * $SCT#182840001 "Drug treatment stopped - medical advice"
 
@@ -409,6 +444,7 @@ Id: month-ordinals-value-set
 Title: "Month Ordinal Codes"
 Description: "A list of codes indicating the month ordinals."
 * ^experimental = false
+* ^status = #active
 * $SCT#255216001 "First"
 * $SCT#81170007 "Second"
 * $SCT#70905002 "Third"
@@ -421,6 +457,7 @@ Id: tpt-alternate-prophylaxis-type-value-set
 Title: "Alternate TPT Prophylaxis Type Codes"
 Description: "A list of codes describing the alternate TPT prophylaxis types to INH."
 * ^experimental = false
+* ^status = #active
 * $SCT#346670008 "Product containing isoniazid and rifampicin"
 * $SCT#410831004 "Product containing rifapentine"
 
@@ -429,6 +466,7 @@ Id: tpt-prophylaxis-value-set
 Title: "TPT Prophylaxis Codes For Medication Requests"
 Description: "A list of codes describing the different codes used during a request for TPT medication."
 * ^experimental = false
+* ^status = #active
 * $LNC#18934-0 "Isoniazid [Susceptibility]"
 * $SCT#346670008 "Product containing isoniazid and rifampicin"
 * $SCT#410831004 "Product containing rifapentine"
@@ -438,6 +476,7 @@ Id: tpt-alternate-follow-up-code-system
 Title: "TPT Alternate Follow-Up Codes"
 Description: "A code indicating that the follow-up is for an alternate TPT prophylaxis."
 * ^experimental = false
+* ^status = #active
 * ^caseSensitive = true
 * #TPT-Alternate-Follow-Up "TPT Alternate Follow Up"
 
@@ -446,6 +485,7 @@ Id: art-eligibility-status-code-system
 Title: "Eligility Status for ART Codes"
 Description: "Observation codes used for indicating patient eligibility for ART."
 * ^experimental = false
+* ^status = #active
 * ^caseSensitive = true
 * #Not-Eligible "Not Eligible"
 * #Eligible "Eligible"
@@ -456,15 +496,17 @@ Id: art-eligibility-status-value-set
 Title: "ART Eligibility Status"
 Description: "ART Eligibility Status"
 * ^experimental = false
+* ^status = #active
 * include codes from system ARTEligibilityStatusCodeSystem
-* $LNC#47240-7 "Date determined medically eligible to start HIV treatment"
-* $LNC#47241-5 "Date determined medically eligible and ready to start HIV treatment"
+//* $LNC#47240-7 "Date determined medically eligible to start HIV treatment"
+//* $LNC#47241-5 "Date determined medically eligible and ready to start HIV treatment"
 
 CodeSystem: ReasonForARTEligibilityCodeSystem
 Id: reason-for-art-eligibility-code-system
 Title: "Reasons For ART Eligibility"
 Description: "Reasons For ART Eligibility"
 * ^experimental = false
+* ^status = #active
 * ^caseSensitive = true
 * #Test-and-Treat "Test and treat"
 * #Clinical-Staging "Clinical Staging"
@@ -479,6 +521,7 @@ Id: reason-for-art-eligibility-value-set
 Title: "Reasons For ART Eligibility"
 Description: "Reasons For ART Eligibility"
 * ^experimental = false
+* ^status = #active
 * $LNC#LA6530-5 "Pregnancy"
 * $LNC#63932-8 "Age at diagnosis"
 * $LNC#46251-5 "Age group"
@@ -491,6 +534,7 @@ Id: hiv-test-results-value-set
 Title: "HIV Test Results"
 Description: "HIV Test Results"
 * ^experimental = false
+* ^status = #active
 * $LNC#LA24959-1 "HIV Negative"
 * $LNC#LA24955-9 "HIV-1 Positive"
 * $LNC#LA11884-6 "Indeterminate"
@@ -500,6 +544,7 @@ Id: confrirmed-hiv-positive-value-set
 Title: "HIV Test Types"
 Description: "HIV Test Types"
 * ^experimental = false
+* ^status = #active
 * $LNC#9836-8 "HIV proviral DNA [Presence] in Blood by Probe with amplification"
 * $LNC#89365-1 "HIV 1 and 2 Ab panel - Serum, Plasma or Blood by Rapid immunoassay"
 
@@ -508,6 +553,7 @@ Id: yes-no-code-system
 Title: "Yes/No Codes"
 Description: "Yes/No Codes Represented as Boolean."
 * ^experimental = false
+* ^status = #active
 * ^caseSensitive = true
 * #true "Yes"
 * #false "No"
@@ -517,6 +563,7 @@ Id: yes-no-value-set
 Title: "Yes/No Codes"
 Description: "Yes/No Codes Represented as Boolean."
 * ^experimental = false
+* ^status = #active
 * $AbsentUnknownCodeSystem#Not-Applicable
 * include codes from system YesNoCodeSystem
 
@@ -525,6 +572,7 @@ Id: nutritional-status-value-set
 Title: "Nutritional Status"
 Description: "Nutritional Status"
 * ^experimental = false
+* ^status = #active
 * $SCT#255604002 "Mild"
 * $SCT#6736007 "Moderate"
 * $SCT#24484000 "Sever"
@@ -542,6 +590,7 @@ Id: nutritional-screening-result-code-system
 Title: "Nutritional Screening Result Codes"
 Description: "Codes used for representing the patient's nutritional screening result."
 * ^experimental = false
+* ^status = #active
 * ^caseSensitive = true
 * #Normal "Normal"
 * #Undernourished "Undernourished"
@@ -552,6 +601,7 @@ Id: nutritional-screening-result-value-set
 Title: "Nutritional Screening Result"
 Description: "Nutritional Screening Result"
 * ^experimental = false
+* ^status = #active
 * include codes from system NutritionalScreeningResultCodeSystem
 
 CodeSystem: NutritionalSupplimentsProvidedCodeSystem
@@ -559,6 +609,7 @@ Id: nutritional-suppliments-provided-code-system
 Title: "Nutritional Suppliments Provided Codes"
 Description: "Code used for representing the patient's nutritional suppliments provided."
 * ^experimental = false
+* ^status = #active
 * ^caseSensitive = true
 * #RUTF "Ready-to-Use Therapeutic Food"
 * #RUSF "Ready-to-Use Supplementary Food"
@@ -568,6 +619,7 @@ Id: nutritional-suppliments-provided-value-set
 Title: "Nutritional Suppliments Provided"
 Description: "Nutritional Suppliments Provided"
 * ^experimental = false
+* ^status = #active
 * $LNC#LA46-8 "Other"
 * include codes from system NutritionalSupplimentsProvidedCodeSystem
 
@@ -576,6 +628,7 @@ Id: family-planning-method-value-set
 Title: "Family Planning Method"
 Description: "Family Planning Method"
 * ^experimental = false
+* ^status = #active
 * $LNC#LA14543-5 "Condoms"
 * $LNC#LA27907-7 "Injectables"
 * $LNC#LA27908-5 "Combined oral contraceptive pills"
@@ -590,6 +643,7 @@ Id: edema-presence-value-set
 Title: "Edema Codes"
 Description: "Observation codes used for indicating the prescence of Edema."
 * ^experimental = false
+* ^status = #active
 * $LNC#72071-4 "Edema present"
 * $SCT#161980004 "No edema present"
 
@@ -598,6 +652,7 @@ Id: children-developmental-milestone-code-system
 Title: "Children Developmental Milestone Codes"
 Description: "Code used for representing the child's developmental milestone."
 * ^experimental = false
+* ^status = #active
 * ^caseSensitive = true
 * #Appropriate "Appropriate"
 * #Regular "Regular"
@@ -608,6 +663,7 @@ Id: children-developmental-milestone-value-set
 Title: "Children Developmental Milestone"
 Description: "Children Developmental Milestone"
 * ^experimental = false
+* ^status = #active
 * $LNC#LA22265-5 "Pediatric: Developmental delay"
 * include codes from system ChildrenDevelopmentalMilestoneCodeSystem
 
@@ -616,6 +672,7 @@ Id: patient-functional-status-value-set
 Title: "Patient Functional Status"
 Description: "Patient Functional Status"
 * ^experimental = false
+* ^status = #active
 * $SCT#716000009 "Able to perform paid work"
 * $LNC#LA21285-4 "Ambulant"
 * $LNC#LA4270-0 "Bedridden"
@@ -625,6 +682,7 @@ Id: who-stage-code-system
 Title: "WHO Stage Codes"
 Description: "Code used for representing the patient's WHO stage."
 * ^experimental = false
+* ^status = #active
 * ^caseSensitive = true
 * #Stage-One "Stage One"
 * #Stage-Two "Stage Two"
@@ -640,6 +698,7 @@ Id: who-stage-value-set
 Title: "WHO Stage"
 Description: "WHO Stage"
 * ^experimental = false
+* ^status = #active
 * include codes from system WHOStageCodeSystem
 
 CodeSystem: DSDAssessmentCodeSystem
@@ -647,6 +706,7 @@ Id: dsd-assessment-code-system
 Title: "Differentiated Service Delivery"
 Description: "Code used for indicating a DSD assessment."
 * ^experimental = false
+* ^status = #active
 * ^caseSensitive = true
 * #DSD-Assessment "DSD Assessment"
 
@@ -655,6 +715,7 @@ Id: dsd-assessment-status-code-system
 Title: "Differentiated Service Delivery - Assessment Status"
 Description: "Code used for indicating the status of the DSD assessment."
 * ^experimental = false
+* ^status = #active
 * ^caseSensitive = true
 * #Stable "Stable"
 * #Unstable "Unstable"
@@ -664,6 +725,7 @@ Id: dsd-assessment-status-value-set
 Title: "Differentiated Service Delivery - Assessment Status"
 Description: "Code used for indicating the status of the DSD assessment."
 * ^experimental = false
+* ^status = #active
 * $LNC#LA14122-8 "Stable"
 * $LNC#LA14123-6 "Unstable"
 * include codes from system DSDAssessmentStatusCodeSystem
@@ -673,6 +735,7 @@ Id: dsd-category-code-system
 Title: "Differentiated Service Delivery - Category"
 Description: "Code used for indicating the category for the DSD assessment."
 * ^experimental = false
+* ^status = #active
 * ^caseSensitive = true
 * #ASM-6MMD "Appointment Spacing Model (ASM)/6MMD"
 * #3MMD "3MMD"
@@ -690,6 +753,7 @@ Id: dsd-category-value-set
 Title: "Differentiated Service Delivery - Category"
 Description: "Code used for indicating the category for the DSD assessment."
 * ^experimental = false
+* ^status = #active
 //* $LNC#LA46-8 "Other"
 * include codes from system DSDCategoryCodeSystem
 
@@ -698,6 +762,7 @@ Id: dsd-reason-for-category-change-code-system
 Title: "Differentiated Service Delivery - Reason For Category Change"
 Description: "Code used for indicating the reason for the category change for the DSD assessment."
 * ^experimental = false
+* ^status = #active
 * ^caseSensitive = true
 * #Returned "Returned to Conventional Care"
 * #Moved "Moved to Other DSD Model"
@@ -712,6 +777,7 @@ Id: dsd-reason-for-category-change-value-set
 Title: "Differentiated Service Delivery - Reason For Category Change"
 Description: "Code used for indicating the reason for the category change for the DSD assessment."
 * ^experimental = false
+* ^status = #active
 * $LNC#77978-5 "Patient died from illness of interest"
 * $LNC#45237-5 "Date lost to HIV treatment follow-up"
 * $LNC#45256-5 "HIV treatment clinic transferred to"
@@ -724,6 +790,7 @@ Id: encounter-location-value-set
 Title: "Encounter Locations"
 Description: "Code used for representing the location where the patient is receiving health services."
 * ^experimental = false
+* ^status = #active
 * $LNC#LA6511-5 "Inpatient"
 * $LNC#LA10053-9 "Outpatient Services"
 * $LNC#LA6508-1 "STI Outpatient"
@@ -749,6 +816,7 @@ Id: service-provider-code-system
 Title: "Service Providers"
 Description: "Code used for representing the classification of organizations providing health services."
 * ^experimental = false
+* ^status = #active
 * ^caseSensitive = true
 * #Health-Center "Health Center"
 * #Public-Hospital "Public hospital"
@@ -764,6 +832,7 @@ Id: service-provider-value-set
 Title: "Service Providers"
 Description: "Code used for representing the classification of organizations providing health services."
 * ^experimental = false
+* ^status = #active
 * $SCT#276052003 "Public facilities"
 * $SCT#394794000 "Health clinic managed by voluntary or private agents"
 * $SCT#185483006 "Outreach clinic"
@@ -779,6 +848,7 @@ Id: encounter-type-for-entry-from-outside-facility-code-system
 Title: "Encounter Type Code For Entry From Outside Facility"
 Description: "Code used for indicating that an encounter was captured to represent an entry point from outside the facility."
 * ^experimental = false
+* ^status = #active
 * ^caseSensitive = true
 * #ReferToCurrentFacilityEncounter "Refer To Current Facility Encounter"
 
@@ -787,6 +857,7 @@ Id: plan-for-next-step-value-set
 Title: "ART Not Started - Plan For Next Step"
 Description: "Codes used for representing the plan for next steps when a patient didn't start ART the same day."
 * ^experimental = false
+* ^status = #active
 * $LNC#53576-5 "Personal health monitoring report Document"
 * $SCT#710838003 "Assessment of barriers to adherence"
 * $SCT#373788008 "Treatment delay - clinical reason"
@@ -797,6 +868,7 @@ Id: target-population-category-code-system
 Title: "Target Population Category Codes"
 Description: "Codes used for representing the patient's target population category"
 * ^experimental = false
+* ^status = #active
 * ^caseSensitive = true
 * #General-Population "General Population"
 * #Prisoner "Prisoner"
@@ -818,6 +890,7 @@ Id: target-population-category-value-set
 Title: "Target Population Category"
 Description: "Codes used for representing the patient's target population category"
 * ^experimental = false
+* ^status = #active
 * $SCT#76102007 "Male homosexual"
 * $SCT#159799000 "Female prostitute"
 * $SCT#407375002 "Surgically transgendered transsexual"
@@ -833,6 +906,7 @@ Id: patient-education-level-code-system
 Title: "Patient Education Level Codes"
 Description: "Codes used for indicating the patient's highest qualification."
 * ^experimental = false
+* ^status = #active
 * ^caseSensitive = true
 * #No-Education "No education"
 * #Primary "Primary"
@@ -846,6 +920,7 @@ Id: patient-education-level-value-set
 Title: "Patient Education Level"
 Description: "Codes used for indicating the patient's highest qualification."
 * ^experimental = false
+* ^status = #active
 * $LNC#LA35-1 "No schooling"
 * $LNC#LA32466-7 "Primary school education"
 * $LNC#LA32467-5 "High school education"
@@ -858,6 +933,7 @@ Id: cervical-cancer-screening-type-code-system
 Title: "Cervical Cancer Screening Type"
 Description: "Codes used for representing the cervical screening type."
 * ^experimental = false
+* ^status = #active
 * ^caseSensitive = true
 * #Routine-Screening-previous-result-negative "Routine screening (Previously negative screening result)"
 * #post-treatment-follow-up-screening "Post treatment follow-up screening"
@@ -867,6 +943,7 @@ Id: cervical-cancer-screening-type-value-set
 Title: "Cervical Cancer Screening Type"
 Description: "Codes used for representing the cervical screening type."
 * ^experimental = false
+* ^status = #active
 * $LNC#LP72364-0 "Date last screened"
 * include codes from system CervicalCancerScreeningTypeCodeSystem
 
@@ -875,6 +952,7 @@ Id: cervical-cancer-screened-value-set
 Title: "Cervical Cancer Screened"
 Description: "Codes used for representing whether screening for cervical cancer was done."
 * ^experimental = false
+* ^status = #active
 * $SCT#1148678002 "Screening for malignant neoplasm of cervix done"
 * $SCT#4461000175108 "Cervical cancer screening not done"
 
@@ -883,6 +961,7 @@ Id: arv-regimen-change-category-code-system
 Title: "ARV Regimen Change Category"
 Description: "Codes used for representing the category for the ARV regimen change."
 * ^experimental = false
+* ^status = #active
 * ^caseSensitive = true
 * #Switched "Switched"
 * #Substituted "Substituted"
@@ -892,6 +971,7 @@ Id: arv-regimen-change-category-value-set
 Title: "ARV Regimen Change Category"
 Description: "Codes used for representing the category for the ARV regimen change."
 * ^experimental = false
+* ^status = #active
 * include codes from system ARVRegimenChangeCategoryCodeSystem
 
 CodeSystem: ARVRegimenSwitchTypeCodeSystem
@@ -899,6 +979,7 @@ Id: arv-regimen-switch-type-code-system
 Title: "ARV Regimen Switch Type"
 Description: "Codes used for representing the type for the ARV regimen switched."
 * ^experimental = false
+* ^status = #active
 * ^caseSensitive = true
 * #First-Switch "First Switch"
 * #Second-Switch "Second Switch"
@@ -909,6 +990,7 @@ Id: arv-regimen-substitute-type-code-system
 Title: "ARV Regimen Substitue Type"
 Description: "Codes used for representing the type for the ARV regimen substitued."
 * ^experimental = false
+* ^status = #active
 * ^caseSensitive = true
 * #First-Substitute "First Substitute"
 * #Second-Substitute "Second Substitute"
@@ -922,6 +1004,7 @@ Id: arv-regimen-change-type-value-set
 Title: "ARV Regimen Change Type"
 Description: "Codes used for representing the type of change associated with the ARV regimen (Switch or Substitute)."
 * ^experimental = false
+* ^status = #active
 * include codes from system ARVRegimenSwitchTypeCodeSystem
 * include codes from system ARVRegimenSubstituteTypeCodeSystem
 
@@ -930,6 +1013,7 @@ Id: reason-stopped-art-value-set
 Title: "Reason For Stopping ART"
 Description: "Codes used for representing the reasons for stopping ART."
 * ^experimental = false
+* ^status = #active
 * $LNC#LA6529-7 "Toxicity/Side Effects"
 * $LNC#LA6530-5 "Pregnancy"
 * $LNC#18733-6 "Attending Progress note"
@@ -946,6 +1030,7 @@ Id: arv-side-effects-value-set
 Title: "ARV Side Effects"
 Description: "Codes used for representing any side effects of the ARV medication prescribed to the patient."
 * ^experimental = false
+* ^status = #active
 * $LNC#LA15098-9 "Nausea"
 * $LNC#LA7542-9 "Fatigue"
 * $LNC#LA15903-0 "Headache"
@@ -969,6 +1054,7 @@ Id: reason-for-arv-regimen-change-value-set
 Title: "Reason For ARV Regimen Change"
 Description: "Codes used for representing the reasons for changing the ARV regimen."
 * ^experimental = false
+* ^status = #active
 * $LNC#LA6531-3 "Risk of Pregnancy"
 * $LNC#LA6530-5 "Pregnancy"
 * $LNC#LA6533-9 "New Drug Available"
@@ -984,6 +1070,7 @@ Id: reasons-for-poor-arv-adherence-value-set
 Title: "Reasons For Poor ARV Adherence"
 Description: "Codes used for representing the reasons for poor ARV adherence."
 * ^experimental = false
+* ^status = #active
 * $LNC#LA6529-7 "Toxicity/Side Effects"
 * $LNC#LA6534-7 "Drug Out of Stock"
 * $LNC#LA18864-1 "Much better"
@@ -1004,6 +1091,7 @@ Id: mode-of-delivery-value-set
 Title: "Mode Of Delivery"
 Description: "Codes used for representing mode of delivery."
 * ^experimental = false
+* ^status = #active
 * $LNC#LA18963-1 "Spontaneous vaginal"
 * $LNC#LA18965-6 "Caesarean section"
 * $LNC#LA46-8 "Other"
@@ -1013,6 +1101,7 @@ Id: place-of-delivery-value-set
 Title: "Place Of Delivery"
 Description: "Codes used for representing place of delivery."
 * ^experimental = false
+* ^status = #active
 * $LNC#LA14084-0 "Home"
 * $LNC#LA46-8 "Other"
 * $LNC#LA18958-1 "Facility"
@@ -1022,6 +1111,7 @@ Id: residential-type-value-set
 Title: "Residential Type"
 Description: "Codes used for representing patient residential type."
 * ^experimental = false
+* ^status = #active
 * $SCT#224807002 "Urban environment"
 * $SCT#224804009 "Rural environment"
 
@@ -1030,6 +1120,7 @@ Id: hiv-positive-tracking-code-system
 Title: "HIV Positive Tracking"
 Description: "Codes used for representing HIV positive tracking."
 * ^experimental = false
+* ^status = #active
 * ^caseSensitive = true
 * #Started-ART "Started ART"
 * #ART-Not-Started "ART Not Started"
@@ -1041,6 +1132,7 @@ Id: hiv-tracking-value-set
 Title: "HIV Positive Tracking Care Plan Activivity Codes"
 Description: "Codes used for representing activity in the Care Plan."
 * ^experimental = false
+* ^status = #active
 * $LNC#63936-9 "Start date of treatment or therapy"
 * $SCT#410524007 "Was not started"
 * $LNC#67723-7 "Date of health-related event"
@@ -1051,6 +1143,7 @@ Id: referral-reason-value-set
 Title: "Referral Reason"
 Description: "Codes used for representing the reason for referral."
 * ^experimental = false
+* ^status = #active
 * $LNC#63936-9 "Start date of treatment or therapy"
 * $LNC#45231-8 "HIV treatment prior to enrollment"
 * $LNC#LA6517-2 "Currently being treated and transferred in with treatment records from within system."
@@ -1062,6 +1155,7 @@ Id: health-status-value-set
 Title: "Health Status"
 Description: "Codes used for representing a patient health status."
 * ^experimental = false
+* ^status = #active
 * $LNC#LA28121-4 "Healthy"
 * $LNC#LA14937-9 "Continuous chronic illness"
 * $LNC#LA4645-3 "Patient Died Before Therapy"
@@ -1072,6 +1166,7 @@ Id: hiv-test-result-value-set
 Title: "HIV Test Results"
 Description: "Codes used for representing a patient HIV test results."
 * ^experimental = false
+* ^status = #active
 * $LNC#LA15256-3 "Nonreactive"
 * $LNC#LA20963-7 "Positive for HIV 1"
 * $LNC#LA20964-5 "Positive for HIV 2"
@@ -1082,6 +1177,7 @@ Id: viral-load-indication-value-set
 Title: "Viral Load Indication"
 Description: "Codes used for representing viral load indication."
 * ^experimental = false
+* ^status = #active
 * $LNC#LA9035-2 "Routine"
 * $LNC#LA26675-1 "Expedite"
 
@@ -1090,6 +1186,7 @@ Id: routine-indication-viral-load-code-system
 Title: "Routine Indication Viral Load"
 Description: "Codes used for representing routine indication for viral load."
 * ^experimental = false
+* ^status = #active
 * ^caseSensitive = true
 * #1st-VL-Test-3-months-Post-ART "First viral load test at 3 months or longer post ART"
 * #2nd-VL-Test-6-months-Post-ART "First viral load test at 6 months or longer post ART"
@@ -1108,6 +1205,7 @@ Id: vl-indication-value-set
 Title: "Viral Load Indication"
 Description: "Codes used for representing the indication type for the viral load."
 * ^experimental = false
+* ^status = #active
 * include codes from system RoutineIndicationViralLoadCodeSystem
 * include codes from system TargetedIndicationViralLoadCodeSystem
 
@@ -1116,6 +1214,7 @@ Id: targeted-indication-viral-load-code-system
 Title: "Targeted Indication Viral Load"
 Description: "Codes used for representing targeted indication for viral load."
 * ^experimental = false
+* ^status = #active
 * ^caseSensitive = true
 * #Suspected-ART-Failure "Suspected ART Failure"
 * #Repeat-or-confirmatory-VL-Initial-VL-greater-than-1000 "Repeat or confirmatory VL Initial Viral load greater than 1000"
@@ -1125,6 +1224,7 @@ Id: viral-load-status-value-set
 Title: "Viral Load Status"
 Description: "Codes used for representing patient's viral load status."
 * ^experimental = false
+* ^status = #active
 * $SCT#245780008 "Suppressed"
 * $SCT#19032002 "Uncontrolled"
 
@@ -1133,6 +1233,7 @@ Id: eac-given-code-system
 Title: "EAC Given"
 Description: "Codes used for representing the EAC given."
 * ^experimental = false
+* ^status = #active
 * ^caseSensitive = true
 * #EAC-1 "EAC 1"
 * #EAC-2 "EAC 2"
@@ -1146,6 +1247,7 @@ Id: eac-given-value-set
 Title: "EAC Given"
 Description: "Codes used for representing the EAC given."
 * ^experimental = false
+* ^status = #active
 * include codes from system EACGivenCodeSystem
 
 ValueSet: OpportunisticInfectionsValueSet
@@ -1153,6 +1255,7 @@ Id: oi-value-set
 Title: "Opportunistic Infections"
 Description: "Codes used for representing opportunistic infections."
 * ^experimental = false
+* ^status = #active
 * $SCT#4740000 "Herpes zoster"
 * $SCT#423997002 "Tuberculosis, extrapulmonary"
 * $SCT#154283005 "Pulmonary tuberculosis"
@@ -1193,6 +1296,7 @@ Id: pain-scale-value-set
 Title: "Pain Scale"
 Description: "Codes used for representing level of pain (pain scale)."
 * ^experimental = false
+* ^status = #active
 * $LNC#LA131-5 "No pain"
 * $LNC#LA15111-0 "Mild pain"
 * $LNC#LA135-6 "Moderate pain"
@@ -1203,6 +1307,7 @@ Id: hiv-prevention-plan-value-set
 Title: "HIV Prevention Plan"
 Description: "Codes used for representing the patient's plan for the prevention of HIV being transmitted to others."
 * ^experimental = false
+* ^status = #active
 * $SCT#266753000 "Referral for laboratory tests"
 * $LNC#LP157024-3 "HIV results shared with partner"
 * $SCT#386467004 "Safe sex education"
@@ -1215,6 +1320,7 @@ Id: presenting-symptoms-value-set
 Title: "Presenting Symptoms"
 Description: "Codes used for representing the symptoms currently being experienced by the patient."
 * ^experimental = false
+* ^status = #active
 * $SCT#68154008 "Chronic cough"
 * $SCT#267036007 "Dyspnea"
 * $SCT#66857006 "Hemoptysis"
@@ -1241,6 +1347,7 @@ Id: physical-examination-value-set
 Title: "Physical Examinations"
 Description: "Codes used for representing a physical examination."
 * ^experimental = false
+* ^status = #active
 * $LNC#11424-9 "Physical findings of Ears and Nose and Mouth and Throat"
 * $LNC#32450-9 "Physical findings of Lymph node"
 * $LNC#11391-0 "Physical findings of Chest Narrative"
@@ -1256,6 +1363,7 @@ Id: physical-examination-interpretation-value-set
 Title: "Physical Examinations Interpretation"
 Description: "Codes used for interpreting the finding associated with the physical examination."
 * ^experimental = false
+* ^status = #active
 * $ObservationInterpretation#A "Abnormal"
 * $ObservationInterpretation#N "Normal"
 
@@ -1264,6 +1372,7 @@ Id: cd4-vl-classification-for-treatment-failure-code-system
 Title: "Viral Load/CD4 Count Classifications Indicating Treatment Failure"
 Description: "Codes used for indicating the classification for the Viral Load/CD4 count treatment failure."
 * ^experimental = false
+* ^status = #active
 * ^caseSensitive = true
 * #Immunologic-Failure "CD4 below 250 cells/mm3 (Immunologic Failure)"
 * #Clinical-Failure "CD4 below 100 cells/mm3 (Clinical Failure)"
@@ -1274,6 +1383,7 @@ Id: cd4-vl-classification-for-treatment-failure-value-set
 Title: "Viral Load/CD4 Count Classifications Indicating Treatment Failure"
 Description: "Codes used for indicating the classification for the Viral Load/CD4 count treatment failure."
 * ^experimental = false
+* ^status = #active
 * $LNC#LA46-8 "Other"
 * include codes from system CD4AndVLClassificationForTreatmentFailureCodeSystem
 
@@ -1282,6 +1392,7 @@ Id: disclosure-stage-value-set
 Title: "Disclosure Stage"
 Description: "Codes used for representing the stages of disclosure for the patient's current HIV status."
 * ^experimental = false
+* ^status = #active
 * $SCT#258215001 "Stage 1"
 * $SCT#258219007 "Stage 2"
 * $SCT#258224005 "Stage 3"
@@ -1291,6 +1402,7 @@ Id: partner-and-fbict-code-system
 Title: "Partner and Family-based Index Case Testing (FBICT)"
 Description: "Codes used for indicating the patient's status for partner and FBICT."
 * ^experimental = false
+* ^status = #active
 * ^caseSensitive = true
 * #Partner-FBICT-Eligibiity "Eligible for partner and FBICT"
 * #Partner-FBICT-Offered "Offered partner and FBICT"
@@ -1302,6 +1414,7 @@ Id: hiv-status-value-set
 Title: "HIV Status Codes"
 Description: "A list of codes describing the patient's HIV status."
 * ^experimental = false
+* ^status = #active
 * $LNC#94652-5 "Known exposure date"
 * $LNC#LA6577-6 "Negative"
 * $LNC#LA29947-1 "Carrier status unknown"
@@ -1312,6 +1425,7 @@ Id: reason-index-case-not-interviewed-value-set
 Title: "Reason Index Case Not Interviewed"
 Description: "Codes used for indicating the reason why the index case was not interviewed."
 * ^experimental = false
+* ^status = #active
 * $LNC#LA46-8 "Other"
 * $LNC#81954-0 "Date of death"
 * $LNC#LA4014-2 "Eligible but Refused"
@@ -1321,6 +1435,7 @@ Id: period-of-hiv-exposure-code-system
 Title: "Period of HIV Exposure"
 Description: "Codes used for indicating the period when last the individual was exposed to HIV."
 * ^experimental = false
+* ^status = #active
 * ^caseSensitive = true
 * #<3Mths "Less than 3 months"
 * #3-12Mths "In 3 to 12 months"
@@ -1331,6 +1446,7 @@ Id: period-of-hiv-exposure-value-set
 Title: "Period of HIV Exposure"
 Description: "Codes used for indicating the period when last the individual was exposed to HIV."
 * ^experimental = false
+* ^status = #active
 * include codes from system PeriodOfHIVExposureCodeSystem
 
 CodeSystem: PartnerNotificationPlanCodeSystem
@@ -1338,6 +1454,7 @@ Id: partner-notification-plan-code-system
 Title: "Partner Notification Plan"
 Description: "Codes used for indicating the plan for notifying the partner regarding the index case's HIV status."
 * ^experimental = false
+* ^status = #active
 * ^caseSensitive = true
 * #No-Notification-IPV+ "No Notification (IPV+)"
 * #Client-Referral "Client Referral"
@@ -1350,6 +1467,7 @@ Id: partner-notification-plan-value-set
 Title: "Partner Notification Plan"
 Description: "Codes used for indicating the plan for notifying the partner regarding the index case's HIV status."
 * ^experimental = false
+* ^status = #active
 * include codes from system PartnerNotificationPlanCodeSystem
 
 ValueSet: ReasonPartnerNotNotifiedValueSet
@@ -1357,6 +1475,7 @@ Id: reason-partner-not-notified-value-set
 Title: "Reason Partner Not Notified"
 Description: "Codes used for indicating the reason why the partner was not notified about the index case's HIV status."
 * ^experimental = false
+* ^status = #active
 * $LNC#LA46-8 "Other"
 * $LNC#LA4389-8 "Refused"
 * $LNC#77969-4 "Jurisdiction code"
@@ -1366,6 +1485,7 @@ Id: index-case-partner-questionnaire-code-system
 Title: "Index Case Sex Partner Questionnaire"
 Description: "Proprietary Codes used in the Index Case Partner Questionnaire."
 * ^experimental = false
+* ^status = #active
 * ^caseSensitive = true
 * #Other-Reason-Partner-Not-Notified "Other Reason Partner Not Notified"
 * #Date-Notification-Offered "Date Notification Offered"
@@ -1387,6 +1507,7 @@ Id: reason-partner-not-contacted-value-set
 Title: "Reason Partner Not Contacted"
 Description: "Codes used for indicating the reason why the partner was not contacted."
 * ^experimental = false
+* ^status = #active
 * $LNC#LA46-8 "Other"
 * $IndexCasePartnerQuestionnaireCodeSystem#Partner-Unreachable
 
@@ -1395,6 +1516,7 @@ Id: reason-not-linked-to-partner-services-value-set
 Title: "Reason Not Linked to Partner Services"
 Description: "Codes used for indicating the reason why the partner was not linked to partner services."
 * ^experimental = false
+* ^status = #active
 * $LNC#LA46-8 "Other"
 * $LNC#LA4389-8 "Refused"
 * $LNC#LA6624-6 "Referred"
@@ -1404,6 +1526,7 @@ Id: partner-case-closure-status-value-set
 Title: "Partner Case Closure Status"
 Description: "Codes used for indicating the closure status for partner services."
 * ^experimental = false
+* ^status = #active
 * $LNC#LA46-8 "Other"
 * $LNC#LA4389-8 "Refused"
 * $LNC#77969-4 "Jurisdiction code"
@@ -1418,6 +1541,7 @@ Id: absent-unknown-code-system
 Title: "Absent or Unknown"
 Description: "Codes used for indicating when a value is absent or unknown."
 * ^experimental = false
+* ^status = #active
 * ^caseSensitive = true
 * #Absent-or-unknown "Absent or unknown" "When the value is not available at the time of the event"
 * #Not-Applicable "Not Applicable" "The value is not applicable for one or more reasons that are captured by the clinician"
@@ -1427,6 +1551,7 @@ Id: encounter-service-type-code-system
 Title: "Proprietary Service Type"
 Description: "Codes used for indicating a proprietary encounter service type."
 * ^experimental = false
+* ^status = #active
 * ^caseSensitive = true
 * #arv-therapy "ARV Therapy"
 
@@ -1435,6 +1560,7 @@ Id: encounter-type-value-set
 Title: "Encounter Type"
 Description: "Codes used for indicating the type of encounter."
 * ^experimental = false
+* ^status = #active
 * $SCT#769681006 "First encounter by subject"
 * $SCT#390906007 "Follow-up encounter"
 * $SCT#1137457009 "Pre-exposure prophylaxis"
@@ -1444,6 +1570,7 @@ Id: occupation-code-system
 Title: "Occupation Codes"
 Description: "Codes used for representing the patient's occupation"
 * ^experimental = false
+* ^status = #active
 * ^caseSensitive = true
 //* #N/A "N/A"
 * #Accountants "Accountants"
@@ -2050,6 +2177,7 @@ Id: occupation-value-set
 Title: "Occupation"
 Description: "Occupation"
 * ^experimental = false
+* ^status = #active
 * $AbsentUnknownCodeSystem#Not-Applicable
 * include codes from system OccupationCodeSystem
 
@@ -2058,6 +2186,7 @@ Id: reason-for-not-testing-value-set
 Title: "Reason For Not Testing"
 Description: "Reason For Not Testing"
 * ^experimental = false
+* ^status = #active
 * $LNC#94652-5 "Known exposure date"
 * $LNC#LA4389-8 "Refused"
 * $LNC#LA46-8 "Other"
