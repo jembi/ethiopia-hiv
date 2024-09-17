@@ -399,7 +399,7 @@ Description: "Used to record the cervical cancer details for the patient."
 * status 1..1
 * intent 1..1
 * category 1..1
-* category = $LNC#LP173209-0
+* category = $CarePlan#cervical-cancer-care-plan
 * subject 1..1 
 * subject only Reference(EthPatient)
 * encounter 1..1

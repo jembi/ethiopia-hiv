@@ -193,6 +193,7 @@ Description: "ARV Adherence"
 * ^experimental = false
 * ^status = #active
 * ^caseSensitive = true
+* #Stopped "Stopped"
 * #Poor "Poor"
 * #Fair "Fair"
 * #Good "Good"
@@ -270,6 +271,7 @@ Description: "A list of codes describing the Cervical Cancer Care Plan"
 * ^status = #active
 * ^caseSensitive = true
 * #cervical-cancer-care-plan "Cervical Cancer Care Plan"
+* #hiv-positive-tracking "HIV Positive Tracking"
 
 CodeSystem: EncounterVisitTypeCodeSystem
 Id: encounter-visit-type-code-system
@@ -1133,10 +1135,11 @@ Title: "HIV Positive Tracking Care Plan Activivity Codes"
 Description: "Codes used for representing activity in the Care Plan."
 * ^experimental = false
 * ^status = #active
-* $LNC#63936-9 "Start date of treatment or therapy"
+/** $LNC#63936-9 "Start date of treatment or therapy"
 * $SCT#410524007 "Was not started"
 * $LNC#67723-7 "Date of health-related event"
-* $LNC#63939-3 "End date of treatment or therapy"
+* $LNC#63939-3 "End date of treatment or therapy"*/
+* include codes from system HIVPositiveTrackingCodeSystem
 
 ValueSet: ReferralReasonValueSet
 Id: referral-reason-value-set

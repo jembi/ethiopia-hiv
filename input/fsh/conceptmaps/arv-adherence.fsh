@@ -14,6 +14,7 @@ Usage: #definition
 * group[+]
   * source = $ARVAdherence
   * target = $LNC
+  * insert ElementMap(Stopped, 91382-2, equivalent)
   * insert ElementMap(Poor, LA8969-3, equivalent)
   * insert ElementMap(Fair, LA8968-5, equivalent)
   * insert ElementMap(Good, LA8967-7, equivalent)
@@ -21,6 +22,7 @@ Usage: #definition
 * group[+]
   * source = $LNC
   * target = $ARVAdherence
+  * insert ElementMap(91382-2, Stopped, equivalent)
   * insert ElementMap(LA8969-3, Poor, equivalent)
   * insert ElementMap(LA8968-5, Fair, equivalent)
   * insert ElementMap(LA8967-7, Good, equivalent)

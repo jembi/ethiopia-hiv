@@ -70,6 +70,6 @@ Alias: $ServiceProviderType = http://moh.gov.et/fhir/hiv/CodeSystem/service-prov
 Alias: $ARTFollowUpStatus = http://moh.gov.et/fhir/hiv/CodeSystem/art-follow-up-status-code-system
 Alias: $ARVAdherence = http://moh.gov.et/fhir/hiv/CodeSystem/arv-adherence-code-system
 Alias: $DSDAssessmentStatus = http://moh.gov.et/fhir/hiv/CodeSystem/dsd-assessment-status-code-system
-Alias: $CervicalCancerCarePlan = http://moh.gov.et/fhir/hiv/CodeSystem/cervical-cancer-care-plan-code-system
+Alias: $CarePlan = http://moh.gov.et/fhir/hiv/CodeSystem/cervical-cancer-care-plan-code-system
 Alias: $DSDReasonForCategoryChange = http://moh.gov.et/fhir/hiv/CodeSystem/dsd-reason-for-category-change-code-system
 Alias: $HIVPositiveTracking = http://moh.gov.et/fhir/hiv/CodeSystem/hiv-positive-tracking-code-system
