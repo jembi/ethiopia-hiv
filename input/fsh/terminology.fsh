@@ -263,15 +263,18 @@ Description: "A list of codes describing the Cervical Cancer Screening Results"
 * #hpv-negative "VIA negative"
 * #hpv-screening-result-unknown "Screening result unknown"
 
-CodeSystem: CervicalCancerCarePlanCodeSystem
-Id: cervical-cancer-care-plan-code-system
-Title: "Cervical Cancer Care Plan"
-Description: "A list of codes describing the Cervical Cancer Care Plan"
+CodeSystem: CarePlanCategoryCodeSystem
+Id: care-plan-category-code-system
+Title: "Care Plan Categories"
+Description: "A list of codes describing Care Plan categories."
 * ^experimental = false
 * ^status = #active
 * ^caseSensitive = true
 * #cervical-cancer-care-plan "Cervical Cancer Care Plan"
-* #hiv-positive-tracking "HIV Positive Tracking"
+* #art-follow-up-care-plan "ART Follow-up Care Plan"
+* #cotrimoxazole-care-plan "Cotrimoxazole Preventive Therapy Care Plan"
+* #tb-treatment-care-plan "TB Treatment Care Plan"
+* #tb-preventive-therapy-care-plan "TB Preventive Therapy Care Plan"
 
 CodeSystem: EncounterVisitTypeCodeSystem
 Id: encounter-visit-type-code-system
@@ -2193,3 +2196,12 @@ Description: "Reason For Not Testing"
 * $LNC#94652-5 "Known exposure date"
 * $LNC#LA4389-8 "Refused"
 * $LNC#LA46-8 "Other"
+
+CodeSystem: FamilyIndexCaseContactsQuestionnaireCodeSystem
+Id: family-index-case-contacts-questionnaire-code-system
+Title: "Family Index Case Contacts Questionnaire"
+Description: "Proprietary Codes used in the Family Index Case Contacts Questionnaire."
+* ^experimental = false
+* ^status = #active
+* ^caseSensitive = true
+* #Other-Reason-Not-Tested-for-HIV "Other reason for not being tested for HIV"

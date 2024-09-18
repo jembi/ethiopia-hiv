@@ -198,7 +198,7 @@ Description: "Used to record the ART treatment and care details for the patient.
 * status 1..1
 * intent 1..1
 * category 1..1
-* category = $LNC#LP66375-4
+* category = $CarePlan#art-follow-up-care-plan
 * category.text 1..1
 * category.text = "ART"
 * subject 1..1 
@@ -2008,7 +2008,7 @@ Description: "Used to record the cotrimoxazole preventive therapy details for th
 * status 1..1
 * intent 1..1
 * category 1..1
-* category = $LNC#LP173209-0
+* category = $CarePlan#cotrimoxazole-care-plan
 * category.text 1..1
 * category.text = "Cotrimoxazole Preventive Therapy"
 * subject 1..1 
@@ -2517,7 +2517,7 @@ Description: "Used to record the TB treatment details for the patient."
 * status 1..1
 * intent 1..1
 * category 1..1
-* category = $LNC#LP173209-0
+* category = $CarePlan#tb-treatment-care-plan
 * category.text 1..1
 * category.text = "TB treatment"
 * subject 1..1 
@@ -2573,7 +2573,7 @@ Description: "Used to record the TPT details for the patient."
 * status 1..1
 * intent 1..1
 * category 1..1
-* category = $LNC#LP173209-0
+* category = $CarePlan#tb-preventive-therapy-care-plan
 * category.text 1..1
 * category.text = "TB treatment"
 * subject 1..1 

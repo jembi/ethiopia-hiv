@@ -248,13 +248,14 @@ Description: "A questionaire that assesses the HIV and health status for index c
   * insert Question(3.5, Reason for not being tested for HIV, choice, true, false)
   * item[=]
     * code = $SCT#445032002
+    * answerValueSet = Canonical(ReasonForNotTestingValueSet)
     * enableWhen.question = "3.2"
     * enableWhen.operator = #=
     * enableWhen.answerCoding = $YesNoCodeSystem#false
 
   * insert Question(3.6, Other reason for not being tested for HIV, string, true, false)
   * item[=]
-    * code = $SCT#445032002
+    * code = $FamilyIndexCaseContactsQuestionnaireCodeSystem#Other-Reason-Not-Tested-for-HIV
     * enableWhen.question = "3.5"
     * enableWhen.operator = #=
     * enableWhen.answerCoding = $LNC#LA46-8

@@ -669,8 +669,6 @@ Description: "Used to record the ART treatment and care details for the patient 
 * status = #active
 * intent = #order
 * created = "2024-03-20"
-* category[+] = $LNC#LP66375-4
-* category[=].text = "ART"
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * activity[+].extension[NextVisitDate].valueDateTime = "2024-03-20"
@@ -684,8 +682,6 @@ Description: "Used to record the ART treatment and care details for the patient 
 * status = #active
 * intent = #order
 * created = "2024-03-20"
-* category[+] = $LNC#LP66375-4
-* category[=].text = "ART"
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * activity[+].extension[NextVisitDate].valueDateTime = "2024-03-20"
@@ -700,8 +696,6 @@ Description: "Used to record the ART treatment and care details for the patient 
 * status = #active
 * intent = #order
 * created = "2024-03-20"
-* category[+] = $LNC#LP66375-4
-* category[=].text = "ART"
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * activity[+].extension[NextVisitDate].valueDateTime = "2024-03-20"
@@ -1623,8 +1617,6 @@ Description: "Used to record the ART treatment and care details for the patient 
 * status = #active
 * intent = #order
 * created = "2024-03-20"
-* category[+] = $LNC#LP66375-4
-* category[=].text = "ART"
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * activity[+].extension[NextVisitDate].valueDateTime = "2024-03-20"
@@ -2581,8 +2573,6 @@ Description: "Used to request a routine viral load as part of ART."
 * status = #active
 * intent = #order
 * created = "2024-03-20"
-* category[+] = $LNC#LP66375-4
-* category[=].text = "ART"
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * activity[+].reference = Reference(RoutineViralLoadServiceRequestExample)
@@ -2595,8 +2585,6 @@ Description: "Used to request CD4 as part of ART."
 * status = #active
 * intent = #order
 * created = "2024-03-20"
-* category[+] = $LNC#LP66375-4
-* category[=].text = "ART"
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * activity[+].reference = Reference(CD4ServiceRequestExample)
@@ -2834,8 +2822,6 @@ Description: "Used to record the cotrimoxazole preventive therapy details for th
 * status = #active
 * intent = #order
 * created = "2024-03-20"
-* category[+] = $LNC#LP173209-0
-* category[=].text = "Cotrimoxazole Preventive Therapy"
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * activity[+].reference = Reference(CotrimoxazolePreventiveTherapyMedicationRequestExample)
@@ -2848,8 +2834,6 @@ Description: "Used to record the cotrimoxazole preventive therapy details for th
 * status = #active
 * intent = #order
 * created = "2024-03-20"
-* category[+] = $LNC#LP173209-0
-* category[=].text = "Cotrimoxazole Preventive Therapy"
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * activity[+].reference = Reference(CotrimoxazolePreventiveTherapyMedicationRequestExample)
@@ -3672,8 +3656,6 @@ Description: "Used to record the TB treatment details for the patient."
 * status = #active
 * intent = #order
 * created = "2024-03-20"
-* category[+] = $LNC#LP173209-0
-* category[=].text = "TB treatment"
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * activity[+].reference = Reference(TBScreeningServiceRequestExample)
@@ -3712,8 +3694,6 @@ Description: "Used to add the details regarding the request for INH medication t
 * status = #active
 * intent = #order
 * created = "2024-03-20"
-* category[+] = $LNC#LP173209-0
-* category[=].text = "TB treatment"
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * activity[+].reference = Reference(TPTMedicationRequestExample)
@@ -3795,8 +3775,6 @@ Description: "Indicates the activity associated with the request for cervical ca
 * status = #active
 * intent = #order
 * created = "2024-03-20"
-* category[+] = $CarePlan#cervical-cancer-care-plan
-* category[=].text = "Cervical cancer"
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * activity[+].reference = Reference(CervicalCancerScreeningServiceRequestForHPVExample)
@@ -3809,8 +3787,6 @@ Description: "Indicates the activities associated with the requests for cervical
 * status = #active
 * intent = #order
 * created = "2024-03-20"
-* category[+] = $CarePlan#cervical-cancer-care-plan
-* category[=].text = "Cervical cancer"
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * activity[+].reference = Reference(CervicalCancerScreeningServiceRequestForHPVExample)
@@ -3881,8 +3857,6 @@ Description: "Indicates the activity associated with the request for cervical ca
 * status = #active
 * intent = #order
 * created = "2024-03-20"
-* category[+] = $CarePlan#cervical-cancer-care-plan
-* category[=].text = "Cervical cancer"
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * activity[+].reference = Reference(CervicalCancerScreeningServiceRequestForVIAExample)
@@ -3895,8 +3869,6 @@ Description: "Indicates the activities associated with the requests for cervical
 * status = #active
 * intent = #order
 * created = "2024-03-20"
-* category[+] = $CarePlan#cervical-cancer-care-plan
-* category[=].text = "Cervical cancer"
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * activity[+].reference = Reference(CervicalCancerScreeningServiceRequestForVIAExample)
