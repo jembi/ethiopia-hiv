@@ -16,21 +16,21 @@ Usage: #definition
   * target = $LNC
   * insert ElementMap(Started-ART, 63936-9, equivalent)
   * insert ElementMap(Final-Outcome, 63939-3, equivalent)
-  * insert ElementMap(Final-Outcome-Known, 18776-5, equivalent)
+  * insert ElementMap(Linked-To-Care, 67723-7, equivalent)
 
 * group[+]
   * source = $LNC
   * target = $HIVPositiveTracking
   * insert ElementMap(63936-9, Started-ART, equivalent)
   * insert ElementMap(63939-3, Final-Outcome, equivalent)
-  * insert ElementMap(18776-5, Final-Outcome-Known, equivalent)
+  * insert ElementMap(67723-7, Linked-To-Care, equivalent)
 
 * group[+]
   * source = $HIVPositiveTracking
   * target = $SCT
-  * insert ElementMap(ART-Not-Started, 410524007, equivalent)
+  * insert ElementMap(Not-Started, 410524007, equivalent)
 
 * group[+]
   * source = $SCT
   * target = $HIVPositiveTracking
-  * insert ElementMap(410524007, ART-Not-Started, equivalent)
+  * insert ElementMap(410524007, Not-Started, equivalent)

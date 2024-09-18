@@ -24,8 +24,8 @@ Description: "FollowUp Status"
 * $LNC#45256-5 "HIV treatment clinic transferred to"
 * $LNC#91382-2 "Date medication stopped - Reported"
 * $LNC#45237-5 "Date lost to HIV treatment follow-up"
-* $LNC#77978-5 "Patient died from illness of interest"
-* $LNC#63936-9 "Start date of treatment or therapy"*/
+* $LNC#77978-5 "Patient died from illness of interest"*/
+* $LNC#63936-9 "Start date of treatment or therapy"
 * include codes from system ARTFollowUpStatusCodeSystem
 
 // Possible codes from https://app.openconceptlab.org/#/orgs/Regenstrief/sources/LOINC/concepts/LP31423-4/
@@ -1125,9 +1125,9 @@ Description: "Codes used for representing HIV positive tracking."
 * ^status = #active
 * ^caseSensitive = true
 * #Started-ART "Started ART"
-* #ART-Not-Started "ART Not Started"
+* #Not-Started "ART Not Started"
 * #Final-Outcome "Final Outcome"
-* #Final-Outcome-Known "Final Outcome Known"
+* #Linked-To-Care "Linked to care and treatment"
 
 ValueSet: HIVTrackingValueSet
 Id: hiv-tracking-value-set

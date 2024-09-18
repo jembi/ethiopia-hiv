@@ -2489,7 +2489,7 @@ Description: "Indicates that the patient has restarted ART."
 * code = $LNC#47248-0
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
-* valueCodeableConcept = $HIVPositiveTracking#Started-ART
+* valueCodeableConcept = $ARTFollowUpStatus#restart
 * effectiveDateTime = "2024-01-25"
 * performer = Reference(CurrentServiceProviderExample)
 
@@ -2503,7 +2503,7 @@ Description: "Indicates that the patient is lost to follow-up."
 * code = $LNC#47248-0
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
-* valueCodeableConcept = $LNC#45237-5
+* valueCodeableConcept = $ARTFollowUpStatus#lost
 * effectiveDateTime = "2024-01-25"
 * performer = Reference(CurrentServiceProviderExample)
 
@@ -2517,7 +2517,7 @@ Description: "Indicates that the patient stopped ART."
 * code = $LNC#47248-0
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
-* valueCodeableConcept = $LNC#91382-2
+* valueCodeableConcept = $ARTFollowUpStatus#stop
 * effectiveDateTime = "2024-01-25"
 * hasMember = Reference(ARTFollowupStatusStoppedReasonExample)
 * performer = Reference(CurrentServiceProviderExample)
@@ -2569,7 +2569,7 @@ Description: "Indicates that the patient is initiated on ART."
 * code = $LNC#47248-0
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
-* valueCodeableConcept = $HIVPositiveTracking#Started-ART
+* valueCodeableConcept = $LNC#63936-9
 * effectiveDateTime = "2024-01-25"
 * performer = Reference(CurrentServiceProviderExample)
 
@@ -2994,7 +2994,7 @@ Description: "Used to record the HIV+ tracking details for the patient who did n
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-11-27"
-* valueCodeableConcept = $HIVPositiveTracking#ART-Not-Started
+* valueCodeableConcept = $HIVPositiveTracking#Not-Started
 * performer = Reference(CurrentServiceProviderExample)
 
 Instance: ARTNotStartedWithReasonsExample
@@ -3008,7 +3008,7 @@ Description: "Used to record the HIV+ tracking details for the patient who did n
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-11-27"
-* valueCodeableConcept = $HIVPositiveTracking#ART-Not-Started
+* valueCodeableConcept = $HIVPositiveTracking#Not-Started
 * performer = Reference(CurrentServiceProviderExample)
 * hasMember[ReasonsARTNotStarted] = Reference(HIVProgramStatusReasonARTNotStartedExample)
 
@@ -3066,7 +3066,7 @@ Description: "Used to record the HIV+ tracking details for the patient who has b
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-11-27"
-* valueCodeableConcept = $LNC#67723-7
+* valueCodeableConcept = $HIVPositiveTracking#Linked-To-Care
 * valueCodeableConcept.extension[ObservedDate].valueDateTime = "2023-11-27"
 * performer = Reference(CurrentServiceProviderExample)
 
@@ -3081,7 +3081,7 @@ Description: "Used to record the HIV+ tracking details for the patient who has b
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-11-27"
-* valueCodeableConcept = $LNC#67723-7
+* valueCodeableConcept = $HIVPositiveTracking#Linked-To-Care
 * valueCodeableConcept.extension[ObservedDate].valueDateTime = "2023-11-27"
 * performer = Reference(CurrentServiceProviderExample)
 * basedOn = Reference(ARTInitiatedARTFollowUpCareplanExample)
@@ -3128,7 +3128,7 @@ Description: "Used to record the HIV+ tracking details for the patient who has r
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-11-27"
-* valueCodeableConcept = $HIVPositiveTracking#Started-ART
+* valueCodeableConcept = $LNC#63936-9
 * performer = Reference(CurrentServiceProviderExample)
 
 Instance: FinalOutcomeConfirmedReferralExample
