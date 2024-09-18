@@ -1,6 +1,6 @@
 map "http://moh.gov.et/fhir/hiv/StructureMap/ObservationPropietaryValueToStandardCodingValue" = "ObservationPropietaryValueToStandardCodingValue"
 
-/// status = 'active'
+/// status = 'draft'
 
 uses "http://hl7.org/fhir/StructureDefinition/ConceptMap" as source
 uses "http://hl7.org/fhir/StructureDefinition/Observation" as source

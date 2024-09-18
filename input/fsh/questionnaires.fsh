@@ -10,21 +10,21 @@ Description: "A questionaire that provides the questions to for pregnancy status
 * insert Question(1.1, Is Pregnant, choice, false, false)
 * item[=]
   * answerValueSet = Canonical(YesNoValueSet)
-  * answerValueSet.extension[+].valueCanonical = Canonical(PregnancyStatusProprietaryToLOINC)
+  * answerValueSet.extension[+].valueCanonical = Canonical(LOINCCodesToProprietary)
   * answerValueSet.extension[=].url = "http://hl7.org/fhir/StructureDefinition/11179-permitted-value-conceptmap"
   * code = $LNC#11449-6
 
 * insert Question(1.2, Wants to be pregnant, choice, false, false)
 * item[=]
   * answerValueSet = Canonical(YesNoValueSet)
-  * answerValueSet.extension[+].valueCanonical = Canonical(PregnancyFuturePlansProprietaryToLOINC)
+  * answerValueSet.extension[+].valueCanonical = Canonical(LOINCCodesToProprietary)
   * answerValueSet.extension[=].url = "http://hl7.org/fhir/StructureDefinition/11179-permitted-value-conceptmap"
   * code = $LNC#86645-9
 
 * insert Question(1.3, Is breastfeeding, choice, false, false)
 * item[=]
   * answerValueSet = Canonical(YesNoValueSet)
-  * answerValueSet.extension[+].valueCanonical = Canonical(BreastfeedingStatusProprietaryToLOINC)
+  * answerValueSet.extension[+].valueCanonical = Canonical(LOINCCodesToProprietary)
   * answerValueSet.extension[=].url = "http://hl7.org/fhir/StructureDefinition/11179-permitted-value-conceptmap"
   * code = $LNC#63895-7
 

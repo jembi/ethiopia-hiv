@@ -1,6 +1,6 @@
 map "http://moh.gov.et/fhir/hiv/StructureMap/PregnancyStatusToObservation" = "PregnancyStatusToObservation"
 
-/// status = 'active'
+/// status = 'draft'
 
 uses "http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse" as source
 uses "http://moh.gov.et/fhir/hiv/StructureDefinition/pregnancy-status-observation" as target
@@ -32,7 +32,7 @@ group PregnancyStatusToObservation(source src : QuestionnaireResponse, target tg
     src.item as item where(linkId = 'pregnant') then {
         item.answer first as ans then { 
             ans.value : Coding as pregnancyStatus -> tgt.value = create('CodeableConcept') as pregnancyStatusValue then {
-                pregnancyStatus -> pregnancyStatusValue = translate(pregnancyStatus, 'http://moh.gov.et/fhir/hiv/ConceptMap/PregnancyStatusProprietaryToLOINC', 'code') "SetPregnancyStatusCoding";
+                pregnancyStatus -> pregnancyStatusValue = translate(pregnancyStatus, 'http://moh.gov.et/fhir/hiv/ConceptMap/LOINCCodesToProprietary', 'code') "SetPregnancyStatusCoding";
             };
         };
 	};

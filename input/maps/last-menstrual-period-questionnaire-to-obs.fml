@@ -1,6 +1,6 @@
 map "http://moh.gov.et/fhir/hiv/StructureMap/LastMenstrualPeriodToObservation" = "LastMenstrualPeriodToObservation"
 
-/// status = 'active'
+/// status = 'draft'
 
 uses "http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse" as source
 uses "http://moh.gov.et/fhir/hiv/StructureDefinition/last-menstrual-period-observation" as target
