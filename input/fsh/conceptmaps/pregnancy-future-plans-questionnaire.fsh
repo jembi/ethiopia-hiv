@@ -6,7 +6,7 @@ Usage:        #definition
 
 * name = "PregnancyFuturePlansProprietaryToLOINC"
 * status = #active
-* experimental = false
+* experimental = true
 * date = "2024-05-22"
 
 * group[+]

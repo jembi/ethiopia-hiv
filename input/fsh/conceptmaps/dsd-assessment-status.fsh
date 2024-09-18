@@ -8,7 +8,7 @@ Usage: #definition
 * description = "Mapping to and from LOINC DSD Assessment Status to Proprietary DSD Assessment Status."
 * title = "ConceptMap to and From LOINC DSD Assessment Status to Proprietary DSD Assessment Status"
 * status = #active
-* experimental = false
+* experimental = true
 * date = "2024-08-30"
 
 * group[+]

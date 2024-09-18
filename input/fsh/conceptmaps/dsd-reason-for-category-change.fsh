@@ -8,7 +8,7 @@ Usage: #definition
 * description = "Mapping to and from LOINC DSD Reason For Category Change to Proprietary DSD Reason For Category Change."
 * title = "ConceptMap to and From LOINC DSD Reason For Category Change to Proprietary DSD Reason For Category Change"
 * status = #active
-* experimental = false
+* experimental = true
 * date = "2024-08-30"
 
 * group[+]

@@ -1,6 +1,6 @@
 map "http://moh.gov.et/fhir/hiv/StructureMap/EstimatedDeliveryDateToObservation" = "EstimatedDeliveryDateToObservation"
+
 /// status = 'active'
-/// date = '2024-06-07'
 
 uses "http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse" as source
 uses "http://moh.gov.et/fhir/hiv/StructureDefinition/estimated-delivery-date-observation" as target

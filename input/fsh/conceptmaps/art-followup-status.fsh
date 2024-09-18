@@ -8,7 +8,7 @@ Usage: #definition
 * description = "Mapping to and from Snomed & LOINC ART Follow Up Status to Proprietary ART Follow Up Status."
 * title = "ConceptMap to and From Snomed & LOINC ART Follow Up Status to Proprietary ART Follow Up Status"
 * status = #active
-* experimental = false
+* experimental = true
 * date = "2024-08-30"
 
 * group[+]

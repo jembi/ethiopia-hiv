@@ -8,7 +8,7 @@ Usage: #definition
 * description = "Mapping to and from Proprietary Education Level to LOINC Education Level."
 * title = "ConceptMap to and From proprietary education level to LOINC education Level"
 * status = #active
-* experimental = false
+* experimental = true
 * date = "2024-01-31"
 
 * group[+]

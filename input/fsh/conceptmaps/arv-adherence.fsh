@@ -8,7 +8,7 @@ Usage: #definition
 * description = "Mapping to and from LOINC ARV Adherence to Proprietary ARV Adherence."
 * title = "ConceptMap to and From LOINC ARV Adherence to Proprietary ARV Adherence"
 * status = #active
-* experimental = false
+* experimental = true
 * date = "2024-08-30"
 
 * group[+]

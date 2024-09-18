@@ -8,7 +8,7 @@ Usage: #definition
 * description = "Mapping to and from Snomed & LOINC Service Provider Type to Proprietary Service Provider Type."
 * title = "ConceptMap to and From Snomed & LOINC Service Provider Type to Proprietary Service Provider Type."
 * status = #active
-* experimental = false
+* experimental = true
 * date = "2024-08-30"
 
 * group[+]

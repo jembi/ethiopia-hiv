@@ -8,7 +8,7 @@ Usage: #definition
 * description = "Mapping to and from Snomed Target Population to Proprietary Target Population."
 * title = "ConceptMap to and From Snomed Target Population to Proprietary Target Population"
 * status = #active
-* experimental = false
+* experimental = true
 * date = "2024-08-30"
 
 * group[+]
