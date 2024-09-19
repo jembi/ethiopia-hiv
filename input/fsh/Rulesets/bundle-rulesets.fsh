@@ -20,3 +20,16 @@ RuleSet: ExampleTransactionalEntry(resourceID, resourceType)
 RuleSet: ExampleDocumentEntry(resourceID, entrySLice, resourceType)
 * entry[{entrySLice}][+].fullUrl = "http://hapi-fhir:8080/fhir/{resourceType}/{resourceID}"
 * entry[{entrySLice}][=].resource = {resourceID}
+
+RuleSet: ExampleTransactionalEntryWithConditionalCreate(resourceID, resourceType, parameters)
+* entry[+].fullUrl = "http://hapi-fhir:8080/fhir/{resourceType}/{resourceID}"
+* entry[=].resource = {resourceID}
+* entry[=].request.method = #PUT
+* entry[=].request.url = "{resourceType}/{resourceID}"
+* entry[=].request.ifNoneExist = "{parameters}"
+
+RuleSet: ExampleTransactionalEntryWithConditionalUpdate(resourceID, resourceType, parameters)
+* entry[+].fullUrl = "http://hapi-fhir:8080/fhir/{resourceType}/{resourceID}"
+* entry[=].resource = {resourceID}
+* entry[=].request.method = #PUT
+* entry[=].request.url = "{parameters}"
