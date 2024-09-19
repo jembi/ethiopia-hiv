@@ -6,6 +6,8 @@ Description: "A questionaire that provides the questions to for pregnancy status
 * status = #active
 * subjectType = #Observation
 * name = "PregnancyStatusAndFPMQuestionnaire"
+* experimental = true
+* status = #draft
 
 * insert Question(1.1, Is Pregnant, choice, false, false)
 * item[=]
