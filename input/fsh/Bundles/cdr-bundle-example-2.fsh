@@ -1,9 +1,9 @@
 Instance: CDRBundleExample2
 InstanceOf: Bundle
 Usage: #example
-Title: "Bundle - CDR Equivalent (Example 2)"
+Title: "Bundle - CDR Example 2"
 Description: 
-    "A bundle containing the NDR requirements that the CDR payload will need to be compliant with.
+    "An example CDR Bundle.
 
     Note: This bundle includes references to the Resources for Patient, Encounter and Related Person which will ALWAYS create a new version for the Resource, whether there is new data or not! Be sure that this is intended."
 

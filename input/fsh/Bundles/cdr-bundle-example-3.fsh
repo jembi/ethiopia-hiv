@@ -1,21 +1,23 @@
-Instance: CDRBundleExample1
+Instance: CDRBundleExample3
 InstanceOf: Bundle
 Usage: #example
-Title: "Bundle - CDR Example 1"
+Title: "Bundle - CDR Example 3"
 Description: 
     "An example CDR Bundle.
 
-    Note: This bundle excludes references to the Resources for Patient, Encounter and Related Person!"
+    Note: This bundle includes references to the Resources for Patient, Encounter and Related Person.
+    
+    Note: This bundle implements a conditional create on the Patient Resource using the identifier value for MRN, to reduce duplicates."
 
 * type = #transaction
 * timestamp = "2024-02-18T09:30:00+02:00"
 
-//* insert ExampleTransactionalEntry(GeneralPatientExample, Patient)
-//* insert ExampleTransactionalEntry(GeneralEncounterExample, Encounter)
-//* insert ExampleTransactionalEntry(PartnerRelatedPersonExample, RelatedPerson)
-//* insert ExampleTransactionalEntry(SexualPartnerRelatedPersonBecomesPatientExample, Patient)
-//* insert ExampleTransactionalEntry(ChildRelatedPersonBecomesPatientExample, Patient)
-//* insert ExampleTransactionalEntry(ChildRelatedPersonExample, RelatedPerson)
+* insert ExampleTransactionalEntryWithConditionalCreate(GeneralPatientExample, Patient, identifier=http://moh.gov.et/fhir/hiv/identifier/MRN|123)
+* insert ExampleTransactionalEntry(GeneralEncounterExample, Encounter)
+* insert ExampleTransactionalEntry(PartnerRelatedPersonExample, RelatedPerson)
+* insert ExampleTransactionalEntry(SexualPartnerRelatedPersonBecomesPatientExample, Patient)
+* insert ExampleTransactionalEntry(ChildRelatedPersonBecomesPatientExample, Patient)
+* insert ExampleTransactionalEntry(ChildRelatedPersonExample, RelatedPerson)
 
 * insert ExampleTransactionalEntry(DifferentiatedServiceDeliveryFullExample, Observation)
 * insert ExampleTransactionalEntry(HighestEducationExample, Observation)
