@@ -1,6 +1,6 @@
 map "http://moh.gov.et/fhir/hiv/StructureMap/PregnancyFuturePlansToObservation" = "PregnancyFuturePlansToObservation"
-/// status = 'active'
-/// date = '2024-06-07'
+
+/// status = 'draft'
 
 uses "http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse" as source
 uses "http://moh.gov.et/fhir/hiv/StructureDefinition/future-pregnancy-plans-observation" as target
@@ -32,7 +32,7 @@ group PregnancyFuturePlansToObservation(source src : QuestionnaireResponse, targ
     src.item as item where(linkId = 'want-to-be-pregnant') then {
         item.answer first as ans then { 
             ans.value : Coding as futurePregnancyPlans -> tgt.value = create('CodeableConcept') as futurePregnancyPlansValue then {
-                futurePregnancyPlans -> futurePregnancyPlansValue = translate(futurePregnancyPlans, 'http://moh.gov.et/fhir/hiv/ConceptMap/PregnancyFuturePlansProprietaryToLOINC', 'code') "SetFuturePregnancyPlansCoding";
+                futurePregnancyPlans -> futurePregnancyPlansValue = translate(futurePregnancyPlans, 'http://moh.gov.et/fhir/hiv/ConceptMap/LOINCCodesToProprietary', 'code') "SetFuturePregnancyPlansCoding";
             };
         };
 	};

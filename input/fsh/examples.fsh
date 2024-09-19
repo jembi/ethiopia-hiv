@@ -334,7 +334,7 @@ Description: "Indicates that the patient has fair ARV adherence"
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-12-11"
 * performer = Reference(CurrentServiceProviderExample)
-* valueCodeableConcept = $LNC#LA8968-5
+* valueCodeableConcept = $ARVAdherence#Fair
 * valueCodeableConcept.text = "Fair"
 * hasMember = Reference(ARVPoorAdherenceReasonsExample)
 
@@ -374,7 +374,7 @@ Description: "Indicates that the patient has Good ARV adherence"
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-12-11"
 * performer = Reference(CurrentServiceProviderExample)
-* valueCodeableConcept = $LNC#LA8967-7
+* valueCodeableConcept = $ARVAdherence#Good
 * valueCodeableConcept.text = "Good"
 
 Instance: InitiatedArvTreatmentMedicationStatementExample
@@ -669,8 +669,6 @@ Description: "Used to record the ART treatment and care details for the patient 
 * status = #active
 * intent = #order
 * created = "2024-03-20"
-* category[+] = $LNC#LP66375-4
-* category[=].text = "ART"
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * activity[+].extension[NextVisitDate].valueDateTime = "2024-03-20"
@@ -684,8 +682,6 @@ Description: "Used to record the ART treatment and care details for the patient 
 * status = #active
 * intent = #order
 * created = "2024-03-20"
-* category[+] = $LNC#LP66375-4
-* category[=].text = "ART"
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * activity[+].extension[NextVisitDate].valueDateTime = "2024-03-20"
@@ -700,8 +696,6 @@ Description: "Used to record the ART treatment and care details for the patient 
 * status = #active
 * intent = #order
 * created = "2024-03-20"
-* category[+] = $LNC#LP66375-4
-* category[=].text = "ART"
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * activity[+].extension[NextVisitDate].valueDateTime = "2024-03-20"
@@ -716,7 +710,7 @@ Description: "Indicates that the patient is eligibile for ART"
 * category = $OBSERVATION_CATEGORY#exam
 * code = $SCT#171121004
 * code.text = "Human immunodeficiency virus screening"
-* valueCodeableConcept = $LNC#47241-5
+* valueCodeableConcept = $ARTEligibilityStatusCodeSystem#Eligible-and-Ready
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2024-01-25"
@@ -731,7 +725,7 @@ Description: "Indicates that the patient is eligibile for ART"
 * category = $OBSERVATION_CATEGORY#exam
 * code = $SCT#171121004
 * code.text = "Human immunodeficiency virus screening"
-* valueCodeableConcept = $LNC#47241-5
+* valueCodeableConcept = $ARTEligibilityStatusCodeSystem#Eligible-and-Ready
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2024-01-25"
@@ -893,7 +887,7 @@ Description: "Represents the patient's Nutritional Status."
 * category = $OBSERVATION_CATEGORY#exam
 * code = $LNC#101819-1
 * code.text = "Nutritional Status"
-* valueCodeableConcept = $LNC#LA33703-2
+* valueCodeableConcept = $SCT#255604002
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * performer = Reference(CurrentServiceProviderExample)
@@ -1542,8 +1536,8 @@ Description: "Represents the patient's current occupation."
 * encounter = Reference(GeneralEncounterExample)
 * performer = Reference(CurrentServiceProviderExample)
 * effectiveDateTime = "2024-01-25"
-* valueCodeableConcept = $PHOccupationalDataForHealthODH#13-2011.00.000103
-* valueCodeableConcept.text = "Account Auditor [Accountants and Auditors]"
+* valueCodeableConcept = $Occupation#Accountants
+* valueCodeableConcept.text = "Accountants"
 
 Instance: ARVRegimenSwitchExample
 InstanceOf: ARVRegimenChange
@@ -1623,8 +1617,6 @@ Description: "Used to record the ART treatment and care details for the patient 
 * status = #active
 * intent = #order
 * created = "2024-03-20"
-* category[+] = $LNC#LP66375-4
-* category[=].text = "ART"
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * activity[+].extension[NextVisitDate].valueDateTime = "2024-03-20"
@@ -2489,7 +2481,7 @@ Description: "Indicates that the patient has restarted ART."
 * code = $LNC#47248-0
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
-* valueCodeableConcept = $LNC#63936-9
+* valueCodeableConcept = $ARTFollowUpStatus#restart
 * effectiveDateTime = "2024-01-25"
 * performer = Reference(CurrentServiceProviderExample)
 
@@ -2503,7 +2495,7 @@ Description: "Indicates that the patient is lost to follow-up."
 * code = $LNC#47248-0
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
-* valueCodeableConcept = $LNC#45237-5
+* valueCodeableConcept = $ARTFollowUpStatus#lost
 * effectiveDateTime = "2024-01-25"
 * performer = Reference(CurrentServiceProviderExample)
 
@@ -2517,7 +2509,7 @@ Description: "Indicates that the patient stopped ART."
 * code = $LNC#47248-0
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
-* valueCodeableConcept = $LNC#91382-2
+* valueCodeableConcept = $ARTFollowUpStatus#stop
 * effectiveDateTime = "2024-01-25"
 * hasMember = Reference(ARTFollowupStatusStoppedReasonExample)
 * performer = Reference(CurrentServiceProviderExample)
@@ -2555,7 +2547,7 @@ Description: "Indicates that the patient is alive and on ART."
 * code = $LNC#47248-0
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
-* valueCodeableConcept = $SCT#129019007
+* valueCodeableConcept = $ARTFollowUpStatus#alive-on-art
 * effectiveDateTime = "2024-01-25"
 * performer = Reference(CurrentServiceProviderExample)
 
@@ -2581,8 +2573,6 @@ Description: "Used to request a routine viral load as part of ART."
 * status = #active
 * intent = #order
 * created = "2024-03-20"
-* category[+] = $LNC#LP66375-4
-* category[=].text = "ART"
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * activity[+].reference = Reference(RoutineViralLoadServiceRequestExample)
@@ -2595,8 +2585,6 @@ Description: "Used to request CD4 as part of ART."
 * status = #active
 * intent = #order
 * created = "2024-03-20"
-* category[+] = $LNC#LP66375-4
-* category[=].text = "ART"
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * activity[+].reference = Reference(CD4ServiceRequestExample)
@@ -2834,8 +2822,6 @@ Description: "Used to record the cotrimoxazole preventive therapy details for th
 * status = #active
 * intent = #order
 * created = "2024-03-20"
-* category[+] = $LNC#LP173209-0
-* category[=].text = "Cotrimoxazole Preventive Therapy"
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * activity[+].reference = Reference(CotrimoxazolePreventiveTherapyMedicationRequestExample)
@@ -2848,8 +2834,6 @@ Description: "Used to record the cotrimoxazole preventive therapy details for th
 * status = #active
 * intent = #order
 * created = "2024-03-20"
-* category[+] = $LNC#LP173209-0
-* category[=].text = "Cotrimoxazole Preventive Therapy"
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * activity[+].reference = Reference(CotrimoxazolePreventiveTherapyMedicationRequestExample)
@@ -2910,7 +2894,7 @@ Description: "Represents the patient's cotrimoxazole preventive therapy Adherenc
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-12-11"
 * performer = Reference(CurrentServiceProviderExample)
-* valueCodeableConcept = $LNC#LA8967-7
+* valueCodeableConcept = $ARVAdherence#Good
 * valueCodeableConcept.text = "Good"
 
 Instance: CotrimoxazolePreventiveTherapyStoppedAdherenceExample
@@ -2926,7 +2910,7 @@ Description: "Represents the patient's cotrimoxazole preventive therapy Adherenc
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-12-11"
 * performer = Reference(CurrentServiceProviderExample)
-* valueCodeableConcept = $LNC#91382-2
+* valueCodeableConcept = $ARVAdherence#Stopped
 * valueCodeableConcept.text = "Stopped"
 
 Instance: CotrimoxazolePreventiveTherapyMedicationAdministrationExample
@@ -2980,7 +2964,7 @@ Description: "Used to record the HIV+ tracking details for the patient who start
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-11-27"
-* valueCodeableConcept = $LNC#63936-9
+* valueCodeableConcept = $HIVPositiveTracking#Started-ART
 * performer = Reference(CurrentServiceProviderExample)
 
 Instance: ARTNotStartedExample
@@ -2994,7 +2978,7 @@ Description: "Used to record the HIV+ tracking details for the patient who did n
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-11-27"
-* valueCodeableConcept = $SCT#410524007
+* valueCodeableConcept = $HIVPositiveTracking#Not-Started
 * performer = Reference(CurrentServiceProviderExample)
 
 Instance: ARTNotStartedWithReasonsExample
@@ -3008,7 +2992,7 @@ Description: "Used to record the HIV+ tracking details for the patient who did n
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-11-27"
-* valueCodeableConcept = $SCT#410524007
+* valueCodeableConcept = $HIVPositiveTracking#Not-Started
 * performer = Reference(CurrentServiceProviderExample)
 * hasMember[ReasonsARTNotStarted] = Reference(HIVProgramStatusReasonARTNotStartedExample)
 
@@ -3066,7 +3050,7 @@ Description: "Used to record the HIV+ tracking details for the patient who has b
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-11-27"
-* valueCodeableConcept = $LNC#67723-7
+* valueCodeableConcept = $HIVPositiveTracking#Linked-To-Care
 * valueCodeableConcept.extension[ObservedDate].valueDateTime = "2023-11-27"
 * performer = Reference(CurrentServiceProviderExample)
 
@@ -3081,7 +3065,7 @@ Description: "Used to record the HIV+ tracking details for the patient who has b
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-11-27"
-* valueCodeableConcept = $LNC#67723-7
+* valueCodeableConcept = $HIVPositiveTracking#Linked-To-Care
 * valueCodeableConcept.extension[ObservedDate].valueDateTime = "2023-11-27"
 * performer = Reference(CurrentServiceProviderExample)
 * basedOn = Reference(ARTInitiatedARTFollowUpCareplanExample)
@@ -3173,7 +3157,7 @@ Description: "Used to record the HIV+ tracking details for the patient who start
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(EncounterWithEntryPointTBClinicExample)
 * effectiveDateTime = "2023-11-27"
-* valueCodeableConcept = $LNC#63936-9
+* valueCodeableConcept = $HIVPositiveTracking#Started-ART
 * performer = Reference(CurrentServiceProviderExample)
 
 Instance: StartedARTEntryFromOutsideFacilityExample
@@ -3187,7 +3171,7 @@ Description: "Used to record the HIV+ tracking details for the patient who start
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(EntryFromOutsideTargetFacilityEncounterExample)
 * effectiveDateTime = "2023-11-27"
-* valueCodeableConcept = $LNC#63936-9
+* valueCodeableConcept = $HIVPositiveTracking#Started-ART
 * performer = Reference(CurrentServiceProviderExample)
 
 Instance: RelatedPersonStartedARTEntryWithinFacilityExample
@@ -3201,7 +3185,7 @@ Description: "Used to record the HIV+ tracking details for the patient who start
 * subject = Reference(SexualPartnerRelatedPersonBecomesPatientExample)
 * encounter = Reference(EncounterWithEntryPointTBClinicExample)
 * effectiveDateTime = "2023-11-27"
-* valueCodeableConcept = $LNC#63936-9
+* valueCodeableConcept = $HIVPositiveTracking#Started-ART
 * performer = Reference(CurrentServiceProviderExample)
 
 Instance: StartedARTWithFinalOutcomeReferenceExample
@@ -3215,7 +3199,7 @@ Description: "Used to record the HIV+ tracking details for the patient who start
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-11-27"
-* valueCodeableConcept = $LNC#63936-9
+* valueCodeableConcept = $HIVPositiveTracking#Started-ART
 * performer = Reference(CurrentServiceProviderExample)
 * hasMember[FinalOutcomeKnown] = Reference(HIVProgramFinalOutcomeKnownAsStartedARTExample)
 * hasMember[FinalOutcome] = Reference(FinalOutcomeStartedARTExample)
@@ -3672,8 +3656,6 @@ Description: "Used to record the TB treatment details for the patient."
 * status = #active
 * intent = #order
 * created = "2024-03-20"
-* category[+] = $LNC#LP173209-0
-* category[=].text = "TB treatment"
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * activity[+].reference = Reference(TBScreeningServiceRequestExample)
@@ -3712,8 +3694,6 @@ Description: "Used to add the details regarding the request for INH medication t
 * status = #active
 * intent = #order
 * created = "2024-03-20"
-* category[+] = $LNC#LP173209-0
-* category[=].text = "TB treatment"
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * activity[+].reference = Reference(TPTMedicationRequestExample)
@@ -3795,8 +3775,6 @@ Description: "Indicates the activity associated with the request for cervical ca
 * status = #active
 * intent = #order
 * created = "2024-03-20"
-* category[+] = $LNC#LP173209-0
-* category[=].text = "Cervical cancer"
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * activity[+].reference = Reference(CervicalCancerScreeningServiceRequestForHPVExample)
@@ -3809,8 +3787,6 @@ Description: "Indicates the activities associated with the requests for cervical
 * status = #active
 * intent = #order
 * created = "2024-03-20"
-* category[+] = $LNC#LP173209-0
-* category[=].text = "Cervical cancer"
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * activity[+].reference = Reference(CervicalCancerScreeningServiceRequestForHPVExample)
@@ -3881,8 +3857,6 @@ Description: "Indicates the activity associated with the request for cervical ca
 * status = #active
 * intent = #order
 * created = "2024-03-20"
-* category[+] = $LNC#LP173209-0
-* category[=].text = "Cervical cancer"
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * activity[+].reference = Reference(CervicalCancerScreeningServiceRequestForVIAExample)
@@ -3895,8 +3869,6 @@ Description: "Indicates the activities associated with the requests for cervical
 * status = #active
 * intent = #order
 * created = "2024-03-20"
-* category[+] = $LNC#LP173209-0
-* category[=].text = "Cervical cancer"
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * activity[+].reference = Reference(CervicalCancerScreeningServiceRequestForVIAExample)
@@ -4660,7 +4632,36 @@ Description: "A questionaire response that documents the answers to the question
 * item[=]
   * insert QuestionResponse(3.1, Will the contact be counseled for HIV today, valueCoding, $YesNoCodeSystem#true)
   * insert QuestionResponse(3.2, Will the contact be tested for HIV, valueCoding, $YesNoCodeSystem#false)
-  * insert QuestionResponse(3.5, Reason for not being tested for HIV, valueString, "some other reason")
+  * insert QuestionResponse(3.5, Reason for not being tested for HIV, valueCoding, $LNC#LA4389-8)
+
+* author = Reference(GeneralPractitionerExample)
+* authored = "2008-10-13"
+
+Instance: FamilyIndexCaseContactsExample3
+InstanceOf: QuestionnaireResponse
+Usage: #example
+Title: "Questionnaire Response - Family Index Case Contacts (Example 3)"
+Description: "A questionaire response that documents the answers to the questions regarding the HIV and health status for index case contacts."
+* questionnaire = Canonical(FamilyIndexCaseContactsQuestionnaire)
+* status = #completed
+* subject = Reference(GeneralPatientExample)
+* encounter = Reference(GeneralEncounterExample)
+
+* insert QuestionResponse(1.1, Currently living with the index case, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponseForReference(1.2, What is the contact's current health status, IndexCaseContactHealthStatusFamilyMemberExample)
+
+* item[+].linkId = "2"
+* item[=]
+  * insert QuestionResponse(2.1, Has the contact been previsouly tested for HIV, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(2.2, Date of previous HIV test, valueDate, 2008-10-13)
+  * insert QuestionResponseForQuantity(2.3, Previous HIV test result, 1001, 1/mL, copies/mL)
+
+* item[+].linkId = "3"
+* item[=]
+  * insert QuestionResponse(3.1, Will the contact be counseled for HIV today, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(3.2, Will the contact be tested for HIV, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(3.5, Reason for not being tested for HIV, valueCoding, $LNC#LA46-8)
+  * insert QuestionResponse(3.6, Other reason for not being tested for HIV, valueString, "some other reason")
 
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"

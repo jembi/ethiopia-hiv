@@ -6,25 +6,27 @@ Description: "A questionaire that provides the questions to for pregnancy status
 * status = #active
 * subjectType = #Observation
 * name = "PregnancyStatusAndFPMQuestionnaire"
+* experimental = true
+* status = #draft
 
 * insert Question(1.1, Is Pregnant, choice, false, false)
 * item[=]
   * answerValueSet = Canonical(YesNoValueSet)
-  * answerValueSet.extension[+].valueCanonical = Canonical(PregnancyStatusProprietaryToLOINC)
+  * answerValueSet.extension[+].valueCanonical = Canonical(LOINCCodesToProprietary)
   * answerValueSet.extension[=].url = "http://hl7.org/fhir/StructureDefinition/11179-permitted-value-conceptmap"
   * code = $LNC#11449-6
 
 * insert Question(1.2, Wants to be pregnant, choice, false, false)
 * item[=]
   * answerValueSet = Canonical(YesNoValueSet)
-  * answerValueSet.extension[+].valueCanonical = Canonical(PregnancyFuturePlansProprietaryToLOINC)
+  * answerValueSet.extension[+].valueCanonical = Canonical(LOINCCodesToProprietary)
   * answerValueSet.extension[=].url = "http://hl7.org/fhir/StructureDefinition/11179-permitted-value-conceptmap"
   * code = $LNC#86645-9
 
 * insert Question(1.3, Is breastfeeding, choice, false, false)
 * item[=]
   * answerValueSet = Canonical(YesNoValueSet)
-  * answerValueSet.extension[+].valueCanonical = Canonical(BreastfeedingStatusProprietaryToLOINC)
+  * answerValueSet.extension[+].valueCanonical = Canonical(LOINCCodesToProprietary)
   * answerValueSet.extension[=].url = "http://hl7.org/fhir/StructureDefinition/11179-permitted-value-conceptmap"
   * code = $LNC#63895-7
 
@@ -245,12 +247,20 @@ Description: "A questionaire that assesses the HIV and health status for index c
     * enableWhen.operator = #exists
     * enableWhen.answerBoolean = true
 
-  * insert Question(3.5, Reason for not being tested for HIV, string, true, false)
+  * insert Question(3.5, Reason for not being tested for HIV, choice, true, false)
   * item[=]
     * code = $SCT#445032002
+    * answerValueSet = Canonical(ReasonForNotTestingValueSet)
     * enableWhen.question = "3.2"
     * enableWhen.operator = #=
     * enableWhen.answerCoding = $YesNoCodeSystem#false
+
+  * insert Question(3.6, Other reason for not being tested for HIV, string, true, false)
+  * item[=]
+    * code = $FamilyIndexCaseContactsQuestionnaireCodeSystem#Other-Reason-Not-Tested-for-HIV
+    * enableWhen.question = "3.5"
+    * enableWhen.operator = #=
+    * enableWhen.answerCoding = $LNC#LA46-8
 
 * insert Question(4, HIV Program, group, false, false)
 * item[=]

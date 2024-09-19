@@ -13,7 +13,7 @@ url: http://moh.gov.et/fhir/hiv/ImplementationGuide/ethiopia.fhir.hiv
 name: EthiopiaHIV
 title: "Ethiopia FHIR Implementation Guide - HIV Treatment & Care Services"
 description: A FHIR Implementation Guide - Ethiopia HIV
-status: active
+status: draft
 license: CC0-1.0
 date: 2023-12-06
 version: 1.0.0
@@ -30,7 +30,7 @@ fhirVersion: 4.0.1
 # will recognize them as well. In either case, they'll be copied
 # to the IG JSON using the formal names.
 copyrightYear: 2021+
-releaseLabel: STU1
+releaseLabel: ci-build # ci-build | draft | qa-preview | ballot | trial-use | release | update | normative+trial-use
 
 # The publisher can be a single item or a list, each with a name and
 # optional url and/or email. The first publisher's name will be used

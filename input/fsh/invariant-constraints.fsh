@@ -54,8 +54,8 @@ Expression: "extension.exists(url = 'http://moh.gov.et/fhir/hiv/StructureDefinit
 Severity: #error
 
 Invariant: Observation-ARV-Adherence-1
-Description: "If Observation.valueCodeableConcept.coding.code is NOT \"LA8967-7\" then Observation.hasMember SHALL be present."
-Expression: "value.coding.where(system = 'http://loinc.org' and code = 'LA8967-7').exists().not() implies hasMember.exists()"
+Description: "If Observation.valueCodeableConcept.coding.code is NOT \"Good\" then Observation.hasMember SHALL be present."
+Expression: "value.coding.where(system = 'http://moh.gov.et/fhir/hiv/CodeSystem/arv-adherence-code-system'  and code = 'Good').exists().not() implies hasMember.exists()"
 Severity: #error
 
 Invariant: Observation-HIV-Status-Disclosure-At-Enrollment-1

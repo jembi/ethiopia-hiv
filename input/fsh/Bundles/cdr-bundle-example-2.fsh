@@ -1,7 +1,7 @@
-Instance: FullCDRBundleExample
+Instance: CDRBundleExample2
 InstanceOf: Bundle
 Usage: #example
-Title: "Bundle - NDR \"Proposed Closest\" Equivalent to the CDR (A \"FULL\" Representation)"
+Title: "Bundle - CDR Equivalent (Example 2)"
 Description: 
     "A bundle containing the NDR requirements that the CDR payload will need to be compliant with.
 

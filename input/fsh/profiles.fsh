@@ -198,7 +198,7 @@ Description: "Used to record the ART treatment and care details for the patient.
 * status 1..1
 * intent 1..1
 * category 1..1
-* category = $LNC#LP66375-4
+* category = $CarePlan#art-follow-up-care-plan
 * category.text 1..1
 * category.text = "ART"
 * subject 1..1 
@@ -399,7 +399,7 @@ Description: "Used to record the cervical cancer details for the patient."
 * status 1..1
 * intent 1..1
 * category 1..1
-* category = $LNC#LP173209-0
+* category = $CarePlan#cervical-cancer-care-plan
 * subject 1..1 
 * subject only Reference(EthPatient)
 * encounter 1..1
@@ -1091,8 +1091,15 @@ Description: "Represents the patient's current occupation."
 * code = $LNC#85658-3
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
-* valueCodeableConcept from http://phinvads.cdc.gov/fhir/ValueSet/2.16.840.1.114222.4.11.7901 (extensible)
+* valueCodeableConcept from OccupationValueSet (extensible)
 * valueCodeableConcept.text 1..1
+* valueCodeableConcept ^binding.extension[+].extension[+].url = "purpose"
+* valueCodeableConcept ^binding.extension[=].extension[=].valueCode = #candidate
+* valueCodeableConcept ^binding.extension[=].extension[+].url = "valueSet"
+* valueCodeableConcept ^binding.extension[=].extension[=].valueCanonical = "http://phinvads.cdc.gov/fhir/ValueSet/2.16.840.1.114222.4.11.7901"
+* valueCodeableConcept ^binding.extension[=].extension[+].url = "documentation"
+* valueCodeableConcept ^binding.extension[=].extension[=].valueMarkdown = "Public Health Information Network Vocabulary Access and Distribution System (PHIN VADS) - A list of occupation codes."
+* valueCodeableConcept ^binding.extension[=].url = "http://hl7.org/fhir/tools/StructureDefinition/additional-binding"
 
 Profile: StrictCoding
 Parent: Coding
@@ -2001,7 +2008,7 @@ Description: "Used to record the cotrimoxazole preventive therapy details for th
 * status 1..1
 * intent 1..1
 * category 1..1
-* category = $LNC#LP173209-0
+* category = $CarePlan#cotrimoxazole-care-plan
 * category.text 1..1
 * category.text = "Cotrimoxazole Preventive Therapy"
 * subject 1..1 
@@ -2510,7 +2517,7 @@ Description: "Used to record the TB treatment details for the patient."
 * status 1..1
 * intent 1..1
 * category 1..1
-* category = $LNC#LP173209-0
+* category = $CarePlan#tb-treatment-care-plan
 * category.text 1..1
 * category.text = "TB treatment"
 * subject 1..1 
@@ -2566,7 +2573,7 @@ Description: "Used to record the TPT details for the patient."
 * status 1..1
 * intent 1..1
 * category 1..1
-* category = $LNC#LP173209-0
+* category = $CarePlan#tb-preventive-therapy-care-plan
 * category.text 1..1
 * category.text = "TB treatment"
 * subject 1..1 
