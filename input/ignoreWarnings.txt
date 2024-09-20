@@ -17,3 +17,7 @@ WARNING: StructureDefinition.where(url = 'http://moh.gov.et/fhir/hiv/StructureDe
 INFORMATION: StructureDefinition/arv-medication-dispense: StructureDefinition.snapshot.element[41].mapping[0].map: The string value contains text that looks like embedded HTML tags. If this content is rendered to HTML without appropriate post-processing, it may be a security risk
 INFORMATION: StructureDefinition/generic-medication-dispense: StructureDefinition.snapshot.element[40].mapping[0].map: The string value contains text that looks like embedded HTML tags. If this content is rendered to HTML without appropriate post-processing, it may be a security risk
 INFORMATION: StructureDefinition/cotrimoxazole-preventive-therapy-medication-dispense: StructureDefinition.snapshot.element[41].mapping[0].map: The string value contains text that looks like embedded HTML tags. If this content is rendered to HTML without appropriate post-processing, it may be a security risk
+
+# This is a known issue and is being addressed. See https://chat.fhir.org/#narrow/stream/179252-IG-creation/topic/IG.20Publisher.20Version.3A.20v1.2E6.2E25
+%The link 'http://hl7.org/fhir/R4/valueset-diagnostic-requests.html' for "here" cannot be resolved%
+%binds to the value set 'http://hl7.org/fhir/ValueSet/languages' which is experimental, but this structure is not labeled as experimental%
