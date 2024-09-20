@@ -15,8 +15,8 @@ title: "Ethiopia FHIR Implementation Guide - HIV Treatment & Care Services"
 description: A FHIR Implementation Guide - Ethiopia HIV
 status: draft
 license: CC0-1.0
-date: 2023-12-06
-version: 1.0.0
+date: 2024-09-20
+version: 1.0.1
 
 # Although fhirVersions is 0..* in the ImplementationGuide resource
 # it can be a single item OR and array here, but the current tooling 
