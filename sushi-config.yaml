@@ -13,7 +13,7 @@ url: http://moh.gov.et/fhir/hiv/ImplementationGuide/ethiopia.fhir.hiv
 name: EthiopiaHIV
 title: "Ethiopia FHIR Implementation Guide - HIV Treatment & Care Services"
 description: A FHIR Implementation Guide - Ethiopia HIV
-status: draft
+status: active
 license: CC0-1.0
 date: 2024-09-20
 version: 1.0.1
