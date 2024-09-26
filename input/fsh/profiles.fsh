@@ -2484,7 +2484,7 @@ Description: "Documents the alternate TPT at follow-up."
 * valueCodeableConcept 1..1
 * valueCodeableConcept from MonthOrdinalsValueSet (extensible)
 * valueCodeableConcept ^binding.extension[+].extension[+].url = "purpose"
-* valueCodeableConcept ^binding.extension[=].extension[=].valueCode = #required
+* valueCodeableConcept ^binding.extension[=].extension[=].valueCode = #extensible
 * valueCodeableConcept ^binding.extension[=].extension[+].url = "valueSet"
 * valueCodeableConcept ^binding.extension[=].extension[=].valueCanonical = "http://moh.gov.et/fhir/hiv/ValueSet/treatment-outcome-value-set"
 * valueCodeableConcept ^binding.extension[=].extension[+].url = "documentation"
