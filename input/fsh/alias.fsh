@@ -74,3 +74,6 @@ Alias: $CarePlan = http://moh.gov.et/fhir/hiv/CodeSystem/care-plan-category-code
 Alias: $DSDReasonForCategoryChange = http://moh.gov.et/fhir/hiv/CodeSystem/dsd-reason-for-category-change-code-system
 Alias: $HIVPositiveTracking = http://moh.gov.et/fhir/hiv/CodeSystem/hiv-positive-tracking-code-system
 Alias: $FamilyIndexCaseContactsQuestionnaireCodeSystem = http://moh.gov.et/fhir/hiv/CodeSystem/family-index-case-contacts-questionnaire-code-system
+Alias: $ReasonNotStartedART = http://moh.gov.et/fhir/hiv/CodeSystem/reason-not-started-art-code-system
+Alias: $EnhancedAdherenceCounselling = http://moh.gov.et/fhir/hiv/CodeSystem/enhanced-adherence-counselling-status-code-system
+Alias: $FinalOutcomeCodeSystem = http://moh.gov.et/fhir/hiv/CodeSystem/final-outcome-code-system

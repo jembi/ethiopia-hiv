@@ -47,17 +47,11 @@ Usage: #definition
   * source = $ARVAdherence
   * target = $LNC
   * insert ElementMap(Stopped, 91382-2, equivalent)
-  * insert ElementMap(Poor, LA8969-3, equivalent)
-  * insert ElementMap(Fair, LA8968-5, equivalent)
-  * insert ElementMap(Good, LA8967-7, equivalent)
 
 * group[+]
   * source = $LNC
   * target = $ARVAdherence
   * insert ElementMap(91382-2, Stopped, equivalent)
-  * insert ElementMap(LA8969-3, Poor, equivalent)
-  * insert ElementMap(LA8968-5, Fair, equivalent)
-  * insert ElementMap(LA8967-7, Good, equivalent)
 
 * group[+]
   * source = $YesNoCodeSystem
@@ -168,3 +162,51 @@ Usage: #definition
   * source = $LNC
   * target = $ServiceProviderType
   * insert ElementMap(LA46-8, Other, equivalent)
+
+* group[+]
+  * source = $FinalOutcomeCodeSystem
+  * target = $LNC
+  * insert ElementMap(started-art, 63936-9, equivalent)
+  * insert ElementMap(died, 81954-0, equivalent)
+  * insert ElementMap(confirmed-referral, 39266-2, equivalent)
+  * insert ElementMap(started-art-in-other-hf, 45235-9, equivalent)
+  * insert ElementMap(lost-to-follow-up, 45237-5, equivalent)
+  * insert ElementMap(other, LA46-8, equivalent)
+
+* group[+]
+  * source = $LNC
+  * target = $FinalOutcomeCodeSystem
+  * insert ElementMap(63936-9, started-art, equivalent)
+  * insert ElementMap(81954-0, died, equivalent)
+  * insert ElementMap(39266-2, confirmed-referral, equivalent)
+  * insert ElementMap(45235-9, started-art-in-other-hf, equivalent)
+  * insert ElementMap(45237-5, lost-to-follow-up, equivalent)
+  * insert ElementMap(LA46-8, other, equivalent)
+
+* group[+]
+  * source = $TPTProphylaxisTypeCodeSystem
+  * target = $LNC
+  * insert ElementMap(inh, 18934-0, equivalent)
+
+* group[+]
+  * source = $LNC
+  * target = $TPTProphylaxisTypeCodeSystem
+  * insert ElementMap(18934-0, inh, equivalent)
+
+* group[+]
+  * source = $ReasonNotStartedART
+  * target = $LNC
+  * insert ElementMap(referred-tx-not-initiated, LP73973-7, equivalent)
+  * insert ElementMap(died, LA4645-3, equivalent)
+  * insert ElementMap(known-positive-on-art, 45231-8, equivalent)
+  * insert ElementMap(on-oi-management, 47244-9, equivalent)
+  * insert ElementMap(other, LA46-8, equivalent)
+
+* group[+]
+  * source = $LNC
+  * target = $ReasonNotStartedART
+  * insert ElementMap(LP73973-7, referred-tx-not-initiated, equivalent)
+  * insert ElementMap(LA4645-3, died, equivalent)
+  * insert ElementMap(45231-8, known-positive-on-art, equivalent)
+  * insert ElementMap(47244-9, on-oi-management, equivalent)
+  * insert ElementMap(LA46-8, other, equivalent)

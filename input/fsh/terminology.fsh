@@ -119,7 +119,26 @@ Description: "A list of codes describing the ARV Drugs."
 * $SCT#776467001 "Product containing only lamivudine and nevirapine and zidovudine"
 * $SCT#787163007 "Product containing dolutegravir and lamivudine"
 * $SCT#413381000 "Product containing abacavir and lamivudine"
+* $SCT#387472004 "Isoniazid"
+* $SCT#387174006 "Fluconazole"
+* $SCT#772196006 "Product containing only abacavir and dolutegravir and lamivudine"
+* $SCT#714769003 "Product containing abacavir and dolutegravir and lamivudine"
 * include codes from system ARVTreatmentCodeSystem
+
+CodeSystem: ReasonNotStartedARTCodeSystem
+Id: reason-not-started-art-code-system
+Title: "Reason Not Started ART"
+Description: "Reason Not Started ART"
+* ^experimental = false
+* ^status = #active
+* ^caseSensitive = true
+* #referred-tx-not-initiated "Referred TX not initiated"
+* #declined "Declined"
+* #died "Died"
+* #known-positive-on-art "Known +ve on ART"
+* #on-adherence-preparation "On adherence preparation"
+* #on-oi-management "On OI management"
+* #other "Other Specify here"
 
 ValueSet: ReasonNotStartedARTValueSet
 Id: reason-not-started-art-value-set
@@ -127,27 +146,43 @@ Title: "Reason Not Started ART"
 Description: "Reason Not Started ART"
 * ^experimental = false
 * ^status = #active
-* $LNC#LP73973-7 "Date patient referred for treatment"
-* $LNC#LA4645-3 "Patient Died Before Therapy"
-* $SCT#105480006 "Procedure declined by patient"
-* $LNC#45231-8 "HIV treatment prior to enrollment"
-* $LNC#47244-9 "Symptom, diagnosis, or opportunistic infection related to HIV treatment"
-* $SCT#410265008 "Medication administration education, guidance, and counseling"
-* $LNC#LA46-8 "Other"
+//* $LNC#LP73973-7 "Date patient referred for treatment"
+//* $LNC#LA4645-3 "Patient Died Before Therapy"
+//* $SCT#105480006 "Procedure declined by patient"
+//* $LNC#45231-8 "HIV treatment prior to enrollment"
+//* $LNC#47244-9 "Symptom, diagnosis, or opportunistic infection related to HIV treatment"
+//* $SCT#410265008 "Medication administration education, guidance, and counseling"
+//* $LNC#LA46-8 "Other"
+* include codes from system ReasonNotStartedARTCodeSystem
+
+CodeSystem: FinalOutcomeCodeSystem
+Id: final-outcome-code-system
+Title: "Final Outcome"
+Description: "Final Outcome"
+* ^experimental = false
+* ^status = #active
+* ^caseSensitive = true
+* #started-art "Started ART"
+* #declined "Declined"
+* #died "Died"
+* #confirmed-referral "Confirmed referral"
+* #started-art-in-other-hf "Started ART in other HF"
+* #lost-to-follow-up "Lost to Follow up"
+* #other "Other"
 
 ValueSet: FinalOutcomeValueSet
 Id: final-outcome-value-set
 Title: "Final Outcome"
 Description: "Final Outcome"
 * ^experimental = false
-* ^status = #active
-* $LNC#45237-5 "Date lost to HIV treatment follow-up"
-* $LNC#63936-9 "Start date of treatment or therapy"
-* $LNC#81954-0 "Date of death"
-* $SCT#105480006 "Procedure declined by patient"
-* $LNC#39266-2 "Follow-up (referred to) provider /specialist Set CPHS"
-* $LNC#45235-9 "Date original clinic HIV treatment start"
-* $LNC#LA46-8 "Other"
+//* $LNC#45237-5 "Date lost to HIV treatment follow-up"
+//* $LNC#63936-9 "Start date of treatment or therapy"
+//* $LNC#81954-0 "Date of death"
+//* $SCT#105480006 "Procedure declined by patient"
+//* $LNC#39266-2 "Follow-up (referred to) provider /specialist Set CPHS"
+//* $LNC#45235-9 "Date original clinic HIV treatment start"
+//* $LNC#LA46-8 "Other"
+* include codes from system FinalOutcomeCodeSystem
 
 CodeSystem: PrecancerousLesionTreatmentReceivedCodeSystem
 Id: precancerous-lesion-treatment-received-code-system
@@ -194,9 +229,9 @@ Description: "ARV Adherence"
 * ^status = #active
 * ^caseSensitive = true
 * #Stopped "Stopped"
-* #Poor "Poor"
-* #Fair "Fair"
-* #Good "Good"
+//* #Poor "Poor"
+//* #Fair "Fair"
+//* #Good "Good"
 
 ValueSet: ARVAdherenceValueSet
 Id: arv-adherence-value-set
@@ -208,6 +243,9 @@ Description: "ARV Adherence"
 * $LNC#LA8968-5 "Fair"
 * $LNC#LA8967-7 "Good"
 * $LNC#91382-2 "Date medication stopped - Reported"*/
+* $SCT#135818000 "General health poor"
+* $SCT#135817005 "General health fair"
+* $SCT#135815002 "General health good"
 * include codes from system ARVAdherenceCodeSystem
 
 CodeSystem: CervicalCancerScreeningMethodCodeSystem
@@ -241,7 +279,7 @@ Description: "A list of codes describing the Cervical Cancer Screening Results"
 * #via-positive-cryo-thermo-coagulation-eligible "VIA positive cryo-thermo coagulation eligible"
 * #via-positive-cryo-thermo-coagulation-non-eligible "VIA positive cryo-thermo coagulation non-eligible"
 * #cervical-cancer-suspicious "Cervical cancer suspicious"
-* #via-screening-result-unknown "Screening result unknown"
+* #screening-result-unknown "Screening result unknown"
 
 ValueSet: CervicalCancerScreeningResultValueSet
 Id: cervical-cancer-screening-result-value-set
@@ -425,6 +463,7 @@ Description: "A list of codes describing the TPT prophylaxis type."
 * ^caseSensitive = true
 * #Continuous "Continuous"
 * #Alternate "Alternate"
+* #inh "INH"
 
 ValueSet: TPTProphylaxisTypeValueSet
 Id: tpt-prophylaxis-type-value-set
@@ -432,7 +471,7 @@ Title: "TPT Prophylaxis Type Codes"
 Description: "A list of codes describing the TPT prophylaxis type."
 * ^experimental = false
 * ^status = #active
-* $LNC#18934-0 "Isoniazid [Susceptibility]"
+//* $LNC#18934-0 "Isoniazid [Susceptibility]"
 * include codes from system TPTProphylaxisTypeCodeSystem
 
 ValueSet: TreatmentOutcomeValueSet
@@ -678,9 +717,12 @@ Title: "Patient Functional Status"
 Description: "Patient Functional Status"
 * ^experimental = false
 * ^status = #active
-* $SCT#716000009 "Able to perform paid work"
-* $LNC#LA21285-4 "Ambulant"
-* $LNC#LA4270-0 "Bedridden"
+//* $SCT#716000009 "Able to perform paid work"
+//* $LNC#LA21285-4 "Ambulant"
+//* $LNC#LA4270-0 "Bedridden"
+* $SCT#255327002 "Ambulatory"
+* $SCT#261041009 "Working, function"
+* $SCT#160685001 "Bed-ridden"
 
 CodeSystem: WHOStageCodeSystem
 Id: who-stage-code-system
@@ -1091,6 +1133,17 @@ Description: "Codes used for representing the reasons for poor ARV adherence."
 * $SCT#397695000 "Finding related to ability to comply with treatment"
 * $LNC#LA46-8 "Other"
 
+CodeSystem: ModeOfDeliveryCodeSystem
+Id: mode-of-delivery-code-system
+Title: "Mode Of Delivery"
+Description: "Codes used for representing mode of delivery."
+* ^experimental = false
+* ^status = #active
+* ^caseSensitive = true
+* #Spontaneous-Vaginal "Spontaneous vaginal"
+* #Caesarean-Section "Caesarean section"
+* #Other "Other (Specify)"
+
 ValueSet: ModeOfDeliveryValueSet
 Id: mode-of-delivery-value-set
 Title: "Mode Of Delivery"
@@ -1100,6 +1153,18 @@ Description: "Codes used for representing mode of delivery."
 * $LNC#LA18963-1 "Spontaneous vaginal"
 * $LNC#LA18965-6 "Caesarean section"
 * $LNC#LA46-8 "Other"
+* include codes from system ModeOfDeliveryCodeSystem
+
+CodeSystem: PlaceOfDeliveryCodeSystem
+Id: place-of-delivery-code-system
+Title: "Place Of Delivery"
+Description: "Codes used for representing place of delivery."
+* ^experimental = false
+* ^status = #active
+* ^caseSensitive = true
+* #Health-Facility "Health Facility"
+* #Home "Home"
+* #Other "Other (Specify)"
 
 ValueSet: PlaceOfDeliveryValueSet
 Id: place-of-delivery-value-set
@@ -1110,6 +1175,17 @@ Description: "Codes used for representing place of delivery."
 * $LNC#LA14084-0 "Home"
 * $LNC#LA46-8 "Other"
 * $LNC#LA18958-1 "Facility"
+* include codes from system PlaceOfDeliveryCodeSystem
+
+CodeSystem: ResidentialTypeCodeSystem
+Id: residential-type-code-system
+Title: "Residential Type"
+Description: "Codes used for representing patient residential type."
+* ^experimental = false
+* ^status = #active
+* ^caseSensitive = true
+* #Urban "Urban"
+* #Rural "Rural"
 
 ValueSet: ResidentialTypeValueSet
 Id: residential-type-value-set
@@ -1119,6 +1195,7 @@ Description: "Codes used for representing patient residential type."
 * ^status = #active
 * $SCT#224807002 "Urban environment"
 * $SCT#224804009 "Rural environment"
+* include codes from system ResidentialTypeCodeSystem
 
 CodeSystem: HIVPositiveTrackingCodeSystem
 Id: hiv-positive-tracking-code-system
@@ -2205,3 +2282,12 @@ Description: "Proprietary Codes used in the Family Index Case Contacts Questionn
 * ^status = #active
 * ^caseSensitive = true
 * #Other-Reason-Not-Tested-for-HIV "Other reason for not being tested for HIV"
+
+CodeSystem: EnhancedAdherenceCounsellingCodeSystem
+Id: enhanced-adherence-counselling-status-code-system
+Title: "Enhanced Adherence Counselling"
+Description: "Enhanced Adherence Counselling"
+* ^experimental = false
+* ^status = #active
+* ^caseSensitive = true
+* #eac "Enhanced Adherence Counselling"

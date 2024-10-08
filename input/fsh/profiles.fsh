@@ -725,7 +725,7 @@ Title: "Observation - Nutritional Status"
 Description: "Represents the patient's Nutritional Status."
 * category 1..1
 * category = $OBSERVATION_CATEGORY#exam
-* code = $LNC#101819-1
+* code = $SCT#87276001 //$LNC#101819-1
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
 * valueCodeableConcept from NutritionalStatusValueSet (required)
@@ -850,10 +850,10 @@ Profile: MUAC
 Parent: GenericObservation
 Id: muac-observation
 Title: "Observation - MUAC"
-Description: "Measuring thae patient's mid upper arm circumference."
+Description: "Measuring the patient's mid upper arm circumference."
 * category 1..1
 * category = $OBSERVATION_CATEGORY#exam
-* code = $SCT#284473002
+* code = $LNC#56072-2 //$SCT#284473002
 * value[x] only StrictQuantity
 * valueQuantity 1..1
 * valueQuantity.unit = "cm"
@@ -1686,7 +1686,7 @@ Parent: GenericServiceRequest
 Id: viral-load-service-request
 Title: "Service Request - Viral Load"
 Description: "Represents the service request for viral load."
-* code = $LNC#25836-8
+* code = $LNC#25836-8 //$SCT#315124004
 * category 1..1
 * category = $LNC#LP94892-4
 * priority 1..1
@@ -1717,7 +1717,7 @@ Id: viral-load-diagnostic-report
 Title: "Diagnostic Report - Viral Load"
 Description: "Represents the results for viral load."
 * category = $LNC#11502-2
-* code = $LNC#25836-8
+* code = $LNC#25836-8 //$SCT#315124004
 * result 1..1
 * result only Reference(ViralLoadResultObservation)
 * basedOn only Reference(ViralLoadServiceRequest)
@@ -1730,7 +1730,7 @@ Description: "Indicates whether the patient has been provided with enhanced adhe
 * obeys Observation-Enhanced-Adherence-Counselling-1
 * category 1..1
 * category = $OBSERVATION_CATEGORY#therapy
-* code = $SCT#410265008
+* code = $EnhancedAdherenceCounselling#eac //$SCT#410265008
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
 * valueCodeableConcept from YesNoValueSet (required)
@@ -1757,7 +1757,7 @@ Parent: GenericServiceRequest
 Id: enhanced-adherence-counselling-service-request
 Title: "Service Request - Enhanced Adherence Counselling"
 Description: "Represents the service request for enhanced adherence counselling."
-* code = $SCT#410265008
+* code = $EnhancedAdherenceCounselling#eac //$SCT#410265008
 * orderDetail 1..1
 * orderDetail from EACGivenValueSet (required)
 * category 1..1
@@ -2838,7 +2838,7 @@ Title: "Blood Pressure Observation"
 Description: "Represents the patient's blood pressure."
 * subject only Reference(EthPatient)
 * encounter only Reference(TargetFacilityEncounter)
-* code = $LNC#85354-9
+* code = $LNC#85354-9 //$LNC#55284-4
 * category 1..1
 * category = $OBSERVATION_CATEGORY#vital-signs
 * component 1..*
