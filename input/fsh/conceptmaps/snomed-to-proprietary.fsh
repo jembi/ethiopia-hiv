@@ -1,12 +1,12 @@
 Instance: SNOMEDCodesToProprietary
 InstanceOf: ConceptMap
-Title: "ConceptMap to and from SNOMED"
+Title: "ConceptMap to and from SNOMED to Proprietary"
 Description: "Mapping to and from proprietary concepts to SNOMED."
 Usage: #definition
 
 * name = "SNOMEDCodesToProprietary"
 * description = "Mapping to and from proprietary concepts to SNOMED."
-* title = "ConceptMap to and from SNOMED"
+* title = "ConceptMap to and from SNOMED to Proprietary"
 * status = #active
 * experimental = true
 * date = "2024-08-30"
@@ -78,3 +78,35 @@ Usage: #definition
   * insert ElementMap(87447002, Distance-Drivers, equivalent)
   * insert ElementMap(446654005, Refugee, equivalent)
   * insert ElementMap(226034001, People-Who-Inject-Drug, equivalent)
+
+* group[+]
+  * source = $FinalOutcomeCodeSystem
+  * target = $SCT
+  * insert ElementMap(declined, 105480006, equivalent)
+
+* group[+]
+  * source = $SCT
+  * target = $FinalOutcomeCodeSystem
+  * insert ElementMap(105480006, declined, equivalent)
+
+* group[+]
+  * source = $ReasonNotStartedART
+  * target = $SCT
+  * insert ElementMap(declined, 105480006, equivalent)
+  * insert ElementMap(on-adherence-preparation, 410265008, equivalent)
+
+* group[+]
+  * source = $SCT
+  * target = $ReasonNotStartedART
+  * insert ElementMap(105480006, declined, equivalent)
+  * insert ElementMap(410265008, on-adherence-preparation, equivalent)
+
+* group[+]
+  * source = $EnhancedAdherenceCounselling
+  * target = $SCT
+  * insert ElementMap(eac, 410265008, equivalent)
+
+* group[+]
+  * source = $SCT
+  * target = $EnhancedAdherenceCounselling
+  * insert ElementMap(410265008, eac, equivalent)

@@ -334,7 +334,7 @@ Description: "Indicates that the patient has fair ARV adherence"
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-12-11"
 * performer = Reference(CurrentServiceProviderExample)
-* valueCodeableConcept = $ARVAdherence#Fair
+* valueCodeableConcept = $SCT#135817005
 * valueCodeableConcept.text = "Fair"
 * hasMember = Reference(ARVPoorAdherenceReasonsExample)
 
@@ -374,7 +374,7 @@ Description: "Indicates that the patient has Good ARV adherence"
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-12-11"
 * performer = Reference(CurrentServiceProviderExample)
-* valueCodeableConcept = $ARVAdherence#Good
+* valueCodeableConcept = $SCT#135815002
 * valueCodeableConcept.text = "Good"
 
 Instance: InitiatedArvTreatmentMedicationStatementExample
@@ -774,7 +774,7 @@ Description: "Represents the patient's rapid HIV test result."
 * category = $OBSERVATION_CATEGORY#exam
 * code = $LNC#89365-1
 * code.text = "HIV Rapid test"
-* valueCodeableConcept = $LNC#LA24959-1
+* valueCodeableConcept = $LNC#LA24955-9
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * performer = Reference(CurrentServiceProviderExample)
@@ -801,7 +801,7 @@ Description: "Represents the patient's PCR HIV test result."
 * category = $OBSERVATION_CATEGORY#laboratory
 * code = $LNC#9836-8
 * code.text = "HIV PCR test"
-* valueCodeableConcept = $LNC#LA24959-1
+* valueCodeableConcept = $LNC#LA24955-9
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * performer = Reference(CurrentServiceProviderExample)
@@ -885,7 +885,7 @@ Title: "Nutritional Status"
 Description: "Represents the patient's Nutritional Status."
 * status = #final
 * category = $OBSERVATION_CATEGORY#exam
-* code = $LNC#101819-1
+* code = $SCT#87276001 //$LNC#101819-1
 * code.text = "Nutritional Status"
 * valueCodeableConcept = $SCT#255604002
 * subject = Reference(GeneralPatientExample)
@@ -1021,10 +1021,10 @@ Instance: MUACExample
 InstanceOf: MUAC
 Usage: #example
 Title: "Observation - Patient MUAC"
-Description: "Measuring thae patient's mid upper arm circumference."
+Description: "Measuring the patient's mid upper arm circumference."
 * status = #final
 * category = $OBSERVATION_CATEGORY#exam
-* code = $SCT#284473002
+* code = $LNC#56072-2 //$SCT#284473002
 * code.text = "MUAC"
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
@@ -1075,7 +1075,7 @@ Description: "Represents the patient's functional status."
 * category = $OBSERVATION_CATEGORY#exam
 * code = $LNC#75276-6
 * code.text = "Functional Status"
-* valueCodeableConcept = $LNC#LA21285-4
+* valueCodeableConcept = $SCT#255327002 //$LNC#LA21285-4
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * performer = Reference(CurrentServiceProviderExample)
@@ -2310,7 +2310,7 @@ Title: "Service Request - Routine Viral Load"
 Description: "Represents the service request for a routine viral load."
 * status = #completed
 * intent = #order
-* code = $LNC#25836-8
+* code = $LNC#25836-8 //$SCT#315124004
 * category = $LNC#LP94892-4
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
@@ -2324,7 +2324,7 @@ Title: "Service Request - Targeted Viral Load"
 Description: "Represents the service request for a targeted viral load."
 * status = #completed
 * intent = #order
-* code = $LNC#25836-8
+* code = $LNC#25836-8 //$SCT#315124004
 * category = $LNC#LP94892-4
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
@@ -2338,7 +2338,7 @@ Title: "Observation - Enhanced Adherence Counselling Not Provided"
 Description: "Indicates that the patient did not receive enhanced adherence counselling."
 * status = #final
 * category = $OBSERVATION_CATEGORY#therapy
-* code = $SCT#410265008
+* code = $EnhancedAdherenceCounselling#eac //$SCT#410265008
 * valueCodeableConcept = $YesNoCodeSystem#false
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
@@ -2352,7 +2352,7 @@ Title: "Observation - Enhanced Adherence Counselling Provided"
 Description: "Indicates that the patient did receive enhanced adherence counselling."
 * status = #final
 * category = $OBSERVATION_CATEGORY#therapy
-* code = $SCT#410265008
+* code = $EnhancedAdherenceCounselling#eac //$SCT#410265008
 * valueCodeableConcept = $YesNoCodeSystem#true
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
@@ -2367,7 +2367,7 @@ Title: "Observation - Enhanced Adherence Counselling Provided As a Step In the A
 Description: "Indicates that the patient did receive enhanced adherence counselling as part of the ART Care Plan."
 * status = #final
 * category = $OBSERVATION_CATEGORY#therapy
-* code = $SCT#410265008
+* code = $EnhancedAdherenceCounselling#eac //$SCT#410265008
 * valueCodeableConcept = $YesNoCodeSystem#true
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
@@ -2383,7 +2383,7 @@ Title: "Service Request - Enhanced Adherence Counselling"
 Description: "Represents the service request for enhanced adherence counselling."
 * status = #completed
 * intent = #order
-* code = $SCT#410265008
+* code = $EnhancedAdherenceCounselling#eac //$SCT#410265008
 * category = $LNC#LP173100-1
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
@@ -2448,7 +2448,7 @@ Title: "Diagnostic Report - Routine Viral Load"
 Description: "Represents the results for a routine viral load as unsuppressed."
 * status = #final
 * category = $LNC#11502-2
-* code = $LNC#25836-8
+* code = $LNC#25836-8 //$SCT#315124004
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * result = Reference(UnsuppressedViralLoadResultExample)
@@ -2463,7 +2463,7 @@ Title: "Diagnostic Report - Targeted Viral Load"
 Description: "Represents the results for a targeted viral load as suppressed."
 * status = #final
 * category = $LNC#11502-2
-* code = $LNC#25836-8
+* code = $LNC#25836-8 //$SCT#315124004
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * result = Reference(SuppressedViralLoadResultExample)
@@ -2894,7 +2894,7 @@ Description: "Represents the patient's cotrimoxazole preventive therapy Adherenc
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-12-11"
 * performer = Reference(CurrentServiceProviderExample)
-* valueCodeableConcept = $ARVAdherence#Good
+* valueCodeableConcept = $SCT#135815002 //$ARVAdherence#Good
 * valueCodeableConcept.text = "Good"
 
 Instance: CotrimoxazolePreventiveTherapyStoppedAdherenceExample
@@ -3007,7 +3007,7 @@ Description: "Represents the reason for the patient not starting ART as being \"
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-11-27"
-* valueCodeableConcept = $LNC#LP73973-7
+* valueCodeableConcept = $ReasonNotStartedART#referred-tx-not-initiated
 * performer = Reference(CurrentServiceProviderExample)
 
 Instance: HIVProgramStatusReasonARTNotStartedWithPlanForNextStepExample
@@ -3021,7 +3021,7 @@ Description: "Represents the reason for the patient not starting ART as being \"
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-11-27"
-* valueCodeableConcept = $LNC#LP73973-7
+* valueCodeableConcept = $ReasonNotStartedART#referred-tx-not-initiated
 * performer = Reference(CurrentServiceProviderExample)
 * hasMember = Reference(ARTNotStartedPlanForNextStepObservationExample)
 
@@ -3112,7 +3112,7 @@ Description: "Used to record the HIV+ tracking details for the patient who has r
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-11-27"
-* valueCodeableConcept = $LNC#63936-9
+* valueCodeableConcept = $FinalOutcomeCodeSystem#started-art //$LNC#63936-9
 * performer = Reference(CurrentServiceProviderExample)
 
 Instance: FinalOutcomeConfirmedReferralExample
@@ -3126,7 +3126,7 @@ Description: "Used to record the HIV+ tracking details for the patient who has r
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-11-27"
-* valueCodeableConcept = $LNC#39266-2
+* valueCodeableConcept = $FinalOutcomeCodeSystem#confirmed-referral //$LNC#39266-2
 * performer = Reference(CurrentServiceProviderExample)
 * basedOn = Reference(ReferralOutServiceRequestExample)
 
@@ -3395,7 +3395,7 @@ Description: "Indicates that the patient is currently receiving INH."
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-12-11"
 * performer = Reference(CurrentServiceProviderExample)
-* valueCodeableConcept = $LNC#18934-0
+* valueCodeableConcept = $TPTProphylaxisTypeCodeSystem#inh //$LNC#18934-0
 
 Instance: TBProphylaxisTypeisINHAtFollowUpObservationExample
 InstanceOf: TBProphylaxisTypeObservation
@@ -3410,7 +3410,7 @@ Description: "Indicates that the patient is receiving another dose of INH at fol
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-12-11"
 * performer = Reference(CurrentServiceProviderExample)
-* valueCodeableConcept = $LNC#18934-0
+* valueCodeableConcept = $TPTProphylaxisTypeCodeSystem#inh //$LNC#18934-0
 * hasMember[INHFollowUp] = Reference(INHAtFollowupObservationExample)
 
 Instance: TBProphylaxisTypeAlternateAndFor3HPObservationExample
@@ -3488,7 +3488,7 @@ Description: "Indicates that the patient has completed INH at follow-up."
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-12-11"
 * performer = Reference(CurrentServiceProviderExample)
-* valueCodeableConcept = $LNC#18934-0
+* valueCodeableConcept = $TPTProphylaxisTypeCodeSystem#inh //$LNC#18934-0
 * hasMember[INHFollowUp] = Reference(INHAtFollowupCompletedObservationExample)
 
 Instance: INHAtFollowupCompletedObservationExample
@@ -4218,7 +4218,7 @@ Title: "Observation - Blood Pressure"
 Description: "Represents the Systolic and Diastolic blood pressure for the patient."
 * status = #final
 * category = $OBSERVATION_CATEGORY#vital-signs
-* code = $LNC#85354-9
+* code = $LNC#85354-9 //$LNC#55284-4
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2022-11-30"
