@@ -1133,17 +1133,6 @@ Description: "Codes used for representing the reasons for poor ARV adherence."
 * $SCT#397695000 "Finding related to ability to comply with treatment"
 * $LNC#LA46-8 "Other"
 
-CodeSystem: ModeOfDeliveryCodeSystem
-Id: mode-of-delivery-code-system
-Title: "Mode Of Delivery"
-Description: "Codes used for representing mode of delivery."
-* ^experimental = false
-* ^status = #active
-* ^caseSensitive = true
-* #Spontaneous-Vaginal "Spontaneous vaginal"
-* #Caesarean-Section "Caesarean section"
-* #Other "Other (Specify)"
-
 ValueSet: ModeOfDeliveryValueSet
 Id: mode-of-delivery-value-set
 Title: "Mode Of Delivery"
@@ -1153,18 +1142,6 @@ Description: "Codes used for representing mode of delivery."
 * $LNC#LA18963-1 "Spontaneous vaginal"
 * $LNC#LA18965-6 "Caesarean section"
 * $LNC#LA46-8 "Other"
-* include codes from system ModeOfDeliveryCodeSystem
-
-CodeSystem: PlaceOfDeliveryCodeSystem
-Id: place-of-delivery-code-system
-Title: "Place Of Delivery"
-Description: "Codes used for representing place of delivery."
-* ^experimental = false
-* ^status = #active
-* ^caseSensitive = true
-* #Health-Facility "Health Facility"
-* #Home "Home"
-* #Other "Other (Specify)"
 
 ValueSet: PlaceOfDeliveryValueSet
 Id: place-of-delivery-value-set
@@ -1175,17 +1152,6 @@ Description: "Codes used for representing place of delivery."
 * $LNC#LA14084-0 "Home"
 * $LNC#LA46-8 "Other"
 * $LNC#LA18958-1 "Facility"
-* include codes from system PlaceOfDeliveryCodeSystem
-
-CodeSystem: ResidentialTypeCodeSystem
-Id: residential-type-code-system
-Title: "Residential Type"
-Description: "Codes used for representing patient residential type."
-* ^experimental = false
-* ^status = #active
-* ^caseSensitive = true
-* #Urban "Urban"
-* #Rural "Rural"
 
 ValueSet: ResidentialTypeValueSet
 Id: residential-type-value-set
@@ -1195,7 +1161,6 @@ Description: "Codes used for representing patient residential type."
 * ^status = #active
 * $SCT#224807002 "Urban environment"
 * $SCT#224804009 "Rural environment"
-* include codes from system ResidentialTypeCodeSystem
 
 CodeSystem: HIVPositiveTrackingCodeSystem
 Id: hiv-positive-tracking-code-system
@@ -2286,7 +2251,7 @@ Description: "Proprietary Codes used in the Family Index Case Contacts Questionn
 CodeSystem: EnhancedAdherenceCounsellingCodeSystem
 Id: enhanced-adherence-counselling-status-code-system
 Title: "Enhanced Adherence Counselling"
-Description: "Enhanced Adherence Counselling"
+Description: "Code used for indicating a proprietary enhanced adherence counselling"
 * ^experimental = false
 * ^status = #active
 * ^caseSensitive = true
