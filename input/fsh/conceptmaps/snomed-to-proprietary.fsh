@@ -1,12 +1,12 @@
 Instance: SNOMEDCodesToProprietary
 InstanceOf: ConceptMap
-Title: "ConceptMap to and from SNOMED"
+Title: "ConceptMap to and from SNOMED to Proprietary"
 Description: "Mapping to and from proprietary concepts to SNOMED."
 Usage: #definition
 
 * name = "SNOMEDCodesToProprietary"
 * description = "Mapping to and from proprietary concepts to SNOMED."
-* title = "ConceptMap to and from SNOMED"
+* title = "ConceptMap to and from SNOMED to Proprietary"
 * status = #active
 * experimental = true
 * date = "2024-08-30"

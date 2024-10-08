@@ -1,12 +1,12 @@
 Instance: LOINCCodesToProprietary
 InstanceOf: ConceptMap
-Title: "ConceptMap to and from LOINC"
+Title: "ConceptMap to and from LOINC to Proprietary"
 Description: "Mapping to and from proprietary concepts to LOINC."
 Usage: #definition
 
 * name = "LOINCCodesToProprietary"
 * description = "Mapping to and from proprietary concepts to LOINC."
-* title = "ConceptMap to and from LOINC"
+* title = "ConceptMap to and from LOINC to Proprietary"
 * status = #active
 * experimental = true
 * date = "2024-08-30"

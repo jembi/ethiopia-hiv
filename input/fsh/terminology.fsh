@@ -583,11 +583,11 @@ Description: "HIV Test Results"
 * $LNC#LA24955-9 "HIV-1 Positive"
 * $LNC#LA11884-6 "Indeterminate"
 
-ValueSet: ConfirmedHIVPositiveValueSet
-Id: confrirmed-hiv-positive-value-set
+ValueSet: HIVTestType
+Id: hiv-test-type-value-set
 Title: "HIV Test Types"
 Description: "HIV Test Types"
-* ^experimental = false
+* ^experimental = true
 * ^status = #active
 * $LNC#9836-8 "HIV proviral DNA [Presence] in Blood by Probe with amplification"
 * $LNC#89365-1 "HIV 1 and 2 Ab panel - Serum, Plasma or Blood by Rapid immunoassay"

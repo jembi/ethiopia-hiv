@@ -20,4 +20,3 @@ INFORMATION: StructureDefinition/cotrimoxazole-preventive-therapy-medication-dis
 
 # This is a known issue and is being addressed. See https://chat.fhir.org/#narrow/stream/179252-IG-creation/topic/IG.20Publisher.20Version.3A.20v1.2E6.2E25
 %The link 'http://hl7.org/fhir/R4/valueset-diagnostic-requests.html' for "here" cannot be resolved%
-%binds to the value set 'http://hl7.org/fhir/ValueSet/languages' which is experimental, but this structure is not labeled as experimental%

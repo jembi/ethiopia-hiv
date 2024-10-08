@@ -654,7 +654,7 @@ Title: "Observation - Confirmed HIV positive"
 Description: "Represents the date the patient was confirmed HIV positive."
 * obeys Observation-HIV-confirmed-1 and Observation-HIV-confirmed-2 and Observation-HIV-confirmed-3
 * category 1..1
-* code from ConfirmedHIVPositiveValueSet (required)
+* code from HIVTestType (required)
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
 * valueCodeableConcept from HIVTestResultsValueSet (required)
