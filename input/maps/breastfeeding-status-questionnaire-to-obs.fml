@@ -11,9 +11,7 @@ group BreastfeedingStatusToObservation(source src : QuestionnaireResponse, targe
 
     src -> tgt.code = cc('http://loinc.org', '63895-7') "SetCodeCodeableConcept";
 
-    src.authored as authored -> tgt.effective = create('dateTime') as observationDate then {
-        authored as authoredDate -> observationDate = authoredDate "SetObservationDate";
-    } "ProcessObservationDate";
+    src.authored as authored -> tgt.effective = create('dateTime') as observationDate, observationDate.value = authored "SetObservationEffectiveDateTime";
 
     src -> tgt.category = cc('http://hl7.org/fhir/observation-category', 'exam') "SetCategoryCodeableConcept";
 
@@ -29,10 +27,10 @@ group BreastfeedingStatusToObservation(source src : QuestionnaireResponse, targe
         QREncounter as enc -> ObsEncounter.reference = enc "SetEncounterReference";
     } "ProcessAuthorReference";
 
-    src.item as item where(linkId = 'is-breast-feeding') then {
+    src.item as item where(linkId = '1.3') then {
         item.answer first as ans then { 
-            ans.value : Coding as breastfeeding -> tgt.value = create('CodeableConcept') as breastfeedingValue then {
-                breastfeeding -> breastfeedingValue = translate(breastfeeding, 'http://moh.gov.et/fhir/hiv/ConceptMap/LOINCCodesToProprietary', 'code') "SeBbreastfeedingCoding";
+            ans.value as breastfeeding -> tgt.value = create('CodeableConcept') as value then {
+                breastfeeding -> value = translate(breastfeeding, 'http://moh.gov.et/fhir/hiv/ConceptMap/LOINCCodesToProprietary', 'code') "SetBreastfeedingCoding";
             };
         };
 	};
