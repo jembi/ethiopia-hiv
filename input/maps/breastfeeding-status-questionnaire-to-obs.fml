@@ -7,9 +7,15 @@ uses "http://moh.gov.et/fhir/hiv/StructureDefinition/breastfeeding-status-observ
 
 group BreastfeedingStatusToObservation(source src : QuestionnaireResponse, target tgt : Observation) {
 	src -> tgt.id = uuid() "SetObservationId";
+
+    src -> tgt.meta as meta then {
+        src -> meta.profile = 'http://moh.gov.et/fhir/hiv/StructureDefinition/breastfeeding-status-observation' "SetObservationMetaProfile";
+    } "SetObservationMeta";
+
     src -> tgt.status = 'final' "SetObservationStatus";
 
     src -> tgt.code = cc('http://loinc.org', '63895-7') "SetObservationCode";
+    src -> tgt.code as code, code.text = 'Breastfeeding status' "SetObservationCodeText";
 
     src.authored as authored -> tgt.effective = authored "SetObservationEffectiveDateTime";
 
