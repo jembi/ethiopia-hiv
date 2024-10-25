@@ -7,29 +7,27 @@ uses "http://moh.gov.et/fhir/hiv/StructureDefinition/breastfeeding-status-observ
 
 group BreastfeedingStatusToObservation(source src : QuestionnaireResponse, target tgt : Observation) {
 	src -> tgt.id = uuid() "SetObservationId";
-    src -> tgt.status = 'final' "SetStatusCodeValue";
+    src -> tgt.status = 'final' "SetObservationStatus";
 
-    src -> tgt.code = cc('http://loinc.org', '63895-7') "SetCodeCodeableConcept";
+    src -> tgt.code = cc('http://loinc.org', '63895-7') "SetObservationCode";
 
-    src.authored as authored -> tgt.effective = create('dateTime') as observationDate, observationDate.value = authored "SetObservationEffectiveDateTime";
+    src.authored as authored -> tgt.effective = authored "SetObservationEffectiveDateTime";
 
-    src -> tgt.category = cc('http://hl7.org/fhir/observation-category', 'exam') "SetCategoryCodeableConcept";
+    src -> tgt.category = cc('http://hl7.org/fhir/observation-category', 'exam') "SetObservationCategory";
 
-    src.subject as patient -> tgt.subject = create('Reference') as subject, subject.reference = patient "SetPatientReference";
+    src.subject as patient -> tgt.subject = patient "SetObservationSubjectReference";
 
-    src.author as author -> tgt.performer = create('Reference') as performer, performer.reference = author "SetAuthorReference";
+    src.author as author -> tgt.performer = author "SetObservationPerfomerReference";
 
-    src.encounter as QREncounter -> tgt.encounter = create('Reference') as ObsEncounter, ObsEncounter.reference = QREncounter "SetEncounterReference";
+    src.encounter as encounter -> tgt.encounter = encounter "SetObservationEncounterReference";
 
     src.item as item where(linkId = '1.3') then {
         item.answer first as ans then { 
             ans.value as breastfeeding -> tgt.value = create('CodeableConcept') as obsValue then {
-                //breastfeeding -> obsValue = translate(breastfeeding, 'http://moh.gov.et/fhir/hiv/ConceptMap/LOINCCodesToProprietary', 'code') "SetBreastfeedingCoding";
-
                 breastfeeding -> obsValue.coding = create('Coding') as coding then {
-                    breastfeeding -> coding.system = translate(breastfeeding, 'http://moh.gov.et/fhir/hiv/ConceptMap/LOINCCodesToProprietary', 'system') "SetObsSystem";
-                    breastfeeding -> coding.code = translate(breastfeeding, 'http://moh.gov.et/fhir/hiv/ConceptMap/LOINCCodesToProprietary', 'code') "SetObsCode";
-                } "SetObsCoding";
+                    breastfeeding -> coding.system = translate(breastfeeding, 'http://moh.gov.et/fhir/hiv/ConceptMap/LOINCCodesToProprietary', 'system') "SetObservationValueCodingSystem";
+                    breastfeeding -> coding.code = translate(breastfeeding, 'http://moh.gov.et/fhir/hiv/ConceptMap/LOINCCodesToProprietary', 'code') "SetObservationValueCodingCode";
+                } "SetObservationValueCoding";
             };
         };
 	};
