@@ -103,9 +103,13 @@ dependencies:
 #  Patient/bad-example: omit
 
 resources:
-  StructureMap/BreastfeedingStatusToObservation:
+  StructureMap/QRBreastfeedingStatusToObservation:
     name: Map Breastfeeding Question to an Observation
     description: Maps Questionnaire Response Resource for Breastfeeding status to an Observation Resource
+    exampleBoolean: false
+  StructureMap/ProprietaryBreastfeedingStatusToObservation:
+    name: Map Breastfeeding Proprietary Structure to an Observation
+    description: Maps a Proprietary Structure for Breastfeeding status to an Observation Resource
     exampleBoolean: false
   StructureMap/PregnancyStatusToObservation:
     name: Map Pregnancy Status Question to an Observation

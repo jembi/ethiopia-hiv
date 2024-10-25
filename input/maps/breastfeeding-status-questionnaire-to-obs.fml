@@ -1,11 +1,11 @@
-map "http://moh.gov.et/fhir/hiv/StructureMap/BreastfeedingStatusToObservation" = "BreastfeedingStatusToObservation"
+map "http://moh.gov.et/fhir/hiv/StructureMap/QRBreastfeedingStatusToObservation" = "QRBreastfeedingStatusToObservation"
 
 /// status = 'draft'
 
 uses "http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse" as source
 uses "http://moh.gov.et/fhir/hiv/StructureDefinition/breastfeeding-status-observation" as target
 
-group BreastfeedingStatusToObservation(source src : QuestionnaireResponse, target tgt : Observation) {
+group QRBreastfeedingStatusToObservation(source src : QuestionnaireResponse, target tgt : Observation) {
 	src -> tgt.id = uuid() "SetObservationId";
 
     src -> tgt.meta as meta then {
