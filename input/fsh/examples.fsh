@@ -277,7 +277,7 @@ Title: "Service Request - Request for Referral"
 Description: "Service request used to make a request for a referral."
 * status = #completed
 * intent = #order
-* code = $LNC#LP173238-9
+* code =  $LNC#LA9331-5 //$LNC#LP173238-9
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * authoredOn = "2024-01-25"
@@ -1848,7 +1848,7 @@ Title: "Service Request - Incoming Referral From Within Facility - (Existing ART
 Description: "Used to capture a pateint's referral information."
 * status = #completed
 * intent = #order
-* code = $LNC#39267-0
+* code = $LNC#LA9328-1 //$LNC#39267-0
 * code.text = "Reason for referral received"
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
@@ -1865,7 +1865,7 @@ Title: "Service Request - Incoming Referral From Outside Facility - (New ART Cli
 Description: "Used to capture a pateint's referral information."
 * status = #completed
 * intent = #order
-* code = $LNC#39267-0
+* code = $LNC#LA9328-1 //$LNC#39267-0
 * code.text = "Reason for referral received"
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)

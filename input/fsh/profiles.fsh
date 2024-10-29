@@ -1327,7 +1327,7 @@ Id: referral-out-service-request
 Title: "Service Request - Request for Referral"
 Description: "Service request used to make a request for a referral."
 * intent = #order
-* code = $LNC#LP173238-9
+* code = $LNC#LA9331-5 //$LNC#LP173238-9
 * locationReference 1..*
 * authoredOn 1..1
 * reasonReference 1..*
@@ -1382,7 +1382,7 @@ Parent: GenericServiceRequest
 Id: referral-in-service-request
 Title: "Service Request - Incoming Referral Information"
 Description: "Used to capture a patient's referral information."
-* code = $LNC#39267-0
+* code = $LNC#LA9328-1 //$LNC#39267-0
 * authoredOn 1..1
 * requester 1..1
 * reasonCode 1..*

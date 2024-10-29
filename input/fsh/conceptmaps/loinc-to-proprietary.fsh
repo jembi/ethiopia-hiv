@@ -54,14 +54,14 @@ Usage: #definition
   * insert ElementMap(91382-2, Stopped, equivalent)
 
 * group[+]
-  * source = $YesNoCodeSystem
+  * source = $YesNoBreastFeedingCodeSystem
   * target = $LNC
   * insert ElementMap(true, LA29252-6, equivalent)
   * insert ElementMap(false, LA29253-4, equivalent)
 
 * group[+]
   * source = $LNC
-  * target = $YesNoCodeSystem
+  * target = $YesNoBreastFeedingCodeSystem
   * insert ElementMap(LA29252-6, true, equivalent)
   * insert ElementMap(LA29253-4, false, equivalent)
 
@@ -130,26 +130,26 @@ Usage: #definition
   * insert ElementMap(67723-7, Linked-To-Care, equivalent)
 
 * group[+]
-  * source = $YesNoCodeSystem
+  * source = $YesNoFuturePregnancyCodeSystem
   * target = $LNC
   * insert ElementMap(true, LA26438-4, equivalent)
   * insert ElementMap(false, LA26440-0, equivalent)
 
 * group[+]
   * source = $LNC
-  * target = $YesNoCodeSystem
+  * target = $YesNoFuturePregnancyCodeSystem
   * insert ElementMap(LA26438-4, true, equivalent)
   * insert ElementMap(LA26440-0, false, equivalent)
 
 * group[+]
-  * source = $YesNoCodeSystem
+  * source = $YesNoPregnancyStatusCodeSystem
   * target = $LNC
   * insert ElementMap(true, LA15173-0, equivalent)
   * insert ElementMap(false, LA26683-5, equivalent)
 
 * group[+]
   * source = $LNC
-  * target = $YesNoCodeSystem
+  * target = $YesNoPregnancyStatusCodeSystem
   * insert ElementMap(LA15173-0, true, equivalent)
   * insert ElementMap(LA26683-5, false, equivalent)
 
