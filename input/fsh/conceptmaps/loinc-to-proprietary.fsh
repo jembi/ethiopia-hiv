@@ -54,14 +54,18 @@ Usage: #definition
   * insert ElementMap(91382-2, Stopped, equivalent)
 
 * group[+]
-  * source = $YesNoBreastFeedingCodeSystem
+  * id = "BreastfeedingQuestionProprietaryToLOINC"
+  * source = $YesNoCodeSystem
+  * sourceVersion = "BreastfeedingQuestionProprietaryToLOINC"
   * target = $LNC
+  * targetVersion = "BreastfeedingQuestionProprietaryToLOINC"
   * insert ElementMap(true, LA29252-6, equivalent)
   * insert ElementMap(false, LA29253-4, equivalent)
 
 * group[+]
+  * id = "BreastfeedingQuestionLOINCToProprietary"
   * source = $LNC
-  * target = $YesNoBreastFeedingCodeSystem
+  * target = $YesNoCodeSystem
   * insert ElementMap(LA29252-6, true, equivalent)
   * insert ElementMap(LA29253-4, false, equivalent)
 
@@ -130,26 +134,30 @@ Usage: #definition
   * insert ElementMap(67723-7, Linked-To-Care, equivalent)
 
 * group[+]
-  * source = $YesNoFuturePregnancyCodeSystem
+  * id = "FuturePregnancyQuestionProprietaryToLOINC"
+  * source = $YesNoCodeSystem
   * target = $LNC
   * insert ElementMap(true, LA26438-4, equivalent)
   * insert ElementMap(false, LA26440-0, equivalent)
 
 * group[+]
+  * id = "FuturePregnancyQuestionLOINCToProprietary"
   * source = $LNC
-  * target = $YesNoFuturePregnancyCodeSystem
+  * target = $YesNoCodeSystem
   * insert ElementMap(LA26438-4, true, equivalent)
   * insert ElementMap(LA26440-0, false, equivalent)
 
 * group[+]
-  * source = $YesNoPregnancyStatusCodeSystem
+  * id = "PregnancyQuestionProprietaryToLOINC"
+  * source = $YesNoCodeSystem
   * target = $LNC
   * insert ElementMap(true, LA15173-0, equivalent)
   * insert ElementMap(false, LA26683-5, equivalent)
 
 * group[+]
+  * id = "PregnancyQuestionLOINCToProprietary"
   * source = $LNC
-  * target = $YesNoPregnancyStatusCodeSystem
+  * target = $YesNoCodeSystem
   * insert ElementMap(LA15173-0, true, equivalent)
   * insert ElementMap(LA26683-5, false, equivalent)
 
