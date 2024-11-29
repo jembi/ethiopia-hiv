@@ -437,9 +437,9 @@ Description: "A questionaire response that documents the answers to the pregnanc
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 
-* insert QuestionResponse(1.1, Is Pregnant, valueCoding, $YesNoCodeSystem#false)
-* insert QuestionResponse(1.2, Wants to be pregnant, valueCoding, $YesNoCodeSystem#true)
-* insert QuestionResponse(1.3, Is breastfeeding, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.1, Is Pregnant, valueCoding, $PS-FPM-YesNoCodeSystem#ps-fpm-1.1-false)
+* insert QuestionResponse(1.2, Wants to be pregnant, valueCoding, $PS-FPM-YesNoCodeSystem#ps-fpm-1.2-true)
+* insert QuestionResponse(1.3, Is breastfeeding, valueCoding, $PS-FPM-YesNoCodeSystem#ps-fpm-1.3-false)
 * insert QuestionResponse(1.4, Last Menstrual date, valueDate, "2024-06-18")
 * insert QuestionResponse(1.5, Estimated Delivery Date, valueDate, "2025-05-25")
 * insert QuestionResponse(1.6, Family Planning Method, valueCoding, $LNC#LA14543-5)
@@ -552,7 +552,7 @@ Description: "Indicates that the patient was screened for TB and the screening r
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-12-11"
 * performer = Reference(CurrentServiceProviderExample)
-* valueCodeableConcept = $YesNoCodeSystem#true
+* valueCodeableConcept = $Screened-For-TB-YesNoCodeSystem#screened-for-tb-true
 * valueCodeableConcept.extension[ObservedDate].valueDateTime = "2023-10-21"
 * hasMember[+] = Reference(TBPositiveScreeningExample)
 
@@ -568,7 +568,7 @@ Description: "Indicates that the patient was not screened for TB."
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-12-11"
 * performer = Reference(CurrentServiceProviderExample)
-* valueCodeableConcept = $YesNoCodeSystem#false
+* valueCodeableConcept = $Screened-For-TB-YesNoCodeSystem#screened-for-tb-false
 
 Instance: TBScreeningSpecimenExample
 InstanceOf: TBScreeningSpecimen
@@ -995,7 +995,7 @@ Description: "Represents the patient's Therapeutic/Supplementary Food."
 * category = $OBSERVATION_CATEGORY#therapy
 * code = $SCT#41829006
 * code.text = "Therapeutic/Supplementary Food"
-* valueCodeableConcept = $YesNoCodeSystem#true
+* valueCodeableConcept = $Therapeutic-Supplementary-Food-YesNoCodeSystem#therapeutic-supplementary-food-true
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * performer = Reference(CurrentServiceProviderExample)
@@ -1105,7 +1105,7 @@ Description: "Represents whether the patient is currently pregnant."
 * category = $OBSERVATION_CATEGORY#exam
 * code = $LNC#11449-6
 * code.text = "Pregnancy status"
-* valueCodeableConcept = $YesNoCodeSystem#false
+* valueCodeableConcept = $PS-FPM-YesNoCodeSystem#ps-fpm-1.1-false
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * performer = Reference(CurrentServiceProviderExample)
@@ -1120,7 +1120,7 @@ Description: "Represents whether the patient is currently pregnant."
 * category = $OBSERVATION_CATEGORY#exam
 * code = $LNC#11449-6
 * code.text = "Pregnancy status"
-* valueCodeableConcept = $YesNoCodeSystem#true
+* valueCodeableConcept = $PS-FPM-YesNoCodeSystem#ps-fpm-1.1-true
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * performer = Reference(CurrentServiceProviderExample)
@@ -1136,7 +1136,7 @@ Description: "Represents whether the patient plans to be pregnant in the future.
 * category = $OBSERVATION_CATEGORY#exam
 * code = $LNC#86645-9
 * code.text = "Future pregnancy plans"
-* valueCodeableConcept = $YesNoCodeSystem#false
+* valueCodeableConcept = $PS-FPM-YesNoCodeSystem#ps-fpm-1.2-false
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * performer = Reference(CurrentServiceProviderExample)
@@ -1151,7 +1151,7 @@ Description: "Represents whether the patient is currently breatfeeding."
 * category = $OBSERVATION_CATEGORY#exam
 * code = $LNC#63895-7
 * code.text = "Breastfeeding status"
-* valueCodeableConcept = $YesNoCodeSystem#false
+* valueCodeableConcept = $PS-FPM-YesNoCodeSystem#ps-fpm-1.3-false
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * performer = Reference(CurrentServiceProviderExample)
@@ -1311,7 +1311,7 @@ Description: "The patient was counselled for cervical cancer."
 * category = $OBSERVATION_CATEGORY#therapy
 * code = $SCT#409063005
 * code.text = "Cervical cancer counselling given"
-* valueCodeableConcept = $YesNoCodeSystem#true
+* valueCodeableConcept = $CCS-Counselling-YesNoCodeSystem#ccs-counselling-true
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * performer = Reference(CurrentServiceProviderExample)
@@ -1326,7 +1326,7 @@ Description: "The patient was not counselled for cervical cancer."
 * category = $OBSERVATION_CATEGORY#therapy
 * code = $SCT#409063005
 * code.text = "Cervical cancer counselling not given"
-* valueCodeableConcept = $YesNoCodeSystem#false
+* valueCodeableConcept = $CCS-Counselling-YesNoCodeSystem#ccs-counselling-false
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * performer = Reference(CurrentServiceProviderExample)
@@ -1341,7 +1341,7 @@ Description: "The patient accepted screening for cervical cancer."
 * category = $OBSERVATION_CATEGORY#exam
 * code = $SCT#171153008
 * code.text = "Cervical cancer screening acepted"
-* valueCodeableConcept = $YesNoCodeSystem#true
+* valueCodeableConcept = $CCS-Accepted-YesNoCodeSystem#ccs-accepted-true
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * performer = Reference(CurrentServiceProviderExample)
@@ -1357,7 +1357,7 @@ Description: "The patient did not accept screening for cervical cancer."
 * category = $OBSERVATION_CATEGORY#exam
 * code = $SCT#171153008
 * code.text = "Cervical cancer screening not acepted"
-* valueCodeableConcept = $YesNoCodeSystem#false
+* valueCodeableConcept = $CCS-Accepted-YesNoCodeSystem#ccs-accepted-false
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * performer = Reference(CurrentServiceProviderExample)
@@ -1749,7 +1749,7 @@ Description: "Indicates that the patient resides in the catchment area."
 * category = $OBSERVATION_CATEGORY#social-history
 * code = $LNC#LA21920-6
 * code.text = "Residence in catchment area"
-* valueCodeableConcept = $YesNoCodeSystem#true
+* valueCodeableConcept = $Resides-Within-Catchment-Area-YesNoCodeSystem#resides-within-catchment-area-true
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * performer = Reference(CurrentServiceProviderExample)
@@ -1764,12 +1764,12 @@ Description: "Indicates that the patient does not reside within the catchment ar
 * category = $OBSERVATION_CATEGORY#social-history
 * code = $LNC#LA21920-6
 * code.text = "Residence in catchment area"
-* valueCodeableConcept = $YesNoCodeSystem#false
+* valueCodeableConcept = $Resides-Within-Catchment-Area-YesNoCodeSystem#resides-within-catchment-area-false
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * performer = Reference(CurrentServiceProviderExample)
 * effectiveDateTime = "2024-01-25"
-* extension[FollowUpChallengesAnticipated].valueCodeableConcept = $YesNoCodeSystem#true
+* extension[FollowUpChallengesAnticipated].valueCodeableConcept = $FollowUp-Challenges-Anticipated-YesNoCodeSystem#followUp-challenges-anticipated-true
 
 Instance: ARVRegimenChangeCategoryTypeSubstituteExample
 InstanceOf: ARVRegimenChangeCategoryType
@@ -1884,7 +1884,7 @@ Description: "Used to determine whether the patient's or their child's HIV Statu
 * category = $OBSERVATION_CATEGORY#social-history
 * code = $LNC#47249-8
 * code.text = "HIV care and family status"
-* valueCodeableConcept = $YesNoCodeSystem#true
+* valueCodeableConcept = $HIV-Status-Disclosure-At-Enrollment-YesNoCodeSystem#hiv-status-disclosure-at-enrollment-true
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * performer = Reference(CurrentServiceProviderExample)
@@ -1923,7 +1923,7 @@ Description: "Indicates that the patient has been tested for HIV."
 * category = $OBSERVATION_CATEGORY#exam
 * code = $SCT#171121004
 * code.text = "Tested for HIV"
-* valueCodeableConcept = $YesNoCodeSystem#true
+* valueCodeableConcept = $Tested-For-HIV-YesNoCodeSystem#tested-for-hiv-true
 * valueCodeableConcept.extension[ObservedDate].valueDateTime = "2023-10-21"
 * subject = Reference(GroupWithPatientChildRegisteredAsPatientExample)
 * encounter = Reference(GeneralEncounterExample)
@@ -1939,7 +1939,7 @@ Description: "Indicates that the patient has been tested for HIV but the HIV tes
 * category = $OBSERVATION_CATEGORY#exam
 * code = $SCT#171121004
 * code.text = "Tested for HIV"
-* valueCodeableConcept = $YesNoCodeSystem#true
+* valueCodeableConcept = $Tested-For-HIV-YesNoCodeSystem#tested-for-hiv-true
 * subject = Reference(GroupWithPatientChildRegisteredAsPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * performer = Reference(CurrentServiceProviderExample)
@@ -1954,7 +1954,7 @@ Description: "Indicates that the patient has been tested for HIV and also receiv
 * category = $OBSERVATION_CATEGORY#exam
 * code = $SCT#171121004
 * code.text = "Tested for HIV"
-* valueCodeableConcept = $YesNoCodeSystem#true
+* valueCodeableConcept = $Tested-For-HIV-YesNoCodeSystem#tested-for-hiv-true
 * valueCodeableConcept.extension[ObservedDate].valueDateTime = "2023-10-21"
 * subject = Reference(GroupWithPatientChildRegisteredAsPatientExample)
 * encounter = Reference(GeneralEncounterExample)
@@ -1971,7 +1971,7 @@ Description: "Indicates that the patient has received counselling for HIV."
 * category = $OBSERVATION_CATEGORY#therapy
 * code = $SCT#313077009
 * code.text = "Counseled for HIV"
-* valueCodeableConcept = $YesNoCodeSystem#true
+* valueCodeableConcept = $Counseled-For-HIV-YesNoCodeSystem#counseled-for-hiv-true
 * valueCodeableConcept.extension[ObservedDate].valueDateTime = "2023-10-21"
 * subject = Reference(GroupWithPatientChildRegisteredAsPatientExample)
 * encounter = Reference(GeneralEncounterExample)
@@ -1987,7 +1987,7 @@ Description: "Indicates that the patient has received counselling for HIV but th
 * category = $OBSERVATION_CATEGORY#therapy
 * code = $SCT#313077009
 * code.text = "Counseled for HIV"
-* valueCodeableConcept = $YesNoCodeSystem#true
+* valueCodeableConcept = $Counseled-For-HIV-YesNoCodeSystem#counseled-for-hiv-true
 * subject = Reference(GroupWithPatientChildRegisteredAsPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * performer = Reference(CurrentServiceProviderExample)
@@ -2002,7 +2002,7 @@ Description: "Indicates that the patient has received counselling for HIV testin
 * category = $OBSERVATION_CATEGORY#therapy
 * code = $SCT#313077009
 * code.text = "Counseled for HIV"
-* valueCodeableConcept = $YesNoCodeSystem#true
+* valueCodeableConcept = $Counseled-For-HIV-YesNoCodeSystem#counseled-for-hiv-true
 * valueCodeableConcept.extension[ObservedDate].valueDateTime = "2023-10-21"
 * subject = Reference(GroupWithPatientChildRegisteredAsPatientExample)
 * encounter = Reference(GeneralEncounterExample)
@@ -2236,7 +2236,7 @@ Description: "This is used to indicate that a viral load was not performed."
 * status = #final
 * category = $OBSERVATION_CATEGORY#exam
 * code = $SCT#315124004
-* valueCodeableConcept = $YesNoCodeSystem#false
+* valueCodeableConcept = $Viral-Load-Performed-YesNoCodeSystem#viral-load-performed-false
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * performer = Reference(CurrentServiceProviderExample)
@@ -2250,7 +2250,7 @@ Description: "This is used to indicate that a routine viral load was not perform
 * status = #final
 * category = $OBSERVATION_CATEGORY#exam
 * code = $SCT#315124004
-* valueCodeableConcept = $YesNoCodeSystem#true
+* valueCodeableConcept = $Viral-Load-Performed-YesNoCodeSystem#viral-load-performed-true
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * performer = Reference(CurrentServiceProviderExample)
@@ -2796,7 +2796,7 @@ Description: "Used to indicate that the patient has not started cotrimoxazole pr
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2024-01-25"
-* valueCodeableConcept = $YesNoCodeSystem#false
+* valueCodeableConcept = $Cotrimoxazole-Preventive-Therapy-Started-YesNoCodeSystem#cotrimoxazole-preventive-therapy-started-false
 * performer = Reference(CurrentServiceProviderExample)
 
 Instance: CotrimoxazolePreventiveTherapyStartedExample
@@ -2810,7 +2810,7 @@ Description: "Used to indicate that the patient has started cotrimoxazole preven
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2024-01-25"
-* valueCodeableConcept = $YesNoCodeSystem#true
+* valueCodeableConcept = $Cotrimoxazole-Preventive-Therapy-Started-YesNoCodeSystem#cotrimoxazole-preventive-therapy-started-true
 * performer = Reference(CurrentServiceProviderExample)
 * basedOn = Reference(CotrimoxazolePreventiveTherapyCareplanWithAdherenceExample)
 
@@ -2937,7 +2937,7 @@ Description: "Used to indicate that the patient has started fluconazole preventi
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2024-01-25"
-* valueCodeableConcept = $YesNoCodeSystem#true
+* valueCodeableConcept = $Fluconazole-Preventive-Therapy-Started-YesNoCodeSystem#fluconazole-preventive-therapy-started-true
 * performer = Reference(CurrentServiceProviderExample)
 
 Instance: FluconazolePreventiveTherapyMedicationAdministrationExample
@@ -3081,7 +3081,7 @@ Description: "Indicates that the final outcome is known for the patient who is e
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-11-27"
-* valueCodeableConcept = $YesNoCodeSystem#true
+* valueCodeableConcept = $HIV-Program-Final-Outcome-Known-YesNoCodeSystem#hiv-program-final-outcome-known-true
 * valueCodeableConcept.extension[ObservedDate].valueDateTime = "2023-11-27"
 * performer = Reference(CurrentServiceProviderExample)
 
@@ -3096,7 +3096,7 @@ Description: "Indicates that the final outcome is known for the patient who is e
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-11-27"
-* valueCodeableConcept = $YesNoCodeSystem#true
+* valueCodeableConcept = $HIV-Program-Final-Outcome-Known-YesNoCodeSystem#hiv-program-final-outcome-known-true
 * valueCodeableConcept.extension[ObservedDate].valueDateTime = "2023-11-27"
 * performer = Reference(CurrentServiceProviderExample)
 * hasMember = Reference(FinalOutcomeStartedARTExample)
@@ -3141,7 +3141,7 @@ Description: "Indicates that the final outcome is known for the patient who is e
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-11-27"
-* valueCodeableConcept = $YesNoCodeSystem#true
+* valueCodeableConcept = $HIV-Program-Final-Outcome-Known-YesNoCodeSystem#hiv-program-final-outcome-known-true
 * valueCodeableConcept.extension[ObservedDate].valueDateTime = "2023-11-27"
 * performer = Reference(CurrentServiceProviderExample)
 * hasMember = Reference(FinalOutcomeConfirmedReferralExample)
@@ -3217,7 +3217,7 @@ Description: "Indicates that the patient did not start TB treatment."
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-12-11"
 * performer = Reference(CurrentServiceProviderExample)
-* valueCodeableConcept = $YesNoCodeSystem#false
+* valueCodeableConcept = $TB-Treatment-Started-YesNoCodeSystem#tb-treatment-started-false
 
 Instance: TBTreatmentNotStartedAfterDiagnosticTestObservationExample
 InstanceOf: TBTreatmentStartedObservation
@@ -3232,7 +3232,7 @@ Description: "Indicates that the patient did not start TB treatment after being 
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-12-11"
 * performer = Reference(CurrentServiceProviderExample)
-* valueCodeableConcept = $YesNoCodeSystem#false
+* valueCodeableConcept = $TB-Treatment-Started-YesNoCodeSystem#tb-treatment-started-false
 * derivedFrom[+] = Reference(TBDiagnosticTestResultExample)
 
 Instance: TBTreatmentStartedObservationExample
@@ -3248,7 +3248,7 @@ Description: "Indicates that the patient did start TB treatment."
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-12-11"
 * performer = Reference(CurrentServiceProviderExample)
-* valueCodeableConcept = $YesNoCodeSystem#true
+* valueCodeableConcept = $TB-Treatment-Started-YesNoCodeSystem#tb-treatment-started-true
 * valueCodeableConcept.extension[ObservedDate].valueDateTime = "2023-10-21"
 
 Instance: TBTreatmentStartedAfterDiagnosticTestObservationExample
@@ -3264,7 +3264,7 @@ Description: "Indicates that the patient did start TB treatment after being test
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-12-11"
 * performer = Reference(CurrentServiceProviderExample)
-* valueCodeableConcept = $YesNoCodeSystem#true
+* valueCodeableConcept = $TB-Treatment-Started-YesNoCodeSystem#tb-treatment-started-true
 * valueCodeableConcept.extension[ObservedDate].valueDateTime = "2023-10-21"
 * derivedFrom[+] = Reference(TBDiagnosticTestResultExample)
 * basedOn[+] = Reference(TBTreatmentCareplanExample)
@@ -3972,7 +3972,7 @@ Description: "Indicates that the patient has not been assessed for pain."
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-12-11"
 * performer = Reference(CurrentServiceProviderExample)
-* valueCodeableConcept = $YesNoCodeSystem#false
+* valueCodeableConcept = $Assessed-For-Pain-YesNoCodeSystem#assessed-for-pain-false
 
 Instance: AssessedForPainObservationExample
 InstanceOf: AssessedForPainObservation
@@ -3987,7 +3987,7 @@ Description: "Indicates that the patient has been assessed for pain."
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-12-11"
 * performer = Reference(CurrentServiceProviderExample)
-* valueCodeableConcept = $YesNoCodeSystem#true
+* valueCodeableConcept = $Assessed-For-Pain-YesNoCodeSystem#assessed-for-pain-true
 * hasMember = Reference(LevelOfPainObservationExample)
 
 Instance: LevelOfPainObservationExample
@@ -4003,7 +4003,7 @@ Description: "Indicates the level of pain the patient is experiencing."
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-12-11"
 * performer = Reference(CurrentServiceProviderExample)
-* valueCodeableConcept = $YesNoCodeSystem#true
+* valueCodeableConcept = $Level-Of-Pain-YesNoCodeSystem#level-of-pain-true
 
 Instance: HIVPreventionPlanExample
 InstanceOf: HIVPreventionPlan
@@ -4032,7 +4032,7 @@ Description: "Indicates that the patient was not enrolled into the specialised p
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-12-11"
 * performer = Reference(CurrentServiceProviderExample)
-* valueCodeableConcept = $YesNoCodeSystem#false
+* valueCodeableConcept = $Enrolled-Operation-Tripple-Zero-YesNoCodeSystem#enrolled-operation-tripple-zero-false
 
 Instance: EnrolledIntoOperationTrippleZeroExample
 InstanceOf: OperationTrippleZero
@@ -4046,7 +4046,7 @@ Description: "Indicates that the patient is enrolled into the specialised progra
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-12-11"
 * performer = Reference(CurrentServiceProviderExample)
-* valueCodeableConcept = $YesNoCodeSystem#true
+* valueCodeableConcept = $Enrolled-Operation-Tripple-Zero-YesNoCodeSystem#enrolled-operation-tripple-zero-true
 * valueCodeableConcept.extension[ObservedDate].valueDateTime = "2023-10-21"
 
 Instance: CurrentHIVTreatmentTherapyDurationExample
@@ -4077,7 +4077,7 @@ Description: "Indicates whether the patient has ever received ART prior to enrol
 * encounter = Reference(GeneralEncounterExample)
 * effectiveDateTime = "2023-12-11"
 * performer = Reference(CurrentServiceProviderExample)
-* valueCodeableConcept = $YesNoCodeSystem#true
+* valueCodeableConcept = $HIV-Treatment-Prior-To-Enrollment-YesNoCodeSystem#hiv-treatment-prior-to-enrollment-true
 
 Instance: PastCompletedCotrimoxazoleMedicationStatementExample
 InstanceOf: OIMedicationStatement
@@ -4350,7 +4350,7 @@ Description: "A questionaire response that documents the answers to the eligibil
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 
-* insert QuestionResponse(1.1, Is the client newly enrolled, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.1, Is the client newly enrolled, valueCoding, $Index-Case-Screening-YesNoCodeSystem#ics-1.1-false)
 
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"
@@ -4365,17 +4365,17 @@ Description: "A questionaire response that documents the answers to the eligibil
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 
-* insert QuestionResponse(1.1, Is the client newly enrolled, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponse(1.1, Is the client newly enrolled, valueCoding, $Index-Case-Screening-YesNoCodeSystem#ics-1.1-true)
 * item[=]
   * answer.extension[+].valueReference = Reference(LinkedToCareExample)
   * answer.extension[=].url = "http://moh.gov.et/fhir/hiv/StructureDefinition/resource-value-reference"
 
-* insert QuestionResponse(1.2, Does the client have a high viral load, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponse(1.2, Does the client have a high viral load, valueCoding, $Index-Case-Screening-YesNoCodeSystem#ics-1.2-true)
 * item[=]
   * answer.extension[+].valueReference = Reference(UnsuppressedViralLoadResultExample)
   * answer.extension[=].url = "http://moh.gov.et/fhir/hiv/StructureDefinition/resource-value-reference"
 
-* insert QuestionResponse(1.3, Does the client have an ART status of Restart, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.3, Does the client have an ART status of Restart, valueCoding, $Index-Case-Screening-YesNoCodeSystem#ics-1.3-false)
 
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"
@@ -4390,35 +4390,35 @@ Description: "A questionaire response that documents the answers to the eligibil
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 
-* insert QuestionResponse(1.1, Is the client newly enrolled, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.1, Is the client newly enrolled, valueCoding, $Index-Case-Screening-YesNoCodeSystem#ics-1.1-false)
 
-* insert QuestionResponse(1.2, Does the client have a high viral load, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.2, Does the client have a high viral load, valueCoding, $Index-Case-Screening-YesNoCodeSystem#ics-1.2-false)
 * item[=]
   * answer.extension[+].valueReference = Reference(SuppressedViralLoadResultExample)
   * answer.extension[=].url = "http://moh.gov.et/fhir/hiv/StructureDefinition/resource-value-reference"
 
-* insert QuestionResponse(1.3, Does the client have an ART status of Restart, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.3, Does the client have an ART status of Restart, valueCoding, $Index-Case-Screening-YesNoCodeSystem#ics-1.3-false)
 
-* insert QuestionResponse(1.4, Is the client with a new partner, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponse(1.4, Is the client with a new partner, valueCoding, $Index-Case-Screening-YesNoCodeSystem#ics-1.4-true)
 * item[=]
   * answer.extension[+].valueReference = Reference(PartnerRelatedPersonExample)
   * answer.extension[=].url = "http://moh.gov.et/fhir/hiv/StructureDefinition/resource-value-reference"
 
-* insert QuestionResponse(1.5, Is the client with a partner not yet disclosed, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponse(1.5, Is the client with a partner not yet disclosed, valueCoding, $Index-Case-Screening-YesNoCodeSystem#ics-1.5-true)
 
-* insert QuestionResponse(1.6, Is the client with a partner who has not been tested yet for HIV, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.6, Is the client with a partner who has not been tested yet for HIV, valueCoding, $Index-Case-Screening-YesNoCodeSystem#ics-1.6-false)
 
-* insert QuestionResponse(1.7, Is the client in care with STI, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.7, Is the client in care with STI, valueCoding, $Index-Case-Screening-YesNoCodeSystem#ics-1.7-false)
 
-* insert QuestionResponse(1.8, Does the client have a child under 15yrs of age who is not tested, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponse(1.8, Does the client have a child under 15yrs of age who is not tested, valueCoding, $Index-Case-Screening-YesNoCodeSystem#ics-1.8-true)
 
-* insert QuestionResponse(1.9, Is the client Known Positive, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.9, Is the client Known Positive, valueCoding, $Index-Case-Screening-YesNoCodeSystem#ics-1.9-false)
 
-* insert QuestionResponse(1.10, Is the client eligible for partner and FBICT, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.10, Is the client eligible for partner and FBICT, valueCoding, $Index-Case-Screening-YesNoCodeSystem#ics-1.10-false)
 
-* insert QuestionResponse(1.11, Is the index case offered with partner and FBICT services, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.11, Is the index case offered with partner and FBICT services, valueCoding, $Index-Case-Screening-YesNoCodeSystem#ics-1.11-false)
 
-* insert QuestionResponse(1.12, Has the client accepted the offer for partner and FBICT, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.12, Has the client accepted the offer for partner and FBICT, valueCoding, $Index-Case-Screening-YesNoCodeSystem#ics-1.12-false)
 
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"
@@ -4475,7 +4475,7 @@ Description: "A questionaire response that documents the answers to the question
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 
-* insert QuestionResponse(1.1, Did the index case agree to be interviewed, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.1, Did the index case agree to be interviewed, valueCoding, $Index-Case-Assessment-YesNoCodeSystem#ica-1.1-false)
 * insert QuestionResponse(1.2, Reason for not being interviewed, valueCoding, $LNC#81954-0)
 
 * author = Reference(GeneralPractitionerExample)
@@ -4491,7 +4491,7 @@ Description: "A questionaire response that documents the answers to the question
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 
-* insert QuestionResponse(1.1, Did the index case agree to be interviewed, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.1, Did the index case agree to be interviewed, valueCoding, $Index-Case-Assessment-YesNoCodeSystem#ica-1.1-false)
 * insert QuestionResponse(1.2, Reason for not being interviewed, valueCoding, $LNC#LA46-8)
 * insert QuestionResponse(1.3, Other Reason for not being interviewed, valueString, "some other reason")
 
@@ -4508,9 +4508,9 @@ Description: "A questionaire response that documents the answers to the question
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 
-* insert QuestionResponse(1.1, Did the index case agree to be interviewed, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponse(1.1, Did the index case agree to be interviewed, valueCoding, $Index-Case-Assessment-YesNoCodeSystem#ica-1.1-true)
 * insert QuestionResponse(1.4, When did the index case receive the interview, valueDate, 2008-10-13)
-* insert QuestionResponse(1.5, Was the index case interviewed for partner services, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.5, Was the index case interviewed for partner services, valueCoding, $Index-Case-Assessment-YesNoCodeSystem#ica-1.5-false)
 
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"
@@ -4525,13 +4525,13 @@ Description: "A questionaire response that documents the answers to the question
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 
-* insert QuestionResponse(1.1, Did the index case agree to be interviewed, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponse(1.1, Did the index case agree to be interviewed, valueCoding, $Index-Case-Assessment-YesNoCodeSystem#ica-1.1-true)
 * insert QuestionResponse(1.4, When did the index case receive the interview, valueDate, 2008-10-13)
-* insert QuestionResponse(1.5, Was the index case interviewed for partner services, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponse(1.5, Was the index case interviewed for partner services, valueCoding, $Index-Case-Assessment-YesNoCodeSystem#ica-1.5-true)
 * insert QuestionResponse(1.6, When was the index case interviewed for partner services, valueDate, 2008-10-13)
 * insert QuestionResponse(1.7, Number of sexual partners in past 12 months, valueInteger, 4)
 * insert QuestionResponse(1.8, Number of sexual partners in past 24 months, valueInteger, 6)
-* insert QuestionResponse(1.9, Is the index client willing to identify the sex partners, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.9, Is the index client willing to identify the sex partners, valueCoding, $Index-Case-Assessment-YesNoCodeSystem#ica-1.9-false)
 * insert QuestionResponse(1.10, Reason for not being able to identify the sex partners, valueString, "some other reason")
 
 * author = Reference(GeneralPractitionerExample)
@@ -4547,13 +4547,13 @@ Description: "A questionaire response that documents the answers to the question
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 
-* insert QuestionResponse(1.1, Did the index case agree to be interviewed, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponse(1.1, Did the index case agree to be interviewed, valueCoding, $Index-Case-Assessment-YesNoCodeSystem#ica-1.1-true)
 * insert QuestionResponse(1.4, When did the index case receive the interview, valueDate, 2008-10-13)
-* insert QuestionResponse(1.5, Was the index case interviewed for partner services, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponse(1.5, Was the index case interviewed for partner services, valueCoding, $Index-Case-Assessment-YesNoCodeSystem#ica-1.5-true)
 * insert QuestionResponse(1.6, When was the index case interviewed for partner services, valueDate, 2008-10-13)
 * insert QuestionResponse(1.7, Number of sexual partners in past 12 months, valueInteger, 4)
 * insert QuestionResponse(1.8, Number of sexual partners in past 24 months, valueInteger, 6)
-* insert QuestionResponse(1.9, Is the index client willing to identify the sex partners, valueCoding, $YesNoCodeSystem#true)
+* insert QuestionResponse(1.9, Is the index client willing to identify the sex partners, valueCoding, $Index-Case-Assessment-YesNoCodeSystem#ica-1.9-true)
 * insert QuestionResponse(1.11, What is the next visit date, valueDate, 2008-11-13)
 
 * author = Reference(GeneralPractitionerExample)
@@ -4599,12 +4599,12 @@ Description: "A questionaire response that documents the answers to the question
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 
-* insert QuestionResponse(1.1, Currently living with the index case, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.1, Currently living with the index case, valueCoding, $Family-Index-Case-Contacts-YesNoCodeSystem#ficc-1.1-false)
 * insert QuestionResponseForReference(1.2, What is the contact's current health status, IndexCaseContactHealthStatusFamilyMemberExample)
 
 * item[+].linkId = "2"
 * item[=]
-  * insert QuestionResponse(2.1, Has the contact been previsouly tested for HIV, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(2.1, Has the contact been previsouly tested for HIV, valueCoding, $Family-Index-Case-Contacts-YesNoCodeSystem#ficc-2.1-false)
 
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"
@@ -4619,19 +4619,19 @@ Description: "A questionaire response that documents the answers to the question
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 
-* insert QuestionResponse(1.1, Currently living with the index case, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.1, Currently living with the index case, valueCoding, $Family-Index-Case-Contacts-YesNoCodeSystem#ficc-1.1-false)
 * insert QuestionResponseForReference(1.2, What is the contact's current health status, IndexCaseContactHealthStatusFamilyMemberExample)
 
 * item[+].linkId = "2"
 * item[=]
-  * insert QuestionResponse(2.1, Has the contact been previsouly tested for HIV, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(2.1, Has the contact been previsouly tested for HIV, valueCoding, $Family-Index-Case-Contacts-YesNoCodeSystem#ficc-2.1-true)
   * insert QuestionResponse(2.2, Date of previous HIV test, valueDate, 2008-10-13)
   * insert QuestionResponseForQuantity(2.3, Previous HIV test result, 1001, 1/mL, copies/mL)
 
 * item[+].linkId = "3"
 * item[=]
-  * insert QuestionResponse(3.1, Will the contact be counseled for HIV today, valueCoding, $YesNoCodeSystem#true)
-  * insert QuestionResponse(3.2, Will the contact be tested for HIV, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(3.1, Will the contact be counseled for HIV today, valueCoding, $Family-Index-Case-Contacts-YesNoCodeSystem#ficc-3.1-true)
+  * insert QuestionResponse(3.2, Will the contact be tested for HIV, valueCoding, $Family-Index-Case-Contacts-YesNoCodeSystem#ficc-3.2-false)
   * insert QuestionResponse(3.5, Reason for not being tested for HIV, valueCoding, $LNC#LA4389-8)
 
 * author = Reference(GeneralPractitionerExample)
@@ -4647,19 +4647,19 @@ Description: "A questionaire response that documents the answers to the question
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 
-* insert QuestionResponse(1.1, Currently living with the index case, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.1, Currently living with the index case, valueCoding, $Family-Index-Case-Contacts-YesNoCodeSystem#ficc-1.1-false)
 * insert QuestionResponseForReference(1.2, What is the contact's current health status, IndexCaseContactHealthStatusFamilyMemberExample)
 
 * item[+].linkId = "2"
 * item[=]
-  * insert QuestionResponse(2.1, Has the contact been previsouly tested for HIV, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(2.1, Has the contact been previsouly tested for HIV, valueCoding, $Family-Index-Case-Contacts-YesNoCodeSystem#ficc-2.1-true)
   * insert QuestionResponse(2.2, Date of previous HIV test, valueDate, 2008-10-13)
   * insert QuestionResponseForQuantity(2.3, Previous HIV test result, 1001, 1/mL, copies/mL)
 
 * item[+].linkId = "3"
 * item[=]
-  * insert QuestionResponse(3.1, Will the contact be counseled for HIV today, valueCoding, $YesNoCodeSystem#true)
-  * insert QuestionResponse(3.2, Will the contact be tested for HIV, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(3.1, Will the contact be counseled for HIV today, valueCoding, $Family-Index-Case-Contacts-YesNoCodeSystem#ficc-3.1-true)
+  * insert QuestionResponse(3.2, Will the contact be tested for HIV, valueCoding, $Family-Index-Case-Contacts-YesNoCodeSystem#ficc-3.2-false)
   * insert QuestionResponse(3.5, Reason for not being tested for HIV, valueCoding, $LNC#LA46-8)
   * insert QuestionResponse(3.6, Other reason for not being tested for HIV, valueString, "some other reason")
 
@@ -4676,25 +4676,25 @@ Description: "A questionaire response that documents the answers to the question
 * subject = Reference(GeneralPatientExample)
 * encounter = Reference(GeneralEncounterExample)
 
-* insert QuestionResponse(1.1, Currently living with the index case, valueCoding, $YesNoCodeSystem#false)
+* insert QuestionResponse(1.1, Currently living with the index case, valueCoding, $Family-Index-Case-Contacts-YesNoCodeSystem#ficc-1.1-false)
 * insert QuestionResponseForReference(1.2, What is the contact's current health status, IndexCaseContactHealthStatusFamilyMemberExample)
 
 * item[+].linkId = "2"
 * item[=]
-  * insert QuestionResponse(2.1, Has the contact been previsouly tested for HIV, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(2.1, Has the contact been previsouly tested for HIV, valueCoding, $Family-Index-Case-Contacts-YesNoCodeSystem#ficc-2.1-true)
   * insert QuestionResponse(2.2, Date of previous HIV test, valueDate, 2008-10-13)
   * insert QuestionResponseForQuantity(2.3, Previous HIV test result, 1001, 1/mL, copies/mL)
 
 * item[+].linkId = "3"
 * item[=]
-  * insert QuestionResponse(3.1, Will the contact be counseled for HIV today, valueCoding, $YesNoCodeSystem#true)
-  * insert QuestionResponse(3.2, Will the contact be tested for HIV, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(3.1, Will the contact be counseled for HIV today, valueCoding, $Family-Index-Case-Contacts-YesNoCodeSystem#ficc-3.1-true)
+  * insert QuestionResponse(3.2, Will the contact be tested for HIV, valueCoding, $Family-Index-Case-Contacts-YesNoCodeSystem#ficc-3.2-true)
   * insert QuestionResponse(3.3, Date of HIV test, valueDate, 2008-10-13)
   * insert QuestionResponseForQuantity(3.4, HIV test result, 845, 1/mL, copies/mL)
 
 * item[+].linkId = "4"
 * item[=]
-  * insert QuestionResponse(4.1, Is the contact linked to HIV care, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(4.1, Is the contact linked to HIV care, valueCoding, $Family-Index-Case-Contacts-YesNoCodeSystem#ficc-4.1-true)
   * insert QuestionResponseForReference(4.2, Contact identifiers, ChildRelatedPersonBecomesPatientExample)
 
 * author = Reference(GeneralPractitionerExample)
@@ -4716,17 +4716,17 @@ Description: "A questionaire response that documents the answers to the question
 
 * item[+].linkId = "2"
 * item[=]
-  * insert QuestionResponse(2.1, Violence Assessment Completed, valueCoding, $YesNoCodeSystem#true)
-  * insert QuestionResponseWithoutText(2.2, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(2.1, Violence Assessment Completed, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-2.1-true)
+  * insert QuestionResponseWithoutText(2.2, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-2.2-false)
   * item[=]
     * text = "Have you been kicked, hit, slapped, or otherwise physically hurt by your partner"
-  * insert QuestionResponse(2.3, Has you partner ever threatened to hurt you, valueCoding, $YesNoCodeSystem#false)
-  * insert QuestionResponse(2.4, Has you partner ever forced or coerced you to engage in unwanted sexual activity, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(2.3, Has you partner ever threatened to hurt you, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-2.3-false)
+  * insert QuestionResponse(2.4, Has you partner ever forced or coerced you to engage in unwanted sexual activity, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-2.4-true)
 
 * item[+].linkId = "3"
 * item[=]
   * insert QuestionResponse(3.1, What is the plan for notifying the partner regarding the index case's HIV status, valueCoding, $PartnerNotificationPlanCodeSystem#Provider-Referral)
-  * insert QuestionResponse(3.2, Was the partner notified, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(3.2, Was the partner notified, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-3.2-true)
 
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"
@@ -4747,17 +4747,17 @@ Description: "A questionaire response that documents the answers to the question
 
 * item[+].linkId = "2"
 * item[=]
-  * insert QuestionResponse(2.1, Violence Assessment Completed, valueCoding, $YesNoCodeSystem#true)
-  * insert QuestionResponseWithoutText(2.2, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(2.1, Violence Assessment Completed, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-2.1-true)
+  * insert QuestionResponseWithoutText(2.2, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-2.2-false)
   * item[=]
     * text = "Have you been kicked, hit, slapped, or otherwise physically hurt by your partner"
-  * insert QuestionResponse(2.3, Has you partner ever threatened to hurt you, valueCoding, $YesNoCodeSystem#false)
-  * insert QuestionResponse(2.4, Has you partner ever forced or coerced you to engage in unwanted sexual activity, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(2.3, Has you partner ever threatened to hurt you, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-2.3-false)
+  * insert QuestionResponse(2.4, Has you partner ever forced or coerced you to engage in unwanted sexual activity, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-2.4-true)
 
 * item[+].linkId = "3"
 * item[=]
   * insert QuestionResponse(3.1, What is the plan for notifying the partner regarding the index case's HIV status, valueCoding, $PartnerNotificationPlanCodeSystem#Provider-Referral)
-  * insert QuestionResponse(3.2, Was the partner notified, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(3.2, Was the partner notified, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-3.2-false)
   * insert QuestionResponse(3.3, Reason for not being notified, valueCoding, $LNC#LA4389-8)
 
 * author = Reference(GeneralPractitionerExample)
@@ -4779,17 +4779,17 @@ Description: "A questionaire response that documents the answers to the question
 
 * item[+].linkId = "2"
 * item[=]
-  * insert QuestionResponse(2.1, Violence Assessment Completed, valueCoding, $YesNoCodeSystem#true)
-  * insert QuestionResponseWithoutText(2.2, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(2.1, Violence Assessment Completed, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-2.1-true)
+  * insert QuestionResponseWithoutText(2.2, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-2.2-false)
   * item[=]
     * text = "Have you been kicked, hit, slapped, or otherwise physically hurt by your partner"
-  * insert QuestionResponse(2.3, Has you partner ever threatened to hurt you, valueCoding, $YesNoCodeSystem#false)
-  * insert QuestionResponse(2.4, Has you partner ever forced or coerced you to engage in unwanted sexual activity, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(2.3, Has you partner ever threatened to hurt you, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-2.3-false)
+  * insert QuestionResponse(2.4, Has you partner ever forced or coerced you to engage in unwanted sexual activity, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-2.4-true)
 
 * item[+].linkId = "3"
 * item[=]
   * insert QuestionResponse(3.1, What is the plan for notifying the partner regarding the index case's HIV status, valueCoding, $PartnerNotificationPlanCodeSystem#Provider-Referral)
-  * insert QuestionResponse(3.2, Was the partner notified, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(3.2, Was the partner notified, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-3.2-false)
   * insert QuestionResponse(3.3, Reason for not being notified, valueCoding, $LNC#LA46-8)
   * insert QuestionResponse(3.4, Other Reason for not being notified, valueString, "some reason")
   * insert QuestionResponse(3.5, Date notification offered, valueDate, 2008-10-13)
@@ -4814,17 +4814,17 @@ Description: "A questionaire response that documents the answers to the question
 
 * item[+].linkId = "2"
 * item[=]
-  * insert QuestionResponse(2.1, Violence Assessment Completed, valueCoding, $YesNoCodeSystem#true)
-  * insert QuestionResponseWithoutText(2.2, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(2.1, Violence Assessment Completed, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-2.1-true)
+  * insert QuestionResponseWithoutText(2.2, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-2.2-false)
   * item[=]
     * text = "Have you been kicked, hit, slapped, or otherwise physically hurt by your partner"
-  * insert QuestionResponse(2.3, Has you partner ever threatened to hurt you, valueCoding, $YesNoCodeSystem#false)
-  * insert QuestionResponse(2.4, Has you partner ever forced or coerced you to engage in unwanted sexual activity, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(2.3, Has you partner ever threatened to hurt you, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-2.3-false)
+  * insert QuestionResponse(2.4, Has you partner ever forced or coerced you to engage in unwanted sexual activity, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-2.4-true)
 
 * item[+].linkId = "3"
 * item[=]
   * insert QuestionResponse(3.1, What is the plan for notifying the partner regarding the index case's HIV status, valueCoding, $PartnerNotificationPlanCodeSystem#Provider-Referral)
-  * insert QuestionResponse(3.2, Was the partner notified, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(3.2, Was the partner notified, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-3.2-false)
   * insert QuestionResponse(3.3, Reason for not being notified, valueCoding, $LNC#LA46-8)
   * insert QuestionResponse(3.4, Other Reason for not being notified, valueString, "some reason")
   * insert QuestionResponse(3.5, Date notification offered, valueDate, 2008-10-13)
@@ -4849,17 +4849,17 @@ Description: "A questionaire response that documents the answers to the question
 
 * item[+].linkId = "2"
 * item[=]
-  * insert QuestionResponse(2.1, Violence Assessment Completed, valueCoding, $YesNoCodeSystem#true)
-  * insert QuestionResponseWithoutText(2.2, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(2.1, Violence Assessment Completed, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-2.1-true)
+  * insert QuestionResponseWithoutText(2.2, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-2.2-false)
   * item[=]
     * text = "Have you been kicked, hit, slapped, or otherwise physically hurt by your partner"
-  * insert QuestionResponse(2.3, Has you partner ever threatened to hurt you, valueCoding, $YesNoCodeSystem#false)
-  * insert QuestionResponse(2.4, Has you partner ever forced or coerced you to engage in unwanted sexual activity, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(2.3, Has you partner ever threatened to hurt you, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-2.3-false)
+  * insert QuestionResponse(2.4, Has you partner ever forced or coerced you to engage in unwanted sexual activity, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-2.4-true)
 
 * item[+].linkId = "3"
 * item[=]
   * insert QuestionResponse(3.1, What is the plan for notifying the partner regarding the index case's HIV status, valueCoding, $PartnerNotificationPlanCodeSystem#Provider-Referral)
-  * insert QuestionResponse(3.2, Was the partner notified, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(3.2, Was the partner notified, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-3.2-false)
   * insert QuestionResponse(3.3, Reason for not being notified, valueCoding, $LNC#LA46-8)
   * insert QuestionResponse(3.4, Other Reason for not being notified, valueString, "some reason")
   * insert QuestionResponse(3.5, Date notification offered, valueDate, 2008-10-13)
@@ -4868,7 +4868,7 @@ Description: "A questionaire response that documents the answers to the question
 
 * item[+].linkId = "4"
 * item[=]
-  * insert QuestionResponse(4.1, Has the partner been previsouly tested for HIV, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(4.1, Has the partner been previsouly tested for HIV, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-4.1-false)
 
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"
@@ -4889,17 +4889,17 @@ Description: "A questionaire response that documents the answers to the question
 
 * item[+].linkId = "2"
 * item[=]
-  * insert QuestionResponse(2.1, Violence Assessment Completed, valueCoding, $YesNoCodeSystem#true)
-  * insert QuestionResponseWithoutText(2.2, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(2.1, Violence Assessment Completed, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-2.1-true)
+  * insert QuestionResponseWithoutText(2.2, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-2.2-false)
   * item[=]
     * text = "Have you been kicked, hit, slapped, or otherwise physically hurt by your partner"
-  * insert QuestionResponse(2.3, Has you partner ever threatened to hurt you, valueCoding, $YesNoCodeSystem#false)
-  * insert QuestionResponse(2.4, Has you partner ever forced or coerced you to engage in unwanted sexual activity, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(2.3, Has you partner ever threatened to hurt you, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-2.3-false)
+  * insert QuestionResponse(2.4, Has you partner ever forced or coerced you to engage in unwanted sexual activity, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-2.4-true)
 
 * item[+].linkId = "3"
 * item[=]
   * insert QuestionResponse(3.1, What is the plan for notifying the partner regarding the index case's HIV status, valueCoding, $PartnerNotificationPlanCodeSystem#Provider-Referral)
-  * insert QuestionResponse(3.2, Was the partner notified, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(3.2, Was the partner notified, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-3.2-false)
   * insert QuestionResponse(3.3, Reason for not being notified, valueCoding, $LNC#LA46-8)
   * insert QuestionResponse(3.4, Other Reason for not being notified, valueString, "some reason")
   * insert QuestionResponse(3.5, Date notification offered, valueDate, 2008-10-13)
@@ -4908,13 +4908,13 @@ Description: "A questionaire response that documents the answers to the question
 
 * item[+].linkId = "4"
 * item[=]
-  * insert QuestionResponse(4.1, Has the partner been previsouly tested for HIV, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(4.1, Has the partner been previsouly tested for HIV, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-4.1-true)
   * insert QuestionResponse(4.2, Date of previous HIV test, valueDate, 2007-10-13)
   * insert QuestionResponseForQuantity(4.3, Previous HIV test result, 1001, 1/mL, copies/mL)
 
 * item[+].linkId = "5"
 * item[=]
-  * insert QuestionResponse(5.1, Will the partner be tested for HIV, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(5.1, Will the partner be tested for HIV, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-5.1-false)
 
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"
@@ -4935,17 +4935,17 @@ Description: "A questionaire response that documents the answers to the question
 
 * item[+].linkId = "2"
 * item[=]
-  * insert QuestionResponse(2.1, Violence Assessment Completed, valueCoding, $YesNoCodeSystem#true)
-  * insert QuestionResponseWithoutText(2.2, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(2.1, Violence Assessment Completed, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-2.1-true)
+  * insert QuestionResponseWithoutText(2.2, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-2.2-false)
   * item[=]
     * text = "Have you been kicked, hit, slapped, or otherwise physically hurt by your partner"
-  * insert QuestionResponse(2.3, Has you partner ever threatened to hurt you, valueCoding, $YesNoCodeSystem#false)
-  * insert QuestionResponse(2.4, Has you partner ever forced or coerced you to engage in unwanted sexual activity, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(2.3, Has you partner ever threatened to hurt you, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-2.3-false)
+  * insert QuestionResponse(2.4, Has you partner ever forced or coerced you to engage in unwanted sexual activity, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-2.4-true)
 
 * item[+].linkId = "3"
 * item[=]
   * insert QuestionResponse(3.1, What is the plan for notifying the partner regarding the index case's HIV status, valueCoding, $PartnerNotificationPlanCodeSystem#Provider-Referral)
-  * insert QuestionResponse(3.2, Was the partner notified, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(3.2, Was the partner notified, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-3.2-false)
   * insert QuestionResponse(3.3, Reason for not being notified, valueCoding, $LNC#LA46-8)
   * insert QuestionResponse(3.4, Other Reason for not being notified, valueString, "some reason")
   * insert QuestionResponse(3.5, Date notification offered, valueDate, 2008-10-13)
@@ -4954,19 +4954,19 @@ Description: "A questionaire response that documents the answers to the question
 
 * item[+].linkId = "4"
 * item[=]
-  * insert QuestionResponse(4.1, Has the partner been previsouly tested for HIV, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(4.1, Has the partner been previsouly tested for HIV, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-4.1-true)
   * insert QuestionResponse(4.2, Date of previous HIV test, valueDate, 2007-10-13)
   * insert QuestionResponseForQuantity(4.3, Previous HIV test result, 1001, 1/mL, copies/mL)
 
 * item[+].linkId = "5"
 * item[=]
-  * insert QuestionResponse(5.1, Will the partner be tested for HIV, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(5.1, Will the partner be tested for HIV, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-5.1-true)
   * insert QuestionResponse(5.2, Date of HIV test, valueDate, 2007-10-13)
   * insert QuestionResponseForQuantity(5.3, HIV test result, 988, 1/mL, copies/mL)
 
 * item[+].linkId = "6"
 * item[=]
-  * insert QuestionResponse(6.1, Is the newly diagnosed partner linked to partner services, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(6.1, Is the newly diagnosed partner linked to partner services, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-6.1-true)
 
 * author = Reference(GeneralPractitionerExample)
 * authored = "2008-10-13"
@@ -4987,17 +4987,17 @@ Description: "A questionaire response that documents the answers to the question
 
 * item[+].linkId = "2"
 * item[=]
-  * insert QuestionResponse(2.1, Violence Assessment Completed, valueCoding, $YesNoCodeSystem#true)
-  * insert QuestionResponseWithoutText(2.2, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(2.1, Violence Assessment Completed, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-2.1-true)
+  * insert QuestionResponseWithoutText(2.2, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-2.2-false)
   * item[=]
     * text = "Have you been kicked, hit, slapped, or otherwise physically hurt by your partner"
-  * insert QuestionResponse(2.3, Has you partner ever threatened to hurt you, valueCoding, $YesNoCodeSystem#false)
-  * insert QuestionResponse(2.4, Has you partner ever forced or coerced you to engage in unwanted sexual activity, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(2.3, Has you partner ever threatened to hurt you, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-2.3-false)
+  * insert QuestionResponse(2.4, Has you partner ever forced or coerced you to engage in unwanted sexual activity, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-2.4-true)
 
 * item[+].linkId = "3"
 * item[=]
   * insert QuestionResponse(3.1, What is the plan for notifying the partner regarding the index case's HIV status, valueCoding, $PartnerNotificationPlanCodeSystem#Provider-Referral)
-  * insert QuestionResponse(3.2, Was the partner notified, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(3.2, Was the partner notified, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-3.2-false)
   * insert QuestionResponse(3.3, Reason for not being notified, valueCoding, $LNC#LA46-8)
   * insert QuestionResponse(3.4, Other Reason for not being notified, valueString, "some reason")
   * insert QuestionResponse(3.5, Date notification offered, valueDate, 2008-10-13)
@@ -5006,19 +5006,19 @@ Description: "A questionaire response that documents the answers to the question
 
 * item[+].linkId = "4"
 * item[=]
-  * insert QuestionResponse(4.1, Has the partner been previsouly tested for HIV, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(4.1, Has the partner been previsouly tested for HIV, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-4.1-true)
   * insert QuestionResponse(4.2, Date of previous HIV test, valueDate, 2007-10-13)
   * insert QuestionResponseForQuantity(4.3, Previous HIV test result, 1001, 1/mL, copies/mL)
 
 * item[+].linkId = "5"
 * item[=]
-  * insert QuestionResponse(5.1, Will the partner be tested for HIV, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(5.1, Will the partner be tested for HIV, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-5.1-true)
   * insert QuestionResponse(5.2, Date of HIV test, valueDate, 2007-10-13)
   * insert QuestionResponseForQuantity(5.3, HIV test result, 988, 1/mL, copies/mL)
 
 * item[+].linkId = "6"
 * item[=]
-  * insert QuestionResponse(6.1, Is the newly diagnosed partner linked to partner services, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(6.1, Is the newly diagnosed partner linked to partner services, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-6.1-false)
   * insert QuestionResponse(6.2, Reason why the newly diagnosed partner is not linked to partner services, valueCoding, $LNC#LA4389-8)
 
 * author = Reference(GeneralPractitionerExample)
@@ -5040,17 +5040,17 @@ Description: "A questionaire response that documents the answers to the question
 
 * item[+].linkId = "2"
 * item[=]
-  * insert QuestionResponse(2.1, Violence Assessment Completed, valueCoding, $YesNoCodeSystem#true)
-  * insert QuestionResponseWithoutText(2.2, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(2.1, Violence Assessment Completed, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-2.1-true)
+  * insert QuestionResponseWithoutText(2.2, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-2.2-false)
   * item[=]
     * text = "Have you been kicked, hit, slapped, or otherwise physically hurt by your partner"
-  * insert QuestionResponse(2.3, Has you partner ever threatened to hurt you, valueCoding, $YesNoCodeSystem#false)
-  * insert QuestionResponse(2.4, Has you partner ever forced or coerced you to engage in unwanted sexual activity, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(2.3, Has you partner ever threatened to hurt you, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-2.3-false)
+  * insert QuestionResponse(2.4, Has you partner ever forced or coerced you to engage in unwanted sexual activity, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-2.4-true)
 
 * item[+].linkId = "3"
 * item[=]
   * insert QuestionResponse(3.1, What is the plan for notifying the partner regarding the index case's HIV status, valueCoding, $PartnerNotificationPlanCodeSystem#Provider-Referral)
-  * insert QuestionResponse(3.2, Was the partner notified, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(3.2, Was the partner notified, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-3.2-false)
   * insert QuestionResponse(3.3, Reason for not being notified, valueCoding, $LNC#LA46-8)
   * insert QuestionResponse(3.4, Other Reason for not being notified, valueString, "some reason")
   * insert QuestionResponse(3.5, Date notification offered, valueDate, 2008-10-13)
@@ -5059,25 +5059,25 @@ Description: "A questionaire response that documents the answers to the question
 
 * item[+].linkId = "4"
 * item[=]
-  * insert QuestionResponse(4.1, Has the partner been previsouly tested for HIV, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(4.1, Has the partner been previsouly tested for HIV, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-4.1-true)
   * insert QuestionResponse(4.2, Date of previous HIV test, valueDate, 2007-10-13)
   * insert QuestionResponseForQuantity(4.3, Previous HIV test result, 1001, 1/mL, copies/mL)
 
 * item[+].linkId = "5"
 * item[=]
-  * insert QuestionResponse(5.1, Will the partner be tested for HIV, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(5.1, Will the partner be tested for HIV, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-5.1-true)
   * insert QuestionResponse(5.2, Date of HIV test, valueDate, 2007-10-13)
   * insert QuestionResponseForQuantity(5.3, HIV test result, 988, 1/mL, copies/mL)
 
 * item[+].linkId = "6"
 * item[=]
-  * insert QuestionResponse(6.1, Is the newly diagnosed partner linked to partner services, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(6.1, Is the newly diagnosed partner linked to partner services, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-6.1-false)
   * insert QuestionResponse(6.2, Reason why the newly diagnosed partner is not linked to partner services, valueCoding, $LNC#LA46-8)
   * insert QuestionResponse(6.3, Other Reason for not being notified, valueString, "some reason")
 
 * item[+].linkId = "7"
 * item[=]
-  * insert QuestionResponse(7.1, Has the partner started ART, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(7.1, Has the partner started ART, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-7.1-true)
   * insert QuestionResponseForReference(7.2, Partner identifiers, SexualPartnerRelatedPersonBecomesPatientExample)
 
 * insert QuestionResponse(8.1, Case closure status, valueCoding, $LNC#LA4389-8)
@@ -5101,17 +5101,17 @@ Description: "A questionaire response that documents the answers to the question
 
 * item[+].linkId = "2"
 * item[=]
-  * insert QuestionResponse(2.1, Violence Assessment Completed, valueCoding, $YesNoCodeSystem#true)
-  * insert QuestionResponseWithoutText(2.2, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(2.1, Violence Assessment Completed, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-2.1-true)
+  * insert QuestionResponseWithoutText(2.2, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-2.2-false)
   * item[=]
     * text = "Have you been kicked, hit, slapped, or otherwise physically hurt by your partner"
-  * insert QuestionResponse(2.3, Has you partner ever threatened to hurt you, valueCoding, $YesNoCodeSystem#false)
-  * insert QuestionResponse(2.4, Has you partner ever forced or coerced you to engage in unwanted sexual activity, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(2.3, Has you partner ever threatened to hurt you, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-2.3-false)
+  * insert QuestionResponse(2.4, Has you partner ever forced or coerced you to engage in unwanted sexual activity, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-2.4-true)
 
 * item[+].linkId = "3"
 * item[=]
   * insert QuestionResponse(3.1, What is the plan for notifying the partner regarding the index case's HIV status, valueCoding, $PartnerNotificationPlanCodeSystem#Provider-Referral)
-  * insert QuestionResponse(3.2, Was the partner notified, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(3.2, Was the partner notified, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-3.2-false)
   * insert QuestionResponse(3.3, Reason for not being notified, valueCoding, $LNC#LA46-8)
   * insert QuestionResponse(3.4, Other Reason for not being notified, valueString, "some reason")
   * insert QuestionResponse(3.5, Date notification offered, valueDate, 2008-10-13)
@@ -5120,25 +5120,25 @@ Description: "A questionaire response that documents the answers to the question
 
 * item[+].linkId = "4"
 * item[=]
-  * insert QuestionResponse(4.1, Has the partner been previsouly tested for HIV, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(4.1, Has the partner been previsouly tested for HIV, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-4.1-true)
   * insert QuestionResponse(4.2, Date of previous HIV test, valueDate, 2007-10-13)
   * insert QuestionResponseForQuantity(4.3, Previous HIV test result, 1001, 1/mL, copies/mL)
 
 * item[+].linkId = "5"
 * item[=]
-  * insert QuestionResponse(5.1, Will the partner be tested for HIV, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(5.1, Will the partner be tested for HIV, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-5.1-true)
   * insert QuestionResponse(5.2, Date of HIV test, valueDate, 2007-10-13)
   * insert QuestionResponseForQuantity(5.3, HIV test result, 988, 1/mL, copies/mL)
 
 * item[+].linkId = "6"
 * item[=]
-  * insert QuestionResponse(6.1, Is the newly diagnosed partner linked to partner services, valueCoding, $YesNoCodeSystem#false)
+  * insert QuestionResponse(6.1, Is the newly diagnosed partner linked to partner services, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-6.1-false)
   * insert QuestionResponse(6.2, Reason why the newly diagnosed partner is not linked to partner services, valueCoding, $LNC#LA46-8)
   * insert QuestionResponse(6.3, Other Reason for not being notified, valueString, "some reason")
 
 * item[+].linkId = "7"
 * item[=]
-  * insert QuestionResponse(7.1, Has the partner started ART, valueCoding, $YesNoCodeSystem#true)
+  * insert QuestionResponse(7.1, Has the partner started ART, valueCoding, $Index-Case-Sex-Partner-YesNoCodeSystem#icsp-7.1-true)
   * insert QuestionResponseForReference(7.2, Partner identifiers, SexualPartnerRelatedPersonBecomesPatientExample)
 
 * insert QuestionResponse(8.1, Case closure status, valueCoding, $LNC#LA46-8)

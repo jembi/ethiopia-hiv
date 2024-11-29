@@ -54,17 +54,16 @@ Usage: #definition
   * insert ElementMap(91382-2, Stopped, equivalent)
 
 * group[+]
-  * source = $YesNoCodeSystem
-  * sourceVersion = "BreastfeedingQuestionProprietaryToLOINC"
+  * source = $PS-FPM-YesNoCodeSystem
   * target = $LNC
-  * insert ElementMap(true, LA29252-6, equivalent)
-  * insert ElementMap(false, LA29253-4, equivalent)
+  * insert ElementMap(ps-fpm-1.3-true, LA29252-6, equivalent)
+  * insert ElementMap(ps-fpm-1.3-false, LA29253-4, equivalent)
 
 * group[+]
   * source = $LNC
-  * target = $YesNoCodeSystem
-  * insert ElementMap(LA29252-6, true, equivalent)
-  * insert ElementMap(LA29253-4, false, equivalent)
+  * target = $PS-FPM-YesNoCodeSystem
+  * insert ElementMap(LA29252-6, ps-fpm-1.3-true, equivalent)
+  * insert ElementMap(LA29253-4, ps-fpm-1.3-false, equivalent)
 
 * group[+]
   * source = $DSDAssessmentStatus
@@ -131,30 +130,28 @@ Usage: #definition
   * insert ElementMap(67723-7, Linked-To-Care, equivalent)
 
 * group[+]
-  * source = $YesNoCodeSystem
-  * sourceVersion = "FuturePregnancyQuestionProprietaryToLOINC"
+  * source = $PS-FPM-YesNoCodeSystem
   * target = $LNC
-  * insert ElementMap(true, LA26438-4, equivalent)
-  * insert ElementMap(false, LA26440-0, equivalent)
+  * insert ElementMap(ps-fpm-1.2-true, LA26438-4, equivalent)
+  * insert ElementMap(ps-fpm-1.2-false, LA26440-0, equivalent)
 
 * group[+]
   * source = $LNC
-  * target = $YesNoCodeSystem
-  * insert ElementMap(LA26438-4, true, equivalent)
-  * insert ElementMap(LA26440-0, false, equivalent)
+  * target = $PS-FPM-YesNoCodeSystem
+  * insert ElementMap(LA26438-4, ps-fpm-1.2-true, equivalent)
+  * insert ElementMap(LA26440-0, ps-fpm-1.2-false, equivalent)
 
 * group[+]
-  * source = $YesNoCodeSystem
-  * sourceVersion = "PregnancyQuestionProprietaryToLOINC"
+  * source = $PS-FPM-YesNoCodeSystem
   * target = $LNC
-  * insert ElementMap(true, LA15173-0, equivalent)
-  * insert ElementMap(false, LA26683-5, equivalent)
+  * insert ElementMap(ps-fpm-1.1-true, LA15173-0, equivalent)
+  * insert ElementMap(ps-fpm-1.1-false, LA26683-5, equivalent)
 
 * group[+]
   * source = $LNC
-  * target = $YesNoCodeSystem
-  * insert ElementMap(LA15173-0, true, equivalent)
-  * insert ElementMap(LA26683-5, false, equivalent)
+  * target = $PS-FPM-YesNoCodeSystem
+  * insert ElementMap(LA15173-0, ps-fpm-1.1-true, equivalent)
+  * insert ElementMap(LA26683-5, ps-fpm-1.1-false, equivalent)
 
 * group[+]
   * source = $ServiceProviderType

@@ -119,7 +119,7 @@ Description: "This is an extension to capture whether challenges are anticipated
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
 * valueCodeableConcept.coding only StrictCoding
-* valueCodeableConcept from YesNoValueSet (required)
+* valueCodeableConcept from FollowUpChallengesAnticipatedYesNoValueSet (required)
 * ^context[+].type = #element
 * ^context[=].expression = "Observation"
 
