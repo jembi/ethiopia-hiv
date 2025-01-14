@@ -2256,3 +2256,472 @@ Description: "Code used for indicating a proprietary enhanced adherence counsell
 * ^status = #active
 * ^caseSensitive = true
 * #eac "Enhanced Adherence Counselling"
+
+CodeSystem: PSFPMYesNoCodeSystem
+Id: ps-fpm-yes-no-code-system
+Title: "Pregnancy Status and Family Planning Method Yes/No Codes"
+Description: "Pregnancy Status and Family Planning Method Yes/No Codes Represented as Boolean."
+* ^experimental = false
+* ^status = #active
+* ^caseSensitive = true
+* #ps-fpm-1.1-true "Yes"
+* #ps-fpm-1.1-false "No"
+* #ps-fpm-1.2-true "Yes"
+* #ps-fpm-1.2-false "No"
+* #ps-fpm-1.3-true "Yes"
+* #ps-fpm-1.3-false "No"
+
+ValueSet: PSFPMYesNoValueSet
+Id: ps-fpm-yes-no-value-set
+Title: "Pregnancy Status and Family Planning Method Yes/No Codes"
+Description: "Pregnancy Status and Family Planning Method Yes/No Codes Represented as Boolean."
+* ^experimental = false
+* ^status = #active
+* $AbsentUnknownCodeSystem#Not-Applicable
+* include codes from system PSFPMYesNoCodeSystem
+
+CodeSystem: ScreenedForTBYesNoCodeSystem
+Id: screened-for-tb-yes-no-code-system
+Title: "Screened For TB Yes/No Codes"
+Description: "Screened For TB Yes/No Codes Represented as Boolean."
+* ^experimental = false
+* ^status = #active
+* ^caseSensitive = true
+* #screened-for-tb-true "Yes"
+* #screened-for-tb-false "No"
+
+ValueSet: ScreenedForTBYesNoValueSet
+Id: screened-for-tb-yes-no-value-set
+Title: "Screened For TB Yes/No Codes"
+Description: "Screened For TB Yes/No Codes Represented as Boolean."
+* ^experimental = false
+* ^status = #active
+* include codes from system ScreenedForTBYesNoCodeSystem
+
+CodeSystem: TherapeuticSupplementaryFoodYesNoCodeSystem
+Id: therapeutic-supplementary-food-yes-no-code-system
+Title: "Therapeutic Supplementary Food Yes/No Codes"
+Description: "Therapeutic Supplementary Food Yes/No Codes Represented as Boolean."
+* ^experimental = false
+* ^status = #active
+* ^caseSensitive = true
+* #therapeutic-supplementary-food-true "Yes"
+* #therapeutic-supplementary-food-false "No"
+
+ValueSet: TherapeuticSupplementaryFoodYesNoValueSet
+Id: therapeutic-supplementary-food-yes-no-value-set
+Title: "Therapeutic Supplementary Food Yes/No Codes"
+Description: "Therapeutic Supplementary Food Yes/No Codes Represented as Boolean."
+* ^experimental = false
+* ^status = #active
+* include codes from system TherapeuticSupplementaryFoodYesNoCodeSystem
+
+CodeSystem: CCSCounsellingYesNoCodeSystem
+Id: ccs-counselling-yes-no-code-system
+Title: "Cervical Cancer Screening Counselling Yes/No Codes"
+Description: "Cervical Cancer Screening Counselling Yes/No Codes Represented as Boolean."
+* ^experimental = false
+* ^status = #active
+* ^caseSensitive = true
+* #ccs-counselling-true "Yes"
+* #ccs-counselling-false "No"
+
+ValueSet: CCSCounsellingYesNoValueSet
+Id: ccs-counselling-yes-no-value-set
+Title: "Cervical Cancer Screening Counselling Yes/No Codes"
+Description: "Cervical Cancer Screening Counselling Yes/No Codes Represented as Boolean."
+* ^experimental = false
+* ^status = #active
+* include codes from system CCSCounsellingYesNoCodeSystem
+
+CodeSystem: CCSAcceptedYesNoCodeSystem
+Id: ccs-accepted-yes-no-code-system
+Title: "Cervical Cancer Screening Accepted Yes/No Codes"
+Description: "Cervical Cancer Screening Accepted Yes/No Codes Represented as Boolean."
+* ^experimental = false
+* ^status = #active
+* ^caseSensitive = true
+* #ccs-accepted-true "Yes"
+* #ccs-accepted-false "No"
+
+ValueSet: CCSAcceptedYesNoValueSet
+Id: ccs-accepted-yes-no-value-set
+Title: "Cervical Cancer Screening Accepted Yes/No Codes"
+Description: "Cervical Cancer Screening Accepted Yes/No Codes Represented as Boolean."
+* ^experimental = false
+* ^status = #active
+* include codes from system CCSAcceptedYesNoCodeSystem
+
+CodeSystem: ResidesWithinCatchmentAreaYesNoCodeSystem
+Id: resides-within-catchment-area-yes-no-code-system
+Title: "Resides Within Catchment Area Yes/No Codes"
+Description: "Resides Within Catchment Area Yes/No Codes Represented as Boolean."
+* ^experimental = false
+* ^status = #active
+* ^caseSensitive = true
+* #resides-within-catchment-area-true "Yes"
+* #resides-within-catchment-area-false "No"
+
+ValueSet: ResidesWithinCatchmentAreaYesNoValueSet
+Id: resides-within-catchment-area-yes-no-value-set
+Title: "Resides Within Catchment Area Yes/No Codes"
+Description: "Resides Within Catchment Area Yes/No Codes Represented as Boolean."
+* ^experimental = false
+* ^status = #active
+* include codes from system ResidesWithinCatchmentAreaYesNoCodeSystem
+
+CodeSystem: FollowUpChallengesAnticipatedYesNoCodeSystem
+Id: followUp-challenges-anticipated-yes-no-code-system
+Title: "FollowUp Challenges Anticipated Yes/No Codes"
+Description: "FollowUp Challenges Anticipated Yes/No Codes Represented as Boolean."
+* ^experimental = false
+* ^status = #active
+* ^caseSensitive = true
+* #followUp-challenges-anticipated-true "Yes"
+* #followUp-challenges-anticipated-false "No"
+
+ValueSet: FollowUpChallengesAnticipatedYesNoValueSet
+Id: followUp-challenges-anticipated-yes-no-value-set
+Title: "FollowUp Challenges Anticipated Yes/No Codes"
+Description: "FollowUp Challenges Anticipated Yes/No Codes Represented as Boolean."
+* ^experimental = false
+* ^status = #active
+* include codes from system FollowUpChallengesAnticipatedYesNoCodeSystem
+
+CodeSystem: HIVStatusDisclosureAtEnrollmentYesNoCodeSystem
+Id: hiv-status-disclosure-at-enrollment-yes-no-code-system
+Title: "HIV Status Disclosure At Enrollment Yes/No Codes"
+Description: "HIV Status Disclosure At Enrollment Yes/No Codes Represented as Boolean."
+* ^experimental = false
+* ^status = #active
+* ^caseSensitive = true
+* #hiv-status-disclosure-at-enrollment-true "Yes"
+* #hiv-status-disclosure-at-enrollment-false "No"
+
+ValueSet: HIVStatusDisclosureAtEnrollmentYesNoValueSet
+Id: hiv-status-disclosure-at-enrollment-yes-no-value-set
+Title: "HIV Status Disclosure At Enrollment Yes/No Codes"
+Description: "HIV Status Disclosure At Enrollment Yes/No Codes Represented as Boolean."
+* ^experimental = false
+* ^status = #active
+* include codes from system HIVStatusDisclosureAtEnrollmentYesNoCodeSystem
+
+CodeSystem: TestedForHIVYesNoCodeSystem
+Id: tested-for-hiv-yes-no-code-system
+Title: "Tested For HIV Yes/No Codes"
+Description: "Tested For HIV Yes/No Codes Represented as Boolean."
+* ^experimental = false
+* ^status = #active
+* ^caseSensitive = true
+* #tested-for-hiv-true "Yes"
+* #tested-for-hiv-false "No"
+
+ValueSet: TestedForHIVYesNoValueSet
+Id: tested-for-hiv-yes-no-value-set
+Title: "Tested For HIV Yes/No Codes"
+Description: "Tested For HIV Yes/No Codes Represented as Boolean."
+* ^experimental = false
+* ^status = #active
+* include codes from system TestedForHIVYesNoCodeSystem
+
+CodeSystem: CounseledForHIVYesNoCodeSystem
+Id: counseled-for-hiv-yes-no-code-system
+Title: "Counseled For HIV Yes/No Codes"
+Description: "Counseled For HIV Yes/No Codes Represented as Boolean."
+* ^experimental = false
+* ^status = #active
+* ^caseSensitive = true
+* #counseled-for-hiv-true "Yes"
+* #counseled-for-hiv-false "No"
+
+ValueSet: CounseledForHIVYesNoValueSet
+Id: counseled-for-hiv-yes-no-value-set
+Title: "Counseled For HIV Yes/No Codes"
+Description: "Counseled For HIV Yes/No Codes Represented as Boolean."
+* ^experimental = false
+* ^status = #active
+* include codes from system CounseledForHIVYesNoCodeSystem
+
+CodeSystem: ViralLoadPerformedYesNoCodeSystem
+Id: viral-load-performed-yes-no-code-system
+Title: "Viral Load Performed Yes/No Codes"
+Description: "Viral Load Performed Yes/No Codes Represented as Boolean."
+* ^experimental = false
+* ^status = #active
+* ^caseSensitive = true
+* #viral-load-performed-true "Yes"
+* #viral-load-performed-false "No"
+
+ValueSet: ViralLoadPerformedYesNoValueSet
+Id: viral-load-performed-yes-no-value-set
+Title: "Viral Load Performed Yes/No Codes"
+Description: "Viral Load Performed Yes/No Codes Represented as Boolean."
+* ^experimental = false
+* ^status = #active
+* include codes from system ViralLoadPerformedYesNoCodeSystem
+
+CodeSystem: CotrimoxazolePreventiveTherapyStartedYesNoCodeSystem
+Id: cotrimoxazole-preventive-therapy-started-yes-no-code-system
+Title: "Cotrimoxazole Preventive Therapy Started Yes/No Codes"
+Description: "Cotrimoxazole Preventive Therapy Started Yes/No Codes Represented as Boolean."
+* ^experimental = false
+* ^status = #active
+* ^caseSensitive = true
+* #cotrimoxazole-preventive-therapy-started-true "Yes"
+* #cotrimoxazole-preventive-therapy-started-false "No"
+
+ValueSet: CotrimoxazolePreventiveTherapyStartedYesNoValueSet
+Id: cotrimoxazole-preventive-therapy-started-yes-no-value-set
+Title: "Cotrimoxazole Preventive Therapy Started Yes/No Codes"
+Description: "Cotrimoxazole Preventive Therapy Started Yes/No Codes Represented as Boolean."
+* ^experimental = false
+* ^status = #active
+* include codes from system CotrimoxazolePreventiveTherapyStartedYesNoCodeSystem
+
+CodeSystem: FluconazolePreventiveTherapyStartedYesNoCodeSystem
+Id: fluconazole-preventive-therapy-started-yes-no-code-system
+Title: "Fluconazole Preventive Therapy Started Yes/No Codes"
+Description: "Fluconazole Preventive Therapy Started Yes/No Codes Represented as Boolean."
+* ^experimental = false
+* ^status = #active
+* ^caseSensitive = true
+* #fluconazole-preventive-therapy-started-true "Yes"
+* #fluconazole-preventive-therapy-started-false "No"
+
+ValueSet: FluconazolePreventiveTherapyStartedYesNoValueSet
+Id: fluconazole-preventive-therapy-started-yes-no-value-set
+Title: "Fluconazole Preventive Therapy Started Yes/No Codes"
+Description: "Fluconazole Preventive Therapy Started Yes/No Codes Represented as Boolean."
+* ^experimental = false
+* ^status = #active
+* include codes from system FluconazolePreventiveTherapyStartedYesNoCodeSystem
+
+CodeSystem: HIVProgramFinalOutcomeKnownYesNoCodeSystem
+Id: hiv-program-final-outcome-known-yes-no-code-system
+Title: "HIV Program Final Outcome Known Yes/No Codes"
+Description: "HIV Program Final Outcome Known Yes/No Codes Represented as Boolean."
+* ^experimental = false
+* ^status = #active
+* ^caseSensitive = true
+* #hiv-program-final-outcome-known-true "Yes"
+* #hiv-program-final-outcome-known-false "No"
+
+ValueSet: HIVProgramFinalOutcomeKnownYesNoValueSet
+Id: hiv-program-final-outcome-known-yes-no-value-set
+Title: "HIV Program Final Outcome Known Yes/No Codes"
+Description: "HIV Program Final Outcome Known Yes/No Codes Represented as Boolean."
+* ^experimental = false
+* ^status = #active
+* include codes from system HIVProgramFinalOutcomeKnownYesNoCodeSystem
+
+CodeSystem: TBTreatmentStartedYesNoCodeSystem
+Id: tb-treatment-started-yes-no-code-system
+Title: "TB Treatment Started Yes/No Codes"
+Description: "TB Treatment Started Yes/No Codes Represented as Boolean."
+* ^experimental = false
+* ^status = #active
+* ^caseSensitive = true
+* #tb-treatment-started-true "Yes"
+* #tb-treatment-started-false "No"
+
+ValueSet: TBTreatmentStartedYesNoValueSet
+Id: tb-treatment-started-yes-no-value-set
+Title: "TB Treatment Started Yes/No Codes"
+Description: "TB Treatment Started Yes/No Codes Represented as Boolean."
+* ^experimental = false
+* ^status = #active
+* include codes from system TBTreatmentStartedYesNoCodeSystem
+
+CodeSystem: AssessedForPainYesNoCodeSystem
+Id: assessed-for-pain-yes-no-code-system
+Title: "Assessed For Pain Yes/No Codes"
+Description: "Assessed For Pain Yes/No Codes Represented as Boolean."
+* ^experimental = false
+* ^status = #active
+* ^caseSensitive = true
+* #assessed-for-pain-true "Yes"
+* #assessed-for-pain-false "No"
+
+ValueSet: AssessedForPainYesNoValueSet
+Id: assessed-for-pain-yes-no-value-set
+Title: "Assessed For Pain Yes/No Codes"
+Description: "Assessed For Pain Yes/No Codes Represented as Boolean."
+* ^experimental = false
+* ^status = #active
+* include codes from system AssessedForPainYesNoCodeSystem
+
+CodeSystem: LevelOfPainYesNoCodeSystem
+Id: level-of-pain-yes-no-code-system
+Title: "Level Of Pain Yes/No Codes"
+Description: "Level Of Pain Yes/No Codes Represented as Boolean."
+* ^experimental = false
+* ^status = #active
+* ^caseSensitive = true
+* #level-of-pain-true "Yes"
+* #level-of-pain-false "No"
+
+ValueSet: LevelOfPainYesNoValueSet
+Id: level-of-pain-yes-no-value-set
+Title: "Level Of Pain Yes/No Codes"
+Description: "Level Of Pain Yes/No Codes Represented as Boolean."
+* ^experimental = false
+* ^status = #active
+* include codes from system LevelOfPainYesNoCodeSystem
+
+CodeSystem: EnrolledOperationTrippleZeroYesNoCodeSystem
+Id: enrolled-operation-tripple-zero-yes-no-code-system
+Title: "Enrolled to Operation Tripple Zero Yes/No Codes"
+Description: "Enrolled to Operation Tripple Zero Codes Represented as Boolean."
+* ^experimental = false
+* ^status = #active
+* ^caseSensitive = true
+* #enrolled-operation-tripple-zero-true "Yes"
+* #enrolled-operation-tripple-zero-false "No"
+
+ValueSet: EnrolledOperationTrippleZeroYesNoValueSet
+Id: enrolled-operation-tripple-zero-yes-no-value-set
+Title: "Enrolled to Operation Tripple Zero Yes/No Codes"
+Description: "Enrolled to Operation Tripple Zero Yes/No Codes Represented as Boolean."
+* ^experimental = false
+* ^status = #active
+* include codes from system EnrolledOperationTrippleZeroYesNoCodeSystem
+
+CodeSystem: HIVTreatmentPriorToEnrollmentYesNoCodeSystem
+Id: hiv-treatment-prior-to-enrollment-yes-no-code-system
+Title: "HIV Treatment Prior To Enrollment Yes/No Codes"
+Description: "HIV Treatment Prior To Enrollment Codes Represented as Boolean."
+* ^experimental = false
+* ^status = #active
+* ^caseSensitive = true
+* #hiv-treatment-prior-to-enrollment-true "Yes"
+* #hiv-treatment-prior-to-enrollment-false "No"
+
+ValueSet: HIVTreatmentPriorToEnrollmentYesNoValueSet
+Id: hiv-treatment-prior-to-enrollment-yes-no-value-set
+Title: "HIV Treatment Prior To Enrollment Yes/No Codes"
+Description: "HIV Treatment Prior To Enrollment Yes/No Codes Represented as Boolean."
+* ^experimental = false
+* ^status = #active
+* include codes from system HIVTreatmentPriorToEnrollmentYesNoCodeSystem
+
+CodeSystem: IndexCaseScreeningYesNoCodeSystem
+Id: index-case-screening-yes-no-code-system
+Title: "Index Case Screening Yes/No Codes"
+Description: "Index Case Screening Codes Represented as Boolean."
+* ^experimental = false
+* ^status = #active
+* ^caseSensitive = true
+* #ics-1.1-true "Yes"
+* #ics-1.1-false "No"
+* #ics-1.2-true "Yes"
+* #ics-1.2-false "No"
+* #ics-1.3-true "Yes"
+* #ics-1.3-false "No"
+* #ics-1.4-true "Yes"
+* #ics-1.4-false "No"
+* #ics-1.5-true "Yes"
+* #ics-1.5-false "No"
+* #ics-1.6-true "Yes"
+* #ics-1.6-false "No"
+* #ics-1.7-true "Yes"
+* #ics-1.7-false "No"
+* #ics-1.8-true "Yes"
+* #ics-1.8-false "No"
+* #ics-1.9-true "Yes"
+* #ics-1.9-false "No"
+* #ics-1.10-true "Yes"
+* #ics-1.10-false "No"
+* #ics-1.11-true "Yes"
+* #ics-1.11-false "No"
+* #ics-1.12-true "Yes"
+* #ics-1.12-false "No"
+
+ValueSet: IndexCaseScreeningYesNoValueSet
+Id: index-case-screening-yes-no-value-set
+Title: "Index Case Screening Yes/No Codes"
+Description: "Index Case Screening Yes/No Codes Represented as Boolean."
+* ^experimental = false
+* ^status = #active
+* include codes from system IndexCaseScreeningYesNoCodeSystem
+
+CodeSystem: IndexCaseAssessmentYesNoCodeSystem
+Id: index-case-assessment-yes-no-code-system
+Title: "Index Case Assessment Yes/No Codes"
+Description: "Index Case Assessment Codes Represented as Boolean."
+* ^experimental = false
+* ^status = #active
+* ^caseSensitive = true
+* #ica-1.1-true "Yes"
+* #ica-1.1-false "No"
+* #ica-1.5-true "Yes"
+* #ica-1.5-false "No"
+* #ica-1.9-true "Yes"
+* #ica-1.9-false "No"
+
+ValueSet: IndexCaseAssessmentYesNoValueSet
+Id: index-case-assessment-yes-no-value-set
+Title: "Index Case Assessment Yes/No Codes"
+Description: "Index Case Assessment Yes/No Codes Represented as Boolean."
+* ^experimental = false
+* ^status = #active
+* include codes from system IndexCaseAssessmentYesNoCodeSystem
+
+CodeSystem: FamilyIndexCaseContactsYesNoCodeSystem
+Id: family-index-case-contacts-yes-no-code-system
+Title: "Family Index Case Contacts Yes/No Codes"
+Description: "Family Index Case Contacts Codes Represented as Boolean."
+* ^experimental = false
+* ^status = #active
+* ^caseSensitive = true
+* #ficc-1.1-true "Yes"
+* #ficc-1.1-false "No"
+* #ficc-2.1-true "Yes"
+* #ficc-2.1-false "No"
+* #ficc-3.1-true "Yes"
+* #ficc-3.1-false "No"
+* #ficc-3.2-true "Yes"
+* #ficc-3.2-false "No"
+* #ficc-4.1-true "Yes"
+* #ficc-4.1-false "No"
+
+ValueSet: FamilyIndexCaseContactsYesNoValueSet
+Id: family-index-case-contacts-yes-no-value-set
+Title: "Family Index Case Contacts Yes/No Codes"
+Description: "Family Index Case Contacts Yes/No Codes Represented as Boolean."
+* ^experimental = false
+* ^status = #active
+* include codes from system FamilyIndexCaseContactsYesNoCodeSystem
+
+CodeSystem: IndexCaseSexPartnerYesNoCodeSystem
+Id: index-case-sex-partner-yes-no-code-system
+Title: "Index Case Sex Partner Yes/No Codes"
+Description: "Index Case Sex Partner Codes Represented as Boolean."
+* ^experimental = false
+* ^status = #active
+* ^caseSensitive = true
+* #icsp-2.1-true "Yes"
+* #icsp-2.1-false "No"
+* #icsp-2.2-true "Yes"
+* #icsp-2.2-false "No"
+* #icsp-2.3-true "Yes"
+* #icsp-2.3-false "No"
+* #icsp-2.4-true "Yes"
+* #icsp-2.4-false "No"
+* #icsp-3.2-true "Yes"
+* #icsp-3.2-false "No"
+* #icsp-4.1-true "Yes"
+* #icsp-4.1-false "No"
+* #icsp-5.1-true "Yes"
+* #icsp-5.1-false "No"
+* #icsp-6.1-true "Yes"
+* #icsp-6.1-false "No"
+* #icsp-7.1-true "Yes"
+* #icsp-7.1-false "No"
+
+ValueSet: IndexCaseSexPartnerYesNoValueSet
+Id: index-case-sex-partner-yes-no-value-set
+Title: "Index Case Sex Partner Yes/No Codes"
+Description: "Index Case Sex Partner Yes/No Codes Represented as Boolean."
+* ^experimental = false
+* ^status = #active
+* include codes from system IndexCaseSexPartnerYesNoCodeSystem

@@ -476,7 +476,7 @@ Description: "Documents whether the patient was screened for TB."
 * code = $SCT#171126009
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
-* valueCodeableConcept from YesNoValueSet (required)
+* valueCodeableConcept from ScreenedForTBYesNoValueSet (required)
 * valueCodeableConcept.extension contains ObservedDateExtension named ObservedDate 0..1 MS
 * valueCodeableConcept.extension[ObservedDate] ^definition =
     "reason(s) why this should be supported."
@@ -830,7 +830,7 @@ Description: "Represents the patient's Therapeutic/Supplementary Food."
 * code = $SCT#41829006
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
-* valueCodeableConcept from YesNoValueSet (required)
+* valueCodeableConcept from TherapeuticSupplementaryFoodYesNoValueSet (required)
 * derivedFrom 1..1
 * derivedFrom only Reference(NutritionalScreeningResult)
 
@@ -922,7 +922,7 @@ Description: "Represents whether the patient is currently pregnant."
 * code = $LNC#11449-6
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
-* valueCodeableConcept from YesNoValueSet (required)
+* valueCodeableConcept from PSFPMYesNoValueSet (required)
 * basedOn 0..1 MS
 * basedOn ^definition =
     "reason(s) why this should be supported."
@@ -938,7 +938,7 @@ Description: "Represents whether the patient plans to be pregnant in the future.
 * code = $LNC#86645-9
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
-* valueCodeableConcept from YesNoValueSet (required)
+* valueCodeableConcept from PSFPMYesNoValueSet (required)
 
 Profile: BreastfeedingStatus
 Parent: GenericObservation
@@ -950,7 +950,7 @@ Description: "Represents whether the patient is currently breatfeeding."
 * code = $LNC#63895-7
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
-* valueCodeableConcept from YesNoValueSet (required)
+* valueCodeableConcept from PSFPMYesNoValueSet (required)
 
 Profile: GenericMedicationRequest
 Parent: MedicationRequest
@@ -1119,7 +1119,7 @@ Description: "Indicates whether the patient was counselled for cervical cancer."
 * code = $SCT#409063005
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
-* valueCodeableConcept from YesNoValueSet (required)
+* valueCodeableConcept from CCSCounsellingYesNoValueSet (required)
 
 Profile: CervicalCancerScreeningAcceptedStatus
 Parent: GenericObservation
@@ -1131,7 +1131,7 @@ Description: "Indicates whether the patient accepted cervical cancer screening."
 * code = $SCT#171153008
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
-* valueCodeableConcept from YesNoValueSet (required)
+* valueCodeableConcept from CCSAcceptedYesNoValueSet (required)
 * derivedFrom 1..1
 * derivedFrom only Reference(CervicalCancerScreeningCounsellingStatus)
 
@@ -1304,7 +1304,7 @@ Description: "This is used to indicate whether the patient resides in the catchm
 * category = $OBSERVATION_CATEGORY#social-history
 * code = $LNC#LA21920-6
 * value[x] only CodeableConcept
-* valueCodeableConcept from YesNoValueSet (required)
+* valueCodeableConcept from ResidesWithinCatchmentAreaYesNoValueSet (required)
 * extension contains AnticipatedChallengesWithRegularFollowUpExtension named FollowUpChallengesAnticipated 0..1 MS
 * extension[FollowUpChallengesAnticipated] ^definition =
     "reason(s) why this should be supported."
@@ -1327,7 +1327,7 @@ Id: referral-out-service-request
 Title: "Service Request - Request for Referral"
 Description: "Service request used to make a request for a referral."
 * intent = #order
-* code = $LNC#LP173238-9
+* code = $LNC#LA9331-5 //$LNC#LP173238-9
 * locationReference 1..*
 * authoredOn 1..1
 * reasonReference 1..*
@@ -1382,7 +1382,7 @@ Parent: GenericServiceRequest
 Id: referral-in-service-request
 Title: "Service Request - Incoming Referral Information"
 Description: "Used to capture a patient's referral information."
-* code = $LNC#39267-0
+* code = $LNC#LA9328-1 //$LNC#39267-0
 * authoredOn 1..1
 * requester 1..1
 * reasonCode 1..*
@@ -1410,7 +1410,7 @@ Description: "Used to determine whether the patient or their child's HIV Status 
 * code = $LNC#47249-8
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
-* valueCodeableConcept from YesNoValueSet (required)
+* valueCodeableConcept from HIVStatusDisclosureAtEnrollmentYesNoValueSet (required)
 * extension contains PatientRelationshipExtension named PatientRelationship 0..* MS
 * extension[PatientRelationship] ^definition =
     "reason(s) why this should be supported."
@@ -1478,7 +1478,7 @@ Description: "Used to determine whether the patient has tested for HIV."
 * category = $OBSERVATION_CATEGORY#exam
 * code = $SCT#171121004
 * value[x] only CodeableConcept
-* valueCodeableConcept from YesNoValueSet (required)
+* valueCodeableConcept from TestedForHIVYesNoValueSet (required)
 * valueCodeableConcept.extension contains ObservedDateExtension named ObservedDate 0..1 MS
 * valueCodeableConcept.extension[ObservedDate] ^definition =
     "reason(s) why this should be supported."
@@ -1505,7 +1505,7 @@ Description: "Used to determine whether the patient has been counseled for HIV t
 * category = $OBSERVATION_CATEGORY#therapy
 * code = $SCT#313077009
 * value[x] only CodeableConcept
-* valueCodeableConcept from YesNoValueSet (required)
+* valueCodeableConcept from CounseledForHIVYesNoValueSet (required)
 * valueCodeableConcept.extension contains ObservedDateExtension named ObservedDate 0..1 MS
 * valueCodeableConcept.extension[ObservedDate] ^definition =
     "reason(s) why this should be supported."
@@ -1649,7 +1649,7 @@ Description: "This is used to indicate whether a viral load was performed."
 * category = $OBSERVATION_CATEGORY#exam
 * code = $SCT#315124004
 * value[x] only CodeableConcept
-* valueCodeableConcept from YesNoValueSet (required)
+* valueCodeableConcept from ViralLoadPerformedYesNoValueSet (required)
 
 * hasMember 0..1 MS
 * hasMember ^definition =
@@ -1993,7 +1993,7 @@ Description: "Used to indicate whether the patient has started cotrimoxazole pre
 
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
-* valueCodeableConcept from YesNoValueSet (required)
+* valueCodeableConcept from CotrimoxazolePreventiveTherapyStartedYesNoValueSet (required)
 
 * basedOn 0..1 MS
 * basedOn ^definition =
@@ -2107,7 +2107,7 @@ Description: "Used to indicate whether the patient has started fluconazole preve
 
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
-* valueCodeableConcept from YesNoValueSet (required)
+* valueCodeableConcept from FluconazolePreventiveTherapyStartedYesNoValueSet (required)
 
 Profile: FluconazolePreventiveTherapyMedicationAdministration
 Parent: MedicationAdministration
@@ -2211,7 +2211,7 @@ Description: "Indicates whether the final outcome is known for the patient who i
 * code = $LNC#18776-5
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
-* valueCodeableConcept from YesNoValueSet (required)
+* valueCodeableConcept from HIVProgramFinalOutcomeKnownYesNoValueSet (required)
 * valueCodeableConcept.extension contains ObservedDateExtension named ObservedDate 0..1 MS
 * valueCodeableConcept.extension[ObservedDate] ^definition =
     "reason(s) why this should be supported."
@@ -2248,7 +2248,7 @@ Description: "Documents whether the patient has started TB treatment."
 * code = $LNC#45242-5
 * value[x] only CodeableConcept
 * valueCodeableConcept obeys Observation-TB-Treatment-Started-1
-* valueCodeableConcept from YesNoValueSet (required)
+* valueCodeableConcept from TBTreatmentStartedYesNoValueSet (required)
 * valueCodeableConcept 1..1
 * valueCodeableConcept.extension contains ObservedDateExtension named ObservedDate 0..1 MS
 * valueCodeableConcept.extension[ObservedDate] ^definition =
@@ -2687,7 +2687,7 @@ Description: "Documents whether the patient has been assessed for pain."
 * code = $LNC#LP428833-0
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
-* valueCodeableConcept from YesNoValueSet (required)
+* valueCodeableConcept from AssessedForPainYesNoValueSet (required)
 * hasMember 0..1 MS
 * hasMember ^definition =
     "reason(s) why this should be supported."
@@ -2703,7 +2703,7 @@ Description: "Indicates the level of pain the patient is experiencing."
 * code = $LNC#LL5953-6
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
-* valueCodeableConcept from YesNoValueSet (required)
+* valueCodeableConcept from LevelOfPainYesNoValueSet (required)
 
 Profile: HIVPreventionPlan
 Parent: GenericObservation
@@ -2727,7 +2727,7 @@ Description: "Indicates whether the patient was enrolled into the specialised pr
 * code = $LNC#LP7652-3
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
-* valueCodeableConcept from YesNoValueSet (required)
+* valueCodeableConcept from EnrolledOperationTrippleZeroYesNoValueSet (required)
 * valueCodeableConcept.extension contains ObservedDateExtension named ObservedDate 0..1 MS
 * valueCodeableConcept.extension[ObservedDate] ^definition =
     "reason(s) why this should be supported."
@@ -2790,7 +2790,7 @@ Description: "Indicates whether the patient has ever received ART prior to enrol
 * code = $LNC#45231-8
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
-* valueCodeableConcept from YesNoValueSet (required)
+* valueCodeableConcept from HIVTreatmentPriorToEnrollmentYesNoValueSet (required)
 
 Profile: CurrentHIVTreatmentTherapyDuration
 Parent: GenericObservation
