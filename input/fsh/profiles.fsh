@@ -1091,10 +1091,10 @@ Description: "Represents the patient's current occupation."
 * code = $LNC#85658-3
 * value[x] only CodeableConcept
 * valueCodeableConcept 1..1
-* valueCodeableConcept from OccupationValueSet (extensible)
+* valueCodeableConcept from OccupationValueSet (required)
 * valueCodeableConcept.text 1..1
 * valueCodeableConcept ^binding.extension[+].extension[+].url = "purpose"
-* valueCodeableConcept ^binding.extension[=].extension[=].valueCode = #candidate
+* valueCodeableConcept ^binding.extension[=].extension[=].valueCode = #required
 * valueCodeableConcept ^binding.extension[=].extension[+].url = "valueSet"
 * valueCodeableConcept ^binding.extension[=].extension[=].valueCanonical = "http://phinvads.cdc.gov/fhir/ValueSet/2.16.840.1.114222.4.11.7901"
 * valueCodeableConcept ^binding.extension[=].extension[+].url = "documentation"
