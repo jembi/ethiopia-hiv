@@ -12,6 +12,9 @@ WARNING: StructureDefinition.where(url = 'http://moh.gov.et/fhir/hiv/StructureDe
 # CodeSystems external to the Implementation Guide will not be validated from a ConceptMap Resource.  
 %ConceptMap.group[0].target: Target Code System http://loinc.org is only supported on the terminology server, so the target codes are not validated for performance reasons%
 %ConceptMap.group[1].source: Source Code System http://loinc.org is only supported on the terminology server, so the source codes are not validated for performance reasons%
+%ConceptMap.group[6].source: The Source Code System http://moh.gov.et/fhir/hiv/CodeSystem/yes-no-code-system is not fully defined and populated, and no sourceScope is specified, so the source code checking will not be performed%
+%ConceptMap.group[16].source: The Source Code System http://moh.gov.et/fhir/hiv/CodeSystem/yes-no-code-system is not fully defined and populated, and no sourceScope is specified, so the source code checking will not be performed%
+%ConceptMap.group[18].source: The Source Code System http://moh.gov.et/fhir/hiv/CodeSystem/yes-no-code-system is not fully defined and populated, and no sourceScope is specified, so the source code checking will not be performed%
 
 # There is no security risk to the HTML text in these profiles
 INFORMATION: StructureDefinition/arv-medication-dispense: StructureDefinition.snapshot.element[41].mapping[0].map: The string value contains text that looks like embedded HTML tags. If this content is rendered to HTML without appropriate post-processing, it may be a security risk
